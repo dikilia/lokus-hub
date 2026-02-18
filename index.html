@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Public Script · auto bg music</title>
+  <style>
+    /* === base & dark theme === */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px 20px;
+      background: #0b0b0b;
+      color: #eaeaea;
+      font-family: 'Courier New', Courier, monospace;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 720px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 400;
+      letter-spacing: -0.5px;
+      margin: 0 0 0.5rem 0;
+      color: #f0f0f0;
+      border-left: 4px solid #00f2ea;
+      padding-left: 16px;
+    }
+
+    .subhead {
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-bottom: 2rem;
+      font-family: monospace;
+      border-bottom: 1px solid #2a2a2a;
+      padding-bottom: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    /* music status indicator (subtle) */
+    .music-indicator {
+      font-size: 0.7rem;
+      background: #1a1a1a;
+      padding: 4px 12px;
+      border-radius: 30px;
+      color: #00f2ea;
+      border: 1px solid #2e2e2e;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .music-indicator.playing {
+      color: #00f2ea;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      margin: 2rem 0 0.75rem 0;
+      color: #00f2ea;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px dashed #2e2e2e;
+      padding-bottom: 4px;
+    }
+
+    /* script card */
+    .script-card {
+      background: #111;
+      border-radius: 16px;
+      padding: 16px 18px;
+      margin: 20px 0 12px 0;
+      border: 1px solid #242424;
+      box-shadow: 0 8px 0 #050505;
+      transition: 0.1s ease;
+    }
+
+    .script-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: #777;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .script-label span {
+      background: #00f2ea20;
+      color: #9cfff8;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+    }
+
+    pre {
+      background: #0c0c0c;
+      padding: 18px 14px;
+      border-radius: 12px;
+      overflow-x: auto;
+      font-size: 0.8rem;
+      line-height: 1.5;
+      color: #c5fffb;
+      font-family: 'Courier New', Courier, monospace;
+      border: 1px solid #2e2e2e;
+      margin: 10px 0 12px 0;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .copy-btn {
+      background: #00f2ea;
+      border: none;
+      color: #000;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 12px 18px;
+      border-radius: 40px;
+      width: 100%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: 0.15s;
+      border: 1px solid #4afff0;
+      letter-spacing: 0.3px;
+    }
+
+    .copy-btn:hover {
+      background: #00d4cc;
+      transform: scale(1.01);
+      box-shadow: 0 0 12px #00f2ea77;
+    }
+
+    .copy-btn:active {
+      background: #00b8b0;
+      transform: scale(0.99);
+    }
+
+    /* social grid */
+    .social-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 20px 0 16px;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #111;
+      padding: 16px 18px;
+      border-radius: 50px;
+      text-decoration: none;
+      color: #eaeaea;
+      font-weight: 600;
+      font-size: 1.1rem;
+      border: 1px solid #2c2c2c;
+      transition: 0.12s;
+      gap: 12px;
+      backdrop-filter: blur(4px);
+    }
+
+    .social-link:hover {
+      background: #1f1f1f;
+      border-color: #00f2ea;
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .social-icon {
+      font-size: 1.5rem;
+    }
+
+    .note {
+      margin-top: 36px;
+      font-size: 0.7rem;
+      color: #5f5f5f;
+      text-align: center;
+      border-top: 1px solid #202020;
+      padding-top: 24px;
+      font-family: monospace;
+    }
+
+    .flex-scripts {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* hidden audio element */
+    #bg-music {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <h1>⋆⭒˚.⋆ public script hub ⋆⭒˚.⋆</h1>
+  <div class="subhead">
+    <span>// auto background music ✦</span>
+    <span class="music-indicator" id="musicIndicator">
+      <span>🔊</span> loading music...
+    </span>
+  </div>
+
+  <!-- AUDIO ELEMENT (autoplay, loop, muted initially to comply with browser policies) -->
+  <audio id="bg-music" loop autoplay preload="auto">
+    <source src="https://files.catbox.moe/71lr1s.mp3" type="audio/mpeg">
+    Your browser does not support audio.
+  </audio>
+
+  <!-- THREE SCRIPT SECTIONS -->
+  <div class="flex-scripts">
+
+    <!-- 1. Murder Mystery 2 script -->
+    <div class="script-card">
+      <div class="script-label">
+        <span>🔪 MURDER MYSTERY 2</span>
+      </div>
+      <pre id="script-mm2">loadstring(game:HttpGet("https://raw.githubusercontent.com/MM2-ScriptsZ/Lokus-Hub/refs/heads/main/mm2.luazz"))()</pre>
+      <button class="copy-btn" onclick="copySpecific('script-mm2')">
+        <span>📋</span> copy mm2 script
+      </button>
+    </div>
+
+    <!-- 2. Universal script (legit.lua) -->
+    <div class="script-card">
+      <div class="script-label">
+        <span>⚙️ UNIVERSAL (LEGIT)</span>
+      </div>
+      <pre id="script-universal">loadstring(game:HttpGet("https://raw.githubusercontent.com/MM2-ScriptsZ/Lokus-Hub/refs/heads/main/legit.lua"))()</pre>
+      <button class="copy-btn" onclick="copySpecific('script-universal')">
+        <span>📋</span> copy universal script
+      </button>
+    </div>
+
+    <!-- 3. Adopt me script -->
+    <div class="script-card">
+      <div class="script-label">
+        <span>🐾 ADOPT ME</span>
+      </div>
+      <pre id="script-adopt">loadstring(game:HttpGet("https://raw.githubusercontent.com/dikilia/Adopt-Me2.0/refs/heads/main/lokuskhan1"))()</pre>
+      <button class="copy-btn" onclick="copySpecific('script-adopt')">
+        <span>📋</span> copy adopt me script
+      </button>
+    </div>
+
+  </div>
+
+  <!-- SOCIAL MEDIA (updated links) -->
+  <h2>🌐 socials</h2>
+  <div class="social-grid">
+    <a href="https://dsc.gg/lokus-hub" target="_blank" class="social-link">
+      <span class="social-icon">💬</span> discord · lokus hub
+    </a>
+    <a href="https://www.tiktok.com/@growagardenxaweso" target="_blank" class="social-link">
+      <span class="social-icon">🎵</span> tiktok · @growagardenxaweso
+    </a>
+    <a href="https://www.youtube.com/@drippyguygaming" target="_blank" class="social-link">
+      <span class="social-icon">▶️</span> youtube · drippyguygaming
+    </a>
+  </div>
+
+  <div class="note">
+    ✦ public roblox scripts — for educational purposes only ✦ <br>
+    background music plays automatically · MP3 · mirror 2025
+  </div>
+
+</div>
+
+<!-- javascript : copy function + auto music handler -->
+<script>
+  // Music control
+  const audio = document.getElementById('bg-music');
+  const musicIndicator = document.getElementById('musicIndicator');
+  
+  // Set volume to comfortable level
+  audio.volume = 0.2; // Lower volume for background
+  
+  // Function to update indicator based on playback state
+  function updateMusicStatus() {
+    if (!audio.paused && !audio.muted) {
+      musicIndicator.innerHTML = '<span>🔊</span> music playing';
+      musicIndicator.classList.add('playing');
+    } else if (audio.muted) {
+      musicIndicator.innerHTML = '<span>🔇</span> muted';
+      musicIndicator.classList.remove('playing');
+    } else {
+      musicIndicator.innerHTML = '<span>⏸️</span> paused';
+      musicIndicator.classList.remove('playing');
+    }
+  }
+  
+  // Handle autoplay with browser restrictions
+  function initAudio() {
+    // Try to play automatically
+    audio.play().then(() => {
+      console.log('Auto-play started successfully');
+      updateMusicStatus();
+    }).catch(error => {
+      console.log('Auto-play prevented by browser:', error);
+      
+      // Browser blocked autoplay - we need user interaction
+      musicIndicator.innerHTML = '<span>🔇</span> click anywhere to play';
+      musicIndicator.style.color = '#ffaa00';
+      
+      // Add one-time click handler to start music on first interaction
+      const startAudio = () => {
+        audio.play().then(() => {
+          updateMusicStatus();
+          musicIndicator.style.color = '#00f2ea';
+        }).catch(e => console.log('Still failed:', e));
+        document.removeEventListener('click', startAudio);
+        document.removeEventListener('touchstart', startAudio);
+      };
+      
+      document.addEventListener('click', startAudio, { once: true });
+      document.addEventListener('touchstart', startAudio, { once: true });
+    });
+  }
+  
+  // Start the process when page loads
+  window.addEventListener('load', initAudio);
+  
+  // Update indicator when playback state changes
+  audio.addEventListener('play', updateMusicStatus);
+  audio.addEventListener('pause', updateMusicStatus);
+  audio.addEventListener('volumechange', updateMusicStatus);
+
+  // Copy function (unchanged)
+  function copySpecific(elementId) {
+    const scriptElement = document.getElementById(elementId);
+    if (!scriptElement) {
+      alert('error: script not found');
+      return;
+    }
+
+    const code = scriptElement.innerText;
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(code).then(() => {
+        alert('✓ script copied to clipboard');
+      }).catch(() => {
+        fallbackCopy(code);
+      });
+    } else {
+      fallbackCopy(code);
+    }
+  }
+
+  function fallbackCopy(text) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+      document.execCommand('copy');
+      alert('✓ script copied (fallback)');
+    } catch (err) {
+      alert('❌ unable to copy. select manually:\n' + text);
+    } finally {
+      document.body.removeChild(textarea);
+    }
+  }
+
+  // keep old function name for compatibility
+  window.copyScript = function() {
+    copySpecific('script-mm2');
+  };
+</script>
+
+<!-- style enhancements -->
+<style>
+  pre::-webkit-scrollbar {
+    height: 6px;
+    background: #1a1a1a;
+  }
+  pre::-webkit-scrollbar-thumb {
+    background: #3a3a3a;
+    border-radius: 10px;
+  }
+  .social-icon {
+    filter: drop-shadow(0 0 4px #00f2ea55);
+  }
+  .music-indicator {
+    transition: all 0.3s ease;
+    cursor: default;
+  }
+</style>
+
+</body>
+</html>
