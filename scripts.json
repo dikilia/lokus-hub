@@ -1,0 +1,28 @@
+{
+  "siteTitle": "lokus hub scripts",
+  "visitorCount": 1842,
+  "scripts": [
+    {
+      "id": "mm2",
+      "name": "🔪 MURDER MYSTERY 2",
+      "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/MM2-ScriptsZ/Lokus-Hub/refs/heads/main/mm2.luazz\"))()",
+      "blurred": false,
+      "features": []
+    },
+    {
+      "id": "universal",
+      "name": "⚙️ UNIVERSAL [VERIFY]",
+      "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/MM2-ScriptsZ/Lokus-Hub/refs/heads/main/legit.lua\"))()",
+      "blurred": true,
+      "features": ["🎮 Bloxfruit", "🧠 Brainrot", "🌊 Tsunami", "⚔️ Rivals", "🔫 Arsenal", "🐟 Fisch", "🐾 Adopt Me", "🌱 Garden"]
+    },
+    {
+      "id": "adopt",
+      "name": "🐾 ADOPT ME",
+      "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/dikilia/Adopt-Me2.0/refs/heads/main/lokuskhan1\"))()",
+      "blurred": false,
+      "features": []
+    }
+  ],
+  "lastUpdated": "2025-02-22"
+}
