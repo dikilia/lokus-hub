@@ -1,54 +1,41 @@
 {
   "siteTitle": "lokus hub scripts",
   "visitorCount": 1842,
+  "linkvertise": {
+    "userId": "1446949",
+    "callbackUrl": "https://linkvertise-callback-production.up.railway.app/callback"
+  },
   "scripts": [
     {
       "id": "mm2",
       "name": "🔪 MURDER MYSTERY 2",
       "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/MM2-ScriptsZ/Lokus-Hub/refs/heads/main/mm2.luazz\"))()",
       "blurred": false,
+      "keySystem": "keyless",
+      "keyLinks": [],
       "features": []
     },
     {
       "id": "universal",
-      "name": "⚙️ UNIVERSAL [VERIFY]",
+      "name": "⚙️ UNIVERSAL [KEYS REQUIRED]",
       "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/MM2-ScriptsZ/Lokus-Hub/refs/heads/main/legit.lua\"))()",
       "blurred": true,
-      "features": [
-        "🎮 Bloxfruit",
-        "🧠 Brainrot",
-        "🌊 Tsunami",
-        "⚔️ Rivals",
-        "🔫 Arsenal",
-        "🐟 Fisch",
-        "🐾 Adopt Me",
-        "🌱 Garden"
-      ]
+      "keySystem": "key2",
+      "keyLinks": [
+        "https://link-to.net/1446949/123456/dynamic",
+        "https://link-to.net/1446949/123457/dynamic"
+      ],
+      "features": ["🎮 Bloxfruit", "🧠 Brainrot", "🌊 Tsunami", "⚔️ Rivals", "🔫 Arsenal", "🐟 Fisch", "🐾 Adopt Me", "🌱 Garden"]
     },
     {
       "id": "adopt",
       "name": "🐾 ADOPT ME",
       "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/dikilia/Adopt-Me2.0/refs/heads/main/lokuskhan1\"))()",
       "blurred": false,
-      "features": []
-    },
-    {
-      "id": "stealabrainrot1771749553502",
-      "name": "Steal A Brainrot",
-      "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/MM2-ScriptsZ/Lokus-Hub/refs/heads/main/pvp.lua\"))()",
-      "blurred": false,
-      "features": []
-    },
-    {
-      "id": "escapetsunamiforbrainrotetfb1771750664794",
-      "name": "🌊 Escape Tsunami For Brainrot (ETFB)",
-      "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/real-script/MyOwnGodModeScript/refs/heads/main/lua\"))()",
-      "blurred": false,
       "keySystem": "keyless",
-      "features": [
-        "🌊 Tsunami"
-      ]
+      "keyLinks": [],
+      "features": []
     }
   ],
-  "lastUpdated": "2026-02-22"
+  "lastUpdated": "2025-02-23"
 }
