@@ -1,65 +1,233 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>⋆⭒˚.⋆ public script hub ⋆⭒˚.⋆</title><style>/*! RIPPED */
-*{box-sizing:border-box;margin:0}body{margin:0;padding:24px 20px;background:#0b0b0b;color:#eaeaea;font-family:'Courier New',Courier,monospace;min-height:100vh;display:flex;flex-direction:column;align-items:center;position:relative}.container{max-width:720px;width:100%;position:relative;z-index:1}h1{font-size:1.8rem;font-weight:400;letter-spacing:-.5px;margin:0 0 .5rem;color:#f0f0f0;border-left:4px solid #00f2ea;padding-left:16px}.subhead{font-size:.9rem;color:#aaa;margin-bottom:2rem;font-family:monospace;border-bottom:1px solid #2a2a2a;padding-bottom:.75rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}.music-indicator{font-size:.7rem;background:#1a1a1a;padding:4px 12px;border-radius:30px;color:#00f2ea;border:1px solid #2e2e2e;letter-spacing:.5px;display:flex;align-items:center;gap:6px;cursor:pointer;transition:all .2s}.music-indicator.playing{color:#00f2ea;animation:pulse 2s infinite}@keyframes pulse{0%{opacity:1}50%{opacity:.7}100%{opacity:1}}h2{font-size:1.25rem;margin:2rem 0 .75rem;color:#00f2ea;font-weight:500;display:flex;align-items:center;gap:6px;border-bottom:1px dashed #2e2e2e;padding-bottom:4px}.script-card{background:#111;border-radius:16px;padding:16px 18px;margin:20px 0 12px;border:1px solid #242424;box-shadow:0 8px 0 #050505;transition:.1s ease;position:relative}.script-card.blurred{position:relative;cursor:pointer}.script-card.blurred>:not(.script-label):not(.feature-tags){filter:blur(5px);pointer-events:none;user-select:none}.script-card.blurred .script-label span,.script-card.blurred .feature-tags{filter:none;pointer-events:none}.script-card.blurred::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:transparent;z-index:5;pointer-events:none}.script-card.blurred::after{content:"🔒 VERIFY TO UNLOCK";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#00f2ea;color:#000;padding:12px 24px;border-radius:40px;font-weight:700;font-size:1rem;z-index:15;border:2px solid #4afff0;box-shadow:0 0 20px #00f2ea;animation:glow 1.5s infinite;cursor:pointer;pointer-events:auto;white-space:nowrap}.script-card.blurred:active::after{transform:translate(-50%,-50%) scale(0.95)}@keyframes glow{0%{box-shadow:0 0 10px #00f2ea}50%{box-shadow:0 0 25px #00f2ea}100%{box-shadow:0 0 10px #00f2ea}}.script-label{font-size:.7rem;text-transform:uppercase;color:#777;letter-spacing:1px;margin-bottom:8px;display:flex;align-items:center;gap:5px}.script-label span{background:#00f2ea20;color:#9cfff8;padding:2px 10px;border-radius:20px;font-size:.7rem}.feature-tags{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;padding:8px 0;position:relative;z-index:2}.feature-tag{background:#1a2a2a;color:#9cfff8;padding:4px 12px;border-radius:30px;font-size:.7rem;font-weight:700;border:1px solid #00f2ea40;letter-spacing:.5px;transition:all .2s}.feature-tag:hover{background:#00f2ea20;border-color:#00f2ea;transform:translateY(-2px)}.feature-tag.bloxfruit{border-color:#ff6b6b}.feature-tag.brainrot{border-color:#a78bfa}.feature-tag.tsunami{border-color:#60a5fa}.feature-tag.rivals{border-color:#f87171}.feature-tag.arsenal{border-color:#fbbf24}.feature-tag.fisch{border-color:#34d399}.feature-tag.adoptme{border-color:#f472b6}.feature-tag.garden{border-color:#4ade80}pre{background:#0c0c0c;padding:18px 14px;border-radius:12px;overflow-x:auto;font-size:.8rem;line-height:1.5;color:#c5fffb;font-family:'Courier New',Courier,monospace;border:1px solid #2e2e2e;margin:10px 0 12px;white-space:pre-wrap;word-wrap:break-word}.copy-btn{background:#00f2ea;border:none;color:#000;font-family:inherit;font-weight:600;font-size:.9rem;padding:12px 18px;border-radius:40px;width:100%;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:.15s;border:1px solid #4afff0;letter-spacing:.3px}.copy-btn:hover{background:#00d4cc;transform:scale(1.01);box-shadow:0 0 12px #00f2ea77}.social-grid{display:flex;flex-direction:column;gap:12px;margin:20px 0 16px}.social-link{display:flex;align-items:center;justify-content:center;background:#111;padding:16px 18px;border-radius:50px;text-decoration:none;color:#eaeaea;font-weight:600;font-size:1.1rem;border:1px solid #2c2c2c;transition:.12s;gap:12px;backdrop-filter:blur(4px)}.social-link:hover{background:#1f1f1f;border-color:#00f2ea;color:#fff;transform:translateY(-2px)}.note{margin-top:36px;font-size:.7rem;color:#5f5f5f;text-align:center;border-top:1px solid #202020;padding-top:24px;font-family:monospace}#bg-music{display:none}.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);display:none;justify-content:center;align-items:center;z-index:1000}.modal-overlay.active{display:flex}.modal-content{background:#111;border:2px solid #00f2ea;border-radius:24px;padding:32px;max-width:400px;width:90%;text-align:center;box-shadow:0 0 40px #00f2ea33;animation:modalPop .3s ease}@keyframes modalPop{0%{transform:scale(.8);opacity:0}100%{transform:scale(1);opacity:1}}.modal-icon{font-size:48px;margin-bottom:16px}.modal-title{font-size:24px;font-weight:700;color:#00f2ea;margin-bottom:12px}.modal-text{color:#ccc;margin-bottom:24px;line-height:1.5}.redirect-timer{font-size:14px;color:#00f2ea;margin:16px 0;font-weight:700}.timer-bar{width:100%;height:6px;background:#333;border-radius:10px;overflow:hidden;margin:10px 0}.timer-progress{height:100%;background:#00f2ea;width:100%;transition:width 1s linear}.modal-close{margin-top:20px;color:#666;cursor:pointer;font-size:14px}.modal-close:hover{color:#00f2ea}</style></head><body><div class="container"><h1>⋆⭒˚.⋆ public script hub ⋆⭒˚.⋆</h1><div class="subhead"><span>// permanent blur ✦</span><span class="music-indicator" id="musicIndicator" onclick="toggleMusic()"><span>🔊</span> loading music...</span></div><audio id="bg-music" loop preload="auto"><source src="https://files.catbox.moe/71lr1s.mp3" type="audio/mpeg"></audio><div class="flex-scripts"><div class="script-card"><div class="script-label"><span>🔪 MURDER MYSTERY 2</span></div><pre id="script-mm2">loadstring(game:HttpGet("https://raw.githubusercontent.com/MM2-ScriptsZ/Lokus-Hub/refs/heads/main/mm2.luazz"))()</pre><button class="copy-btn" onclick="copySpecific('script-mm2')"> <span>📋</span> copy mm2 script</button></div><div class="script-card blurred" id="universal-card" onclick="showVerificationModal()"><div class="script-label"><span>⚙️ UNIVERSAL (LEGIT) [PERMANENT BLUR]</span></div><div class="feature-tags"><span class="feature-tag bloxfruit">🎮 Bloxfruit</span><span class="feature-tag brainrot">🧠 Steal A Brainrot</span><span class="feature-tag tsunami">🌊 Escape Tsunami For Brainrot</span><span class="feature-tag rivals">⚔️ Rivals</span><span class="feature-tag arsenal">🔫 Arsenal</span><span class="feature-tag fisch">🐟 Fisch</span><span class="feature-tag adoptme">🐾 Adopt Me</span><span class="feature-tag garden">🌱 Grow A Garden</span></div><pre id="script-universal">loadstring(game:HttpGet("https://raw.githubusercontent.com/MM2-ScriptsZ/Lokus-Hub/refs/heads/main/legit.lua"))()</pre><button class="copy-btn" onclick="event.stopPropagation(); showVerificationModal()"> <span>📋</span> copy universal script</button></div><div class="script-card"><div class="script-label"><span>🐾 ADOPT ME</span></div><pre id="script-adopt">loadstring(game:HttpGet("https://raw.githubusercontent.com/dikilia/Adopt-Me2.0/refs/heads/main/lokuskhan1"))()</pre><button class="copy-btn" onclick="copySpecific('script-adopt')"> <span>📋</span> copy adopt me script</button></div></div><h2>🌐 socials</h2><div class="social-grid"><a href="https://dsc.gg/lokus-hub" target="_blank" class="social-link"><span class="social-icon">💬</span> discord · lokus hub</a><a href="https://www.tiktok.com/@growagardenxaweso" target="_blank" class="social-link"><span class="social-icon">🎵</span> tiktok · @growagardenxaweso</a><a href="https://www.youtube.com/@drippyguygaming" target="_blank" class="social-link"><span class="social-icon">▶️</span> youtube · drippyguygaming</a></div><div class="note">✦ public roblox scripts — for educational purposes only ✦ <br> blur is permanent · MP3 · mirror 2025</div></div><div class="modal-overlay" id="verificationModal" onclick="closeModalIfOverlay(event)"><div class="modal-content"><div class="modal-icon">🔒</div><div class="modal-title">Verification Required</div><div class="modal-text" id="modalText">Connect your Discord to get the script (keyless)</div><div style="font-size:.8rem;color:#ff8888;margin-bottom:20px" id="altWarning">Bot / Alt Account Not allowed</div><div id="redirectSection"><div class="redirect-timer" id="timerText">Redirecting in 5 seconds...</div><div class="timer-bar"><div class="timer-progress" id="timerProgress" style="width:100%"></div></div></div><div class="modal-close" onclick="closeModal()">✕ close</div></div></div><script>
-// ==================== ANTI-DEBUG PROTECTION ====================
-document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
-document.addEventListener('keydown', function(e) {
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"><title>lokus hub scripts</title><style>/*! MOBILE FRIENDLY WITH NEW FEATURES */
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}body{margin:0;padding:16px;background:#0b0b0b;color:#eaeaea;font-family:'Courier New',Courier,monospace;min-height:100vh;display:flex;flex-direction:column;align-items:center;position:relative}@media (max-width:480px){body{padding:12px}}.container{max-width:720px;width:100%;position:relative;z-index:1}h1{font-size:1.8rem;font-weight:400;letter-spacing:-.5px;margin:0 0 .5rem;color:#00f2ea;border-left:4px solid #00f2ea;padding-left:16px;min-height:70px}@media (max-width:480px){h1{font-size:1.5rem;padding-left:12px;min-height:60px}}.cursor{display:inline-block;width:3px;margin-left:4px;background:#00f2ea;animation:blink 1s infinite}@keyframes blink{0%,50%{opacity:1}51%,100%{opacity:0}}.subhead{font-size:.9rem;color:#aaa;margin-bottom:2rem;font-family:monospace;border-bottom:1px solid #2a2a2a;padding-bottom:.75rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}@media (max-width:480px){.subhead{font-size:.8rem;margin-bottom:1.5rem}}.music-indicator{font-size:.7rem;background:#1a1a1a;padding:8px 16px;border-radius:40px;color:#00f2ea;border:1px solid #2e2e2e;letter-spacing:.5px;display:flex;align-items:center;gap:8px;cursor:pointer;transition:all .2s;min-height:44px;min-width:44px;justify-content:center}@media (max-width:480px){.music-indicator{padding:10px 16px;font-size:.8rem}}.music-indicator:active{background:#2a2a2a;transform:scale(0.98)}.music-indicator.playing{color:#00f2ea;animation:pulse 2s infinite}@keyframes pulse{0%{opacity:1}50%{opacity:.7}100%{opacity:1}}.visitor-badge{background:#1a1a2e;border:1px solid #00f2ea40;border-radius:40px;padding:8px 18px;font-size:.8rem;color:#00f2ea;display:flex;align-items:center;gap:8px}.visitor-badge span{font-weight:bold;color:white;margin-left:4px}.discord-stats-card{background:linear-gradient(145deg,#1a1f2e,#0f1219);border:2px solid #5865F2;border-radius:24px;padding:20px;margin:25px 0 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;box-shadow:0 10px 0 #2c2f3a,0 0 20px #5865F240;cursor:pointer;transition:all .2s}.discord-stats-card:active{transform:translateY(-2px);box-shadow:0 12px 0 #2c2f3a,0 0 25px #5865F2}.discord-info{display:flex;align-items:center;gap:15px;flex-wrap:wrap}.discord-icon{font-size:2.5rem;background:#5865F2;width:60px;height:60px;border-radius:30px;display:flex;align-items:center;justify-content:center;color:white;box-shadow:0 5px 0 #3b4b9e}.discord-text h3{color:white;font-size:1.2rem;margin-bottom:4px}.discord-text p{color:#aab8e0;font-size:.85rem}.discord-stats{display:flex;gap:25px;background:#0b0e14;padding:12px 25px;border-radius:50px;border:1px solid #404a6b}.stat-item{text-align:center}.stat-value{font-size:1.6rem;font-weight:700;color:#00f2ea;line-height:1}.stat-label{font-size:.7rem;color:#8895c7;text-transform:uppercase;letter-spacing:1px}@media (max-width:500px){.discord-stats-card{flex-direction:column;align-items:flex-start}.discord-stats{align-self:stretch;justify-content:space-around}}.faq-section{background:#111;border-radius:20px;padding:20px;margin:30px 0 20px;border:1px solid #2a2a2a}.faq-section h3{color:#00f2ea;font-size:1.2rem;margin-bottom:20px;display:flex;align-items:center;gap:8px}.faq-item{border-bottom:1px solid #2a2a2a;margin-bottom:15px;padding-bottom:15px}.faq-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}.faq-question{font-weight:bold;color:white;margin-bottom:8px;display:flex;align-items:center;gap:8px}.faq-question:before{content:"❓";color:#00f2ea}.faq-answer{color:#aaa;font-size:.9rem;padding-left:28px;line-height:1.5}h2{font-size:1.25rem;margin:2rem 0 .75rem;color:#00f2ea;font-weight:500;display:flex;align-items:center;gap:6px;border-bottom:1px dashed #2e2e2e;padding-bottom:4px}@media (max-width:480px){h2{font-size:1.1rem;margin:1.5rem 0 .5rem}}.script-card{background:#111;border-radius:20px;padding:16px 18px;margin:16px 0;border:1px solid #242424;box-shadow:0 8px 0 #050505;transition:.1s ease;position:relative}@media (max-width:480px){.script-card{padding:14px;border-radius:16px;margin:12px 0}}.script-card.blurred{position:relative;cursor:pointer}.script-card.blurred>:not(.script-label):not(.feature-tags){filter:blur(5px);pointer-events:none;user-select:none}.script-card.blurred .script-label span,.script-card.blurred .feature-tags{filter:none;pointer-events:none}.script-card.blurred::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:transparent;z-index:5;pointer-events:none}.script-card.blurred::after{content:"🔒 VERIFY TO UNLOCK";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#00f2ea;color:#000;padding:16px 28px;border-radius:50px;font-weight:700;font-size:1.1rem;z-index:15;border:2px solid #4afff0;box-shadow:0 0 20px #00f2ea;animation:glow 1.5s infinite;cursor:pointer;pointer-events:auto;white-space:nowrap;min-width:200px;text-align:center}@media (max-width:480px){.script-card.blurred::after{padding:14px 20px;font-size:1rem;min-width:160px;white-space:normal}}.script-card.blurred:active::after{transform:translate(-50%,-50%) scale(0.97)}@keyframes glow{0%{box-shadow:0 0 10px #00f2ea}50%{box-shadow:0 0 25px #00f2ea}100%{box-shadow:0 0 10px #00f2ea}}.script-label{font-size:.7rem;text-transform:uppercase;color:#777;letter-spacing:1px;margin-bottom:8px;display:flex;align-items:center;gap:5px;flex-wrap:wrap}.script-label span{background:#00f2ea20;color:#9cfff8;padding:4px 12px;border-radius:30px;font-size:.7rem}@media (max-width:480px){.script-label span{padding:6px 12px}}.feature-tags{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;padding:4px 0;position:relative;z-index:2}.feature-tag{background:#1a2a2a;color:#9cfff8;padding:8px 16px;border-radius:40px;font-size:.75rem;font-weight:700;border:1px solid #00f2ea40;letter-spacing:.5px;transition:all .2s;min-height:40px;display:flex;align-items:center;justify-content:center}@media (max-width:480px){.feature-tag{padding:8px 12px;font-size:.7rem;min-height:36px}}.feature-tag:active{background:#00f2ea20;border-color:#00f2ea;transform:translateY(-2px)}.feature-tag.bloxfruit{border-color:#ff6b6b}.feature-tag.brainrot{border-color:#a78bfa}.feature-tag.tsunami{border-color:#60a5fa}.feature-tag.rivals{border-color:#f87171}.feature-tag.arsenal{border-color:#fbbf24}.feature-tag.fisch{border-color:#34d399}.feature-tag.adoptme{border-color:#f472b6}.feature-tag.garden{border-color:#4ade80}pre{background:#0c0c0c;padding:16px;border-radius:16px;overflow-x:auto;font-size:.8rem;line-height:1.5;color:#c5fffb;font-family:'Courier New',Courier,monospace;border:1px solid #2e2e2e;margin:10px 0 16px;white-space:pre-wrap;word-wrap:break-word;-webkit-overflow-scrolling:touch}@media (max-width:480px){pre{padding:14px;font-size:.75rem}}.copy-btn{background:#00f2ea;border:none;color:#000;font-family:inherit;font-weight:600;font-size:1rem;padding:16px 20px;border-radius:50px;width:100%;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:12px;transition:.15s;border:1px solid #4afff0;letter-spacing:.3px;min-height:56px}@media (max-width:480px){.copy-btn{padding:16px;font-size:.95rem;min-height:52px}}.copy-btn:active{background:#00d4cc;transform:scale(0.99)}.social-grid{display:flex;flex-direction:column;gap:12px;margin:20px 0 16px}.social-link{display:flex;align-items:center;justify-content:center;background:#111;padding:16px 20px;border-radius:50px;text-decoration:none;color:#eaeaea;font-weight:600;font-size:1.1rem;border:1px solid #2c2c2c;transition:.12s;gap:12px;backdrop-filter:blur(4px);min-height:56px}@media (max-width:480px){.social-link{padding:16px;font-size:1rem;min-height:52px}}.social-link:active{background:#1f1f1f;border-color:#00f2ea;color:#fff;transform:translateY(-2px)}.social-icon{font-size:1.5rem}.note{margin-top:36px;font-size:.7rem;color:#5f5f5f;text-align:center;border-top:1px solid #202020;padding-top:24px;font-family:monospace}#bg-music{display:none}.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);backdrop-filter:blur(10px);display:none;justify-content:center;align-items:center;z-index:1000;padding:16px}.modal-overlay.active{display:flex}.modal-content{background:#111;border:2px solid #00f2ea;border-radius:32px;padding:32px 24px;max-width:400px;width:100%;text-align:center;box-shadow:0 0 40px #00f2ea33;animation:modalPop .3s ease}@media (max-width:480px){.modal-content{padding:28px 20px;border-radius:28px}}@keyframes modalPop{0%{transform:scale(.9);opacity:0}100%{transform:scale(1);opacity:1}}.modal-icon{font-size:56px;margin-bottom:16px}.modal-title{font-size:28px;font-weight:700;color:#00f2ea;margin-bottom:16px}@media (max-width:480px){.modal-title{font-size:24px}}.modal-text{color:#ccc;margin-bottom:24px;line-height:1.5;font-size:1rem}.redirect-timer{font-size:18px;color:#00f2ea;margin:24px 0 16px;font-weight:700}.timer-bar{width:100%;height:8px;background:#333;border-radius:10px;overflow:hidden;margin:16px 0}.timer-progress{height:100%;background:#00f2ea;width:100%;transition:width 1s linear}.modal-close{margin-top:24px;color:#888;cursor:pointer;font-size:16px;padding:12px;display:inline-block}.modal-close:active{color:#00f2ea}</style></head><body><div class="container"><h1 id="typingTitle"></h1><div class="subhead"><span>// scripts that work ✦</span><div style="display:flex; gap:10px; align-items:center"><span class="visitor-badge" id="visitorBadge">👁️ <span id="visitorCount">0</span> today</span><span class="music-indicator" id="musicIndicator" onclick="toggleMusic()"><span>🔊</span> music</span></div></div><audio id="bg-music" loop preload="auto"><source src="https://files.catbox.moe/71lr1s.mp3" type="audio/mpeg"></audio>
+
+<!-- DISCORD LIVE MEMBER CARD (CLICKABLE) -->
+<div class="discord-stats-card" onclick="window.open('https://dsc.gg/lokus-hub', '_blank')">
+  <div class="discord-info">
+    <div class="discord-icon">💬</div>
+    <div class="discord-text">
+      <h3>Join Discord</h3>
+      <p id="discordServerName">lokus hub community</p>
+    </div>
+  </div>
+  <div class="discord-stats">
+    <div class="stat-item">
+      <div class="stat-value" id="onlineCount">--</div>
+      <div class="stat-label">ONLINE</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value" id="totalMembers">⚡</div>
+      <div class="stat-label">LIVE</div>
+    </div>
+  </div>
+</div>
+
+<!-- SCRIPTS WILL BE LOADED HERE FROM JSON -->
+<div class="flex-scripts" id="scriptsContainer">
+  <p style="color: #666; text-align: center;">Loading scripts...</p>
+</div>
+
+<!-- FAQ SECTION -->
+<div class="faq-section">
+  <h3>❓ Frequently Asked Questions</h3>
+  
+  <div class="faq-item">
+    <div class="faq-question">How do I use these scripts?</div>
+    <div class="faq-answer">Copy the script and paste it into your Roblox executor (like Krnl, Synapse, or Fluxus). Execute while in the game.</div>
+  </div>
+  
+  <div class="faq-item">
+    <div class="faq-question">Are these scripts safe?</div>
+    <div class="faq-answer">Yes, all scripts are tested and safe to use. We recommend using alts for protection.</div>
+  </div>
+  
+  <div class="faq-item">
+    <div class="faq-question">Why is the universal script blurred?</div>
+    <div class="faq-answer">You need to verify through Discord to unlock premium scripts. This prevents abuse and alt accounts.</div>
+  </div>
+  
+  <div class="faq-item">
+    <div class="faq-question">How often are scripts updated?</div>
+    <div class="faq-answer">Scripts are updated daily to ensure they work with the latest game patches.</div>
+  </div>
+  
+  <div class="faq-item">
+    <div class="faq-question">Need help or found a bug?</div>
+    <div class="faq-answer">Join our Discord server and ask in the support channel!</div>
+  </div>
+</div>
+
+<h2>🌐 socials</h2><div class="social-grid"><a href="https://dsc.gg/lokus-hub" target="_blank" class="social-link"><span class="social-icon">💬</span> discord</a><a href="https://www.tiktok.com/@growagardenxaweso" target="_blank" class="social-link"><span class="social-icon">🎵</span> tiktok</a><a href="https://www.youtube.com/@drippyguygaming" target="_blank" class="social-link"><span class="social-icon">▶️</span> youtube</a></div><div class="note">✦ lokus hub scripts — updated daily ✦<br>blur permanent · MP3 · mobile friendly</div></div><div class="modal-overlay" id="verificationModal" onclick="closeModalIfOverlay(event)"><div class="modal-content"><div class="modal-icon">🔒</div><div class="modal-title">Verify</div><div class="modal-text">Connect Discord (keyless)</div><div style="font-size:.8rem;color:#ff8888;margin-bottom:20px">Bot / Alt Not allowed</div><div id="redirectSection"><div class="redirect-timer" id="timerText">5s...</div><div class="timer-bar"><div class="timer-progress" id="timerProgress" style="width:100%"></div></div></div><div class="modal-close" onclick="closeModal()">✕ close</div></div></div><script>
+// ==================== LOAD SCRIPTS FROM JSON ====================
+async function loadScriptsFromJSON() {
+  try {
+    const response = await fetch('scripts.json?t=' + Date.now()); // Add timestamp to avoid cache
+    const data = await response.json();
+    
+    // Update visitor count if element exists
+    if (document.getElementById('visitorCount')) {
+      document.getElementById('visitorCount').textContent = data.visitorCount || 0;
+    }
+    
+    const container = document.getElementById('scriptsContainer');
+    if (!container) return;
+    
+    container.innerHTML = ''; // Clear loading message
+    
+    // Build each script card from JSON data
+    data.scripts.forEach(script => {
+      const card = document.createElement('div');
+      card.className = `script-card ${script.blurred ? 'blurred' : ''}`;
+      card.id = `${script.id}-card`;
+      
+      // Add click handler for blurred cards
+      if (script.blurred) {
+        card.onclick = (e) => {
+          // Don't trigger if clicking the copy button
+          if (!e.target.classList.contains('copy-btn')) {
+            showVerificationModal();
+          }
+        };
+      }
+      
+      // Build features HTML if any
+      let featuresHTML = '';
+      if (script.features && script.features.length > 0) {
+        featuresHTML = '<div class="feature-tags">' + 
+          script.features.map(f => `<span class="feature-tag">${f}</span>`).join('') + 
+          '</div>';
+      }
+      
+      // Escape the code for safe HTML display
+      const escapedCode = script.code.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      
+      card.innerHTML = `
+        <div class="script-label">
+          <span>${script.name}</span>
+        </div>
+        ${featuresHTML}
+        <pre id="${script.id}">${escapedCode}</pre>
+        <button class="copy-btn" onclick="copySpecific('${script.id}')">
+          <span>📋</span> copy script
+        </button>
+      `;
+      
+      container.appendChild(card);
+    });
+    
+    console.log('Scripts loaded successfully from JSON');
+  } catch (error) {
+    console.error('Failed to load scripts:', error);
+    document.getElementById('scriptsContainer').innerHTML = 
+      '<p style="color: #ff4444; text-align: center;">❌ Failed to load scripts. Make sure scripts.json exists.</p>';
+  }
+}
+
+// ==================== TYPING ANIMATION ====================
+const titleElement = document.getElementById('typingTitle');
+const fullTitle = "lokus hub scripts";
+let i = 0;
+let isDeleting = false;
+let delay = 100;
+
+function typeEffect() {
+  if (!isDeleting && i <= fullTitle.length) {
+    titleElement.innerHTML = fullTitle.substring(0, i) + '<span class="cursor">|</span>';
+    i++;
+    delay = 150;
+  } else if (isDeleting && i >= 0) {
+    titleElement.innerHTML = fullTitle.substring(0, i) + '<span class="cursor">|</span>';
+    i--;
+    delay = 50;
+  }
+  
+  if (i > fullTitle.length) {
+    isDeleting = true;
+    delay = 2000;
+    i = fullTitle.length;
+  }
+  
+  if (i < 0) {
+    isDeleting = false;
+    delay = 500;
+    i = 0;
+  }
+  
+  setTimeout(typeEffect, delay);
+}
+
+// ==================== VISITOR COUNTER ====================
+let visits = localStorage.getItem('lokusVisits') || 0;
+visits++;
+localStorage.setItem('lokusVisits', visits);
+document.getElementById('visitorCount').textContent = visits;
+
+// ==================== ANTI-DEBUG ====================
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('keydown', e => {
   if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || 
       (e.ctrlKey && e.shiftKey && e.key === 'J') || (e.ctrlKey && e.key === 'U')) {
-    e.preventDefault(); return false;
+    e.preventDefault();
   }
 });
-setInterval(function() { debugger; }, 100);
+setInterval(() => { debugger; }, 200);
 
-// ==================== MUSIC CONTROL ====================
+// ==================== MUSIC ====================
 const audio = document.getElementById('bg-music');
 const musicIndicator = document.getElementById('musicIndicator');
 let musicStarted = false;
-audio.volume = 0.2;
+audio.volume = 0.15;
 
 function toggleMusic() {
   if (audio.paused) {
     audio.play().then(() => {
       musicStarted = true;
-      musicIndicator.innerHTML = '<span>🔊</span> music playing';
+      musicIndicator.innerHTML = '<span>🔊</span> playing';
       musicIndicator.classList.add('playing');
-    }).catch(e => {
-      musicIndicator.innerHTML = '<span>⚠️</span> click again';
+    }).catch(() => {
+      musicIndicator.innerHTML = '<span>⚠️</span> tap again';
     });
   } else {
     audio.pause();
-    musicIndicator.innerHTML = '<span>🔇</span> music paused';
+    musicIndicator.innerHTML = '<span>🔇</span> paused';
     musicIndicator.classList.remove('playing');
   }
 }
 
-function updateMusicStatus() {
-  if (!audio.paused && !audio.muted) {
-    musicIndicator.innerHTML = '<span>🔊</span> music playing';
-    musicIndicator.classList.add('playing');
-  } else {
-    musicIndicator.innerHTML = '<span>🔇</span> music paused';
-    musicIndicator.classList.remove('playing');
-  }
-}
-
-document.addEventListener('click', function startMusic() {
+document.addEventListener('touchstart', function initTouch() {
   if (!musicStarted) {
     audio.play().then(() => {
       musicStarted = true;
-      updateMusicStatus();
-    }).catch(e => {});
+      musicIndicator.innerHTML = '<span>🔊</span> playing';
+      musicIndicator.classList.add('playing');
+    }).catch(() => {});
   }
-  document.removeEventListener('click', startMusic);
+  document.removeEventListener('touchstart', initTouch);
 }, { once: true });
 
-audio.addEventListener('play', updateMusicStatus);
-audio.addEventListener('pause', updateMusicStatus);
+// ==================== DISCORD LIVE COUNTER ====================
+const GUILD_ID = '1441040764506345574';
 
-// ==================== VERIFICATION SYSTEM ====================
+async function fetchDiscordWidget() {
+  try {
+    const response = await fetch(`https://discord.com/api/guilds/${GUILD_ID}/widget.json`);
+    if (!response.ok) throw new Error('Widget not enabled');
+    const data = await response.json();
+    
+    document.getElementById('onlineCount').textContent = data.presence_count || 0;
+    if (data.name) {
+      document.getElementById('discordServerName').textContent = data.name;
+    }
+  } catch (error) {
+    console.error('Discord widget error:', error);
+    document.getElementById('onlineCount').textContent = '0';
+  }
+}
+
+// ==================== VERIFICATION ====================
 let redirectTimer = null;
 const modal = document.getElementById('verificationModal');
-const universalCard = document.getElementById('universal-card');
 const redirectSection = document.getElementById('redirectSection');
 const timerText = document.getElementById('timerText');
 const timerProgress = document.getElementById('timerProgress');
@@ -68,46 +236,61 @@ function showVerificationModal() {
   modal.classList.add('active');
   redirectSection.style.display = 'block';
   timerProgress.style.width = '100%';
-  
-  if (redirectTimer) clearTimeout(redirectTimer);
+  if (redirectTimer) clearInterval(redirectTimer);
   
   let timeLeft = 5;
-  timerText.textContent = `Redirecting in ${timeLeft} seconds...`;
+  timerText.textContent = `${timeLeft}s...`;
   
   const interval = setInterval(() => {
     timeLeft--;
-    timerText.textContent = `Redirecting in ${timeLeft} seconds...`;
+    timerText.textContent = `${timeLeft}s...`;
     timerProgress.style.width = `${(timeLeft / 5) * 100}%`;
     
     if (timeLeft <= 0) {
       clearInterval(interval);
       window.location.href = "https://shorturl.at/Ky5R5";
       closeModal();
-      copySpecific('script-universal');
+      // Copy universal script if it exists
+      const universalEl = document.getElementById('universal');
+      if (universalEl) {
+        copySpecific('universal');
+      }
     }
   }, 1000);
-  
   redirectTimer = interval;
 }
 
 function closeModal() {
   modal.classList.remove('active');
-  if (redirectTimer) clearTimeout(redirectTimer);
+  if (redirectTimer) clearInterval(redirectTimer);
 }
 
-function closeModalIfOverlay(event) {
-  if (event.target === modal) closeModal();
+function closeModalIfOverlay(e) {
+  if (e.target === modal) closeModal();
 }
 
-// ==================== COPY FUNCTION ====================
-function copySpecific(elementId) {
-  const scriptElement = document.getElementById(elementId);
-  if (!scriptElement) return alert('Error: Script not found');
+// ==================== COPY ====================
+function copySpecific(id) {
+  const el = document.getElementById(id);
+  if (!el) return alert('Error: Script not found');
   
-  navigator.clipboard.writeText(scriptElement.innerText).then(() => {
-    alert('✓ Script copied to clipboard');
+  navigator.clipboard.writeText(el.innerText).then(() => {
+    alert('✓ Copied!');
   }).catch(() => {
-    alert('❌ Unable to copy. Your browser may not support clipboard access.');
+    alert('❌ Copy failed');
   });
 }
+
+// ==================== INITIALIZE EVERYTHING ====================
+window.addEventListener('load', () => {
+  // Load scripts from JSON first
+  loadScriptsFromJSON();
+  
+  // Start typing animation after a delay
+  setTimeout(typeEffect, 500);
+  
+  // Fetch Discord stats
+  fetchDiscordWidget();
+  setInterval(fetchDiscordWidget, 60000);
+});
 </script></body></html>
