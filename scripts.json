@@ -25,7 +25,16 @@
         "https://link-to.net/1446949/123456/dynamic",
         "https://link-to.net/1446949/123457/dynamic"
       ],
-      "features": ["🎮 Bloxfruit", "🧠 Brainrot", "🌊 Tsunami", "⚔️ Rivals", "🔫 Arsenal", "🐟 Fisch", "🐾 Adopt Me", "🌱 Garden"]
+      "features": [
+        "🎮 Bloxfruit",
+        "🧠 Brainrot",
+        "🌊 Tsunami",
+        "⚔️ Rivals",
+        "🔫 Arsenal",
+        "🐟 Fisch",
+        "🐾 Adopt Me",
+        "🌱 Garden"
+      ]
     },
     {
       "id": "adopt",
@@ -35,7 +44,20 @@
       "keySystem": "keyless",
       "keyLinks": [],
       "features": []
+    },
+    {
+      "id": "etfb1771752894079",
+      "name": "ETFB",
+      "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/real-script/MyOwnGodModeScript/refs/heads/main/lua\"))()",
+      "blurred": false,
+      "keySystem": "key1",
+      "keyLinks": [
+        "https://link-center.net/1446949/duPCtVbXsxIW"
+      ],
+      "features": [
+        "🌊 Tsunami"
+      ]
     }
   ],
-  "lastUpdated": "2025-02-23"
+  "lastUpdated": "2026-02-22"
 }
