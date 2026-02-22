@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin - Script Manager</title><style>*{box-sizing:border-box;margin:0}body{background:#0b0b0b;color:#eaeaea;font-family:'Courier New',monospace;padding:20px}.container{max-width:800px;margin:0 auto}h1{color:#00f2ea;border-left:4px solid #00f2ea;padding-left:15px;margin-bottom:30px}.admin-card{background:#111;border:1px solid #2a2a2a;border-radius:16px;padding:25px;margin-bottom:25px}h2{color:#00f2ea;margin-bottom:20px;font-size:1.3rem}label{display:block;margin:15px 0 5px;color:#aaa;font-size:.9rem}input,textarea,select{width:100%;padding:12px;background:#1a1a1a;border:1px solid #3a3a3a;color:#fff;border-radius:8px;font-family:inherit}input:focus,textarea:focus,select:focus{border-color:#00f2ea;outline:0}textarea{min-height:100px;font-size:.8rem}.checkbox-group{display:flex;align-items:center;gap:10px;margin:15px 0}.checkbox-group input{width:auto}.feature-tags{display:flex;flex-wrap:wrap;gap:10px;margin:15px 0}.feature-tag{background:#1a2a2a;color:#9cfff8;padding:5px 12px;border-radius:30px;font-size:.8rem;border:1px solid #00f2ea40;cursor:pointer}.feature-tag.selected{background:#00f2ea;color:#000;border-color:#00f2ea}button{background:#00f2ea;color:#000;border:0;padding:14px 25px;border-radius:50px;font-weight:700;cursor:pointer;font-size:1rem;margin-top:10px;width:100%}button:hover{background:#00d4cc}button.delete{background:#ff4444;color:#fff}button.delete:hover{background:#cc0000}.script-item{background:#1a1a1a;border-left:3px solid #00f2ea;padding:15px;margin:15px 0;border-radius:8px;display:flex;justify-content:space-between;align-items:center}.script-info h3{color:#00f2ea;margin-bottom:5px}.script-info p{color:#888;font-size:.8rem}.script-actions{display:flex;gap:10px}.script-actions button{width:auto;padding:8px 15px;margin:0;font-size:.8rem}.update-note{background:#1a2a3a;border:1px solid #00f2ea;border-radius:8px;padding:15px;margin:20px 0;color:#fff;font-size:.9rem;text-align:center}.update-note strong{color:#00f2ea}.key-system-selector{background:#1a2a2a;border-radius:8px;padding:15px;margin:15px 0}.key-option{display:flex;align-items:center;gap:10px;margin:10px 0;padding:10px;background:#0f1a1f;border-radius:8px;cursor:pointer}.key-option input[type="radio"]{width:auto;margin-right:10px}.key-option.selected{background:#00f2ea20;border:1px solid #00f2ea}.key-badge{padding:4px 12px;border-radius:30px;font-size:.8rem;font-weight:bold}.key-badge.keyless{background:#4a4a4a;color:#fff}.key-badge.key1{background:#00aa00;color:#fff}.key-badge.key2{background:#ffaa00;color:#000}.key-badge.key3{background:#ff4444;color:#fff}</style></head><body><div class="container"><h1>🔧 Script Manager Admin</h1>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin - Script Manager</title><style>*{box-sizing:border-box;margin:0}body{background:#0b0b0b;color:#eaeaea;font-family:'Courier New',monospace;padding:20px}.container{max-width:800px;margin:0 auto}h1{color:#00f2ea;border-left:4px solid #00f2ea;padding-left:15px;margin-bottom:30px}.admin-card{background:#111;border:1px solid #2a2a2a;border-radius:16px;padding:25px;margin-bottom:25px}h2{color:#00f2ea;margin-bottom:20px;font-size:1.3rem}label{display:block;margin:15px 0 5px;color:#aaa;font-size:.9rem}input,textarea,select{width:100%;padding:12px;background:#1a1a1a;border:1px solid #3a3a3a;color:#fff;border-radius:8px;font-family:inherit}input:focus,textarea:focus,select:focus{border-color:#00f2ea;outline:0}textarea{min-height:100px;font-size:.8rem}.checkbox-group{display:flex;align-items:center;gap:10px;margin:15px 0}.checkbox-group input{width:auto}.feature-tags{display:flex;flex-wrap:wrap;gap:10px;margin:15px 0}.feature-tag{background:#1a2a2a;color:#9cfff8;padding:5px 12px;border-radius:30px;font-size:.8rem;border:1px solid #00f2ea40;cursor:pointer}.feature-tag.selected{background:#00f2ea;color:#000;border-color:#00f2ea}button{background:#00f2ea;color:#000;border:0;padding:14px 25px;border-radius:50px;font-weight:700;cursor:pointer;font-size:1rem;margin-top:10px;width:100%}button:hover{background:#00d4cc}button.delete{background:#ff4444;color:#fff}button.delete:hover{background:#cc0000}.script-item{background:#1a1a1a;border-left:3px solid #00f2ea;padding:15px;margin:15px 0;border-radius:8px;display:flex;justify-content:space-between;align-items:center}.script-info h3{color:#00f2ea;margin-bottom:5px}.script-info p{color:#888;font-size:.8rem}.script-actions{display:flex;gap:10px}.script-actions button{width:auto;padding:8px 15px;margin:0;font-size:.8rem}.update-note{background:#1a2a3a;border:1px solid #00f2ea;border-radius:8px;padding:15px;margin:20px 0;color:#fff;font-size:.9rem;text-align:center}.update-note strong{color:#00f2ea}.key-system-selector{background:#1a2a2a;border-radius:8px;padding:15px;margin:15px 0}.key-option{display:flex;align-items:center;gap:10px;margin:10px 0;padding:10px;background:#0f1a1f;border-radius:8px;cursor:pointer}.key-option input[type="radio"]{width:auto;margin-right:10px}.key-option.selected{background:#00f2ea20;border:1px solid #00f2ea}.key-badge{padding:4px 12px;border-radius:30px;font-size:.8rem;font-weight:bold}.key-badge.keyless{background:#4a4a4a;color:#fff}.key-badge.key1{background:#00aa00;color:#fff}.key-badge.key2{background:#ffaa00;color:#000}.key-badge.key3{background:#ff4444;color:#fff}.linkvertise-config{background:#0f1a2a;border-radius:8px;padding:15px;margin:15px 0;border:1px solid #00f2ea40}.linkvertise-config h3{color:#00f2ea;font-size:1rem;margin-bottom:10px}.linkvertise-config input{margin-bottom:10px}</style></head><body><div class="container"><h1>🔧 Script Manager Admin</h1>
 
 <!-- NOTE ABOUT MANUAL UPLOAD -->
 <div class="update-note">
   <strong>📌 Note:</strong> After adding or deleting scripts, click <strong>"📤 Download Updated scripts.json"</strong><br>
   and upload the file to GitHub to update your live site.
+</div>
+
+<!-- GLOBAL LINKVERTISE SETTINGS -->
+<div class="admin-card">
+  <h2>🔗 Linkvertise Global Settings</h2>
+  <label>Linkvertise User ID (from your referral link)</label>
+  <input type="text" id="linkvertiseUserId" placeholder="e.g., 123456" value="25565">
+  <label>API Callback URL (where users return after ads)</label>
+  <input type="text" id="callbackUrl" placeholder="https://your-site.com/api/linkvertise-callback" value="https://dikilia.github.io/lokus-hub/api/linkvertise-callback">
+  <p style="color:#aaa; font-size:0.8rem; margin-top:5px;">⚠️ You'll need a backend server for real callback handling</p>
 </div>
 
 <div class="admin-card">
@@ -32,17 +42,26 @@
     <div class="key-option" onclick="selectKeySystem('key1')" id="key1-option">
       <input type="radio" name="keySystem" value="key1"> 
       <span class="key-badge key1">🔑 1 KEY</span>
-      <span style="color:#aaa;">Single key verification</span>
+      <span style="color:#aaa;">Single Linkvertise</span>
     </div>
     <div class="key-option" onclick="selectKeySystem('key2')" id="key2-option">
       <input type="radio" name="keySystem" value="key2"> 
       <span class="key-badge key2">🔑🔑 2 KEYS</span>
-      <span style="color:#aaa;">Two key checkpoints</span>
+      <span style="color:#aaa;">Two Linkvertise checkpoints</span>
     </div>
     <div class="key-option" onclick="selectKeySystem('key3')" id="key3-option">
       <input type="radio" name="keySystem" value="key3"> 
       <span class="key-badge key3">🔑🔑🔑 3 KEYS</span>
-      <span style="color:#aaa;">Three key checkpoints</span>
+      <span style="color:#aaa;">Three Linkvertise checkpoints</span>
+    </div>
+  </div>
+
+  <!-- LINKVERTISE LINKS (shown only if key system selected) -->
+  <div id="linkvertiseLinks" style="display:none;">
+    <div class="linkvertise-config">
+      <h3>🔗 Linkvertise Links</h3>
+      <div id="linkvertiseFields"></div>
+      <p style="color:#aaa; font-size:0.8rem;">Each key requires a separate Linkvertise ad completion</p>
     </div>
   </div>
 
@@ -83,17 +102,8 @@ setInterval(() => { debugger; }, 200);
 // ==================== ADMIN CODE ====================
 let selectedFeatures = [];
 let currentScripts = [];
-let selectedKeySystem = 'keyless'; // Default
-
-// Key system selector
-function selectKeySystem(value) {
-  selectedKeySystem = value;
-  document.querySelectorAll('.key-option').forEach(opt => {
-    opt.classList.remove('selected');
-  });
-  document.getElementById(value + '-option').classList.add('selected');
-  document.querySelector(`input[name="keySystem"][value="${value}"]`).checked = true;
-}
+let selectedKeySystem = 'keyless';
+let linkvertiseLinks = [];
 
 // Load existing scripts
 async function loadScripts() {
@@ -109,37 +119,33 @@ async function loadScripts() {
   }
 }
 
-function displayScripts() {
-  const list = document.getElementById('scriptsList');
-  if (currentScripts.length === 0) {
-    list.innerHTML = '<p style="color: #666;">No scripts yet</p>';
-    return;
-  }
+// Key system selector
+function selectKeySystem(value) {
+  selectedKeySystem = value;
+  document.querySelectorAll('.key-option').forEach(opt => {
+    opt.classList.remove('selected');
+  });
+  document.getElementById(value + '-option').classList.add('selected');
+  document.querySelector(`input[name="keySystem"][value="${value}"]`).checked = true;
   
-  list.innerHTML = currentScripts.map(script => {
-    // Get key system display
-    let keyDisplay = '';
-    if (script.keySystem === 'keyless') keyDisplay = '<span class="key-badge keyless">🔓 KEYLESS</span>';
-    else if (script.keySystem === 'key1') keyDisplay = '<span class="key-badge key1">🔑 1 KEY</span>';
-    else if (script.keySystem === 'key2') keyDisplay = '<span class="key-badge key2">🔑🔑 2 KEYS</span>';
-    else if (script.keySystem === 'key3') keyDisplay = '<span class="key-badge key3">🔑🔑🔑 3 KEYS</span>';
-    
-    return `
-    <div class="script-item">
-      <div class="script-info">
-        <h3>${script.name}</h3>
-        <p>${script.code.substring(0, 50)}...</p>
-        <p style="display:flex; gap:5px; align-items:center; flex-wrap:wrap;">
-          ${script.blurred ? '🔒 Requires verification' : '✅ Public'} | 
-          Features: ${script.features?.length || 0} |
-          ${keyDisplay}
-        </p>
-      </div>
-      <div class="script-actions">
-        <button onclick="deleteScript('${script.id}')" class="delete">🗑️</button>
-      </div>
-    </div>
-  `}).join('');
+  // Show/hide Linkvertise fields
+  const linkvertiseDiv = document.getElementById('linkvertiseLinks');
+  const fieldsDiv = document.getElementById('linkvertiseFields');
+  
+  if (value !== 'keyless') {
+    linkvertiseDiv.style.display = 'block';
+    const numKeys = parseInt(value.replace('key', ''));
+    let html = '';
+    for (let i = 1; i <= numKeys; i++) {
+      html += `
+        <label>Key ${i} Linkvertise URL</label>
+        <input type="url" id="key${i}Link" placeholder="https://link-to.net/...">
+      `;
+    }
+    fieldsDiv.innerHTML = html;
+  } else {
+    linkvertiseDiv.style.display = 'none';
+  }
 }
 
 // Feature tag selection
@@ -159,10 +165,26 @@ function saveScript() {
   const name = document.getElementById('scriptName').value;
   const code = document.getElementById('scriptCode').value;
   const blurred = document.getElementById('scriptBlurred').checked;
+  const userId = document.getElementById('linkvertiseUserId').value;
+  const callbackUrl = document.getElementById('callbackUrl').value;
   
   if (!name || !code) {
     alert('Please fill in all fields');
     return;
+  }
+  
+  // Collect Linkvertise links if key system
+  let keyLinks = [];
+  if (selectedKeySystem !== 'keyless') {
+    const numKeys = parseInt(selectedKeySystem.replace('key', ''));
+    for (let i = 1; i <= numKeys; i++) {
+      const link = document.getElementById(`key${i}Link`)?.value;
+      if (!link) {
+        alert(`Please enter Key ${i} Linkvertise URL`);
+        return;
+      }
+      keyLinks.push(link);
+    }
   }
   
   const newScript = {
@@ -170,11 +192,19 @@ function saveScript() {
     name: name,
     code: code,
     blurred: blurred,
-    keySystem: selectedKeySystem, // Save key system type
+    keySystem: selectedKeySystem,
+    keyLinks: keyLinks,
     features: [...selectedFeatures]
   };
   
   currentScripts.push(newScript);
+  
+  // Save global settings
+  const globalSettings = {
+    linkvertiseUserId: userId,
+    callbackUrl: callbackUrl
+  };
+  localStorage.setItem('linkvertiseSettings', JSON.stringify(globalSettings));
   
   // Clear form
   document.getElementById('scriptName').value = '';
@@ -186,9 +216,43 @@ function saveScript() {
   document.querySelectorAll('.key-option').forEach(opt => opt.classList.remove('selected'));
   document.getElementById('keyless-option').classList.add('selected');
   document.querySelector('input[name="keySystem"][value="keyless"]').checked = true;
+  document.getElementById('linkvertiseLinks').style.display = 'none';
   
   displayScripts();
   alert('✅ Script added to list! Click "Download Updated scripts.json" to save changes.');
+}
+
+function displayScripts() {
+  const list = document.getElementById('scriptsList');
+  if (currentScripts.length === 0) {
+    list.innerHTML = '<p style="color: #666;">No scripts yet</p>';
+    return;
+  }
+  
+  list.innerHTML = currentScripts.map(script => {
+    let keyDisplay = '';
+    if (script.keySystem === 'keyless') keyDisplay = '<span class="key-badge keyless">🔓 KEYLESS</span>';
+    else if (script.keySystem === 'key1') keyDisplay = '<span class="key-badge key1">🔑 1 KEY</span>';
+    else if (script.keySystem === 'key2') keyDisplay = '<span class="key-badge key2">🔑🔑 2 KEYS</span>';
+    else if (script.keySystem === 'key3') keyDisplay = '<span class="key-badge key3">🔑🔑🔑 3 KEYS</span>';
+    
+    return `
+    <div class="script-item">
+      <div class="script-info">
+        <h3>${script.name}</h3>
+        <p>${script.code.substring(0, 50)}...</p>
+        <p style="display:flex; gap:5px; align-items:center; flex-wrap:wrap;">
+          ${script.blurred ? '🔒 Requires verification' : '✅ Public'} | 
+          Features: ${script.features?.length || 0} |
+          ${keyDisplay}
+          ${script.keyLinks ? ` | 📎 ${script.keyLinks.length} Linkvertise links` : ''}
+        </p>
+      </div>
+      <div class="script-actions">
+        <button onclick="deleteScript('${script.id}')" class="delete">🗑️</button>
+      </div>
+    </div>
+  `}).join('');
 }
 
 function deleteScript(id) {
@@ -206,9 +270,14 @@ function deleteScript(id) {
 }
 
 function exportJSON() {
+  const settings = JSON.parse(localStorage.getItem('linkvertiseSettings') || '{}');
   const data = {
     siteTitle: "lokus hub scripts",
     visitorCount: 1842,
+    linkvertise: {
+      userId: settings.linkvertiseUserId || "25565",
+      callbackUrl: settings.callbackUrl || "https://dikilia.github.io/lokus-hub/api/linkvertise-callback"
+    },
     scripts: currentScripts,
     lastUpdated: new Date().toISOString().split('T')[0]
   };
@@ -227,4 +296,12 @@ function exportJSON() {
 
 // Load scripts on page load
 loadScripts();
+
+// Load saved settings
+const savedSettings = localStorage.getItem('linkvertiseSettings');
+if (savedSettings) {
+  const settings = JSON.parse(savedSettings);
+  document.getElementById('linkvertiseUserId').value = settings.linkvertiseUserId || '25565';
+  document.getElementById('callbackUrl').value = settings.callbackUrl || 'https://dikilia.github.io/lokus-hub/api/linkvertise-callback';
+}
 </script></body></html>
