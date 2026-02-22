@@ -102,9 +102,10 @@ function getUserId() {
   return userId;
 }
 
-// ==================== COPY TOAST FUNCTION ====================
-function showCopyToast() {
+// ==================== TOAST FUNCTION ====================
+function showToast(message) {
   const toast = document.getElementById('copyToast');
+  toast.textContent = message;
   toast.classList.add('show');
   setTimeout(() => {
     toast.classList.remove('show');
@@ -120,6 +121,58 @@ if (visits === null) {
 }
 localStorage.setItem('lokusVisits', visits);
 document.getElementById('visitorCount').textContent = visits;
+
+// ==================== CHECK URL FOR COMPLETION ====================
+function checkUrlForCompletion() {
+  const urlParams = new URLSearchParams(window.location.search);
+  
+  if (urlParams.get('completed') === '1') {
+    const keyIndex = urlParams.get('key');
+    const scriptId = urlParams.get('script');
+    const userId = urlParams.get('user') || getUserId();
+    
+    console.log('🎯 Completion detected:', { keyIndex, scriptId, userId });
+    
+    showToast('✅ Key completed! Refreshing status...');
+    
+    // Force refresh key status from backend
+    setTimeout(async () => {
+      // Clear URL parameters
+      window.history.replaceState({}, document.title, window.location.pathname);
+      
+      // Fetch latest status from backend
+      await refreshKeyStatus(userId, scriptId);
+      
+      // Reload scripts to update UI
+      await loadScriptsFromJSON();
+      
+      // If modal is open, refresh it
+      if (currentScriptKeyData) {
+        openKeyModal(currentScriptKeyData.id);
+      }
+    }, 2000);
+  }
+}
+
+// ==================== REFRESH KEY STATUS FROM BACKEND ====================
+async function refreshKeyStatus(userId, scriptId) {
+  try {
+    const response = await fetch(`${BACKEND_URL}/api/status/${userId}/${scriptId}`);
+    if (response.ok) {
+      const data = await response.json();
+      console.log('📊 Backend status:', data);
+      
+      if (data.completedKeys && data.completedKeys.length > 0) {
+        completedKeys[scriptId] = data.completedKeys;
+        localStorage.setItem('completedKeys', JSON.stringify(completedKeys));
+        return true;
+      }
+    }
+  } catch (error) {
+    console.error('❌ Status refresh error:', error);
+  }
+  return false;
+}
 
 // ==================== LOAD SCRIPTS FROM JSON ====================
 async function loadScriptsFromJSON() {
@@ -276,19 +329,17 @@ async function completeKey(index, link) {
   // Open in new tab
   window.open(finalLink, '_blank');
   
-  // Show waiting message
-  alert('Please complete the Linkvertise ad. You will be redirected back automatically when done.\n\nIf not redirected, wait a moment and check if the key is marked complete.');
+  showToast('⏳ Complete the ad to unlock key...');
   
   // Start checking for completion
   let attempts = 0;
-  const maxAttempts = 30; // Check for 60 seconds (2 sec intervals)
+  const maxAttempts = 30;
   
   const checkInterval = setInterval(async () => {
     attempts++;
     
     try {
-      // Check with backend
-      const response = await fetch(`${BACKEND_URL}/status/${userId}/${scriptId}`);
+      const response = await fetch(`${BACKEND_URL}/api/status/${userId}/${scriptId}`);
       if (response.ok) {
         const data = await response.json();
         
@@ -302,15 +353,14 @@ async function completeKey(index, link) {
             localStorage.setItem('completedKeys', JSON.stringify(completedKeys));
           }
           
-          alert(`✅ Key ${index+1} completed successfully!`);
+          showToast(`✅ Key ${index+1} completed!`);
           
           // Check if all keys done
           if (completedKeys[scriptId].length === currentScriptKeyData.needed) {
-            alert('🎉 All keys completed! Script unlocked.');
+            showToast('🎉 All keys completed! Script unlocked.');
             closeKeyModal();
-            loadScriptsFromJSON(); // Reload to update button
+            loadScriptsFromJSON();
           } else {
-            // Reopen modal with updated status
             closeKeyModal();
             openKeyModal(scriptId);
           }
@@ -319,10 +369,6 @@ async function completeKey(index, link) {
       
       if (attempts >= maxAttempts) {
         clearInterval(checkInterval);
-        // Ask if they want to check manually
-        if (confirm('Still waiting for verification. Check status now?')) {
-          location.reload();
-        }
       }
     } catch (error) {
       console.error('Status check error:', error);
@@ -495,7 +541,7 @@ function copySpecific(id) {
   }
   
   navigator.clipboard.writeText(el.innerText).then(() => {
-    showCopyToast();
+    showToast('📋 Script copied!');
   }).catch(() => {
     alert('❌ Copy failed');
   });
@@ -509,12 +555,6 @@ window.addEventListener('load', () => {
   setInterval(fetchDiscordWidget, 60000);
   
   // Check URL for callback returns
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('completed') === '1') {
-    alert('✅ Key completed! Refreshing status...');
-    setTimeout(() => {
-      window.location.href = window.location.pathname;
-    }, 2000);
-  }
+  checkUrlForCompletion();
 });
 </script></body></html>
