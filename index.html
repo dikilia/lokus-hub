@@ -135,18 +135,11 @@ function checkUrlForCompletion() {
     
     showToast('✅ Key completed! Refreshing status...');
     
-    // Force refresh key status from backend
     setTimeout(async () => {
-      // Clear URL parameters
       window.history.replaceState({}, document.title, window.location.pathname);
-      
-      // Fetch latest status from backend
       await refreshKeyStatus(userId, scriptId);
-      
-      // Reload scripts to update UI
       await loadScriptsFromJSON();
       
-      // If modal is open, refresh it
       if (currentScriptKeyData) {
         openKeyModal(currentScriptKeyData.id);
       }
@@ -180,7 +173,6 @@ async function loadScriptsFromJSON() {
     const response = await fetch('scripts.json?t=' + Date.now());
     const data = await response.json();
     
-    // Update last updated timestamp
     if (data.lastUpdated) {
       document.getElementById('updateDate').textContent = data.lastUpdated;
     }
@@ -203,7 +195,6 @@ async function loadScriptsFromJSON() {
         };
       }
       
-      // Get key system badge
       let keyBadge = '';
       if (script.keySystem === 'keyless') keyBadge = '<span class="key-badge keyless">🔓 KEYLESS</span>';
       else if (script.keySystem === 'key1') keyBadge = '<span class="key-badge key1">🔑 1 KEY</span>';
@@ -219,7 +210,6 @@ async function loadScriptsFromJSON() {
       
       const escapedCode = script.code.replace(/</g, '&lt;').replace(/>/g, '&gt;');
       
-      // Add key button if not keyless
       let keyButton = '';
       if (script.keySystem !== 'keyless') {
         const scriptCompleted = completedKeys[script.id] || [];
@@ -281,7 +271,6 @@ async function openKeyModal(scriptId) {
     document.getElementById('keyModalText').textContent = 
       `Complete ${script.keyLinks.length} Linkvertise ${script.keyLinks.length === 1 ? 'ad' : 'ads'} to unlock this script`;
     
-    // Show key status
     let statusHTML = '';
     for (let i = 0; i < script.keyLinks.length; i++) {
       const isCompleted = completed.includes(i);
@@ -289,7 +278,6 @@ async function openKeyModal(scriptId) {
     }
     document.getElementById('keyStatus').innerHTML = statusHTML;
     
-    // Show buttons for incomplete keys
     let buttonsHTML = '';
     script.keyLinks.forEach((link, index) => {
       if (!completed.includes(index)) {
@@ -306,7 +294,6 @@ async function openKeyModal(scriptId) {
     }
     
     document.getElementById('keyButtons').innerHTML = buttonsHTML;
-    
     document.getElementById('keyModal').classList.add('active');
   } catch (error) {
     console.error('Error opening key modal:', error);
@@ -314,44 +301,53 @@ async function openKeyModal(scriptId) {
   }
 }
 
-// ==================== COMPLETE KEY WITH LINKVERTISE (UPDATED) ====================
+// ==================== COMPLETE KEY WITH LINKVERTISE (FIXED) ====================
 async function completeKey(index, link) {
   const userId = getUserId();
   const scriptId = currentScriptKeyData.id;
   
   showToast('⏳ Generating Linkvertise link...');
+  console.log('🎯 Starting key completion:', { userId, scriptId, index, link });
   
   try {
-    // Get Linkvertise link from backend
     const response = await fetch(`${BACKEND_URL}/api/get-linkvertise-link`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userId, scriptId, keyIndex: index })
+      headers: { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({ 
+        userId: userId, 
+        scriptId: scriptId, 
+        keyIndex: index 
+      })
     });
     
-    const data = await response.json();
+    console.log('📡 Response status:', response.status);
     
-    if (data.success) {
-      // Open the Linkvertise link
+    const data = await response.json();
+    console.log('📦 Response data:', data);
+    
+    if (data.success && data.linkvertiseUrl) {
       window.open(data.linkvertiseUrl, '_blank');
-      
       showToast('✅ Complete the ad to unlock key...');
       
-      // Start checking for completion
       let attempts = 0;
-      const maxAttempts = 30;
+      const maxAttempts = 60;
       
       const checkInterval = setInterval(async () => {
         attempts++;
+        console.log(`🔄 Checking status attempt ${attempts}`);
         
         try {
           const statusResponse = await fetch(`${BACKEND_URL}/api/status/${userId}/${scriptId}`);
           const statusData = await statusResponse.json();
           
+          console.log('📊 Status check result:', statusData);
+          
           if (statusData.completedKeys && statusData.completedKeys.includes(index)) {
             clearInterval(checkInterval);
             
-            // Update local storage
             if (!completedKeys[scriptId]) completedKeys[scriptId] = [];
             if (!completedKeys[scriptId].includes(index)) {
               completedKeys[scriptId].push(index);
@@ -360,7 +356,6 @@ async function completeKey(index, link) {
             
             showToast(`✅ Key ${index+1} completed!`);
             
-            // Check if all keys done
             if (completedKeys[scriptId].length === currentScriptKeyData.needed) {
               showToast('🎉 All keys completed! Script unlocked.');
               closeKeyModal();
@@ -373,16 +368,18 @@ async function completeKey(index, link) {
           
           if (attempts >= maxAttempts) {
             clearInterval(checkInterval);
+            showToast('⏰ Timeout - please refresh and check status');
           }
         } catch (error) {
           console.error('Status check error:', error);
         }
       }, 2000);
     } else {
+      console.error('❌ Failed to generate link:', data);
       showToast('❌ Failed to generate link');
     }
   } catch (error) {
-    console.error('Error:', error);
+    console.error('❌ Error in completeKey:', error);
     showToast('❌ Error generating Linkvertise link');
   }
 }
@@ -541,7 +538,6 @@ function copySpecific(id) {
   const el = document.getElementById(id);
   if (!el) return alert('Error: Script not found');
   
-  // Check if script requires keys and not completed
   const scriptCompleted = completedKeys[id];
   const scriptCard = document.getElementById(`${id}-card`);
   const isKeyScript = scriptCard?.querySelector('.key-button:not(.completed)');
@@ -564,8 +560,6 @@ window.addEventListener('load', () => {
   setTimeout(typeEffect, 500);
   fetchDiscordWidget();
   setInterval(fetchDiscordWidget, 60000);
-  
-  // Check URL for callback returns
   checkUrlForCompletion();
 });
 </script></body></html>
