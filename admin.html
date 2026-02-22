@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin - Script Manager</title><style>*{box-sizing:border-box;margin:0}body{background:#0b0b0b;color:#eaeaea;font-family:'Courier New',monospace;padding:20px}.container{max-width:800px;margin:0 auto}h1{color:#00f2ea;border-left:4px solid #00f2ea;padding-left:15px;margin-bottom:30px}.admin-card{background:#111;border:1px solid #2a2a2a;border-radius:16px;padding:25px;margin-bottom:25px}h2{color:#00f2ea;margin-bottom:20px;font-size:1.3rem}label{display:block;margin:15px 0 5px;color:#aaa;font-size:.9rem}input,textarea,select{width:100%;padding:12px;background:#1a1a1a;border:1px solid #3a3a3a;color:#fff;border-radius:8px;font-family:inherit}input:focus,textarea:focus,select:focus{border-color:#00f2ea;outline:0}textarea{min-height:100px;font-size:.8rem}.checkbox-group{display:flex;align-items:center;gap:10px;margin:15px 0}.checkbox-group input{width:auto}.feature-tags{display:flex;flex-wrap:wrap;gap:10px;margin:15px 0}.feature-tag{background:#1a2a2a;color:#9cfff8;padding:5px 12px;border-radius:30px;font-size:.8rem;border:1px solid #00f2ea40;cursor:pointer}.feature-tag.selected{background:#00f2ea;color:#000;border-color:#00f2ea}button{background:#00f2ea;color:#000;border:0;padding:14px 25px;border-radius:50px;font-weight:700;cursor:pointer;font-size:1rem;margin-top:10px;width:100%}button:hover{background:#00d4cc}button.delete{background:#ff4444;color:#fff}button.delete:hover{background:#cc0000}.script-item{background:#1a1a1a;border-left:3px solid #00f2ea;padding:15px;margin:15px 0;border-radius:8px;display:flex;justify-content:space-between;align-items:center}.script-info h3{color:#00f2ea;margin-bottom:5px}.script-info p{color:#888;font-size:.8rem}.script-actions{display:flex;gap:10px}.script-actions button{width:auto;padding:8px 15px;margin:0;font-size:.8rem}.update-note{background:#1a2a3a;border:1px solid #00f2ea;border-radius:8px;padding:15px;margin:20px 0;color:#fff;font-size:.9rem;text-align:center}.update-note strong{color:#00f2ea}.key-system-selector{background:#1a2a2a;border-radius:8px;padding:15px;margin:15px 0}.key-option{display:flex;align-items:center;gap:10px;margin:10px 0;padding:10px;background:#0f1a1f;border-radius:8px;cursor:pointer}.key-option input[type="radio"]{width:auto;margin-right:10px}.key-option.selected{background:#00f2ea20;border:1px solid #00f2ea}.key-badge{padding:4px 12px;border-radius:30px;font-size:.8rem;font-weight:bold}.key-badge.keyless{background:#4a4a4a;color:#fff}.key-badge.key1{background:#00aa00;color:#fff}.key-badge.key2{background:#ffaa00;color:#000}.key-badge.key3{background:#ff4444;color:#fff}.linkvertise-config{background:#0f1a2a;border-radius:8px;padding:15px;margin:15px 0;border:1px solid #00f2ea40}.linkvertise-config h3{color:#00f2ea;font-size:1rem;margin-bottom:10px}.linkvertise-config input{margin-bottom:10px}</style></head><body><div class="container"><h1>🔧 Script Manager Admin</h1>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin - Script Manager</title><style>*{box-sizing:border-box;margin:0}body{background:#0b0b0b;color:#eaeaea;font-family:'Courier New',monospace;padding:20px}.container{max-width:800px;margin:0 auto}h1{color:#00f2ea;border-left:4px solid #00f2ea;padding-left:15px;margin-bottom:30px}.admin-card{background:#111;border:1px solid #2a2a2a;border-radius:16px;padding:25px;margin-bottom:25px}h2{color:#00f2ea;margin-bottom:20px;font-size:1.3rem}label{display:block;margin:15px 0 5px;color:#aaa;font-size:.9rem}input,textarea,select{width:100%;padding:12px;background:#1a1a1a;border:1px solid #3a3a3a;color:#fff;border-radius:8px;font-family:inherit}input:focus,textarea:focus,select:focus{border-color:#00f2ea;outline:0}textarea{min-height:100px;font-size:.8rem}.checkbox-group{display:flex;align-items:center;gap:10px;margin:15px 0}.checkbox-group input{width:auto}.feature-tags{display:flex;flex-wrap:wrap;gap:10px;margin:15px 0}.feature-tag{background:#1a2a2a;color:#9cfff8;padding:5px 12px;border-radius:30px;font-size:.8rem;border:1px solid #00f2ea40;cursor:pointer}.feature-tag.selected{background:#00f2ea;color:#000;border-color:#00f2ea}button{background:#00f2ea;color:#000;border:0;padding:14px 25px;border-radius:50px;font-weight:700;cursor:pointer;font-size:1rem;margin-top:10px;width:100%}button:hover{background:#00d4cc}button.delete{background:#ff4444;color:#fff}button.delete:hover{background:#cc0000}.script-item{background:#1a1a1a;border-left:3px solid #00f2ea;padding:15px;margin:15px 0;border-radius:8px;display:flex;justify-content:space-between;align-items:center}.script-info h3{color:#00f2ea;margin-bottom:5px}.script-info p{color:#888;font-size:.8rem}.script-actions{display:flex;gap:10px}.script-actions button{width:auto;padding:8px 15px;margin:0;font-size:.8rem}.update-note{background:#1a2a3a;border:1px solid #00f2ea;border-radius:8px;padding:15px;margin:20px 0;color:#fff;font-size:.9rem;text-align:center}.update-note strong{color:#00f2ea}.key-system-selector{background:#1a2a2a;border-radius:8px;padding:15px;margin:15px 0}.key-option{display:flex;align-items:center;gap:10px;margin:10px 0;padding:10px;background:#0f1a1f;border-radius:8px;cursor:pointer}.key-option input[type="radio"]{width:auto;margin-right:10px}.key-option.selected{background:#00f2ea20;border:1px solid #00f2ea}.key-badge{padding:4px 12px;border-radius:30px;font-size:.8rem;font-weight:bold}.key-badge.keyless{background:#4a4a4a;color:#fff}.key-badge.key1{background:#00aa00;color:#fff}.key-badge.key2{background:#ffaa00;color:#000}.key-badge.key3{background:#ff4444;color:#fff}.linkvertise-config{background:#0f1a2a;border-radius:8px;padding:15px;margin:15px 0;border:1px solid #00f2ea40}.linkvertise-config h3{color:#00f2ea;font-size:1rem;margin-bottom:10px}</style></head><body><div class="container"><h1>🔧 Script Manager Admin</h1>
 
 <!-- NOTE ABOUT MANUAL UPLOAD -->
 <div class="update-note">
@@ -7,14 +7,14 @@
   and upload the file to GitHub to update your live site.
 </div>
 
-<!-- GLOBAL LINKVERTISE SETTINGS -->
+<!-- LINKVERTISE SETTINGS -->
 <div class="admin-card">
-  <h2>🔗 Linkvertise Global Settings</h2>
-  <label>Linkvertise User ID (from your referral link)</label>
-  <input type="text" id="linkvertiseUserId" placeholder="e.g., 123456" value="25565">
-  <label>API Callback URL (where users return after ads)</label>
-  <input type="text" id="callbackUrl" placeholder="https://your-site.com/api/linkvertise-callback" value="https://dikilia.github.io/lokus-hub/api/linkvertise-callback">
-  <p style="color:#aaa; font-size:0.8rem; margin-top:5px;">⚠️ You'll need a backend server for real callback handling</p>
+  <h2>🔗 Linkvertise Settings</h2>
+  <label>Linkvertise User ID</label>
+  <input type="text" id="linkvertiseUserId" placeholder="e.g., 1446949" value="1446949" readonly>
+  <label>Callback URL (auto-generated)</label>
+  <input type="text" id="callbackUrl" value="https://linkvertise-callback-production.up.railway.app/callback" readonly>
+  <p style="color:#aaa; font-size:0.8rem; margin-top:5px;">✅ Your Railway backend is connected</p>
 </div>
 
 <div class="admin-card">
@@ -59,9 +59,9 @@
   <!-- LINKVERTISE LINKS (shown only if key system selected) -->
   <div id="linkvertiseLinks" style="display:none;">
     <div class="linkvertise-config">
-      <h3>🔗 Linkvertise Links</h3>
+      <h3>🔗 Linkvertise Links (using User ID: 1446949)</h3>
       <div id="linkvertiseFields"></div>
-      <p style="color:#aaa; font-size:0.8rem;">Each key requires a separate Linkvertise ad completion</p>
+      <p style="color:#aaa; font-size:0.8rem;">Example: https://link-to.net/1446949/123456/dynamic</p>
     </div>
   </div>
 
@@ -103,7 +103,8 @@ setInterval(() => { debugger; }, 200);
 let selectedFeatures = [];
 let currentScripts = [];
 let selectedKeySystem = 'keyless';
-let linkvertiseLinks = [];
+const LINKVERTISE_USER_ID = '1446949';
+const CALLBACK_URL = 'https://linkvertise-callback-production.up.railway.app/callback';
 
 // Load existing scripts
 async function loadScripts() {
@@ -139,7 +140,7 @@ function selectKeySystem(value) {
     for (let i = 1; i <= numKeys; i++) {
       html += `
         <label>Key ${i} Linkvertise URL</label>
-        <input type="url" id="key${i}Link" placeholder="https://link-to.net/...">
+        <input type="url" id="key${i}Link" placeholder="https://link-to.net/1446949/123456/dynamic">
       `;
     }
     fieldsDiv.innerHTML = html;
@@ -165,8 +166,6 @@ function saveScript() {
   const name = document.getElementById('scriptName').value;
   const code = document.getElementById('scriptCode').value;
   const blurred = document.getElementById('scriptBlurred').checked;
-  const userId = document.getElementById('linkvertiseUserId').value;
-  const callbackUrl = document.getElementById('callbackUrl').value;
   
   if (!name || !code) {
     alert('Please fill in all fields');
@@ -183,6 +182,10 @@ function saveScript() {
         alert(`Please enter Key ${i} Linkvertise URL`);
         return;
       }
+      // Validate link contains user ID
+      if (!link.includes(LINKVERTISE_USER_ID)) {
+        alert(`Warning: Link doesn't contain your User ID (${LINKVERTISE_USER_ID}). Make sure you're using correct links.`);
+      }
       keyLinks.push(link);
     }
   }
@@ -198,13 +201,6 @@ function saveScript() {
   };
   
   currentScripts.push(newScript);
-  
-  // Save global settings
-  const globalSettings = {
-    linkvertiseUserId: userId,
-    callbackUrl: callbackUrl
-  };
-  localStorage.setItem('linkvertiseSettings', JSON.stringify(globalSettings));
   
   // Clear form
   document.getElementById('scriptName').value = '';
@@ -270,13 +266,12 @@ function deleteScript(id) {
 }
 
 function exportJSON() {
-  const settings = JSON.parse(localStorage.getItem('linkvertiseSettings') || '{}');
   const data = {
     siteTitle: "lokus hub scripts",
     visitorCount: 1842,
     linkvertise: {
-      userId: settings.linkvertiseUserId || "25565",
-      callbackUrl: settings.callbackUrl || "https://dikilia.github.io/lokus-hub/api/linkvertise-callback"
+      userId: LINKVERTISE_USER_ID,
+      callbackUrl: CALLBACK_URL
     },
     scripts: currentScripts,
     lastUpdated: new Date().toISOString().split('T')[0]
@@ -296,12 +291,4 @@ function exportJSON() {
 
 // Load scripts on page load
 loadScripts();
-
-// Load saved settings
-const savedSettings = localStorage.getItem('linkvertiseSettings');
-if (savedSettings) {
-  const settings = JSON.parse(savedSettings);
-  document.getElementById('linkvertiseUserId').value = settings.linkvertiseUserId || '25565';
-  document.getElementById('callbackUrl').value = settings.callbackUrl || 'https://dikilia.github.io/lokus-hub/api/linkvertise-callback';
-}
 </script></body></html>
