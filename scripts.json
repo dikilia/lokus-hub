@@ -57,6 +57,17 @@
       "features": [
         "🌊 Tsunami"
       ]
+    },
+    {
+      "id": "admin1771753818146",
+      "name": "admin",
+      "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/real-script/MyOwnGodModeScript/refs/heads/main/lua\"))()",
+      "blurred": false,
+      "keySystem": "key1",
+      "keyLinks": [
+        "https://link-center.net/1446949/duPCtVbXsxIW"
+      ],
+      "features": []
     }
   ],
   "lastUpdated": "2026-02-22"
