@@ -14,7 +14,16 @@
       "name": "⚙️ UNIVERSAL [VERIFY]",
       "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/MM2-ScriptsZ/Lokus-Hub/refs/heads/main/legit.lua\"))()",
       "blurred": true,
-      "features": ["🎮 Bloxfruit", "🧠 Brainrot", "🌊 Tsunami", "⚔️ Rivals", "🔫 Arsenal", "🐟 Fisch", "🐾 Adopt Me", "🌱 Garden"]
+      "features": [
+        "🎮 Bloxfruit",
+        "🧠 Brainrot",
+        "🌊 Tsunami",
+        "⚔️ Rivals",
+        "🔫 Arsenal",
+        "🐟 Fisch",
+        "🐾 Adopt Me",
+        "🌱 Garden"
+      ]
     },
     {
       "id": "adopt",
@@ -22,7 +31,14 @@
       "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/dikilia/Adopt-Me2.0/refs/heads/main/lokuskhan1\"))()",
       "blurred": false,
       "features": []
+    },
+    {
+      "id": "stealabrainrot1771749553502",
+      "name": "Steal A Brainrot",
+      "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/MM2-ScriptsZ/Lokus-Hub/refs/heads/main/pvp.lua\"))()",
+      "blurred": false,
+      "features": []
     }
   ],
-  "lastUpdated": "2025-02-22"
+  "lastUpdated": "2026-02-22"
 }
