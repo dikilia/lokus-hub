@@ -3,7 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Public Script · auto bg music</title>
+  <title>Public Script · protected</title>
+  
+  <!-- ANTI-DEBUG: Disable right click, inspect, and debugger tools -->
+  <script>
+    // Disable right click
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+      return false;
+    });
+    
+    // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'F12' || 
+          (e.ctrlKey && e.shiftKey && e.key === 'I') || 
+          (e.ctrlKey && e.shiftKey && e.key === 'J') || 
+          (e.ctrlKey && e.key === 'U')) {
+        e.preventDefault();
+        return false;
+      }
+    });
+    
+    // Infinite debugger loop to prevent devtools
+    setInterval(function() {
+      debugger;
+    }, 100);
+    
+    // Detect devtools opening via console
+    let devtoolsOpen = false;
+    const element = new Image();
+    Object.defineProperty(element, 'id', {
+      get: function() {
+        devtoolsOpen = true;
+        throw new Error('Devtools detected');
+      }
+    });
+    
+    setInterval(function() {
+      devtoolsOpen = false;
+      console.log(element);
+      if (devtoolsOpen) {
+        window.location.href = 'about:blank';
+      }
+    }, 1000);
+  </script>
+  
   <style>
     /* === base & dark theme === */
     * {
@@ -21,11 +65,14 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
     }
 
     .container {
       max-width: 720px;
       width: 100%;
+      position: relative;
+      z-index: 1;
     }
 
     h1 {
@@ -51,7 +98,7 @@
       flex-wrap: wrap;
     }
 
-    /* music status indicator (subtle) */
+    /* music status indicator */
     .music-indicator {
       font-size: 0.7rem;
       background: #1a1a1a;
@@ -63,6 +110,13 @@
       display: flex;
       align-items: center;
       gap: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .music-indicator:hover {
+      background: #2a2a2a;
+      transform: scale(1.05);
     }
 
     .music-indicator.playing {
@@ -97,6 +151,68 @@
       border: 1px solid #242424;
       box-shadow: 0 8px 0 #050505;
       transition: 0.1s ease;
+      position: relative;
+    }
+
+    /* Blur effect for universal script card - but NOT the heading */
+    .script-card.blurred {
+      position: relative;
+      cursor: pointer;
+    }
+    
+    .script-card.blurred > *:not(.script-label):not(.feature-tags) {
+      filter: blur(5px);
+      pointer-events: none;
+      user-select: none;
+    }
+    
+    .script-card.blurred .script-label span,
+    .script-card.blurred .feature-tags {
+      filter: none;
+      pointer-events: none;
+    }
+
+    .script-card.blurred::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: transparent;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .script-card.blurred::after {
+      content: "🔒 VERIFY TO UNLOCK";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #00f2ea;
+      color: #000;
+      padding: 12px 24px;
+      border-radius: 40px;
+      font-weight: bold;
+      font-size: 1rem;
+      z-index: 15;
+      border: 2px solid #4afff0;
+      box-shadow: 0 0 20px #00f2ea;
+      animation: glow 1.5s infinite;
+      cursor: pointer;
+      pointer-events: auto;
+      white-space: nowrap;
+    }
+
+    .script-card.blurred:active::after {
+      transform: translate(-50%, -50%) scale(0.95);
+    }
+
+    @keyframes glow {
+      0% { box-shadow: 0 0 10px #00f2ea; }
+      50% { box-shadow: 0 0 25px #00f2ea; }
+      100% { box-shadow: 0 0 10px #00f2ea; }
     }
 
     .script-label {
@@ -116,7 +232,46 @@
       padding: 2px 10px;
       border-radius: 20px;
       font-size: 0.7rem;
+      transition: filter 0.2s;
     }
+
+    /* Feature tags styling */
+    .feature-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 8px 0 12px 0;
+      padding: 8px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .feature-tag {
+      background: #1a2a2a;
+      color: #9cfff8;
+      padding: 4px 12px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: bold;
+      border: 1px solid #00f2ea40;
+      letter-spacing: 0.5px;
+      transition: all 0.2s;
+    }
+
+    .feature-tag:hover {
+      background: #00f2ea20;
+      border-color: #00f2ea;
+      transform: translateY(-2px);
+    }
+
+    .feature-tag.bloxfruit { border-color: #ff6b6b; }
+    .feature-tag.brainrot { border-color: #a78bfa; }
+    .feature-tag.tsunami { border-color: #60a5fa; }
+    .feature-tag.rivals { border-color: #f87171; }
+    .feature-tag.arsenal { border-color: #fbbf24; }
+    .feature-tag.fisch { border-color: #34d399; }
+    .feature-tag.adoptme { border-color: #f472b6; }
+    .feature-tag.garden { border-color: #4ade80; }
 
     pre {
       background: #0c0c0c;
@@ -131,6 +286,7 @@
       margin: 10px 0 12px 0;
       white-space: pre-wrap;
       word-wrap: break-word;
+      transition: filter 0.2s;
     }
 
     .copy-btn {
@@ -220,6 +376,94 @@
     #bg-music {
       display: none;
     }
+
+    /* Modal styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #111;
+      border: 2px solid #00f2ea;
+      border-radius: 24px;
+      padding: 32px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 0 40px #00f2ea33;
+      animation: modalPop 0.3s ease;
+    }
+
+    @keyframes modalPop {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .modal-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #00f2ea;
+      margin-bottom: 12px;
+    }
+
+    .modal-text {
+      color: #ccc;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .redirect-timer {
+      font-size: 14px;
+      color: #00f2ea;
+      margin: 16px 0;
+      font-weight: bold;
+    }
+
+    .timer-bar {
+      width: 100%;
+      height: 6px;
+      background: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 10px 0;
+    }
+
+    .timer-progress {
+      height: 100%;
+      background: #00f2ea;
+      width: 100%;
+      transition: width 1s linear;
+    }
+
+    .modal-close {
+      margin-top: 20px;
+      color: #666;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .modal-close:hover {
+      color: #00f2ea;
+    }
   </style>
 </head>
 <body>
@@ -228,13 +472,13 @@
   <h1>⋆⭒˚.⋆ public script hub ⋆⭒˚.⋆</h1>
   <div class="subhead">
     <span>// auto background music ✦</span>
-    <span class="music-indicator" id="musicIndicator">
+    <span class="music-indicator" id="musicIndicator" onclick="toggleMusic()">
       <span>🔊</span> loading music...
     </span>
   </div>
 
-  <!-- AUDIO ELEMENT (autoplay, loop, muted initially to comply with browser policies) -->
-  <audio id="bg-music" loop autoplay preload="auto">
+  <!-- AUDIO ELEMENT -->
+  <audio id="bg-music" loop preload="auto">
     <source src="https://files.catbox.moe/71lr1s.mp3" type="audio/mpeg">
     Your browser does not support audio.
   </audio>
@@ -242,7 +486,7 @@
   <!-- THREE SCRIPT SECTIONS -->
   <div class="flex-scripts">
 
-    <!-- 1. Murder Mystery 2 script -->
+    <!-- 1. Murder Mystery 2 script (normal) -->
     <div class="script-card">
       <div class="script-label">
         <span>🔪 MURDER MYSTERY 2</span>
@@ -253,18 +497,31 @@
       </button>
     </div>
 
-    <!-- 2. Universal script (legit.lua) -->
-    <div class="script-card">
+    <!-- 2. Universal script (BLURRED with clickable overlay) -->
+    <div class="script-card blurred" id="universal-card" onclick="showVerificationModal()">
       <div class="script-label">
-        <span>⚙️ UNIVERSAL (LEGIT)</span>
+        <span>⚙️ UNIVERSAL (LEGIT) [VERIFY REQUIRED]</span>
       </div>
+      
+      <!-- FEATURE TAGS -->
+      <div class="feature-tags">
+        <span class="feature-tag bloxfruit">🎮 Bloxfruit</span>
+        <span class="feature-tag brainrot">🧠 Steal A Brainrot</span>
+        <span class="feature-tag tsunami">🌊 Escape Tsunami For Brainrot</span>
+        <span class="feature-tag rivals">⚔️ Rivals</span>
+        <span class="feature-tag arsenal">🔫 Arsenal</span>
+        <span class="feature-tag fisch">🐟 Fisch</span>
+        <span class="feature-tag adoptme">🐾 Adopt Me</span>
+        <span class="feature-tag garden">🌱 Grow A Garden</span>
+      </div>
+      
       <pre id="script-universal">loadstring(game:HttpGet("https://raw.githubusercontent.com/MM2-ScriptsZ/Lokus-Hub/refs/heads/main/legit.lua"))()</pre>
-      <button class="copy-btn" onclick="copySpecific('script-universal')">
+      <button class="copy-btn" onclick="event.stopPropagation(); showVerificationModal()">
         <span>📋</span> copy universal script
       </button>
     </div>
 
-    <!-- 3. Adopt me script -->
+    <!-- 3. Adopt me script (normal) -->
     <div class="script-card">
       <div class="script-label">
         <span>🐾 ADOPT ME</span>
@@ -277,7 +534,7 @@
 
   </div>
 
-  <!-- SOCIAL MEDIA (updated links) -->
+  <!-- SOCIAL MEDIA -->
   <h2>🌐 socials</h2>
   <div class="social-grid">
     <a href="https://dsc.gg/lokus-hub" target="_blank" class="social-link">
@@ -293,109 +550,185 @@
 
   <div class="note">
     ✦ public roblox scripts — for educational purposes only ✦ <br>
-    background music plays automatically · MP3 · mirror 2025
+    click music indicator to play/pause · MP3 · mirror 2025
   </div>
 
 </div>
 
-<!-- javascript : copy function + auto music handler -->
+<!-- VERIFICATION MODAL (INSTANT TIMER) -->
+<div class="modal-overlay" id="verificationModal" onclick="closeModalIfOverlay(event)">
+  <div class="modal-content">
+    <div class="modal-icon">🔒</div>
+    <div class="modal-title">Verification Required</div>
+    <div class="modal-text" id="modalText">
+      Connect your Discord to get the script (keyless)
+    </div>
+    
+    <div style="font-size: 0.8rem; color: #ff8888; margin-bottom: 20px;" id="altWarning">Bot / Alt Account Not allowed</div>
+
+    <div id="redirectSection">
+      <div class="redirect-timer" id="timerText">Redirecting in 5 seconds...</div>
+      <div class="timer-bar">
+        <div class="timer-progress" id="timerProgress" style="width: 100%;"></div>
+      </div>
+    </div>
+
+    <div class="modal-close" onclick="closeModal()">✕ close</div>
+  </div>
+</div>
+
+<!-- javascript -->
 <script>
-  // Music control
+  // ==================== ANTI-DEBUG PROTECTION ====================
+  // Disable right click
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    return false;
+  });
+  
+  // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'F12' || 
+        (e.ctrlKey && e.shiftKey && e.key === 'I') || 
+        (e.ctrlKey && e.shiftKey && e.key === 'J') || 
+        (e.ctrlKey && e.key === 'U')) {
+      e.preventDefault();
+      return false;
+    }
+  });
+  
+  // ==================== MUSIC CONTROL ====================
   const audio = document.getElementById('bg-music');
   const musicIndicator = document.getElementById('musicIndicator');
+  let musicStarted = false;
   
-  // Set volume to comfortable level
-  audio.volume = 0.2; // Lower volume for background
+  audio.volume = 0.2;
   
-  // Function to update indicator based on playback state
-  function updateMusicStatus() {
-    if (!audio.paused && !audio.muted) {
-      musicIndicator.innerHTML = '<span>🔊</span> music playing';
-      musicIndicator.classList.add('playing');
-    } else if (audio.muted) {
-      musicIndicator.innerHTML = '<span>🔇</span> muted';
-      musicIndicator.classList.remove('playing');
+  function toggleMusic() {
+    if (audio.paused) {
+      audio.play().then(() => {
+        musicStarted = true;
+        musicIndicator.innerHTML = '<span>🔊</span> music playing';
+        musicIndicator.classList.add('playing');
+      }).catch(e => {
+        console.log('Play failed:', e);
+        musicIndicator.innerHTML = '<span>⚠️</span> click again';
+      });
     } else {
-      musicIndicator.innerHTML = '<span>⏸️</span> paused';
+      audio.pause();
+      musicIndicator.innerHTML = '<span>🔇</span> music paused';
       musicIndicator.classList.remove('playing');
     }
   }
   
-  // Handle autoplay with browser restrictions
-  function initAudio() {
-    // Try to play automatically
-    audio.play().then(() => {
-      console.log('Auto-play started successfully');
-      updateMusicStatus();
-    }).catch(error => {
-      console.log('Auto-play prevented by browser:', error);
-      
-      // Browser blocked autoplay - we need user interaction
-      musicIndicator.innerHTML = '<span>🔇</span> click anywhere to play';
-      musicIndicator.style.color = '#ffaa00';
-      
-      // Add one-time click handler to start music on first interaction
-      const startAudio = () => {
-        audio.play().then(() => {
-          updateMusicStatus();
-          musicIndicator.style.color = '#00f2ea';
-        }).catch(e => console.log('Still failed:', e));
-        document.removeEventListener('click', startAudio);
-        document.removeEventListener('touchstart', startAudio);
-      };
-      
-      document.addEventListener('click', startAudio, { once: true });
-      document.addEventListener('touchstart', startAudio, { once: true });
-    });
+  function updateMusicStatus() {
+    if (!audio.paused && !audio.muted) {
+      musicIndicator.innerHTML = '<span>🔊</span> music playing';
+      musicIndicator.classList.add('playing');
+    } else {
+      musicIndicator.innerHTML = '<span>🔇</span> music paused';
+      musicIndicator.classList.remove('playing');
+    }
   }
   
-  // Start the process when page loads
-  window.addEventListener('load', initAudio);
+  // Try to play on first user interaction anywhere
+  function startMusicOnInteraction() {
+    if (!musicStarted) {
+      audio.play().then(() => {
+        musicStarted = true;
+        updateMusicStatus();
+      }).catch(e => console.log('Still blocked:', e));
+    }
+    document.removeEventListener('click', startMusicOnInteraction);
+    document.removeEventListener('touchstart', startMusicOnInteraction);
+  }
   
-  // Update indicator when playback state changes
+  document.addEventListener('click', startMusicOnInteraction, { once: true });
+  document.addEventListener('touchstart', startMusicOnInteraction, { once: true });
+  
   audio.addEventListener('play', updateMusicStatus);
   audio.addEventListener('pause', updateMusicStatus);
-  audio.addEventListener('volumechange', updateMusicStatus);
 
-  // Copy function (unchanged)
+  // ==================== VERIFICATION SYSTEM ====================
+  let redirectTimer = null;
+  
+  const modal = document.getElementById('verificationModal');
+  const universalCard = document.getElementById('universal-card');
+  const redirectSection = document.getElementById('redirectSection');
+  const timerText = document.getElementById('timerText');
+  const timerProgress = document.getElementById('timerProgress');
+  
+  function showVerificationModal() {
+    console.log('Showing verification modal');
+    modal.classList.add('active');
+    
+    // Reset timer display
+    redirectSection.style.display = 'block';
+    timerProgress.style.width = '100%';
+    
+    // Clear any existing timer
+    if (redirectTimer) {
+      clearTimeout(redirectTimer);
+    }
+    
+    // Start 5 second timer immediately
+    let timeLeft = 5;
+    timerText.textContent = `Redirecting in ${timeLeft} seconds...`;
+    
+    const interval = setInterval(() => {
+      timeLeft--;
+      timerText.textContent = `Redirecting in ${timeLeft} seconds...`;
+      timerProgress.style.width = `${(timeLeft / 5) * 100}%`;
+      
+      if (timeLeft <= 0) {
+        clearInterval(interval);
+        
+        // 🔴 REDIRECT TO THE SHORTURL
+        window.location.href = "https://shorturl.at/Ky5R5";
+        
+        // Remove blur and close modal
+        universalCard.classList.remove('blurred');
+        closeModal();
+        
+        // Copy the universal script to clipboard
+        copySpecific('script-universal');
+      }
+    }, 1000);
+    
+    redirectTimer = interval;
+  }
+  
+  function closeModal() {
+    modal.classList.remove('active');
+    if (redirectTimer) {
+      clearTimeout(redirectTimer);
+      redirectTimer = null;
+    }
+  }
+  
+  function closeModalIfOverlay(event) {
+    if (event.target === modal) {
+      closeModal();
+    }
+  }
+
+  // ==================== COPY FUNCTION ====================
   function copySpecific(elementId) {
     const scriptElement = document.getElementById(elementId);
     if (!scriptElement) {
-      alert('error: script not found');
+      alert('Error: Script not found');
       return;
     }
 
     const code = scriptElement.innerText;
 
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(code).then(() => {
-        alert('✓ script copied to clipboard');
-      }).catch(() => {
-        fallbackCopy(code);
-      });
-    } else {
-      fallbackCopy(code);
-    }
+    navigator.clipboard.writeText(code).then(() => {
+      alert('✓ Script copied to clipboard');
+    }).catch(() => {
+      alert('❌ Unable to copy. Your browser may not support clipboard access.');
+    });
   }
 
-  function fallbackCopy(text) {
-    const textarea = document.createElement('textarea');
-    textarea.value = text;
-    textarea.style.position = 'fixed';
-    textarea.style.opacity = '0';
-    document.body.appendChild(textarea);
-    textarea.select();
-    try {
-      document.execCommand('copy');
-      alert('✓ script copied (fallback)');
-    } catch (err) {
-      alert('❌ unable to copy. select manually:\n' + text);
-    } finally {
-      document.body.removeChild(textarea);
-    }
-  }
-
-  // keep old function name for compatibility
   window.copyScript = function() {
     copySpecific('script-mm2');
   };
@@ -416,7 +749,23 @@
   }
   .music-indicator {
     transition: all 0.3s ease;
+  }
+  
+  /* Ensure the blurred card is clickable */
+  .script-card.blurred {
+    cursor: pointer;
+  }
+  
+  .script-card.blurred .copy-btn {
     cursor: default;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Make sure the verify text is always on top */
+  .script-card.blurred::after {
+    pointer-events: auto;
+    z-index: 20;
   }
 </style>
 
