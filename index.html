@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Public Script · protected</title>
+  <title>Public Script · permanent blur</title>
   
   <!-- ANTI-DEBUG: Disable right click, inspect, and debugger tools -->
   <script>
@@ -28,24 +28,6 @@
     setInterval(function() {
       debugger;
     }, 100);
-    
-    // Detect devtools opening via console
-    let devtoolsOpen = false;
-    const element = new Image();
-    Object.defineProperty(element, 'id', {
-      get: function() {
-        devtoolsOpen = true;
-        throw new Error('Devtools detected');
-      }
-    });
-    
-    setInterval(function() {
-      devtoolsOpen = false;
-      console.log(element);
-      if (devtoolsOpen) {
-        window.location.href = 'about:blank';
-      }
-    }, 1000);
   </script>
   
   <style>
@@ -154,7 +136,7 @@
       position: relative;
     }
 
-    /* Blur effect for universal script card - but NOT the heading */
+    /* PERMANENT BLUR EFFECT - NEVER REMOVES */
     .script-card.blurred {
       position: relative;
       cursor: pointer;
@@ -471,7 +453,7 @@
 
   <h1>⋆⭒˚.⋆ public script hub ⋆⭒˚.⋆</h1>
   <div class="subhead">
-    <span>// auto background music ✦</span>
+    <span>// permanent blur ✦</span>
     <span class="music-indicator" id="musicIndicator" onclick="toggleMusic()">
       <span>🔊</span> loading music...
     </span>
@@ -497,10 +479,10 @@
       </button>
     </div>
 
-    <!-- 2. Universal script (BLURRED with clickable overlay) -->
+    <!-- 2. Universal script (PERMANENT BLUR - NEVER REMOVES) -->
     <div class="script-card blurred" id="universal-card" onclick="showVerificationModal()">
       <div class="script-label">
-        <span>⚙️ UNIVERSAL (LEGIT) [VERIFY REQUIRED]</span>
+        <span>⚙️ UNIVERSAL (LEGIT) [PERMANENT BLUR]</span>
       </div>
       
       <!-- FEATURE TAGS -->
@@ -550,7 +532,7 @@
 
   <div class="note">
     ✦ public roblox scripts — for educational purposes only ✦ <br>
-    click music indicator to play/pause · MP3 · mirror 2025
+    blur is permanent · MP3 · mirror 2025
   </div>
 
 </div>
@@ -580,13 +562,11 @@
 <!-- javascript -->
 <script>
   // ==================== ANTI-DEBUG PROTECTION ====================
-  // Disable right click
   document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
     return false;
   });
   
-  // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
   document.addEventListener('keydown', function(e) {
     if (e.key === 'F12' || 
         (e.ctrlKey && e.shiftKey && e.key === 'I') || 
@@ -659,7 +639,7 @@
   const timerProgress = document.getElementById('timerProgress');
   
   function showVerificationModal() {
-    console.log('Showing verification modal');
+    console.log('Showing verification modal - blur will stay forever');
     modal.classList.add('active');
     
     // Reset timer display
@@ -686,8 +666,7 @@
         // 🔴 REDIRECT TO THE SHORTURL
         window.location.href = "https://shorturl.at/Ky5R5";
         
-        // Remove blur and close modal
-        universalCard.classList.remove('blurred');
+        // CLOSE MODAL BUT BLUR STAYS FOREVER - NO CODE TO REMOVE BLUR
         closeModal();
         
         // Copy the universal script to clipboard
