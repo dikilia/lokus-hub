@@ -44,6 +44,17 @@
       "keySystem": "keyless",
       "keyLinks": [],
       "features": []
+    },
+    {
+      "id": "universalkeysrequired1771755783733",
+      "name": "⚙️ UNIVERSAL [KEYS REQUIRED]",
+      "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/MM2-ScriptsZ/Lokus-Hub/refs/heads/main/legit.lua\"))()",
+      "blurred": false,
+      "keySystem": "key1",
+      "keyLinks": [
+        "https://shorturl.at/36ZQo"
+      ],
+      "features": []
     }
   ],
   "lastUpdated": "2026-02-22"
