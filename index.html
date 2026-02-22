@@ -59,39 +59,40 @@
 </div>
 
 <h2>🌐 socials</h2><div class="social-grid"><a href="https://dsc.gg/lokus-hub" target="_blank" class="social-link"><span class="social-icon">💬</span> discord</a><a href="https://www.tiktok.com/@growagardenxaweso" target="_blank" class="social-link"><span class="social-icon">🎵</span> tiktok</a><a href="https://www.youtube.com/@drippyguygaming" target="_blank" class="social-link"><span class="social-icon">▶️</span> youtube</a></div><div class="note">✦ lokus hub scripts — updated daily ✦<br>blur permanent · MP3 · mobile friendly</div></div><div class="modal-overlay" id="verificationModal" onclick="closeModalIfOverlay(event)"><div class="modal-content"><div class="modal-icon">🔒</div><div class="modal-title">Verify</div><div class="modal-text">Connect Discord (keyless)</div><div style="font-size:.8rem;color:#ff8888;margin-bottom:20px">Bot / Alt Not allowed</div><div id="redirectSection"><div class="redirect-timer" id="timerText">5s...</div><div class="timer-bar"><div class="timer-progress" id="timerProgress" style="width:100%"></div></div></div><div class="modal-close" onclick="closeModal()">✕ close</div></div></div><script>
+// ==================== VISITOR COUNTER (FIXED) ====================
+let visits = localStorage.getItem('lokusVisits');
+if (visits === null) {
+  visits = 1;
+} else {
+  visits = parseInt(visits) + 1;
+}
+localStorage.setItem('lokusVisits', visits);
+document.getElementById('visitorCount').textContent = visits;
+
 // ==================== LOAD SCRIPTS FROM JSON ====================
 async function loadScriptsFromJSON() {
   try {
-    const response = await fetch('scripts.json?t=' + Date.now()); // Add timestamp to avoid cache
+    const response = await fetch('scripts.json?t=' + Date.now());
     const data = await response.json();
-    
-    // Update visitor count if element exists
-    if (document.getElementById('visitorCount')) {
-      document.getElementById('visitorCount').textContent = data.visitorCount || 0;
-    }
     
     const container = document.getElementById('scriptsContainer');
     if (!container) return;
     
-    container.innerHTML = ''; // Clear loading message
+    container.innerHTML = '';
     
-    // Build each script card from JSON data
     data.scripts.forEach(script => {
       const card = document.createElement('div');
       card.className = `script-card ${script.blurred ? 'blurred' : ''}`;
       card.id = `${script.id}-card`;
       
-      // Add click handler for blurred cards
       if (script.blurred) {
         card.onclick = (e) => {
-          // Don't trigger if clicking the copy button
           if (!e.target.classList.contains('copy-btn')) {
             showVerificationModal();
           }
         };
       }
       
-      // Build features HTML if any
       let featuresHTML = '';
       if (script.features && script.features.length > 0) {
         featuresHTML = '<div class="feature-tags">' + 
@@ -99,7 +100,6 @@ async function loadScriptsFromJSON() {
           '</div>';
       }
       
-      // Escape the code for safe HTML display
       const escapedCode = script.code.replace(/</g, '&lt;').replace(/>/g, '&gt;');
       
       card.innerHTML = `
@@ -115,12 +115,10 @@ async function loadScriptsFromJSON() {
       
       container.appendChild(card);
     });
-    
-    console.log('Scripts loaded successfully from JSON');
   } catch (error) {
     console.error('Failed to load scripts:', error);
     document.getElementById('scriptsContainer').innerHTML = 
-      '<p style="color: #ff4444; text-align: center;">❌ Failed to load scripts. Make sure scripts.json exists.</p>';
+      '<p style="color: #ff4444; text-align: center;">❌ Failed to load scripts.</p>';
   }
 }
 
@@ -156,12 +154,6 @@ function typeEffect() {
   
   setTimeout(typeEffect, delay);
 }
-
-// ==================== VISITOR COUNTER ====================
-let visits = localStorage.getItem('lokusVisits') || 0;
-visits++;
-localStorage.setItem('lokusVisits', visits);
-document.getElementById('visitorCount').textContent = visits;
 
 // ==================== ANTI-DEBUG ====================
 document.addEventListener('contextmenu', e => e.preventDefault());
@@ -250,7 +242,6 @@ function showVerificationModal() {
       clearInterval(interval);
       window.location.href = "https://shorturl.at/Ky5R5";
       closeModal();
-      // Copy universal script if it exists
       const universalEl = document.getElementById('universal');
       if (universalEl) {
         copySpecific('universal');
@@ -283,13 +274,8 @@ function copySpecific(id) {
 
 // ==================== INITIALIZE EVERYTHING ====================
 window.addEventListener('load', () => {
-  // Load scripts from JSON first
   loadScriptsFromJSON();
-  
-  // Start typing animation after a delay
   setTimeout(typeEffect, 500);
-  
-  // Fetch Discord stats
   fetchDiscordWidget();
   setInterval(fetchDiscordWidget, 60000);
 });
