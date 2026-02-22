@@ -55,6 +55,17 @@
         "https://shorturl.at/36ZQo"
       ],
       "features": []
+    },
+    {
+      "id": "test1771756924742",
+      "name": "test",
+      "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/MM2-ScriptsZ/Lokus-Hub/refs/heads/main/legit.lua\"))()",
+      "blurred": false,
+      "keySystem": "key1",
+      "keyLinks": [
+        "https://link-center.net/1446949/duPCtVbXsxIW"
+      ],
+      "features": []
     }
   ],
   "lastUpdated": "2026-02-22"
