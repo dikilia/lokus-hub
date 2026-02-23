@@ -70,12 +70,12 @@
 <!-- COPY TOAST NOTIFICATION -->
 <div class="toast" id="copyToast">📋 Script copied!</div>
 
-<!-- REDIRECT MODAL (FOR UNIVERSAL SCRIPT) -->
+<!-- REDIRECT MODAL FOR BLOXLINK (REPLACES shorturl.at) -->
 <div class="modal-overlay" id="redirectModal" onclick="closeRedirectModalIfOverlay(event)">
   <div class="modal-content">
     <div class="modal-icon">⏳</div>
     <div class="modal-title">Verification Required</div>
-    <div class="modal-text" id="redirectModalText">Please wait 5 seconds to be redirected...</div>
+    <div class="modal-text" id="redirectModalText">Please wait 5 seconds to be redirected to Bloxlink...</div>
     <div class="redirect-timer" id="redirectTimerText">5 seconds</div>
     <div class="timer-bar">
       <div class="timer-progress" id="redirectTimerProgress" style="width:100%"></div>
@@ -84,18 +84,19 @@
   </div>
 </div>
 
-<!-- KEY VERIFICATION MODAL (FOR FUTURE USE) -->
+<!-- KEY VERIFICATION MODAL -->
 <div class="modal-overlay" id="keyModal" onclick="closeKeyModalIfOverlay(event)">
   <div class="modal-content" style="max-width:500px;">
     <div class="modal-icon">🔑</div>
     <div class="modal-title" id="keyModalTitle">Key Required</div>
-    <div class="modal-text" id="keyModalText">Complete ads to unlock this script</div>
+    <div class="modal-text" id="keyModalText">Complete Linkvertise ads to unlock this script</div>
     <div id="keyStatus" class="key-status" style="margin:20px 0;"></div>
     <div id="keyButtons"></div>
     <div class="modal-close" onclick="closeKeyModal()">✕ close</div>
   </div>
 </div>
 
+<!-- OLD VERIFICATION MODAL (KEPT FOR COMPATIBILITY) -->
 <div class="modal-overlay" id="verificationModal" onclick="closeModalIfOverlay(event)"><div class="modal-content"><div class="modal-icon">🔒</div><div class="modal-title">Verify</div><div class="modal-text">Connect Discord (keyless)</div><div style="font-size:.8rem;color:#ff8888;margin-bottom:20px">Bot / Alt Not allowed</div><div id="redirectSection"><div class="redirect-timer" id="timerText">5s...</div><div class="timer-bar"><div class="timer-progress" id="timerProgress" style="width:100%"></div></div></div><div class="modal-close" onclick="closeModal()">✕ close</div></div></div>
 
 <script>
@@ -123,13 +124,14 @@ localStorage.setItem('dailyVisits', dailyVisits);
 document.getElementById('visitorCount').textContent = dailyVisits;
 document.getElementById('totalVisits').textContent = totalVisits;
 
-// ==================== REDIRECT MODAL FOR UNIVERSAL SCRIPT ====================
+// ==================== REDIRECT MODAL FOR BLOXLINK (FIXED) ====================
 let redirectTimer = null;
 const redirectModal = document.getElementById('redirectModal');
 const redirectTimerText = document.getElementById('redirectTimerText');
 const redirectTimerProgress = document.getElementById('redirectTimerProgress');
 
-function showRedirectModal(redirectUrl) {
+function showRedirectToBloxlink() {
+  // Show the modal
   redirectModal.classList.add('active');
   redirectTimerProgress.style.width = '100%';
   
@@ -143,7 +145,8 @@ function showRedirectModal(redirectUrl) {
     
     if (timeLeft <= 0) {
       clearInterval(interval);
-      window.location.href = redirectUrl;
+      // REDIRECT TO BLOXLINK.HTML INSTEAD OF BROKEN SHORTURL
+      window.location.href = '/lokus-hub/bloxlink.html';
       closeRedirectModal();
     }
   }, 1000);
@@ -260,9 +263,9 @@ async function loadScriptsFromJSON() {
       if (script.blurred) {
         card.onclick = (e) => {
           if (!e.target.classList.contains('copy-btn')) {
-            // For universal script, show redirect modal
-            if (script.id === 'universal' || script.id.includes('universal')) {
-              showRedirectModal('https://shorturl.at/Ky5R5');
+            // For universal script, show redirect modal to bloxlink.html
+            if (script.id === 'universal' || script.id.includes('universal') || script.name.includes('UNIVERSAL')) {
+              showRedirectToBloxlink(); // This now redirects to bloxlink.html after 5 seconds
             } else {
               showVerificationModal();
             }
@@ -566,7 +569,7 @@ async function fetchDiscordWidget() {
   }
 }
 
-// ==================== VERIFICATION ====================
+// ==================== OLD VERIFICATION ====================
 let verificationRedirectTimer = null;
 const modal = document.getElementById('verificationModal');
 const redirectSection = document.getElementById('redirectSection');
@@ -589,6 +592,7 @@ function showVerificationModal() {
     
     if (timeLeft <= 0) {
       clearInterval(interval);
+      // This is the old verification - keep as is for other scripts
       window.location.href = "https://shorturl.at/Ky5R5";
       closeModal();
       const universalEl = document.getElementById('universal');
