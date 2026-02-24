@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin - Script Manager</title><style>
-*{box-sizing:border-box;margin:0}body{background:#0b0b0b;color:#eaeaea;font-family:'Courier New',monospace;padding:20px}.container{max-width:800px;margin:0 auto}h1{color:#00f2ea;border-left:4px solid #00f2ea;padding-left:15px;margin-bottom:30px}.logout-bar{display:flex;justify-content:space-between;align-items:center;background:#1a1a1a;padding:10px 20px;border-radius:50px;margin-bottom:20px;border:1px solid #00f2ea40}.logout-btn{background:#ff4444;color:white;border:none;padding:8px 20px;border-radius:50px;cursor:pointer;font-weight:bold;width:auto}.logout-btn:hover{background:#cc0000}.admin-card{background:#111;border:1px solid #2a2a2a;border-radius:16px;padding:25px;margin-bottom:25px;box-shadow:0 8px 0 #050505}h2{color:#00f2ea;margin-bottom:20px;font-size:1.3rem;border-bottom:1px dashed #2e2e2e;padding-bottom:8px}label{display:block;margin:15px 0 5px;color:#aaa;font-size:.9rem;text-transform:uppercase;letter-spacing:1px}input,textarea{width:100%;padding:12px;background:#1a1a1a;border:1px solid #3a3a3a;color:#fff;border-radius:8px;font-family:'Courier New',monospace;font-size:.9rem}input:focus,textarea:focus{border-color:#00f2ea;outline:none;box-shadow:0 0 10px #00f2ea66}textarea{min-height:120px;resize:vertical}.checkbox-group{display:flex;align-items:center;gap:10px;margin:20px 0;padding:10px;background:#1a1a1a;border-radius:8px}.checkbox-group input{width:auto;accent-color:#00f2ea}.feature-tags{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0;padding:10px;background:#1a1a1a;border-radius:8px}.feature-tag{background:#1a2a2a;color:#9cfff8;padding:8px 16px;border-radius:30px;font-size:.8rem;border:1px solid #00f2ea40;cursor:pointer;transition:all .2s}.feature-tag:hover{transform:translateY(-2px);border-color:#00f2ea}.feature-tag.selected{background:#00f2ea;color:#000;border-color:#00f2ea;box-shadow:0 0 15px #00f2ea}.key-system-selector{background:#1a2a2a;border-radius:8px;padding:15px;margin:20px 0}.key-option{display:flex;align-items:center;gap:10px;margin:10px 0;padding:12px;background:#0f1a1f;border-radius:8px;cursor:pointer;transition:all .2s;border:1px solid transparent}.key-option:hover{background:#1a2f3a}.key-option.selected{background:#00f2ea20;border:1px solid #00f2ea}.key-option input[type="radio"]{width:auto;accent-color:#00f2ea}.key-badge{padding:4px 12px;border-radius:30px;font-size:.8rem;min-width:80px;text-align:center}.key-badge.keyless{background:#4a4a4a;color:#fff}.key-badge.key1{background:#00aa00;color:#fff}.key-badge.key2{background:#ffaa00;color:#000}.key-badge.key3{background:#ff4444;color:#fff}.linkvertise-config{background:#0f1a2a;border-radius:8px;padding:20px;margin:20px 0;border:1px solid #00f2ea40}.linkvertise-config h3{color:#00f2ea;margin-bottom:15px}.redirect-url-container{background:#1a2a2a;border-radius:8px;padding:20px;margin:20px 0;border:1px solid #ff4444;display:none}.redirect-url-container h3{color:#ff4444;margin-bottom:15px}.redirect-url-container label{color:#ff8888}.image-upload-container{background:#1a2a2a;border-radius:8px;padding:20px;margin:20px 0;border:1px solid #00f2ea}.image-upload-container h3{color:#00f2ea;margin-bottom:15px}.image-preview{width:100px;height:100px;border-radius:8px;background:#1a1a1a;border:2px dashed #00f2ea40;display:flex;align-items:center;justify-content:center;margin-bottom:15px;overflow:hidden}.image-preview img{width:100%;height:100%;object-fit:cover}.image-preview span{color:#666;font-size:.8rem}.image-types{display:flex;gap:10px;margin:10px 0;flex-wrap:wrap}.image-type-btn{background:#1a2a2a;color:#9cfff8;padding:5px 10px;border-radius:20px;font-size:.7rem;border:1px solid #00f2ea40;cursor:pointer}.image-type-btn.selected{background:#00f2ea;color:#000}.image-url-input{display:flex;gap:10px;margin-top:10px}.image-url-input input{flex:1}.image-url-input button{width:auto;margin:0;padding:12px 20px}button{background:#00f2ea;color:#000;border:0;padding:14px 25px;border-radius:50px;font-weight:700;cursor:pointer;font-size:1rem;margin-top:10px;width:100%;transition:all .2s;border:1px solid #4afff0}button:hover{background:#00d4cc;transform:scale(1.02);box-shadow:0 0 20px #00f2ea}button.delete{background:#ff4444;color:#fff;border:1px solid #ff8888;width:auto;padding:8px 15px}button.delete:hover{background:#cc0000}button.edit{background:#ffaa00;color:#000;border:1px solid #ffcc00;width:auto;padding:8px 15px}button.edit:hover{background:#ff8800}.script-item{background:#1a1a1a;border-left:3px solid #00f2ea;padding:15px;margin:15px 0;border-radius:8px;display:flex;justify-content:space-between;align-items:center}.script-info{flex:1}.script-info h3{color:#00f2ea;margin-bottom:5px;font-size:1.1rem;display:flex;align-items:center;gap:10px}.script-thumb{width:30px;height:30px;border-radius:6px;object-fit:cover}.script-info p{color:#888;font-size:.8rem;line-height:1.5;margin:5px 0}.script-meta{display:flex;gap:15px;margin-top:8px;flex-wrap:wrap}.script-actions{display:flex;gap:10px}.status-badge{padding:4px 12px;border-radius:30px;font-size:.7rem;background:#00f2ea20;color:#00f2ea;display:inline-block}.admin-badge{background:#ff4444;color:white;padding:2px 8px;border-radius:30px;font-size:.6rem;margin-left:5px}.status-message{padding:10px;border-radius:8px;margin-bottom:20px;text-align:center}.edit-mode{background:#ffaa0020;border:2px solid #ffaa00;padding:10px;border-radius:8px;margin-bottom:20px;text-align:center}.edit-mode span{color:#ffaa00;font-weight:bold}
+*{box-sizing:border-box;margin:0}body{background:#0b0b0b;color:#eaeaea;font-family:'Courier New',monospace;padding:20px}.container{max-width:800px;margin:0 auto}h1{color:#00f2ea;border-left:4px solid #00f2ea;padding-left:15px;margin-bottom:30px}.logout-bar{display:flex;justify-content:space-between;align-items:center;background:#1a1a1a;padding:10px 20px;border-radius:50px;margin-bottom:20px;border:1px solid #00f2ea40}.logout-btn{background:#ff4444;color:white;border:none;padding:8px 20px;border-radius:50px;cursor:pointer;font-weight:bold;width:auto}.logout-btn:hover{background:#cc0000}.admin-card{background:#111;border:1px solid #2a2a2a;border-radius:16px;padding:25px;margin-bottom:25px;box-shadow:0 8px 0 #050505}h2{color:#00f2ea;margin-bottom:20px;font-size:1.3rem;border-bottom:1px dashed #2e2e2e;padding-bottom:8px}label{display:block;margin:15px 0 5px;color:#aaa;font-size:.9rem;text-transform:uppercase;letter-spacing:1px}input,textarea{width:100%;padding:12px;background:#1a1a1a;border:1px solid #3a3a3a;color:#fff;border-radius:8px;font-family:'Courier New',monospace;font-size:.9rem}input:focus,textarea:focus{border-color:#00f2ea;outline:none;box-shadow:0 0 10px #00f2ea66}textarea{min-height:120px;resize:vertical}.checkbox-group{display:flex;align-items:center;gap:10px;margin:20px 0;padding:10px;background:#1a1a1a;border-radius:8px}.checkbox-group input{width:auto;accent-color:#00f2ea}.feature-tags{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0;padding:10px;background:#1a1a1a;border-radius:8px}.feature-tag{background:#1a2a2a;color:#9cfff8;padding:8px 16px;border-radius:30px;font-size:.8rem;border:1px solid #00f2ea40;cursor:pointer;transition:all .2s}.feature-tag:hover{transform:translateY(-2px);border-color:#00f2ea}.feature-tag.selected{background:#00f2ea;color:#000;border-color:#00f2ea;box-shadow:0 0 15px #00f2ea}.key-system-selector{background:#1a2a2a;border-radius:8px;padding:15px;margin:20px 0}.key-option{display:flex;align-items:center;gap:10px;margin:10px 0;padding:12px;background:#0f1a1f;border-radius:8px;cursor:pointer;transition:all .2s;border:1px solid transparent}.key-option:hover{background:#1a2f3a}.key-option.selected{background:#00f2ea20;border:1px solid #00f2ea}.key-option input[type="radio"]{width:auto;accent-color:#00f2ea}.key-badge{padding:4px 12px;border-radius:30px;font-size:.8rem;min-width:80px;text-align:center}.key-badge.keyless{background:#4a4a4a;color:#fff}.key-badge.key1{background:#00aa00;color:#fff}.key-badge.key2{background:#ffaa00;color:#000}.key-badge.key3{background:#ff4444;color:#fff}.linkvertise-config{background:#0f1a2a;border-radius:8px;padding:20px;margin:20px 0;border:1px solid #00f2ea40}.linkvertise-config h3{color:#00f2ea;margin-bottom:15px}.redirect-url-container{background:#1a2a2a;border-radius:8px;padding:20px;margin:10px 0 20px;border:1px solid #ff4444;display:none}.redirect-url-container h3{color:#ff4444;margin-bottom:15px}.redirect-url-container label{color:#ff8888}.image-upload-container{background:#1a2a2a;border-radius:8px;padding:20px;margin:20px 0;border:1px solid #00f2ea}.image-upload-container h3{color:#00f2ea;margin-bottom:15px}.image-preview{width:100px;height:100px;border-radius:8px;background:#1a1a1a;border:2px dashed #00f2ea40;display:flex;align-items:center;justify-content:center;margin-bottom:15px;overflow:hidden}.image-preview img{width:100%;height:100%;object-fit:cover}.image-preview span{color:#666;font-size:.8rem}.image-types{display:flex;gap:10px;margin:10px 0;flex-wrap:wrap}.image-type-btn{background:#1a2a2a;color:#9cfff8;padding:5px 10px;border-radius:20px;font-size:.7rem;border:1px solid #00f2ea40;cursor:pointer}.image-type-btn.selected{background:#00f2ea;color:#000}.image-url-input{display:flex;gap:10px;margin-top:10px}.image-url-input input{flex:1}.image-url-input button{width:auto;margin:0;padding:12px 20px}button{background:#00f2ea;color:#000;border:0;padding:14px 25px;border-radius:50px;font-weight:700;cursor:pointer;font-size:1rem;margin-top:10px;width:100%;transition:all .2s;border:1px solid #4afff0}button:hover{background:#00d4cc;transform:scale(1.02);box-shadow:0 0 20px #00f2ea}button.delete{background:#ff4444;color:#fff;border:1px solid #ff8888;width:auto;padding:8px 15px}button.delete:hover{background:#cc0000}button.edit{background:#ffaa00;color:#000;border:1px solid #ffcc00;width:auto;padding:8px 15px}button.edit:hover{background:#ff8800}.script-item{background:#1a1a1a;border-left:3px solid #00f2ea;padding:15px;margin:15px 0;border-radius:8px;display:flex;justify-content:space-between;align-items:center}.script-info{flex:1}.script-info h3{color:#00f2ea;margin-bottom:5px;font-size:1.1rem;display:flex;align-items:center;gap:10px}.script-thumb{width:30px;height:30px;border-radius:6px;object-fit:cover}.script-info p{color:#888;font-size:.8rem;line-height:1.5;margin:5px 0}.script-meta{display:flex;gap:15px;margin-top:8px;flex-wrap:wrap}.script-actions{display:flex;gap:10px}.status-badge{padding:4px 12px;border-radius:30px;font-size:.7rem;background:#00f2ea20;color:#00f2ea;display:inline-block}.admin-badge{background:#ff4444;color:white;padding:2px 8px;border-radius:30px;font-size:.6rem;margin-left:5px}.status-message{padding:10px;border-radius:8px;margin-bottom:20px;text-align:center}.edit-mode{background:#ffaa0020;border:2px solid #ffaa00;padding:10px;border-radius:8px;margin-bottom:20px;text-align:center}.edit-mode span{color:#ffaa00;font-weight:bold}
 </style></head><body>
 <div class="container">
   <div class="logout-bar">
@@ -61,17 +61,18 @@
     <label>Loadstring Code</label>
     <textarea id="scriptCode" placeholder='loadstring(game:HttpGet("URL"))()'></textarea>
 
-    <!-- ADMIN-ONLY REDIRECT URL (HIDDEN FROM PUBLIC) -->
-    <div class="redirect-url-container">
-      <h3>🔒 ADMIN ONLY - Redirect URL</h3>
-      <label>This will NEVER show in public or Discord</label>
-      <input type="url" id="scriptRedirectUrl" placeholder="https://openinapp.link/xxx">
-      <p style="color:#ff8888; font-size:0.8rem; margin-top:8px;">⏱️ 5-second timer then redirect here (admin only)</p>
-    </div>
-
+    <!-- BLURRED CHECKBOX - shows redirect URL when checked -->
     <div class="checkbox-group">
       <input type="checkbox" id="scriptBlurred" onchange="toggleRedirectUrlField()">
-      <label>🔒 Require verification (blurred) - Uses redirect URL above</label>
+      <label>🔒 Require verification (blurred)</label>
+    </div>
+
+    <!-- REDIRECT URL - only shows when blurred is checked -->
+    <div id="redirectUrlContainer" class="redirect-url-container">
+      <h3>🔒 ADMIN ONLY - Redirect URL</h3>
+      <label>Required for blurred scripts</label>
+      <input type="url" id="scriptRedirectUrl" placeholder="https://openinapp.link/xxx">
+      <p style="color:#ff8888; font-size:0.8rem; margin-top:8px;">⏱️ 5-second timer then redirect here</p>
     </div>
 
     <label>🔑 Key System Type</label>
@@ -195,7 +196,7 @@ function showStatus(msg, isError) {
 
 function toggleRedirectUrlField() {
   let c = document.getElementById('scriptBlurred').checked;
-  // Redirect URL container is always visible (admin only), no need to toggle
+  document.getElementById('redirectUrlContainer').style.display = c ? 'block' : 'none';
 }
 
 function selectKeySystem(v) {
@@ -233,6 +234,7 @@ function cancelEdit() {
   document.getElementById('scriptBlurred').checked = false;
   document.getElementById('scriptRedirectUrl').value = '';
   document.getElementById('editingScriptId').value = '';
+  document.getElementById('redirectUrlContainer').style.display = 'none';
   document.getElementById('formTitle').innerHTML = '📝 Add New Script';
   document.getElementById('saveButton').innerHTML = '💾 Save & Auto-Commit';
   document.getElementById('editModeIndicator').style.display = 'none';
@@ -298,6 +300,9 @@ function editScript(id) {
   document.getElementById('scriptRedirectUrl').value = s.redirectUrl || '';
   document.getElementById('editingScriptId').value = s.id;
   
+  // Show redirect field if script is blurred
+  document.getElementById('redirectUrlContainer').style.display = s.blurred ? 'block' : 'none';
+  
   if (s.image) {
     let preview = document.getElementById('imagePreview');
     preview.innerHTML = `<img src="${s.image}">`;
@@ -317,7 +322,7 @@ function editScript(id) {
 }
 
 // ==================== GITHUB API via Serverless ====================
-async function commitToGitHub(scriptData, isEdit) {
+async function commitToGitHub(scriptData, isEdit, sendWebhook = true) {
   try {
     let fullData = {
       siteTitle: "lokus hub scripts", 
@@ -340,7 +345,7 @@ async function commitToGitHub(scriptData, isEdit) {
         content: btoa(unescape(encodeURIComponent(JSON.stringify(fullData, null, 2)))),
         message: isEdit ? `✏️ Updated: ${scriptData.name}` : `✨ Added: ${scriptData.name}`,
         filename: 'scripts.json',
-        scriptData: scriptData,
+        scriptData: sendWebhook ? scriptData : null, // Only send scriptData if webhook should be sent
         isEdit: isEdit
       })
     });
@@ -390,7 +395,8 @@ async function saveScript() {
     if (idx !== -1) currentScripts[idx] = scriptData;
   } else currentScripts.push(scriptData);
   
-  if (await commitToGitHub(scriptData, !!editId)) {
+  // Send webhook for both add and edit (sendWebhook = true)
+  if (await commitToGitHub(scriptData, !!editId, true)) {
     displayScripts();
     cancelEdit();
   }
@@ -403,7 +409,10 @@ async function deleteScript(id) {
   let script = currentScripts.find(s => s.id === id);
   currentScripts = currentScripts.filter(s => s.id !== id);
   
-  if (await commitToGitHub(script, false)) displayScripts();
+  // NO WEBHOOK for delete (sendWebhook = false)
+  if (await commitToGitHub(script, false, false)) {
+    displayScripts();
+  }
 }
 
 // ==================== DISPLAY HELPER ====================
