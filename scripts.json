@@ -66,16 +66,6 @@
       "keySystem": "keyless",
       "keyLinks": [],
       "features": []
-    },
-    {
-      "id": "testified1771941119681",
-      "name": "testified",
-      "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/MM2-ScriptsZ/Lokus-Hub/refs/heads/main/pvp.lua\"))()",
-      "blurred": true,
-      "redirectUrl": "https://openinapp.link/jvj3l",
-      "keySystem": "keyless",
-      "keyLinks": [],
-      "features": []
     }
   ],
   "lastUpdated": "2026-02-24"
