@@ -68,18 +68,6 @@
       "keySystem": "keyless",
       "keyLinks": [],
       "features": []
-    },
-    {
-      "id": "test1771945099968",
-      "name": "test",
-      "description": "https://openinapp.link/jvj3l",
-      "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/MM2-ScriptsZ/Lokus-Hub/refs/heads/main/pvp.lua\"))()",
-      "blurred": false,
-      "redirectUrl": "",
-      "image": "https://d8iqbmvu05s9c.cloudfront.net/ajprhqgqg1otf7d5sm7u3brf27gv",
-      "keySystem": "keyless",
-      "keyLinks": [],
-      "features": []
     }
   ],
   "lastUpdated": "2026-02-24"
