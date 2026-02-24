@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin - Script Manager</title><style>*{box-sizing:border-box;margin:0}body{background:#0b0b0b;color:#eaeaea;font-family:'Courier New',monospace;padding:20px}.container{max-width:800px;margin:0 auto}h1{color:#00f2ea;border-left:4px solid #00f2ea;padding-left:15px;margin-bottom:30px}.admin-card{background:#111;border:1px solid #2a2a2a;border-radius:16px;padding:25px;margin-bottom:25px}h2{color:#00f2ea;margin-bottom:20px;font-size:1.3rem}label{display:block;margin:15px 0 5px;color:#aaa;font-size:.9rem}input,textarea,select{width:100%;padding:12px;background:#1a1a1a;border:1px solid #3a3a3a;color:#fff;border-radius:8px;font-family:inherit}input:focus,textarea:focus,select:focus{border-color:#00f2ea;outline:0}textarea{min-height:100px;font-size:.8rem}.checkbox-group{display:flex;align-items:center;gap:10px;margin:15px 0}.checkbox-group input{width:auto}.feature-tags{display:flex;flex-wrap:wrap;gap:10px;margin:15px 0}.feature-tag{background:#1a2a2a;color:#9cfff8;padding:5px 12px;border-radius:30px;font-size:.8rem;border:1px solid #00f2ea40;cursor:pointer}.feature-tag.selected{background:#00f2ea;color:#000;border-color:#00f2ea}button{background:#00f2ea;color:#000;border:0;padding:14px 25px;border-radius:50px;font-weight:700;cursor:pointer;font-size:1rem;margin-top:10px;width:100%}button:hover{background:#00d4cc}button.delete{background:#ff4444;color:#fff}button.delete:hover{background:#cc0000}.script-item{background:#1a1a1a;border-left:3px solid #00f2ea;padding:15px;margin:15px 0;border-radius:8px;display:flex;justify-content:space-between;align-items:center}.script-info h3{color:#00f2ea;margin-bottom:5px}.script-info p{color:#888;font-size:.8rem}.script-actions{display:flex;gap:10px}.script-actions button{width:auto;padding:8px 15px;margin:0;font-size:.8rem}.update-note{background:#1a2a3a;border:1px solid #00f2ea;border-radius:8px;padding:15px;margin:20px 0;color:#fff;font-size:.9rem;text-align:center}.update-note strong{color:#00f2ea}.key-system-selector{background:#1a2a2a;border-radius:8px;padding:15px;margin:15px 0}.key-option{display:flex;align-items:center;gap:10px;margin:10px 0;padding:10px;background:#0f1a1f;border-radius:8px;cursor:pointer}.key-option input[type="radio"]{width:auto;margin-right:10px}.key-option.selected{background:#00f2ea20;border:1px solid #00f2ea}.key-badge{padding:4px 12px;border-radius:30px;font-size:.8rem;font-weight:bold}.key-badge.keyless{background:#4a4a4a;color:#fff}.key-badge.key1{background:#00aa00;color:#fff}.key-badge.key2{background:#ffaa00;color:#000}.key-badge.key3{background:#ff4444;color:#fff}.linkvertise-config{background:#0f1a2a;border-radius:8px;padding:15px;margin:15px 0;border:1px solid #00f2ea40}.linkvertise-config h3{color:#00f2ea;font-size:1rem;margin-bottom:10px}.redirect-url-container{background:#1a2a2a;border-radius:8px;padding:15px;margin:15px 0;border:1px solid #00f2ea;display:none}.redirect-url-container h3{color:#00f2ea;font-size:1rem;margin-bottom:10px}</style></head><body><div class="container"><h1>🔧 Script Manager Admin</h1>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin - Script Manager</title><style>*{box-sizing:border-box;margin:0}body{background:#0b0b0b;color:#eaeaea;font-family:'Courier New',monospace;padding:20px}.container{max-width:800px;margin:0 auto}h1{color:#00f2ea;border-left:4px solid #00f2ea;padding-left:15px;margin-bottom:30px}.admin-card{background:#111;border:1px solid #2a2a2a;border-radius:16px;padding:25px;margin-bottom:25px}h2{color:#00f2ea;margin-bottom:20px;font-size:1.3rem}label{display:block;margin:15px 0 5px;color:#aaa;font-size:.9rem}input,textarea,select{width:100%;padding:12px;background:#1a1a1a;border:1px solid #3a3a3a;color:#fff;border-radius:8px;font-family:inherit}input:focus,textarea:focus,select:focus{border-color:#00f2ea;outline:0}textarea{min-height:100px;font-size:.8rem}.checkbox-group{display:flex;align-items:center;gap:10px;margin:15px 0}.checkbox-group input{width:auto}.feature-tags{display:flex;flex-wrap:wrap;gap:10px;margin:15px 0}.feature-tag{background:#1a2a2a;color:#9cfff8;padding:5px 12px;border-radius:30px;font-size:.8rem;border:1px solid #00f2ea40;cursor:pointer}.feature-tag.selected{background:#00f2ea;color:#000;border-color:#00f2ea}button{background:#00f2ea;color:#000;border:0;padding:14px 25px;border-radius:50px;font-weight:700;cursor:pointer;font-size:1rem;margin-top:10px;width:100%}button:hover{background:#00d4cc}button.delete{background:#ff4444;color:#fff}button.delete:hover{background:#cc0000}button.edit{background:#ffaa00;color:#000}button.edit:hover{background:#ff8800}.script-item{background:#1a1a1a;border-left:3px solid #00f2ea;padding:15px;margin:15px 0;border-radius:8px;display:flex;justify-content:space-between;align-items:center}.script-info h3{color:#00f2ea;margin-bottom:5px}.script-info p{color:#888;font-size:.8rem}.script-actions{display:flex;gap:10px}.script-actions button{width:auto;padding:8px 15px;margin:0;font-size:.8rem}.update-note{background:#1a2a3a;border:1px solid #00f2ea;border-radius:8px;padding:15px;margin:20px 0;color:#fff;font-size:.9rem;text-align:center}.update-note strong{color:#00f2ea}.key-system-selector{background:#1a2a2a;border-radius:8px;padding:15px;margin:15px 0}.key-option{display:flex;align-items:center;gap:10px;margin:10px 0;padding:10px;background:#0f1a1f;border-radius:8px;cursor:pointer}.key-option input[type="radio"]{width:auto;margin-right:10px}.key-option.selected{background:#00f2ea20;border:1px solid #00f2ea}.key-badge{padding:4px 12px;border-radius:30px;font-size:.8rem;font-weight:bold}.key-badge.keyless{background:#4a4a4a;color:#fff}.key-badge.key1{background:#00aa00;color:#fff}.key-badge.key2{background:#ffaa00;color:#000}.key-badge.key3{background:#ff4444;color:#fff}.linkvertise-config{background:#0f1a2a;border-radius:8px;padding:15px;margin:15px 0;border:1px solid #00f2ea40}.linkvertise-config h3{color:#00f2ea;font-size:1rem;margin-bottom:10px}.redirect-url-container{background:#1a2a2a;border-radius:8px;padding:15px;margin:15px 0;border:1px solid #00f2ea;display:none}.redirect-url-container h3{color:#00f2ea;font-size:1rem;margin-bottom:10px}.edit-mode{background:#ffaa0020;border:2px solid #ffaa00;padding:10px;border-radius:8px;margin-bottom:20px;text-align:center}.edit-mode span{color:#ffaa00;font-weight:bold}</style></head><body><div class="container"><h1>🔧 Script Manager Admin</h1>
 
 <!-- NOTE ABOUT MANUAL UPLOAD -->
 <div class="update-note">
-  <strong>📌 Note:</strong> After adding or deleting scripts, click <strong>"📤 Download Updated scripts.json"</strong><br>
+  <strong>📌 Note:</strong> After adding, editing, or deleting scripts, click <strong>"📤 Download Updated scripts.json"</strong><br>
   and upload the file to GitHub to update your live site.
+</div>
+
+<!-- EDIT MODE INDICATOR (HIDDEN BY DEFAULT) -->
+<div id="editModeIndicator" class="edit-mode" style="display: none;">
+  <span>✏️ EDIT MODE</span> - You are editing a script. Changes will update when saved.
 </div>
 
 <!-- LINKVERTISE SETTINGS -->
@@ -18,7 +23,10 @@
 </div>
 
 <div class="admin-card">
-  <h2>📝 Add New Script</h2>
+  <h2>📝 <span id="formTitle">Add New Script</span></h2>
+  
+  <!-- HIDDEN FIELD TO STORE EDITING SCRIPT ID -->
+  <input type="hidden" id="editingScriptId" value="">
   
   <label>Script Name (with emoji if desired)</label>
   <input type="text" id="scriptName" placeholder="e.g., 🔪 NEW GAME">
@@ -87,7 +95,10 @@
     <span class="feature-tag" data-feature="🌱 Garden">🌱 Garden</span>
   </div>
 
-  <button onclick="saveScript()">💾 Save Script (updates list)</button>
+  <div style="display: flex; gap: 10px;">
+    <button onclick="saveScript()" style="flex: 2;" id="saveButton">💾 Save Script</button>
+    <button onclick="cancelEdit()" style="flex: 1; background: #666;" id="cancelButton">✕ Cancel</button>
+  </div>
 </div>
 
 <div class="admin-card">
@@ -118,9 +129,35 @@ function toggleRedirectUrlField() {
     redirectContainer.style.display = 'block';
   } else {
     redirectContainer.style.display = 'none';
-    // Clear the field when hidden
     document.getElementById('scriptRedirectUrl').value = '';
   }
+}
+
+// ==================== CANCEL EDIT ====================
+function cancelEdit() {
+  // Clear form
+  document.getElementById('scriptName').value = '';
+  document.getElementById('scriptCode').value = '';
+  document.getElementById('scriptBlurred').checked = false;
+  document.getElementById('scriptRedirectUrl').value = '';
+  document.getElementById('editingScriptId').value = '';
+  document.getElementById('redirectUrlContainer').style.display = 'none';
+  document.getElementById('formTitle').textContent = 'Add New Script';
+  document.getElementById('saveButton').textContent = '💾 Save Script';
+  document.getElementById('editModeIndicator').style.display = 'none';
+  
+  // Reset key system
+  selectedKeySystem = 'keyless';
+  document.querySelectorAll('.key-option').forEach(opt => opt.classList.remove('selected'));
+  document.getElementById('keyless-option').classList.add('selected');
+  document.querySelector('input[name="keySystem"][value="keyless"]').checked = true;
+  
+  // Reset features
+  selectedFeatures = [];
+  document.querySelectorAll('.feature-tag').forEach(t => t.classList.remove('selected'));
+  
+  // Hide Linkvertise links
+  document.getElementById('linkvertiseLinks').style.display = 'none';
 }
 
 // ==================== ADMIN CODE ====================
@@ -186,11 +223,65 @@ document.querySelectorAll('.feature-tag').forEach(tag => {
   });
 });
 
+// EDIT FUNCTION - Load script into form for editing
+function editScript(id) {
+  const script = currentScripts.find(s => s.id === id);
+  if (!script) return;
+  
+  // Fill form with script data
+  document.getElementById('scriptName').value = script.name;
+  document.getElementById('scriptCode').value = script.code;
+  document.getElementById('scriptBlurred').checked = script.blurred || false;
+  document.getElementById('scriptRedirectUrl').value = script.redirectUrl || '';
+  document.getElementById('editingScriptId').value = script.id;
+  
+  // Show redirect field if blurred
+  if (script.blurred) {
+    document.getElementById('redirectUrlContainer').style.display = 'block';
+  } else {
+    document.getElementById('redirectUrlContainer').style.display = 'none';
+  }
+  
+  // Set key system
+  selectKeySystem(script.keySystem || 'keyless');
+  
+  // Set features
+  selectedFeatures = script.features || [];
+  document.querySelectorAll('.feature-tag').forEach(tag => {
+    const feature = tag.dataset.feature;
+    if (selectedFeatures.includes(feature)) {
+      tag.classList.add('selected');
+    } else {
+      tag.classList.remove('selected');
+    }
+  });
+  
+  // Set Linkvertise links if any
+  if (script.keyLinks && script.keyLinks.length > 0) {
+    const numKeys = script.keyLinks.length;
+    for (let i = 1; i <= numKeys; i++) {
+      const input = document.getElementById(`key${i}Link`);
+      if (input) {
+        input.value = script.keyLinks[i-1];
+      }
+    }
+  }
+  
+  // Update UI to show edit mode
+  document.getElementById('formTitle').textContent = 'Edit Script';
+  document.getElementById('saveButton').textContent = '✏️ Update Script';
+  document.getElementById('editModeIndicator').style.display = 'block';
+  
+  // Scroll to form
+  document.querySelector('.admin-card').scrollIntoView({ behavior: 'smooth' });
+}
+
 function saveScript() {
   const name = document.getElementById('scriptName').value;
   const code = document.getElementById('scriptCode').value;
   const blurred = document.getElementById('scriptBlurred').checked;
   const redirectUrl = document.getElementById('scriptRedirectUrl').value;
+  const editingId = document.getElementById('editingScriptId').value;
   
   if (!name || !code) {
     alert('Please fill in all fields');
@@ -217,35 +308,33 @@ function saveScript() {
     }
   }
   
-  const newScript = {
-    id: name.toLowerCase().replace(/[^a-z0-9]/g, '') + Date.now(),
+  const scriptData = {
+    id: editingId || name.toLowerCase().replace(/[^a-z0-9]/g, '') + Date.now(),
     name: name,
     code: code,
     blurred: blurred,
-    redirectUrl: redirectUrl, // This gets saved to scripts.json
+    redirectUrl: redirectUrl,
     keySystem: selectedKeySystem,
     keyLinks: keyLinks,
     features: [...selectedFeatures]
   };
   
-  currentScripts.push(newScript);
+  if (editingId) {
+    // UPDATE existing script
+    const index = currentScripts.findIndex(s => s.id === editingId);
+    if (index !== -1) {
+      currentScripts[index] = scriptData;
+      alert('✅ Script updated!');
+    }
+  } else {
+    // ADD new script
+    currentScripts.push(scriptData);
+    alert('✅ Script added to list!');
+  }
   
   // Clear form
-  document.getElementById('scriptName').value = '';
-  document.getElementById('scriptCode').value = '';
-  document.getElementById('scriptBlurred').checked = false;
-  document.getElementById('redirectUrlContainer').style.display = 'none';
-  document.getElementById('scriptRedirectUrl').value = '';
-  selectedFeatures = [];
-  selectedKeySystem = 'keyless';
-  document.querySelectorAll('.feature-tag').forEach(t => t.classList.remove('selected'));
-  document.querySelectorAll('.key-option').forEach(opt => opt.classList.remove('selected'));
-  document.getElementById('keyless-option').classList.add('selected');
-  document.querySelector('input[name="keySystem"][value="keyless"]').checked = true;
-  document.getElementById('linkvertiseLinks').style.display = 'none';
-  
+  cancelEdit();
   displayScripts();
-  alert('✅ Script added to list! Click "Download Updated scripts.json" to save changes.');
 }
 
 function displayScripts() {
@@ -276,6 +365,7 @@ function displayScripts() {
         </p>
       </div>
       <div class="script-actions">
+        <button onclick="editScript('${script.id}')" class="edit">✏️</button>
         <button onclick="deleteScript('${script.id}')" class="delete">🗑️</button>
       </div>
     </div>
