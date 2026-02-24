@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin Login</title><style>
+*{margin:0;padding:0;box-sizing:border-box}body{background:#0b0b0b;color:#eaeaea;font-family:'Courier New',monospace;display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0}.login-container{background:#111;border:2px solid #00f2ea;border-radius:20px;padding:40px;width:90%;max-width:350px;box-shadow:0 0 30px #00f2ea33}.login-header{text-align:center;margin-bottom:30px}.login-header h1{color:#00f2ea;font-size:1.8rem;margin-bottom:10px}.login-header p{color:#aaa;font-size:.9rem}.input-group{margin-bottom:20px}.input-group label{display:block;margin-bottom:8px;color:#00f2ea;font-size:.9rem}.input-group input{width:100%;padding:14px;background:#1a1a1a;border:2px solid #2a2a2a;color:#fff;border-radius:10px;font-family:'Courier New',monospace;font-size:1rem;transition:all .3s}.input-group input:focus{border-color:#00f2ea;outline:none;box-shadow:0 0 15px #00f2ea66}.login-btn{width:100%;padding:14px;background:#00f2ea;color:#000;border:none;border-radius:50px;font-size:1.1rem;font-weight:bold;cursor:pointer;transition:all .3s;margin-top:10px}.login-btn:hover{background:#00d4cc;transform:scale(1.02);box-shadow:0 0 20px #00f2ea}.error-message{color:#ff4444;text-align:center;margin-top:15px;font-size:.9rem;min-height:20px}.footer{margin-top:30px;text-align:center;color:#666;font-size:.8rem}
+</style></head><body>
+<div class="login-container">
+  <div class="login-header">
+    <h1>🔒 Admin Login</h1>
+    <p>Enter your password to access the admin panel</p>
+  </div>
+  
+  <div class="input-group">
+    <label>Password</label>
+    <input type="password" id="password" placeholder="••••••••" onkeypress="if(event.key==='Enter') login()">
+  </div>
+  
+  <button class="login-btn" onclick="login()">🔓 Login</button>
+  
+  <div id="error" class="error-message"></div>
+  
+  <div class="footer">
+    <span>🔐 Secure login • Session expires in 1 hour</span>
+  </div>
+</div>
+
+<script>
+async function login() {
+  const password = document.getElementById('password').value;
+  const errorEl = document.getElementById('error');
+  
+  if (!password) {
+    errorEl.textContent = 'Please enter a password';
+    return;
+  }
+  
+  errorEl.textContent = '⏳ Logging in...';
+  
+  try {
+    const response = await fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password })
+    });
+    
+    const data = await response.json();
+    
+    if (response.ok && data.success) {
+      errorEl.style.color = '#00f2ea';
+      errorEl.textContent = '✅ Login successful! Redirecting...';
+      setTimeout(() => {
+        window.location.href = data.redirect || '/admin.html';
+      }, 1000);
+    } else {
+      errorEl.style.color = '#ff4444';
+      errorEl.textContent = data.error || 'Invalid password';
+    }
+  } catch (err) {
+    errorEl.style.color = '#ff4444';
+    errorEl.textContent = '❌ Connection error. Please try again.';
+  }
+}
+</script></body></html>
