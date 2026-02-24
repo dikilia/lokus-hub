@@ -68,6 +68,18 @@
       "keySystem": "keyless",
       "keyLinks": [],
       "features": []
+    },
+    {
+      "id": "tae1771945662368",
+      "name": "tae",
+      "description": "tae",
+      "code": "tae",
+      "blurred": false,
+      "redirectUrl": "",
+      "image": "https://d8iqbmvu05s9c.cloudfront.net/ajprhqgqg1otf7d5sm7u3brf27gv",
+      "keySystem": "keyless",
+      "keyLinks": [],
+      "features": []
     }
   ],
   "lastUpdated": "2026-02-24"
