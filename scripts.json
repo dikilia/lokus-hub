@@ -56,6 +56,18 @@
       "features": [
         "🧠 Brainrot"
       ]
+    },
+    {
+      "id": "test1771944555448",
+      "name": "test",
+      "description": "test",
+      "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/MM2-ScriptsZ/Lokus-Hub/refs/heads/main/pvp.lua\"))()",
+      "blurred": false,
+      "redirectUrl": "",
+      "image": "https://d8iqbmvu05s9c.cloudfront.net/ajprhqgqg1otf7d5sm7u3brf27gv",
+      "keySystem": "keyless",
+      "keyLinks": [],
+      "features": []
     }
   ],
   "lastUpdated": "2026-02-24"
