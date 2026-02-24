@@ -1,281 +1,59 @@
 <!DOCTYPE html>
 <html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin - Script Manager</title><style>
-*{box-sizing:border-box;margin:0}body{background:#0b0b0b;color:#eaeaea;font-family:'Courier New',monospace;padding:20px}.container{max-width:800px;margin:0 auto}h1{color:#00f2ea;border-left:4px solid #00f2ea;padding-left:15px;margin-bottom:30px}.admin-card{background:#111;border:1px solid #2a2a2a;border-radius:16px;padding:25px;margin-bottom:25px}h2{color:#00f2ea;margin-bottom:20px;font-size:1.3rem}label{display:block;margin:15px 0 5px;color:#aaa;font-size:.9rem}input,textarea{width:100%;padding:12px;background:#1a1a1a;border:1px solid #3a3a3a;color:#fff;border-radius:8px;font-family:'Courier New',monospace}textarea{min-height:120px}.checkbox-group{display:flex;align-items:center;gap:10px;margin:20px 0;padding:10px;background:#1a1a1a;border-radius:8px}.checkbox-group input{width:auto}.feature-tags{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0;padding:10px;background:#1a1a1a;border-radius:8px}.feature-tag{background:#1a2a2a;color:#9cfff8;padding:8px 16px;border-radius:30px;font-size:.8rem;border:1px solid #00f2ea40;cursor:pointer}.feature-tag.selected{background:#00f2ea;color:#000}.key-system-selector{background:#1a2a2a;border-radius:8px;padding:15px;margin:20px 0}.key-option{display:flex;align-items:center;gap:10px;margin:10px 0;padding:12px;background:#0f1a1f;border-radius:8px;cursor:pointer}.key-option.selected{background:#00f2ea20;border:1px solid #00f2ea}.key-option input[type="radio"]{width:auto;accent-color:#00f2ea}.key-badge{padding:4px 12px;border-radius:30px;font-size:.8rem;min-width:80px;text-align:center}.key-badge.keyless{background:#4a4a4a;color:#fff}.key-badge.key1{background:#00aa00;color:#fff}.key-badge.key2{background:#ffaa00;color:#000}.key-badge.key3{background:#ff4444;color:#fff}.linkvertise-config{background:#0f1a2a;border-radius:8px;padding:20px;margin:20px 0;border:1px solid #00f2ea40}.linkvertise-config h3{color:#00f2ea;margin-bottom:15px}.redirect-url-container{background:#1a2a2a;border-radius:8px;padding:20px;margin:20px 0;border:1px solid #00f2ea;display:none}button{background:#00f2ea;color:#000;border:0;padding:14px;border-radius:50px;font-weight:700;cursor:pointer;font-size:1rem;margin-top:10px;width:100%}button.delete{background:#ff4444;color:#fff}button.edit{background:#ffaa00;color:#000}.script-item{background:#1a1a1a;border-left:3px solid #00f2ea;padding:15px;margin:15px 0;border-radius:8px;display:flex;justify-content:space-between}.script-info h3{color:#00f2ea}.script-actions{display:flex;gap:10px}.script-actions button{width:auto;padding:8px 15px}.status-badge{padding:4px 12px;border-radius:30px;font-size:.7rem;background:#00f2ea20;color:#00f2ea;display:inline-block;margin-top:5px}.notification-badge{background:#5865F2;color:white;padding:2px 8px;border-radius:30px;font-size:.6rem;margin-left:5px}
-</style></head><body><div class="container"><h1>🔧 Script Manager Admin</h1>
-
-<!-- STATUS MESSAGE -->
-<div id="statusMessage" style="margin-bottom:20px;"></div>
-
-<!-- NOTIFICATION INDICATOR -->
-<div style="background:#1a2f3a;border-radius:8px;padding:10px;margin-bottom:20px;border-left:4px solid #5865F2;display:flex;align-items:center;gap:10px;">
-  <span style="background:#5865F2;color:white;padding:5px 10px;border-radius:30px;font-size:.7rem;">🔔 DISCORD</span>
-  <span style="color:#aaa;font-size:.8rem;">Notifications are sent server-side · Webhook URL hidden</span>
-</div>
-
-<div class="admin-card">
-  <h2 id="formTitle">📝 Add New Script</h2>
-  <input type="hidden" id="editingScriptId">
+*{box-sizing:border-box;margin:0}body{background:#0b0b0b;color:#eaeaea;font-family:'Courier New',monospace;padding:20px}.container{max-width:800px;margin:0 auto}h1{color:#00f2ea;border-left:4px solid #00f2ea;padding-left:15px;margin-bottom:30px}.logout-bar{display:flex;justify-content:space-between;align-items:center;background:#1a1a1a;padding:10px 20px;border-radius:50px;margin-bottom:20px}.logout-btn{background:#ff4444;color:white;border:none;padding:8px 20px;border-radius:50px;cursor:pointer}.admin-card{background:#111;border:1px solid #2a2a2a;border-radius:16px;padding:25px;margin-bottom:25px}h2{color:#00f2ea;margin-bottom:20px}input,textarea{width:100%;padding:12px;margin:10px 0;background:#1a1a1a;border:1px solid #3a3a3a;color:#fff;border-radius:8px}.checkbox-group{display:flex;align-items:center;gap:10px;margin:15px 0}.feature-tags{display:flex;flex-wrap:wrap;gap:10px;margin:15px 0}.feature-tag{background:#1a2a2a;color:#9cfff8;padding:8px 16px;border-radius:30px;cursor:pointer}.feature-tag.selected{background:#00f2ea;color:#000}.key-system-selector{background:#1a2a2a;border-radius:8px;padding:15px;margin:15px 0}.key-option{display:flex;align-items:center;gap:10px;margin:10px 0;padding:10px;background:#0f1a1f;border-radius:8px;cursor:pointer}.key-option.selected{background:#00f2ea20;border:1px solid #00f2ea}.key-badge{padding:4px 12px;border-radius:30px;font-size:.8rem}.key-badge.keyless{background:#4a4a4a;color:#fff}.key-badge.key1{background:#00aa00;color:#fff}.key-badge.key2{background:#ffaa00;color:#000}.key-badge.key3{background:#ff4444;color:#fff}.script-item{background:#1a1a1a;border-left:3px solid #00f2ea;padding:15px;margin:15px 0;border-radius:8px;display:flex;justify-content:space-between}button{background:#00f2ea;color:#000;border:0;padding:14px;border-radius:50px;cursor:pointer;width:100%}button.delete{background:#ff4444;color:#fff}button.edit{background:#ffaa00;color:#000}.status-badge{padding:4px 12px;border-radius:30px;background:#00f2ea20;color:#00f2ea;display:inline-block}
+</style></head><body>
+<div class="container">
+  <div class="logout-bar">
+    <span>🔒 Admin Panel</span>
+    <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+  </div>
   
-  <label>Script Name</label>
-  <input type="text" id="scriptName" placeholder="e.g., 🔪 NEW GAME">
-
-  <label>Loadstring Code</label>
-  <textarea id="scriptCode" placeholder='loadstring(game:HttpGet("URL"))()'></textarea>
-
-  <div class="checkbox-group">
-    <input type="checkbox" id="scriptBlurred" onchange="toggleRedirectUrlField()">
-    <label>🔒 Require verification (blurred)</label>
+  <div id="statusMessage" style="margin-bottom:20px;"></div>
+  
+  <!-- Admin content here - same as before -->
+  <div class="admin-card">
+    <h2 id="formTitle">📝 Add New Script</h2>
+    <input type="hidden" id="editingScriptId">
+    <label>Script Name</label>
+    <input type="text" id="scriptName" placeholder="e.g., 🔪 NEW GAME">
+    <label>Loadstring Code</label>
+    <textarea id="scriptCode" placeholder='loadstring(game:HttpGet("URL"))()'></textarea>
+    <!-- Rest of your admin form... -->
   </div>
-
-  <div id="redirectUrlContainer" class="redirect-url-container">
-    <h3>🔗 Redirect URL</h3>
-    <input type="url" id="scriptRedirectUrl" placeholder="https://openinapp.link/xxx">
-  </div>
-
-  <label>🔑 Key System</label>
-  <div class="key-system-selector">
-    <div class="key-option" onclick="selectKeySystem('keyless')" id="keyless-option">
-      <input type="radio" name="keySystem" value="keyless" checked><span class="key-badge keyless">🔓 KEYLESS</span>
-    </div>
-    <div class="key-option" onclick="selectKeySystem('key1')" id="key1-option">
-      <input type="radio" name="keySystem" value="key1"><span class="key-badge key1">🔑 1 KEY</span>
-    </div>
-    <div class="key-option" onclick="selectKeySystem('key2')" id="key2-option">
-      <input type="radio" name="keySystem" value="key2"><span class="key-badge key2">🔑🔑 2 KEYS</span>
-    </div>
-    <div class="key-option" onclick="selectKeySystem('key3')" id="key3-option">
-      <input type="radio" name="keySystem" value="key3"><span class="key-badge key3">🔑🔑🔑 3 KEYS</span>
-    </div>
-  </div>
-
-  <div id="linkvertiseLinks" style="display:none;">
-    <div class="linkvertise-config">
-      <h3>🔗 Linkvertise Links</h3>
-      <div id="linkvertiseFields"></div>
-    </div>
-  </div>
-
-  <label>Features</label>
-  <div class="feature-tags" id="featureTags">
-    <span class="feature-tag" data-feature="🎮 Bloxfruit">🎮 Bloxfruit</span>
-    <span class="feature-tag" data-feature="🧠 Brainrot">🧠 Brainrot</span>
-    <span class="feature-tag" data-feature="🌊 Tsunami">🌊 Tsunami</span>
-    <span class="feature-tag" data-feature="⚔️ Rivals">⚔️ Rivals</span>
-    <span class="feature-tag" data-feature="🔫 Arsenal">🔫 Arsenal</span>
-    <span class="feature-tag" data-feature="🐟 Fisch">🐟 Fisch</span>
-    <span class="feature-tag" data-feature="🐾 Adopt Me">🐾 Adopt Me</span>
-    <span class="feature-tag" data-feature="🌱 Garden">🌱 Garden</span>
-  </div>
-
-  <button onclick="saveScript()" id="saveButton">💾 Save & Auto-Commit</button>
-  <button onclick="cancelEdit()" style="background:#666;margin-top:5px;" id="cancelButton">✕ Cancel</button>
 </div>
-
-<div class="admin-card">
-  <h2>📋 Current Scripts</h2>
-  <div id="scriptsList">Loading...</div>
-</div></div>
 
 <script>
-// ==================== CONFIG ====================
-const ADMIN_PASSWORD = 'noobie123admin';
-const API_URL = '/api/commit';
+// ==================== AUTH CHECK ====================
+async function checkAuth() {
+  try {
+    const response = await fetch('/api/verify');
+    const data = await response.json();
+    if (!data.authenticated) {
+      window.location.href = '/login.html';
+    }
+  } catch {
+    window.location.href = '/login.html';
+  }
+}
 
+// ==================== LOGOUT ====================
+async function logout() {
+  await fetch('/api/logout', { method: 'POST' });
+  window.location.href = '/login.html';
+}
+
+// ==================== RUN AUTH CHECK ====================
+checkAuth();
+
+// ==================== REST OF YOUR ADMIN CODE ====================
+// (Copy all your existing admin JavaScript here)
 let selectedFeatures = [], currentScripts = [], selectedKeySystem = 'keyless';
 
-// ==================== UI FUNCTIONS ====================
 function showStatus(msg, isError) {
   let el = document.getElementById('statusMessage');
   el.innerHTML = `<div style="background:${isError?'#ff444420':'#00f2ea20'};border:1px solid ${isError?'#ff4444':'#00f2ea'};color:${isError?'#ff8888':'#00f2ea'};padding:10px;border-radius:8px;">${msg}</div>`;
   setTimeout(() => el.innerHTML = '', 5000);
 }
 
-function toggleRedirectUrlField() {
-  let c = document.getElementById('scriptBlurred').checked;
-  document.getElementById('redirectUrlContainer').style.display = c ? 'block' : 'none';
-}
-
-function selectKeySystem(v) {
-  selectedKeySystem = v;
-  document.querySelectorAll('.key-option').forEach(o => o.classList.remove('selected'));
-  document.getElementById(v+'-option').classList.add('selected');
-  document.querySelector(`input[name="keySystem"][value="${v}"]`).checked = true;
-  
-  let div = document.getElementById('linkvertiseLinks'), fields = document.getElementById('linkvertiseFields');
-  if (v !== 'keyless') {
-    div.style.display = 'block';
-    let html = '';
-    for (let i = 1; i <= parseInt(v.replace('key','')); i++) 
-      html += `<label>Key ${i} URL</label><input type="url" id="key${i}Link" placeholder="https://link-to.net/1446949/xxx">`;
-    fields.innerHTML = html;
-  } else div.style.display = 'none';
-}
-
-// ==================== FEATURE TAGS ====================
-document.querySelectorAll('.feature-tag').forEach(t => {
-  t.onclick = () => {
-    t.classList.toggle('selected');
-    let f = t.dataset.feature;
-    selectedFeatures.includes(f) ? 
-      selectedFeatures = selectedFeatures.filter(x => x !== f) : 
-      selectedFeatures.push(f);
-  };
-});
-
-// ==================== CANCEL EDIT ====================
-function cancelEdit() {
-  document.getElementById('scriptName').value = '';
-  document.getElementById('scriptCode').value = '';
-  document.getElementById('scriptBlurred').checked = false;
-  document.getElementById('scriptRedirectUrl').value = '';
-  document.getElementById('editingScriptId').value = '';
-  document.getElementById('redirectUrlContainer').style.display = 'none';
-  document.getElementById('formTitle').innerHTML = '📝 Add New Script';
-  document.getElementById('saveButton').innerHTML = '💾 Save & Auto-Commit';
-  selectedKeySystem = 'keyless';
-  document.querySelectorAll('.key-option').forEach(o => o.classList.remove('selected'));
-  document.getElementById('keyless-option').classList.add('selected');
-  document.querySelector('input[name="keySystem"][value="keyless"]').checked = true;
-  selectedFeatures = [];
-  document.querySelectorAll('.feature-tag').forEach(t => t.classList.remove('selected'));
-  document.getElementById('linkvertiseLinks').style.display = 'none';
-}
-
-// ==================== LOAD SCRIPTS ====================
-async function loadScripts() {
-  try {
-    let r = await fetch('scripts.json?t='+Date.now()), d = await r.json();
-    currentScripts = d.scripts || [];
-    let list = document.getElementById('scriptsList');
-    if (!currentScripts.length) { list.innerHTML = '<p>No scripts</p>'; return; }
-    list.innerHTML = currentScripts.map(s => {
-      let key = '';
-      if (s.keySystem === 'key1') key = '<span class="key-badge key1">🔑1</span>';
-      else if (s.keySystem === 'key2') key = '<span class="key-badge key2">🔑🔑2</span>';
-      else if (s.keySystem === 'key3') key = '<span class="key-badge key3">🔑🔑🔑3</span>';
-      return `<div class="script-item"><div><h3>${s.name}</h3><p>${s.code.substring(0,50)}...</p><div><span class="status-badge">${s.blurred?'🔒Blurred':'✅Public'}</span> ${key} ${s.redirectUrl?'🔗Redirect':''}</div></div><div class="script-actions"><button class="edit" onclick="editScript('${s.id}')">✏️</button><button class="delete" onclick="deleteScript('${s.id}')">🗑️</button></div></div>`;
-    }).join('');
-  } catch(e) { document.getElementById('scriptsList').innerHTML = '<p style="color:#ff4444;">Error loading scripts</p>'; }
-}
-
-// ==================== EDIT SCRIPT ====================
-function editScript(id) {
-  let s = currentScripts.find(x => x.id === id); if (!s) return;
-  document.getElementById('scriptName').value = s.name;
-  document.getElementById('scriptCode').value = s.code;
-  document.getElementById('scriptBlurred').checked = s.blurred || false;
-  document.getElementById('scriptRedirectUrl').value = s.redirectUrl || '';
-  document.getElementById('editingScriptId').value = s.id;
-  if (s.blurred) document.getElementById('redirectUrlContainer').style.display = 'block';
-  selectKeySystem(s.keySystem || 'keyless');
-  selectedFeatures = s.features || [];
-  document.querySelectorAll('.feature-tag').forEach(t => t.classList.toggle('selected', selectedFeatures.includes(t.dataset.feature)));
-  if (s.keyLinks) for (let i=1; i<=s.keyLinks.length; i++) {
-    let inp = document.getElementById(`key${i}Link`);
-    if (inp) inp.value = s.keyLinks[i-1];
-  }
-  document.getElementById('formTitle').innerHTML = '✏️ Edit Script';
-  document.getElementById('saveButton').innerHTML = '✏️ Update & Auto-Commit';
-}
-
-// ==================== GITHUB API via Serverless ====================
-async function commitToGitHub(scriptData, isEdit) {
-  let pwd = prompt('🔒 Enter admin password:');
-  if (pwd !== ADMIN_PASSWORD) { alert('Wrong password!'); return false; }
-  
-  try {
-    let fullData = {
-      siteTitle: "lokus hub scripts", visitorCount: 1842,
-      linkvertise: { userId: "1446949", callbackUrl: "https://linkvertise-callback-production.up.railway.app/callback" },
-      scripts: currentScripts,
-      lastUpdated: new Date().toISOString().split('T')[0]
-    };
-    
-    let r = await fetch(API_URL, {
-      method: 'POST',
-      headers: { 'Authorization': 'Bearer ' + ADMIN_PASSWORD, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        content: btoa(unescape(encodeURIComponent(JSON.stringify(fullData, null, 2)))),
-        message: isEdit ? `✏️ Updated: ${scriptData.name}` : `✨ Added: ${scriptData.name}`,
-        filename: 'scripts.json',
-        scriptData: scriptData,
-        isEdit: isEdit
-      })
-    });
-    
-    let res = await r.json();
-    if (!r.ok) throw new Error(res.error || 'Commit failed');
-    
-    showStatus(`✅ ${isEdit ? 'Updated' : 'Added'}! Vercel deploying...`);
-    return true;
-  } catch(e) { 
-    showStatus(`❌ Error: ${e.message}`, true); 
-    return false; 
-  }
-}
-
-// ==================== SAVE SCRIPT ====================
-async function saveScript() {
-  let name = document.getElementById('scriptName').value;
-  let code = document.getElementById('scriptCode').value;
-  let blurred = document.getElementById('scriptBlurred').checked;
-  let redirect = document.getElementById('scriptRedirectUrl').value;
-  let editId = document.getElementById('editingScriptId').value;
-  
-  if (!name || !code) { alert('Fill all fields'); return; }
-  if (blurred && !redirect) { alert('Redirect URL required for blurred scripts'); return; }
-  
-  let keyLinks = [];
-  if (selectedKeySystem !== 'keyless') {
-    for (let i=1; i<=parseInt(selectedKeySystem.replace('key','')); i++) {
-      let link = document.getElementById(`key${i}Link`)?.value;
-      if (!link) { alert(`Enter Key ${i} URL`); return; }
-      keyLinks.push(link);
-    }
-  }
-  
-  let scriptData = {
-    id: editId || name.toLowerCase().replace(/[^a-z0-9]/g,'') + Date.now(),
-    name, code, blurred, redirectUrl: redirect,
-    keySystem: selectedKeySystem, keyLinks, features: [...selectedFeatures]
-  };
-  
-  if (editId) {
-    let idx = currentScripts.findIndex(s => s.id === editId);
-    if (idx !== -1) currentScripts[idx] = scriptData;
-  } else currentScripts.push(scriptData);
-  
-  if (await commitToGitHub(scriptData, !!editId)) {
-    displayScripts();
-    cancelEdit();
-  }
-}
-
-// ==================== DELETE SCRIPT ====================
-async function deleteScript(id) {
-  let pwd = prompt('🔒 Enter admin password:');
-  if (pwd !== ADMIN_PASSWORD) { alert('Wrong password!'); return; }
-  if (!confirm('Delete this script?')) return;
-  
-  let script = currentScripts.find(s => s.id === id);
-  currentScripts = currentScripts.filter(s => s.id !== id);
-  
-  if (await commitToGitHub(script, false)) displayScripts();
-}
-
-// ==================== DISPLAY HELPER ====================
-function displayScripts() {
-  let list = document.getElementById('scriptsList');
-  if (!currentScripts.length) { list.innerHTML = '<p>No scripts</p>'; return; }
-  list.innerHTML = currentScripts.map(s => {
-    let key = '';
-    if (s.keySystem === 'key1') key = '<span class="key-badge key1">🔑1</span>';
-    else if (s.keySystem === 'key2') key = '<span class="key-badge key2">🔑🔑2</span>';
-    else if (s.keySystem === 'key3') key = '<span class="key-badge key3">🔑🔑🔑3</span>';
-    return `<div class="script-item"><div><h3>${s.name}</h3><p>${s.code.substring(0,50)}...</p><div><span class="status-badge">${s.blurred?'🔒Blurred':'✅Public'}</span> ${key} ${s.redirectUrl?'🔗Redirect':''}</div></div><div class="script-actions"><button class="edit" onclick="editScript('${s.id}')">✏️</button><button class="delete" onclick="deleteScript('${s.id}')">🗑️</button></div></div>`;
-  }).join('');
-}
-
-// ==================== INIT ====================
-loadScripts();
+// ... rest of your existing admin functions (loadScripts, saveScript, etc.)
 </script></body></html>
