@@ -44,7 +44,18 @@
       "keySystem": "keyless",
       "keyLinks": [],
       "features": []
+    },
+    {
+      "id": "pvpscript1771932825701",
+      "name": "PVP SCRIPT",
+      "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/MM2-ScriptsZ/Lokus-Hub/refs/heads/main/pvp.lua\"))()",
+      "blurred": true,
+      "keySystem": "keyless",
+      "keyLinks": [],
+      "features": [
+        "🧠 Brainrot"
+      ]
     }
   ],
-  "lastUpdated": "2026-02-22"
+  "lastUpdated": "2026-02-24"
 }
