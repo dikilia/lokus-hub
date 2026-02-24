@@ -1,37 +1,16 @@
 <!DOCTYPE html>
 <html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin - Script Manager</title><style>
-*{box-sizing:border-box;margin:0}body{background:#0b0b0b;color:#eaeaea;font-family:'Courier New',monospace;padding:20px}.container{max-width:800px;margin:0 auto}h1{color:#00f2ea;border-left:4px solid #00f2ea;padding-left:15px;margin-bottom:30px}.admin-card{background:#111;border:1px solid #2a2a2a;border-radius:16px;padding:25px;margin-bottom:25px}h2{color:#00f2ea;margin-bottom:20px;font-size:1.3rem}label{display:block;margin:15px 0 5px;color:#aaa;font-size:.9rem}input,textarea,select{width:100%;padding:12px;background:#1a1a1a;border:1px solid #3a3a3a;color:#fff;border-radius:8px;font-family:inherit}input:focus,textarea:focus,select:focus{border-color:#00f2ea;outline:0}textarea{min-height:100px;font-size:.8rem}.checkbox-group{display:flex;align-items:center;gap:10px;margin:15px 0}.checkbox-group input{width:auto}.feature-tags{display:flex;flex-wrap:wrap;gap:10px;margin:15px 0}.feature-tag{background:#1a2a2a;color:#9cfff8;padding:5px 12px;border-radius:30px;font-size:.8rem;border:1px solid #00f2ea40;cursor:pointer}.feature-tag.selected{background:#00f2ea;color:#000;border-color:#00f2ea}button{background:#00f2ea;color:#000;border:0;padding:14px 25px;border-radius:50px;font-weight:700;cursor:pointer;font-size:1rem;margin-top:10px;width:100%}button:hover{background:#00d4cc}button.delete{background:#ff4444;color:#fff}button.delete:hover{background:#cc0000}button.edit{background:#ffaa00;color:#000}button.edit:hover{background:#ff8800}.script-item{background:#1a1a1a;border-left:3px solid #00f2ea;padding:15px;margin:15px 0;border-radius:8px;display:flex;justify-content:space-between;align-items:center}.script-info h3{color:#00f2ea;margin-bottom:5px}.script-info p{color:#888;font-size:.8rem}.script-actions{display:flex;gap:10px}.script-actions button{width:auto;padding:8px 15px;margin:0;font-size:.8rem}.update-note{background:#1a2a3a;border:1px solid #00f2ea;border-radius:8px;padding:15px;margin:20px 0;color:#fff;font-size:.9rem;text-align:center}.update-note strong{color:#00f2ea}.key-system-selector{background:#1a2a2a;border-radius:8px;padding:15px;margin:15px 0}.key-option{display:flex;align-items:center;gap:10px;margin:10px 0;padding:10px;background:#0f1a1f;border-radius:8px;cursor:pointer}.key-option input[type="radio"]{width:auto;margin-right:10px}.key-option.selected{background:#00f2ea20;border:1px solid #00f2ea}.key-badge{padding:4px 12px;border-radius:30px;font-size:.8rem;font-weight:bold}.key-badge.keyless{background:#4a4a4a;color:#fff}.key-badge.key1{background:#00aa00;color:#fff}.key-badge.key2{background:#ffaa00;color:#000}.key-badge.key3{background:#ff4444;color:#fff}.linkvertise-config{background:#0f1a2a;border-radius:8px;padding:15px;margin:15px 0;border:1px solid #00f2ea40}.linkvertise-config h3{color:#00f2ea;font-size:1rem;margin-bottom:10px}.redirect-url-container{background:#1a2a2a;border-radius:8px;padding:15px;margin:15px 0;border:1px solid #00f2ea;display:none}.redirect-url-container h3{color:#00f2ea;font-size:1rem;margin-bottom:10px}.edit-mode{background:#ffaa0020;border:2px solid #ffaa00;padding:10px;border-radius:8px;margin-bottom:20px;text-align:center}.edit-mode span{color:#ffaa00;font-weight:bold}.warning{background:#ffaa0020;border:1px solid #ffaa00;color:#ffaa00;padding:10px;border-radius:8px;margin:10px 0;font-size:.9rem}.token-success{background:#00aa0020;border:1px solid #00aa00;color:#00aa00;padding:10px;border-radius:8px;margin:10px 0;font-size:.9rem}
+*{box-sizing:border-box;margin:0}body{background:#0b0b0b;color:#eaeaea;font-family:'Courier New',monospace;padding:20px}.container{max-width:800px;margin:0 auto}h1{color:#00f2ea;border-left:4px solid #00f2ea;padding-left:15px;margin-bottom:30px}.admin-card{background:#111;border:1px solid #2a2a2a;border-radius:16px;padding:25px;margin-bottom:25px}h2{color:#00f2ea;margin-bottom:20px;font-size:1.3rem}label{display:block;margin:15px 0 5px;color:#aaa;font-size:.9rem}input,textarea{width:100%;padding:12px;background:#1a1a1a;border:1px solid #3a3a3a;color:#fff;border-radius:8px;font-family:'Courier New',monospace}textarea{min-height:120px}.checkbox-group{display:flex;align-items:center;gap:10px;margin:20px 0;padding:10px;background:#1a1a1a;border-radius:8px}.checkbox-group input{width:auto}.feature-tags{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0;padding:10px;background:#1a1a1a;border-radius:8px}.feature-tag{background:#1a2a2a;color:#9cfff8;padding:8px 16px;border-radius:30px;font-size:.8rem;border:1px solid #00f2ea40;cursor:pointer}.feature-tag.selected{background:#00f2ea;color:#000}.key-system-selector{background:#1a2a2a;border-radius:8px;padding:15px;margin:20px 0}.key-option{display:flex;align-items:center;gap:10px;margin:10px 0;padding:12px;background:#0f1a1f;border-radius:8px;cursor:pointer}.key-option.selected{background:#00f2ea20;border:1px solid #00f2ea}.key-option input[type="radio"]{width:auto;accent-color:#00f2ea}.key-badge{padding:4px 12px;border-radius:30px;font-size:.8rem;min-width:80px;text-align:center}.key-badge.keyless{background:#4a4a4a;color:#fff}.key-badge.key1{background:#00aa00;color:#fff}.key-badge.key2{background:#ffaa00;color:#000}.key-badge.key3{background:#ff4444;color:#fff}.linkvertise-config{background:#0f1a2a;border-radius:8px;padding:20px;margin:20px 0;border:1px solid #00f2ea40}.linkvertise-config h3{color:#00f2ea;margin-bottom:15px}.redirect-url-container{background:#1a2a2a;border-radius:8px;padding:20px;margin:20px 0;border:1px solid #00f2ea;display:none}button{background:#00f2ea;color:#000;border:0;padding:14px;border-radius:50px;font-weight:700;cursor:pointer;font-size:1rem;margin-top:10px;width:100%}button.delete{background:#ff4444;color:#fff}button.edit{background:#ffaa00;color:#000}.script-item{background:#1a1a1a;border-left:3px solid #00f2ea;padding:15px;margin:15px 0;border-radius:8px;display:flex;justify-content:space-between}.script-info h3{color:#00f2ea}.script-actions{display:flex;gap:10px}.script-actions button{width:auto;padding:8px 15px}.status-badge{padding:4px 12px;border-radius:30px;font-size:.7rem;background:#00f2ea20;color:#00f2ea;display:inline-block;margin-top:5px}
 </style></head><body><div class="container"><h1>🔧 Script Manager Admin</h1>
 
-<!-- GITHUB TOKEN SETUP INSTRUCTION -->
-<div class="warning" id="tokenWarning">
-  <strong>⚠️ ACTION REQUIRED:</strong> Set your GitHub token below
-</div>
-
-<div id="tokenSuccess" class="token-success" style="display:none;">
-  <strong>✅ Token Valid!</strong> GitHub connection working
-</div>
-
-<!-- TOKEN SETUP CARD -->
-<div class="admin-card">
-  <h2>🔑 GitHub Token Setup</h2>
-  <p style="margin-bottom:10px;">1. Go to: <a href="https://github.com/settings/tokens" target="_blank" style="color:#00f2ea;">github.com/settings/tokens</a></p>
-  <p style="margin-bottom:10px;">2. Click "Generate new token (classic)"</p>
-  <p style="margin-bottom:10px;">3. Select scope: <strong style="color:#00f2ea;">repo</strong> (full control)</p>
-  <p style="margin-bottom:10px;">4. Copy the token (starts with <code>ghp_</code>)</p>
-  
-  <label>Paste your GitHub token here:</label>
-  <input type="password" id="githubTokenInput" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" style="margin-bottom:10px;">
-  <button onclick="saveToken()" style="background:#00f2ea;">💾 Save Token</button>
-  <button onclick="testToken()" style="background:#4a4a4a; margin-top:5px;">🔍 Test Token</button>
-</div>
+<!-- STATUS MESSAGE -->
+<div id="statusMessage" style="margin-bottom:20px;"></div>
 
 <div class="admin-card">
-  <h2>📝 <span id="formTitle">Add New Script</span></h2>
+  <h2 id="formTitle">📝 Add New Script</h2>
+  <input type="hidden" id="editingScriptId">
   
-  <input type="hidden" id="editingScriptId" value="">
-  
-  <label>Script Name (with emoji)</label>
+  <label>Script Name</label>
   <input type="text" id="scriptName" placeholder="e.g., 🔪 NEW GAME">
 
   <label>Loadstring Code</label>
@@ -43,34 +22,29 @@
   </div>
 
   <div id="redirectUrlContainer" class="redirect-url-container">
-    <h3>🔗 Redirect Settings</h3>
-    <label>Destination URL (after 5 seconds)</label>
+    <h3>🔗 Redirect URL</h3>
     <input type="url" id="scriptRedirectUrl" placeholder="https://openinapp.link/xxx">
   </div>
 
-  <label>🔑 Key System Type</label>
+  <label>🔑 Key System</label>
   <div class="key-system-selector">
     <div class="key-option" onclick="selectKeySystem('keyless')" id="keyless-option">
-      <input type="radio" name="keySystem" value="keyless" checked> 
-      <span class="key-badge keyless">🔓 KEYLESS</span>
+      <input type="radio" name="keySystem" value="keyless" checked><span class="key-badge keyless">🔓 KEYLESS</span>
     </div>
     <div class="key-option" onclick="selectKeySystem('key1')" id="key1-option">
-      <input type="radio" name="keySystem" value="key1"> 
-      <span class="key-badge key1">🔑 1 KEY</span>
+      <input type="radio" name="keySystem" value="key1"><span class="key-badge key1">🔑 1 KEY</span>
     </div>
     <div class="key-option" onclick="selectKeySystem('key2')" id="key2-option">
-      <input type="radio" name="keySystem" value="key2"> 
-      <span class="key-badge key2">🔑🔑 2 KEYS</span>
+      <input type="radio" name="keySystem" value="key2"><span class="key-badge key2">🔑🔑 2 KEYS</span>
     </div>
     <div class="key-option" onclick="selectKeySystem('key3')" id="key3-option">
-      <input type="radio" name="keySystem" value="key3"> 
-      <span class="key-badge key3">🔑🔑🔑 3 KEYS</span>
+      <input type="radio" name="keySystem" value="key3"><span class="key-badge key3">🔑🔑🔑 3 KEYS</span>
     </div>
   </div>
 
   <div id="linkvertiseLinks" style="display:none;">
     <div class="linkvertise-config">
-      <h3>🔗 Linkvertise Links (User ID: 1446949)</h3>
+      <h3>🔗 Linkvertise Links</h3>
       <div id="linkvertiseFields"></div>
     </div>
   </div>
@@ -87,128 +61,58 @@
     <span class="feature-tag" data-feature="🌱 Garden">🌱 Garden</span>
   </div>
 
-  <div style="display: flex; gap: 10px;">
-    <button onclick="saveScript()" style="flex: 2;" id="saveButton">💾 Save & Auto-Commit</button>
-    <button onclick="cancelEdit()" style="flex: 1; background: #666;" id="cancelButton">✕ Cancel</button>
-  </div>
+  <button onclick="saveScript()" id="saveButton">💾 Save & Auto-Commit</button>
+  <button onclick="cancelEdit()" style="background:#666;margin-top:5px;" id="cancelButton">✕ Cancel</button>
 </div>
 
 <div class="admin-card">
   <h2>📋 Current Scripts</h2>
-  <div id="scriptsList">
-    <p style="color:#666;">Loading scripts...</p>
-  </div>
+  <div id="scriptsList">Loading...</div>
 </div></div>
 
 <script>
-// ==================== GITHUB CONFIGURATION ====================
-let GITHUB_TOKEN = localStorage.getItem('github_token') || '';
-const REPO_OWNER = 'dikilia';
-const REPO_NAME = 'lokus-hub';
-const FILE_PATH = 'scripts.json';
+// ==================== CONFIG ====================
+const ADMIN_PASSWORD = 'noobie123admin';
+const API_URL = '/api/commit';
+let selectedFeatures = [], currentScripts = [], selectedKeySystem = 'keyless';
 
-// ==================== SAVE TOKEN ====================
-function saveToken() {
-    const token = document.getElementById('githubTokenInput').value.trim();
-    if (!token || !token.startsWith('ghp_')) {
-        alert('❌ Invalid token format. Token should start with "ghp_"');
-        return;
-    }
-    GITHUB_TOKEN = token;
-    localStorage.setItem('github_token', token);
-    document.getElementById('tokenWarning').style.display = 'none';
-    testToken();
+// ==================== UI FUNCTIONS ====================
+function showStatus(msg, isError) {
+  let el = document.getElementById('statusMessage');
+  el.innerHTML = `<div style="background:${isError?'#ff444420':'#00f2ea20'};border:1px solid ${isError?'#ff4444':'#00f2ea'};color:${isError?'#ff8888':'#00f2ea'};padding:10px;border-radius:8px;">${msg}</div>`;
+  setTimeout(() => el.innerHTML = '', 5000);
 }
 
-// ==================== TEST TOKEN ====================
-async function testToken() {
-    if (!GITHUB_TOKEN) {
-        alert('Please enter your GitHub token first');
-        return false;
-    }
-    
-    try {
-        const response = await fetch('https://api.github.com/user', {
-            headers: { 'Authorization': `Bearer ${GITHUB_TOKEN}` }
-        });
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error ${response.status}`);
-        }
-        
-        const data = await response.json();
-        console.log('✅ Token works! User:', data.login);
-        document.getElementById('tokenSuccess').style.display = 'block';
-        document.getElementById('tokenWarning').style.display = 'none';
-        alert(`✅ Token valid! Logged in as: ${data.login}`);
-        return true;
-        
-    } catch (error) {
-        console.error('❌ Token error:', error);
-        document.getElementById('tokenSuccess').style.display = 'none';
-        document.getElementById('tokenWarning').style.display = 'block';
-        alert('❌ Token invalid! Make sure you have "repo" scope selected.');
-        return false;
-    }
-}
-
-// ==================== ANTI-DEBUG ====================
-document.addEventListener('contextmenu', e => e.preventDefault());
-document.addEventListener('keydown', e => {
-  if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || 
-      (e.ctrlKey && e.shiftKey && e.key === 'J') || (e.ctrlKey && e.key === 'U')) {
-    e.preventDefault();
-  }
-});
-
-// ==================== STATE ====================
-let selectedFeatures = [];
-let currentScripts = [];
-let selectedKeySystem = 'keyless';
-const LINKVERTISE_USER_ID = '1446949';
-const CALLBACK_URL = 'https://linkvertise-callback-production.up.railway.app/callback';
-
-// ==================== TOGGLE REDIRECT FIELD ====================
 function toggleRedirectUrlField() {
-  const blurred = document.getElementById('scriptBlurred').checked;
-  document.getElementById('redirectUrlContainer').style.display = blurred ? 'block' : 'none';
-  if (!blurred) document.getElementById('scriptRedirectUrl').value = '';
+  let c = document.getElementById('scriptBlurred').checked;
+  document.getElementById('redirectUrlContainer').style.display = c ? 'block' : 'none';
 }
 
-// ==================== KEY SYSTEM ====================
-function selectKeySystem(value) {
-  selectedKeySystem = value;
-  document.querySelectorAll('.key-option').forEach(opt => opt.classList.remove('selected'));
-  document.getElementById(value + '-option').classList.add('selected');
-  document.querySelector(`input[name="keySystem"][value="${value}"]`).checked = true;
+function selectKeySystem(v) {
+  selectedKeySystem = v;
+  document.querySelectorAll('.key-option').forEach(o => o.classList.remove('selected'));
+  document.getElementById(v+'-option').classList.add('selected');
+  document.querySelector(`input[name="keySystem"][value="${v}"]`).checked = true;
   
-  const linkvertiseDiv = document.getElementById('linkvertiseLinks');
-  const fieldsDiv = document.getElementById('linkvertiseFields');
-  
-  if (value !== 'keyless') {
-    linkvertiseDiv.style.display = 'block';
-    const numKeys = parseInt(value.replace('key', ''));
+  let div = document.getElementById('linkvertiseLinks'), fields = document.getElementById('linkvertiseFields');
+  if (v !== 'keyless') {
+    div.style.display = 'block';
     let html = '';
-    for (let i = 1; i <= numKeys; i++) {
-      html += `<label>Key ${i} Linkvertise URL</label><input type="url" id="key${i}Link" placeholder="https://link-to.net/1446949/123456/dynamic">`;
-    }
-    fieldsDiv.innerHTML = html;
-  } else {
-    linkvertiseDiv.style.display = 'none';
-  }
+    for (let i = 1; i <= parseInt(v.replace('key','')); i++) 
+      html += `<label>Key ${i} URL</label><input type="url" id="key${i}Link" placeholder="https://link-to.net/1446949/xxx">`;
+    fields.innerHTML = html;
+  } else div.style.display = 'none';
 }
 
 // ==================== FEATURE TAGS ====================
-document.querySelectorAll('.feature-tag').forEach(tag => {
-  tag.addEventListener('click', function() {
-    this.classList.toggle('selected');
-    const feature = this.dataset.feature;
-    if (selectedFeatures.includes(feature)) {
-      selectedFeatures = selectedFeatures.filter(f => f !== feature);
-    } else {
-      selectedFeatures.push(feature);
-    }
-  });
+document.querySelectorAll('.feature-tag').forEach(t => {
+  t.onclick = () => {
+    t.classList.toggle('selected');
+    let f = t.dataset.feature;
+    selectedFeatures.includes(f) ? 
+      selectedFeatures = selectedFeatures.filter(x => x !== f) : 
+      selectedFeatures.push(f);
+  };
 });
 
 // ==================== CANCEL EDIT ====================
@@ -219,15 +123,12 @@ function cancelEdit() {
   document.getElementById('scriptRedirectUrl').value = '';
   document.getElementById('editingScriptId').value = '';
   document.getElementById('redirectUrlContainer').style.display = 'none';
-  document.getElementById('formTitle').textContent = 'Add New Script';
-  document.getElementById('saveButton').textContent = '💾 Save & Auto-Commit';
-  document.getElementById('editModeIndicator').style.display = 'none';
-  
+  document.getElementById('formTitle').innerHTML = '📝 Add New Script';
+  document.getElementById('saveButton').innerHTML = '💾 Save & Auto-Commit';
   selectedKeySystem = 'keyless';
-  document.querySelectorAll('.key-option').forEach(opt => opt.classList.remove('selected'));
+  document.querySelectorAll('.key-option').forEach(o => o.classList.remove('selected'));
   document.getElementById('keyless-option').classList.add('selected');
   document.querySelector('input[name="keySystem"][value="keyless"]').checked = true;
-  
   selectedFeatures = [];
   document.querySelectorAll('.feature-tag').forEach(t => t.classList.remove('selected'));
   document.getElementById('linkvertiseLinks').style.display = 'none';
@@ -236,266 +137,132 @@ function cancelEdit() {
 // ==================== LOAD SCRIPTS ====================
 async function loadScripts() {
   try {
-    const response = await fetch('scripts.json?t=' + Date.now());
-    const data = await response.json();
-    currentScripts = data.scripts || [];
-    displayScripts();
-  } catch (error) {
-    console.error('Failed to load scripts:', error);
-    document.getElementById('scriptsList').innerHTML = '<p style="color: #ff4444;">❌ No scripts.json found</p>';
-  }
-}
-
-// ==================== DISPLAY SCRIPTS ====================
-function displayScripts() {
-  const list = document.getElementById('scriptsList');
-  if (currentScripts.length === 0) {
-    list.innerHTML = '<p style="color: #666;">No scripts yet</p>';
-    return;
-  }
-  
-  list.innerHTML = currentScripts.map(script => {
-    let keyDisplay = '';
-    if (script.keySystem === 'keyless') keyDisplay = '<span class="key-badge keyless">🔓 KEYLESS</span>';
-    else if (script.keySystem === 'key1') keyDisplay = '<span class="key-badge key1">🔑 1 KEY</span>';
-    else if (script.keySystem === 'key2') keyDisplay = '<span class="key-badge key2">🔑🔑 2 KEYS</span>';
-    else if (script.keySystem === 'key3') keyDisplay = '<span class="key-badge key3">🔑🔑🔑 3 KEYS</span>';
-    
-    return `
-    <div class="script-item">
-      <div class="script-info">
-        <h3>${script.name}</h3>
-        <p>${script.code.substring(0, 50)}...</p>
-        <p style="display:flex; gap:5px; flex-wrap:wrap;">
-          ${script.blurred ? '🔒 Requires verification' : '✅ Public'} | 
-          Features: ${script.features?.length || 0} |
-          ${keyDisplay}
-          ${script.redirectUrl ? ' | 🔗 Has redirect' : ''}
-        </p>
-      </div>
-      <div class="script-actions">
-        <button onclick="editScript('${script.id}')" class="edit">✏️</button>
-        <button onclick="deleteScript('${script.id}')" class="delete">🗑️</button>
-      </div>
-    </div>
-  `}).join('');
+    let r = await fetch('scripts.json?t='+Date.now()), d = await r.json();
+    currentScripts = d.scripts || [];
+    let list = document.getElementById('scriptsList');
+    if (!currentScripts.length) { list.innerHTML = '<p>No scripts</p>'; return; }
+    list.innerHTML = currentScripts.map(s => {
+      let key = '';
+      if (s.keySystem === 'key1') key = '<span class="key-badge key1">🔑1</span>';
+      else if (s.keySystem === 'key2') key = '<span class="key-badge key2">🔑🔑2</span>';
+      else if (s.keySystem === 'key3') key = '<span class="key-badge key3">🔑🔑🔑3</span>';
+      return `<div class="script-item"><div><h3>${s.name}</h3><p>${s.code.substring(0,50)}...</p><div><span class="status-badge">${s.blurred?'🔒Blurred':'✅Public'}</span> ${key} ${s.redirectUrl?'🔗Redirect':''}</div></div><div class="script-actions"><button class="edit" onclick="editScript('${s.id}')">✏️</button><button class="delete" onclick="deleteScript('${s.id}')">🗑️</button></div></div>`;
+    }).join('');
+  } catch(e) { document.getElementById('scriptsList').innerHTML = '<p style="color:#ff4444;">Error loading scripts</p>'; }
 }
 
 // ==================== EDIT SCRIPT ====================
 function editScript(id) {
-  const script = currentScripts.find(s => s.id === id);
-  if (!script) return;
-  
-  document.getElementById('scriptName').value = script.name;
-  document.getElementById('scriptCode').value = script.code;
-  document.getElementById('scriptBlurred').checked = script.blurred || false;
-  document.getElementById('scriptRedirectUrl').value = script.redirectUrl || '';
-  document.getElementById('editingScriptId').value = script.id;
-  
-  if (script.blurred) document.getElementById('redirectUrlContainer').style.display = 'block';
-  
-  selectKeySystem(script.keySystem || 'keyless');
-  
-  selectedFeatures = script.features || [];
-  document.querySelectorAll('.feature-tag').forEach(tag => {
-    tag.classList.toggle('selected', selectedFeatures.includes(tag.dataset.feature));
-  });
-  
-  if (script.keyLinks && script.keyLinks.length > 0) {
-    for (let i = 1; i <= script.keyLinks.length; i++) {
-      const input = document.getElementById(`key${i}Link`);
-      if (input) input.value = script.keyLinks[i-1];
-    }
+  let s = currentScripts.find(x => x.id === id); if (!s) return;
+  document.getElementById('scriptName').value = s.name;
+  document.getElementById('scriptCode').value = s.code;
+  document.getElementById('scriptBlurred').checked = s.blurred || false;
+  document.getElementById('scriptRedirectUrl').value = s.redirectUrl || '';
+  document.getElementById('editingScriptId').value = s.id;
+  if (s.blurred) document.getElementById('redirectUrlContainer').style.display = 'block';
+  selectKeySystem(s.keySystem || 'keyless');
+  selectedFeatures = s.features || [];
+  document.querySelectorAll('.feature-tag').forEach(t => t.classList.toggle('selected', selectedFeatures.includes(t.dataset.feature)));
+  if (s.keyLinks) for (let i=1; i<=s.keyLinks.length; i++) {
+    let inp = document.getElementById(`key${i}Link`);
+    if (inp) inp.value = s.keyLinks[i-1];
   }
-  
-  document.getElementById('formTitle').textContent = 'Edit Script';
-  document.getElementById('saveButton').textContent = '✏️ Update & Auto-Commit';
-  document.getElementById('editModeIndicator').style.display = 'block';
-  
-  document.querySelector('.admin-card').scrollIntoView({ behavior: 'smooth' });
+  document.getElementById('formTitle').innerHTML = '✏️ Edit Script';
+  document.getElementById('saveButton').innerHTML = '✏️ Update & Auto-Commit';
 }
 
-// ==================== GITHUB API FUNCTIONS ====================
-async function getCurrentFileSha() {
+// ==================== GITHUB API via Serverless ====================
+async function commitToGitHub(scriptData, isEdit) {
+  let pwd = prompt('🔒 Enter admin password:');
+  if (pwd !== ADMIN_PASSWORD) { alert('Wrong password!'); return false; }
+  
   try {
-    const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`, {
-      headers: {
-        'Authorization': `Bearer ${GITHUB_TOKEN}`,
-        'Accept': 'application/vnd.github+json'
-      }
+    let fullData = {
+      siteTitle: "lokus hub scripts", visitorCount: 1842,
+      linkvertise: { userId: "1446949", callbackUrl: "https://linkvertise-callback-production.up.railway.app/callback" },
+      scripts: currentScripts,
+      lastUpdated: new Date().toISOString().split('T')[0]
+    };
+    
+    let r = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + ADMIN_PASSWORD, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        content: btoa(unescape(encodeURIComponent(JSON.stringify(fullData, null, 2)))),
+        message: isEdit ? `✏️ Updated: ${scriptData.name}` : `✨ Added: ${scriptData.name}`,
+        filename: 'scripts.json'
+      })
     });
     
-    if (!response.ok) {
-      if (response.status === 404) return null;
-      throw new Error(`Error getting SHA: ${response.statusText}`);
-    }
-    
-    const data = await response.json();
-    return data.sha;
-  } catch (error) {
-    console.error('SHA fetch error:', error);
-    return null;
-  }
-}
-
-async function autoCommitToGitHub(scriptData, isEdit = false) {
-    if (!GITHUB_TOKEN) {
-        alert('❌ Please enter your GitHub token in the setup card first!');
-        return false;
-    }
-    
-    try {
-        // Test token first
-        const tokenTest = await fetch('https://api.github.com/user', {
-            headers: { 'Authorization': `Bearer ${GITHUB_TOKEN}` }
-        });
-        
-        if (!tokenTest.ok) {
-            throw new Error('Token invalid or missing "repo" scope');
-        }
-        
-        const currentSha = await getCurrentFileSha();
-        
-        const fullData = {
-            siteTitle: "lokus hub scripts",
-            visitorCount: 1842,
-            linkvertise: {
-                userId: LINKVERTISE_USER_ID,
-                callbackUrl: CALLBACK_URL
-            },
-            scripts: currentScripts,
-            lastUpdated: new Date().toISOString().split('T')[0]
-        };
-        
-        const contentStr = JSON.stringify(fullData, null, 2);
-        const encodedContent = btoa(unescape(encodeURIComponent(contentStr)));
-        
-        const requestBody = {
-            message: isEdit ? `✏️ Updated script: ${scriptData.name}` : `✨ Added new script: ${scriptData.name}`,
-            content: encodedContent,
-            sha: currentSha
-        };
-        
-        const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`, {
-            method: 'PUT',
-            headers: {
-                'Authorization': `Bearer ${GITHUB_TOKEN}`,
-                'Accept': 'application/vnd.github+json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(requestBody)
-        });
-        
-        if (!response.ok) {
-            const errorData = await response.json();
-            if (response.status === 401 || response.status === 403) {
-                throw new Error('Token lacks "repo" scope - please regenerate with repo selected');
-            } else if (response.status === 404) {
-                throw new Error('Repository not found - check REPO_OWNER and REPO_NAME');
-            } else {
-                throw new Error(`GitHub API error: ${errorData.message}`);
-            }
-        }
-        
-        const result = await response.json();
-        console.log('✅ GitHub update successful:', result.commit.html_url);
-        alert(`✅ Script ${isEdit ? 'updated' : 'added'} successfully!\n\nVercel will auto-deploy in 1-2 minutes.`);
-        return true;
-        
-    } catch (error) {
-        console.error('❌ GitHub commit error:', error);
-        alert(`❌ Failed to commit: ${error.message}\n\nMake sure your token has 'repo' scope.`);
-        return false;
-    }
+    let res = await r.json();
+    if (!r.ok) throw new Error(res.error || 'Commit failed');
+    showStatus(`✅ ${isEdit ? 'Updated' : 'Added'}! Vercel deploying...`);
+    return true;
+  } catch(e) { showStatus(`❌ Error: ${e.message}`, true); return false; }
 }
 
 // ==================== SAVE SCRIPT ====================
-function saveScript() {
-  const name = document.getElementById('scriptName').value;
-  const code = document.getElementById('scriptCode').value;
-  const blurred = document.getElementById('scriptBlurred').checked;
-  const redirectUrl = document.getElementById('scriptRedirectUrl').value;
-  const editingId = document.getElementById('editingScriptId').value;
+async function saveScript() {
+  let name = document.getElementById('scriptName').value;
+  let code = document.getElementById('scriptCode').value;
+  let blurred = document.getElementById('scriptBlurred').checked;
+  let redirect = document.getElementById('scriptRedirectUrl').value;
+  let editId = document.getElementById('editingScriptId').value;
   
-  if (!name || !code) {
-    alert('Please fill in all fields');
-    return;
-  }
-  
-  if (blurred && !redirectUrl) {
-    alert('Please enter a redirect URL for blurred scripts');
-    return;
-  }
+  if (!name || !code) { alert('Fill all fields'); return; }
+  if (blurred && !redirect) { alert('Redirect URL required for blurred scripts'); return; }
   
   let keyLinks = [];
   if (selectedKeySystem !== 'keyless') {
-    const numKeys = parseInt(selectedKeySystem.replace('key', ''));
-    for (let i = 1; i <= numKeys; i++) {
-      const link = document.getElementById(`key${i}Link`)?.value;
-      if (!link) {
-        alert(`Please enter Key ${i} Linkvertise URL`);
-        return;
-      }
+    for (let i=1; i<=parseInt(selectedKeySystem.replace('key','')); i++) {
+      let link = document.getElementById(`key${i}Link`)?.value;
+      if (!link) { alert(`Enter Key ${i} URL`); return; }
       keyLinks.push(link);
     }
   }
   
-  const scriptData = {
-    id: editingId || name.toLowerCase().replace(/[^a-z0-9]/g, '') + Date.now(),
-    name: name,
-    code: code,
-    blurred: blurred,
-    redirectUrl: redirectUrl,
-    keySystem: selectedKeySystem,
-    keyLinks: keyLinks,
-    features: [...selectedFeatures]
+  let scriptData = {
+    id: editId || name.toLowerCase().replace(/[^a-z0-9]/g,'') + Date.now(),
+    name, code, blurred, redirectUrl: redirect,
+    keySystem: selectedKeySystem, keyLinks, features: [...selectedFeatures]
   };
   
-  if (editingId) {
-    const index = currentScripts.findIndex(s => s.id === editingId);
-    if (index !== -1) {
-      currentScripts[index] = scriptData;
-      autoCommitToGitHub(scriptData, true).then(success => {
-        if (success) {
-          displayScripts();
-          cancelEdit();
-        }
-      });
-    }
-  } else {
-    currentScripts.push(scriptData);
-    autoCommitToGitHub(scriptData, false).then(success => {
-      if (success) {
-        displayScripts();
-        cancelEdit();
-      }
-    });
+  if (editId) {
+    let idx = currentScripts.findIndex(s => s.id === editId);
+    if (idx !== -1) currentScripts[idx] = scriptData;
+  } else currentScripts.push(scriptData);
+  
+  if (await commitToGitHub(scriptData, !!editId)) {
+    displayScripts();
+    cancelEdit();
   }
 }
 
 // ==================== DELETE SCRIPT ====================
 async function deleteScript(id) {
-  let password = prompt('Enter admin password to delete:');
-  if (password !== 'noobie123admin') {
-    alert('Invalid password!');
-    return;
-  }
-  
+  let pwd = prompt('🔒 Enter admin password:');
+  if (pwd !== ADMIN_PASSWORD) { alert('Wrong password!'); return; }
   if (!confirm('Delete this script?')) return;
   
-  const scriptToDelete = currentScripts.find(s => s.id === id);
-  currentScripts = currentScripts.filter(script => script.id !== id);
+  let script = currentScripts.find(s => s.id === id);
+  currentScripts = currentScripts.filter(s => s.id !== id);
   
-  await autoCommitToGitHub(scriptToDelete, false);
-  displayScripts();
+  if (await commitToGitHub(script, false)) displayScripts();
 }
 
-// ==================== LOAD ON START ====================
+// ==================== DISPLAY HELPER ====================
+function displayScripts() {
+  let list = document.getElementById('scriptsList');
+  if (!currentScripts.length) { list.innerHTML = '<p>No scripts</p>'; return; }
+  list.innerHTML = currentScripts.map(s => {
+    let key = '';
+    if (s.keySystem === 'key1') key = '<span class="key-badge key1">🔑1</span>';
+    else if (s.keySystem === 'key2') key = '<span class="key-badge key2">🔑🔑2</span>';
+    else if (s.keySystem === 'key3') key = '<span class="key-badge key3">🔑🔑🔑3</span>';
+    return `<div class="script-item"><div><h3>${s.name}</h3><p>${s.code.substring(0,50)}...</p><div><span class="status-badge">${s.blurred?'🔒Blurred':'✅Public'}</span> ${key} ${s.redirectUrl?'🔗Redirect':''}</div></div><div class="script-actions"><button class="edit" onclick="editScript('${s.id}')">✏️</button><button class="delete" onclick="deleteScript('${s.id}')">🗑️</button></div></div>`;
+  }).join('');
+}
+
+// ==================== INIT ====================
 loadScripts();
-
-// Check if token exists on load
-if (GITHUB_TOKEN) {
-    document.getElementById('githubTokenInput').value = GITHUB_TOKEN;
-    testToken();
-}
 </script></body></html>
