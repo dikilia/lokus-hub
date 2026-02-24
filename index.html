@@ -70,7 +70,7 @@
 <!-- COPY TOAST NOTIFICATION -->
 <div class="toast" id="copyToast">📋 Script copied!</div>
 
-<!-- REDIRECT MODAL FOR BLOXLINK (REPLACES shorturl.at) -->
+<!-- BLOXLINK REDIRECT MODAL (FOR UNIVERSAL SCRIPT) -->
 <div class="modal-overlay" id="redirectModal" onclick="closeRedirectModalIfOverlay(event)">
   <div class="modal-content">
     <div class="modal-icon">⏳</div>
@@ -81,6 +81,20 @@
       <div class="timer-progress" id="redirectTimerProgress" style="width:100%"></div>
     </div>
     <div class="modal-close" onclick="closeRedirectModal()">✕ cancel</div>
+  </div>
+</div>
+
+<!-- CUSTOM REDIRECT MODAL FOR OTHER BLURRED SCRIPTS (USES URL FROM ADMIN) -->
+<div class="modal-overlay" id="customRedirectModal" onclick="closeCustomRedirectModalIfOverlay(event)">
+  <div class="modal-content">
+    <div class="modal-icon">⏳</div>
+    <div class="modal-title">Verification Required</div>
+    <div class="modal-text" id="customRedirectModalText">Please wait 5 seconds to continue...</div>
+    <div class="redirect-timer" id="customRedirectTimerText">5 seconds</div>
+    <div class="timer-bar">
+      <div class="timer-progress" id="customRedirectTimerProgress" style="width:100%"></div>
+    </div>
+    <div class="modal-close" onclick="closeCustomRedirectModal()">✕ cancel</div>
   </div>
 </div>
 
@@ -124,14 +138,13 @@ localStorage.setItem('dailyVisits', dailyVisits);
 document.getElementById('visitorCount').textContent = dailyVisits;
 document.getElementById('totalVisits').textContent = totalVisits;
 
-// ==================== REDIRECT MODAL FOR BLOXLINK (FIXED) ====================
+// ==================== BLOXLINK REDIRECT (FOR UNIVERSAL SCRIPT) ====================
 let redirectTimer = null;
 const redirectModal = document.getElementById('redirectModal');
 const redirectTimerText = document.getElementById('redirectTimerText');
 const redirectTimerProgress = document.getElementById('redirectTimerProgress');
 
 function showRedirectToBloxlink() {
-  // Show the modal
   redirectModal.classList.add('active');
   redirectTimerProgress.style.width = '100%';
   
@@ -145,7 +158,6 @@ function showRedirectToBloxlink() {
     
     if (timeLeft <= 0) {
       clearInterval(interval);
-      // REDIRECT TO BLOXLINK.HTML INSTEAD OF BROKEN SHORTURL
       window.location.href = '/lokus-hub/bloxlink.html';
       closeRedirectModal();
     }
@@ -165,6 +177,48 @@ function closeRedirectModal() {
 function closeRedirectModalIfOverlay(e) {
   if (e.target === redirectModal) {
     closeRedirectModal();
+  }
+}
+
+// ==================== CUSTOM REDIRECT FOR OTHER BLURRED SCRIPTS ====================
+let customRedirectTimer = null;
+const customRedirectModal = document.getElementById('customRedirectModal');
+const customRedirectTimerText = document.getElementById('customRedirectTimerText');
+const customRedirectTimerProgress = document.getElementById('customRedirectTimerProgress');
+
+function showCustomRedirect(redirectUrl) {
+  customRedirectModal.classList.add('active');
+  customRedirectTimerProgress.style.width = '100%';
+  
+  let timeLeft = 5;
+  customRedirectTimerText.textContent = timeLeft + ' seconds';
+  
+  const interval = setInterval(() => {
+    timeLeft--;
+    customRedirectTimerText.textContent = timeLeft + ' seconds';
+    customRedirectTimerProgress.style.width = (timeLeft / 5) * 100 + '%';
+    
+    if (timeLeft <= 0) {
+      clearInterval(interval);
+      window.location.href = redirectUrl; // Uses the URL from admin panel
+      closeCustomRedirectModal();
+    }
+  }, 1000);
+  
+  customRedirectTimer = interval;
+}
+
+function closeCustomRedirectModal() {
+  customRedirectModal.classList.remove('active');
+  if (customRedirectTimer) {
+    clearInterval(customRedirectTimer);
+    customRedirectTimer = null;
+  }
+}
+
+function closeCustomRedirectModalIfOverlay(e) {
+  if (e.target === customRedirectModal) {
+    closeCustomRedirectModal();
   }
 }
 
@@ -263,11 +317,16 @@ async function loadScriptsFromJSON() {
       if (script.blurred) {
         card.onclick = (e) => {
           if (!e.target.classList.contains('copy-btn')) {
-            // For universal script, show redirect modal to bloxlink.html
-            if (script.id === 'universal' || script.id.includes('universal') || script.name.includes('UNIVERSAL')) {
-              showRedirectToBloxlink(); // This now redirects to bloxlink.html after 5 seconds
+            // UNIVERSAL SCRIPT - special case (goes to bloxlink.html)
+            if (script.id === 'universal' || script.name.includes('UNIVERSAL')) {
+              showRedirectToBloxlink();
+            } 
+            // OTHER BLURRED SCRIPTS - use the redirectUrl from admin panel
+            else if (script.redirectUrl) {
+              showCustomRedirect(script.redirectUrl); // Uses OpeninApp or any link set in admin
             } else {
-              showVerificationModal();
+              // Fallback if no redirect URL (shouldn't happen with admin validation)
+              alert('This script needs a redirect URL configured in admin panel');
             }
           }
         };
@@ -288,7 +347,6 @@ async function loadScriptsFromJSON() {
       
       const escapedCode = script.code.replace(/</g, '&lt;').replace(/>/g, '&gt;');
       
-      // No key button for universal since it's keyless but blurred
       let keyButton = '';
       if (script.keySystem !== 'keyless' && script.keySystem !== undefined) {
         const scriptCompleted = completedKeys[script.id] || [];
