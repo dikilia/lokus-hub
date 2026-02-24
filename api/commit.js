@@ -49,7 +49,7 @@ export default async function handler(req, res) {
     const data = await putRes.json();
     if (!putRes.ok) throw new Error(data.message);
     
-    // Send Discord notification (NO REDIRECT URL INCLUDED)
+    // Send Discord notification ONLY if scriptData is provided (add/edit, not delete)
     let discordResult = null;
     if (process.env.DISCORD_WEBHOOK_URL && process.env.WEBHOOK_ENABLED === 'true' && scriptData) {
       try {
@@ -71,8 +71,6 @@ export default async function handler(req, res) {
         if (scriptData.image) {
           embed.thumbnail = { url: scriptData.image };
         }
-        
-        // NO REDIRECT URL FIELD ADDED HERE - PUBLIC CAN'T SEE IT
         
         const discordRes = await fetch(process.env.DISCORD_WEBHOOK_URL, {
           method: 'POST',
