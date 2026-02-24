@@ -50,6 +50,7 @@
       "name": "PVP SCRIPT",
       "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/MM2-ScriptsZ/Lokus-Hub/refs/heads/main/pvp.lua\"))()",
       "blurred": true,
+      "redirectUrl": "https://openinapp.link/jvj3l",
       "keySystem": "keyless",
       "keyLinks": [],
       "features": [
