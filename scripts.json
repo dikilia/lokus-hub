@@ -56,18 +56,6 @@
       "features": [
         "🧠 Brainrot"
       ]
-    },
-    {
-      "id": "type1771945031952",
-      "name": "type",
-      "description": "Ⓣⓨⓟⓔ ⓢⓞⓜⓔⓣⓗⓘⓝⓖ ⓣⓞ ⓢⓣⓐⓡⓣ",
-      "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/MM2-ScriptsZ/Lokus-Hub/refs/heads/main/pvp.lua\"))()",
-      "blurred": true,
-      "redirectUrl": "https://openinapp.link/jvj3l",
-      "image": null,
-      "keySystem": "keyless",
-      "keyLinks": [],
-      "features": []
     }
   ],
   "lastUpdated": "2026-02-24"
