@@ -17,10 +17,10 @@
     },
     {
       "id": "universal",
-      "name": "⚙️ UNIVERSAL [KEYS REQUIRED]",
+      "name": "⚙️ UNIVERSAL [Connect Your Discord And Roblox]",
       "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/MM2-ScriptsZ/Lokus-Hub/refs/heads/main/legit.lua\"))()",
       "blurred": true,
-      "keySystem": "key2",
+      "keySystem": "keyless",
       "keyLinks": [
         "https://link-to.net/1446949/123456/dynamic",
         "https://link-to.net/1446949/123457/dynamic"
