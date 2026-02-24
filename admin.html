@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin - Script Manager</title><style>
-*{box-sizing:border-box;margin:0}body{background:#0b0b0b;color:#eaeaea;font-family:'Courier New',monospace;padding:20px}.container{max-width:800px;margin:0 auto}h1{color:#00f2ea;border-left:4px solid #00f2ea;padding-left:15px;margin-bottom:30px}.logout-bar{display:flex;justify-content:space-between;align-items:center;background:#1a1a1a;padding:10px 20px;border-radius:50px;margin-bottom:20px;border:1px solid #00f2ea40}.logout-btn{background:#ff4444;color:white;border:none;padding:8px 20px;border-radius:50px;cursor:pointer;font-weight:bold;width:auto}.logout-btn:hover{background:#cc0000}.admin-card{background:#111;border:1px solid #2a2a2a;border-radius:16px;padding:25px;margin-bottom:25px;box-shadow:0 8px 0 #050505}h2{color:#00f2ea;margin-bottom:20px;font-size:1.3rem;border-bottom:1px dashed #2e2e2e;padding-bottom:8px}label{display:block;margin:15px 0 5px;color:#aaa;font-size:.9rem;text-transform:uppercase;letter-spacing:1px}input,textarea{width:100%;padding:12px;background:#1a1a1a;border:1px solid #3a3a3a;color:#fff;border-radius:8px;font-family:'Courier New',monospace;font-size:.9rem}input:focus,textarea:focus{border-color:#00f2ea;outline:none;box-shadow:0 0 10px #00f2ea66}textarea{min-height:120px;resize:vertical}.checkbox-group{display:flex;align-items:center;gap:10px;margin:20px 0;padding:10px;background:#1a1a1a;border-radius:8px}.checkbox-group input{width:auto;accent-color:#00f2ea}.feature-tags{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0;padding:10px;background:#1a1a1a;border-radius:8px}.feature-tag{background:#1a2a2a;color:#9cfff8;padding:8px 16px;border-radius:30px;font-size:.8rem;border:1px solid #00f2ea40;cursor:pointer;transition:all .2s}.feature-tag:hover{transform:translateY(-2px);border-color:#00f2ea}.feature-tag.selected{background:#00f2ea;color:#000;border-color:#00f2ea;box-shadow:0 0 15px #00f2ea}.key-system-selector{background:#1a2a2a;border-radius:8px;padding:15px;margin:20px 0}.key-option{display:flex;align-items:center;gap:10px;margin:10px 0;padding:12px;background:#0f1a1f;border-radius:8px;cursor:pointer;transition:all .2s;border:1px solid transparent}.key-option:hover{background:#1a2f3a}.key-option.selected{background:#00f2ea20;border:1px solid #00f2ea}.key-option input[type="radio"]{width:auto;accent-color:#00f2ea}.key-badge{padding:4px 12px;border-radius:30px;font-size:.8rem;min-width:80px;text-align:center}.key-badge.keyless{background:#4a4a4a;color:#fff}.key-badge.key1{background:#00aa00;color:#fff}.key-badge.key2{background:#ffaa00;color:#000}.key-badge.key3{background:#ff4444;color:#fff}.linkvertise-config{background:#0f1a2a;border-radius:8px;padding:20px;margin:20px 0;border:1px solid #00f2ea40}.linkvertise-config h3{color:#00f2ea;margin-bottom:15px}.redirect-url-container{background:#1a2a2a;border-radius:8px;padding:20px;margin:20px 0;border:1px solid #00f2ea;display:none}button{background:#00f2ea;color:#000;border:0;padding:14px 25px;border-radius:50px;font-weight:700;cursor:pointer;font-size:1rem;margin-top:10px;width:100%;transition:all .2s;border:1px solid #4afff0}button:hover{background:#00d4cc;transform:scale(1.02);box-shadow:0 0 20px #00f2ea}button.delete{background:#ff4444;color:#fff;border:1px solid #ff8888;width:auto;padding:8px 15px}button.delete:hover{background:#cc0000}button.edit{background:#ffaa00;color:#000;border:1px solid #ffcc00;width:auto;padding:8px 15px}button.edit:hover{background:#ff8800}.script-item{background:#1a1a1a;border-left:3px solid #00f2ea;padding:15px;margin:15px 0;border-radius:8px;display:flex;justify-content:space-between;align-items:center}.script-info h3{color:#00f2ea;margin-bottom:8px;font-size:1.1rem}.script-info p{color:#888;font-size:.8rem;line-height:1.5}.script-actions{display:flex;gap:10px}.status-badge{padding:4px 12px;border-radius:30px;font-size:.7rem;background:#00f2ea20;color:#00f2ea;display:inline-block;margin-top:5px}.status-message{padding:10px;border-radius:8px;margin-bottom:20px;text-align:center}.edit-mode{background:#ffaa0020;border:2px solid #ffaa00;padding:10px;border-radius:8px;margin-bottom:20px;text-align:center}.edit-mode span{color:#ffaa00;font-weight:bold}
+*{box-sizing:border-box;margin:0}body{background:#0b0b0b;color:#eaeaea;font-family:'Courier New',monospace;padding:20px}.container{max-width:800px;margin:0 auto}h1{color:#00f2ea;border-left:4px solid #00f2ea;padding-left:15px;margin-bottom:30px}.logout-bar{display:flex;justify-content:space-between;align-items:center;background:#1a1a1a;padding:10px 20px;border-radius:50px;margin-bottom:20px;border:1px solid #00f2ea40}.logout-btn{background:#ff4444;color:white;border:none;padding:8px 20px;border-radius:50px;cursor:pointer;font-weight:bold;width:auto}.logout-btn:hover{background:#cc0000}.admin-card{background:#111;border:1px solid #2a2a2a;border-radius:16px;padding:25px;margin-bottom:25px;box-shadow:0 8px 0 #050505}h2{color:#00f2ea;margin-bottom:20px;font-size:1.3rem;border-bottom:1px dashed #2e2e2e;padding-bottom:8px}label{display:block;margin:15px 0 5px;color:#aaa;font-size:.9rem;text-transform:uppercase;letter-spacing:1px}input,textarea{width:100%;padding:12px;background:#1a1a1a;border:1px solid #3a3a3a;color:#fff;border-radius:8px;font-family:'Courier New',monospace;font-size:.9rem}input:focus,textarea:focus{border-color:#00f2ea;outline:none;box-shadow:0 0 10px #00f2ea66}textarea{min-height:120px;resize:vertical}.checkbox-group{display:flex;align-items:center;gap:10px;margin:20px 0;padding:10px;background:#1a1a1a;border-radius:8px}.checkbox-group input{width:auto;accent-color:#00f2ea}.feature-tags{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0;padding:10px;background:#1a1a1a;border-radius:8px}.feature-tag{background:#1a2a2a;color:#9cfff8;padding:8px 16px;border-radius:30px;font-size:.8rem;border:1px solid #00f2ea40;cursor:pointer;transition:all .2s}.feature-tag:hover{transform:translateY(-2px);border-color:#00f2ea}.feature-tag.selected{background:#00f2ea;color:#000;border-color:#00f2ea;box-shadow:0 0 15px #00f2ea}.key-system-selector{background:#1a2a2a;border-radius:8px;padding:15px;margin:20px 0}.key-option{display:flex;align-items:center;gap:10px;margin:10px 0;padding:12px;background:#0f1a1f;border-radius:8px;cursor:pointer;transition:all .2s;border:1px solid transparent}.key-option:hover{background:#1a2f3a}.key-option.selected{background:#00f2ea20;border:1px solid #00f2ea}.key-option input[type="radio"]{width:auto;accent-color:#00f2ea}.key-badge{padding:4px 12px;border-radius:30px;font-size:.8rem;min-width:80px;text-align:center}.key-badge.keyless{background:#4a4a4a;color:#fff}.key-badge.key1{background:#00aa00;color:#fff}.key-badge.key2{background:#ffaa00;color:#000}.key-badge.key3{background:#ff4444;color:#fff}.linkvertise-config{background:#0f1a2a;border-radius:8px;padding:20px;margin:20px 0;border:1px solid #00f2ea40}.linkvertise-config h3{color:#00f2ea;margin-bottom:15px}.redirect-url-container{background:#1a2a2a;border-radius:8px;padding:20px;margin:20px 0;border:1px solid #ff4444;display:none}.redirect-url-container h3{color:#ff4444;margin-bottom:15px}.redirect-url-container label{color:#ff8888}.image-upload-container{background:#1a2a2a;border-radius:8px;padding:20px;margin:20px 0;border:1px solid #00f2ea}.image-upload-container h3{color:#00f2ea;margin-bottom:15px}.image-preview{width:100px;height:100px;border-radius:8px;background:#1a1a1a;border:2px dashed #00f2ea40;display:flex;align-items:center;justify-content:center;margin-bottom:15px;overflow:hidden}.image-preview img{width:100%;height:100%;object-fit:cover}.image-preview span{color:#666;font-size:.8rem}.image-types{display:flex;gap:10px;margin:10px 0;flex-wrap:wrap}.image-type-btn{background:#1a2a2a;color:#9cfff8;padding:5px 10px;border-radius:20px;font-size:.7rem;border:1px solid #00f2ea40;cursor:pointer}.image-type-btn.selected{background:#00f2ea;color:#000}.image-url-input{display:flex;gap:10px;margin-top:10px}.image-url-input input{flex:1}.image-url-input button{width:auto;margin:0;padding:12px 20px}button{background:#00f2ea;color:#000;border:0;padding:14px 25px;border-radius:50px;font-weight:700;cursor:pointer;font-size:1rem;margin-top:10px;width:100%;transition:all .2s;border:1px solid #4afff0}button:hover{background:#00d4cc;transform:scale(1.02);box-shadow:0 0 20px #00f2ea}button.delete{background:#ff4444;color:#fff;border:1px solid #ff8888;width:auto;padding:8px 15px}button.delete:hover{background:#cc0000}button.edit{background:#ffaa00;color:#000;border:1px solid #ffcc00;width:auto;padding:8px 15px}button.edit:hover{background:#ff8800}.script-item{background:#1a1a1a;border-left:3px solid #00f2ea;padding:15px;margin:15px 0;border-radius:8px;display:flex;justify-content:space-between;align-items:center}.script-info{flex:1}.script-info h3{color:#00f2ea;margin-bottom:5px;font-size:1.1rem;display:flex;align-items:center;gap:10px}.script-thumb{width:30px;height:30px;border-radius:6px;object-fit:cover}.script-info p{color:#888;font-size:.8rem;line-height:1.5;margin:5px 0}.script-meta{display:flex;gap:15px;margin-top:8px;flex-wrap:wrap}.script-actions{display:flex;gap:10px}.status-badge{padding:4px 12px;border-radius:30px;font-size:.7rem;background:#00f2ea20;color:#00f2ea;display:inline-block}.admin-badge{background:#ff4444;color:white;padding:2px 8px;border-radius:30px;font-size:.6rem;margin-left:5px}.status-message{padding:10px;border-radius:8px;margin-bottom:20px;text-align:center}.edit-mode{background:#ffaa0020;border:2px solid #ffaa00;padding:10px;border-radius:8px;margin-bottom:20px;text-align:center}.edit-mode span{color:#ffaa00;font-weight:bold}
 </style></head><body>
 <div class="container">
   <div class="logout-bar">
@@ -24,18 +24,54 @@
     <label>Script Name</label>
     <input type="text" id="scriptName" placeholder="e.g., 🔪 NEW GAME">
 
+    <label>Script Description (optional)</label>
+    <textarea id="scriptDescription" placeholder="Describe what this script does..."></textarea>
+
+    <!-- IMAGE UPLOAD SECTION -->
+    <div class="image-upload-container">
+      <h3>🖼️ Script Image (optional)</h3>
+      
+      <div class="image-preview" id="imagePreview">
+        <span>No image</span>
+      </div>
+      
+      <div class="image-types">
+        <span class="image-type-btn" onclick="selectImageType('url')" id="type-url">🔗 URL</span>
+        <span class="image-type-btn" onclick="selectImageType('emoji')" id="type-emoji">😊 Emoji</span>
+        <span class="image-type-btn" onclick="selectImageType('upload')" id="type-upload">📁 Upload</span>
+      </div>
+      
+      <div id="imageUrlInput" class="image-url-input" style="display:none;">
+        <input type="url" id="imageUrl" placeholder="https://example.com/image.png">
+        <button onclick="previewImage()" style="background:#4a4a4a; width:auto;">Preview</button>
+      </div>
+      
+      <div id="emojiInput" style="display:none;">
+        <input type="text" id="emojiValue" placeholder="e.g., 🔪, 🎮, 🔥" maxlength="2">
+      </div>
+      
+      <div id="uploadInput" style="display:none;">
+        <input type="file" id="imageFile" accept="image/png,image/jpeg,image/webp,image/gif" onchange="handleImageUpload()">
+        <p style="color:#aaa; font-size:0.7rem; margin-top:5px;">Max size: 5MB · PNG, JPG, WEBP, GIF</p>
+      </div>
+      
+      <input type="hidden" id="imageData" value="">
+    </div>
+
     <label>Loadstring Code</label>
     <textarea id="scriptCode" placeholder='loadstring(game:HttpGet("URL"))()'></textarea>
 
-    <div class="checkbox-group">
-      <input type="checkbox" id="scriptBlurred" onchange="toggleRedirectUrlField()">
-      <label>🔒 Require verification (blurred)</label>
+    <!-- ADMIN-ONLY REDIRECT URL (HIDDEN FROM PUBLIC) -->
+    <div class="redirect-url-container">
+      <h3>🔒 ADMIN ONLY - Redirect URL</h3>
+      <label>This will NEVER show in public or Discord</label>
+      <input type="url" id="scriptRedirectUrl" placeholder="https://openinapp.link/xxx">
+      <p style="color:#ff8888; font-size:0.8rem; margin-top:8px;">⏱️ 5-second timer then redirect here (admin only)</p>
     </div>
 
-    <div id="redirectUrlContainer" class="redirect-url-container">
-      <h3>🔗 Redirect URL</h3>
-      <input type="url" id="scriptRedirectUrl" placeholder="https://openinapp.link/xxx">
-      <p style="color:#aaa; font-size:0.8rem; margin-top:8px;">⏱️ 5-second timer then redirect here</p>
+    <div class="checkbox-group">
+      <input type="checkbox" id="scriptBlurred" onchange="toggleRedirectUrlField()">
+      <label>🔒 Require verification (blurred) - Uses redirect URL above</label>
     </div>
 
     <label>🔑 Key System Type</label>
@@ -110,6 +146,45 @@ const ADMIN_PASSWORD = 'noobie123admin';
 const API_URL = '/api/commit';
 
 let selectedFeatures = [], currentScripts = [], selectedKeySystem = 'keyless';
+let selectedImageType = 'url';
+
+// ==================== IMAGE FUNCTIONS ====================
+function selectImageType(type) {
+  selectedImageType = type;
+  document.querySelectorAll('.image-type-btn').forEach(btn => btn.classList.remove('selected'));
+  document.getElementById(`type-${type}`).classList.add('selected');
+  
+  document.getElementById('imageUrlInput').style.display = type === 'url' ? 'flex' : 'none';
+  document.getElementById('emojiInput').style.display = type === 'emoji' ? 'block' : 'none';
+  document.getElementById('uploadInput').style.display = type === 'upload' ? 'block' : 'none';
+}
+
+function previewImage() {
+  let url = document.getElementById('imageUrl').value;
+  if (!url) return;
+  
+  let preview = document.getElementById('imagePreview');
+  preview.innerHTML = `<img src="${url}" onerror="this.src='';this.parentElement.innerHTML='<span>Invalid image</span>'">`;
+  document.getElementById('imageData').value = url;
+}
+
+function handleImageUpload() {
+  let file = document.getElementById('imageFile').files[0];
+  if (!file) return;
+  
+  if (file.size > 5 * 1024 * 1024) {
+    alert('File too large! Max 5MB');
+    return;
+  }
+  
+  let reader = new FileReader();
+  reader.onload = function(e) {
+    let preview = document.getElementById('imagePreview');
+    preview.innerHTML = `<img src="${e.target.result}">`;
+    document.getElementById('imageData').value = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
 
 // ==================== UI FUNCTIONS ====================
 function showStatus(msg, isError) {
@@ -120,7 +195,7 @@ function showStatus(msg, isError) {
 
 function toggleRedirectUrlField() {
   let c = document.getElementById('scriptBlurred').checked;
-  document.getElementById('redirectUrlContainer').style.display = c ? 'block' : 'none';
+  // Redirect URL container is always visible (admin only), no need to toggle
 }
 
 function selectKeySystem(v) {
@@ -153,14 +228,16 @@ document.querySelectorAll('.feature-tag').forEach(t => {
 // ==================== CANCEL EDIT ====================
 function cancelEdit() {
   document.getElementById('scriptName').value = '';
+  document.getElementById('scriptDescription').value = '';
   document.getElementById('scriptCode').value = '';
   document.getElementById('scriptBlurred').checked = false;
   document.getElementById('scriptRedirectUrl').value = '';
   document.getElementById('editingScriptId').value = '';
-  document.getElementById('redirectUrlContainer').style.display = 'none';
   document.getElementById('formTitle').innerHTML = '📝 Add New Script';
   document.getElementById('saveButton').innerHTML = '💾 Save & Auto-Commit';
   document.getElementById('editModeIndicator').style.display = 'none';
+  document.getElementById('imagePreview').innerHTML = '<span>No image</span>';
+  document.getElementById('imageData').value = '';
   
   selectedKeySystem = 'keyless';
   document.querySelectorAll('.key-option').forEach(o => o.classList.remove('selected'));
@@ -183,7 +260,28 @@ async function loadScripts() {
       if (s.keySystem === 'key1') key = '<span class="key-badge key1">🔑1</span>';
       else if (s.keySystem === 'key2') key = '<span class="key-badge key2">🔑🔑2</span>';
       else if (s.keySystem === 'key3') key = '<span class="key-badge key3">🔑🔑🔑3</span>';
-      return `<div class="script-item"><div><h3>${s.name}</h3><p>${s.code.substring(0,50)}...</p><div><span class="status-badge">${s.blurred?'🔒Blurred':'✅Public'}</span> ${key} ${s.redirectUrl?'🔗Redirect':''}</div></div><div class="script-actions"><button class="edit" onclick="editScript('${s.id}')">✏️</button><button class="delete" onclick="deleteScript('${s.id}')">🗑️</button></div></div>`;
+      
+      let thumbnail = s.image ? 
+        `<img src="${s.image}" class="script-thumb" onerror="this.style.display='none'">` : 
+        '';
+      
+      let redirectBadge = s.redirectUrl ? '<span class="admin-badge">🔒ADMIN</span>' : '';
+      
+      return `<div class="script-item">
+        <div class="script-info">
+          <h3>${thumbnail} ${s.name} ${redirectBadge}</h3>
+          ${s.description ? `<p>📝 ${s.description}</p>` : ''}
+          <p>${s.code.substring(0,50)}...</p>
+          <div class="script-meta">
+            <span class="status-badge">${s.blurred?'🔒Blurred':'✅Public'}</span>
+            ${key}
+          </div>
+        </div>
+        <div class="script-actions">
+          <button class="edit" onclick="editScript('${s.id}')">✏️</button>
+          <button class="delete" onclick="deleteScript('${s.id}')">🗑️</button>
+        </div>
+      </div>`;
     }).join('');
   } catch(e) { 
     document.getElementById('scriptsList').innerHTML = '<p style="color:#ff4444;">Error loading scripts</p>';
@@ -194,11 +292,18 @@ async function loadScripts() {
 function editScript(id) {
   let s = currentScripts.find(x => x.id === id); if (!s) return;
   document.getElementById('scriptName').value = s.name;
+  document.getElementById('scriptDescription').value = s.description || '';
   document.getElementById('scriptCode').value = s.code;
   document.getElementById('scriptBlurred').checked = s.blurred || false;
   document.getElementById('scriptRedirectUrl').value = s.redirectUrl || '';
   document.getElementById('editingScriptId').value = s.id;
-  if (s.blurred) document.getElementById('redirectUrlContainer').style.display = 'block';
+  
+  if (s.image) {
+    let preview = document.getElementById('imagePreview');
+    preview.innerHTML = `<img src="${s.image}">`;
+    document.getElementById('imageData').value = s.image;
+  }
+  
   selectKeySystem(s.keySystem || 'keyless');
   selectedFeatures = s.features || [];
   document.querySelectorAll('.feature-tag').forEach(t => t.classList.toggle('selected', selectedFeatures.includes(t.dataset.feature)));
@@ -254,10 +359,12 @@ async function commitToGitHub(scriptData, isEdit) {
 // ==================== SAVE SCRIPT ====================
 async function saveScript() {
   let name = document.getElementById('scriptName').value;
+  let description = document.getElementById('scriptDescription').value;
   let code = document.getElementById('scriptCode').value;
   let blurred = document.getElementById('scriptBlurred').checked;
   let redirect = document.getElementById('scriptRedirectUrl').value;
   let editId = document.getElementById('editingScriptId').value;
+  let image = document.getElementById('imageData').value;
   
   if (!name || !code) { alert('Fill all fields'); return; }
   if (blurred && !redirect) { alert('Redirect URL required for blurred scripts'); return; }
@@ -273,7 +380,8 @@ async function saveScript() {
   
   let scriptData = {
     id: editId || name.toLowerCase().replace(/[^a-z0-9]/g,'') + Date.now(),
-    name, code, blurred, redirectUrl: redirect,
+    name, description, code, blurred, redirectUrl: redirect,
+    image: image || null,
     keySystem: selectedKeySystem, keyLinks, features: [...selectedFeatures]
   };
   
@@ -307,7 +415,28 @@ function displayScripts() {
     if (s.keySystem === 'key1') key = '<span class="key-badge key1">🔑1</span>';
     else if (s.keySystem === 'key2') key = '<span class="key-badge key2">🔑🔑2</span>';
     else if (s.keySystem === 'key3') key = '<span class="key-badge key3">🔑🔑🔑3</span>';
-    return `<div class="script-item"><div><h3>${s.name}</h3><p>${s.code.substring(0,50)}...</p><div><span class="status-badge">${s.blurred?'🔒Blurred':'✅Public'}</span> ${key} ${s.redirectUrl?'🔗Redirect':''}</div></div><div class="script-actions"><button class="edit" onclick="editScript('${s.id}')">✏️</button><button class="delete" onclick="deleteScript('${s.id}')">🗑️</button></div></div>`;
+    
+    let thumbnail = s.image ? 
+      `<img src="${s.image}" class="script-thumb" onerror="this.style.display='none'">` : 
+      '';
+    
+    let redirectBadge = s.redirectUrl ? '<span class="admin-badge">🔒ADMIN</span>' : '';
+    
+    return `<div class="script-item">
+      <div class="script-info">
+        <h3>${thumbnail} ${s.name} ${redirectBadge}</h3>
+        ${s.description ? `<p>📝 ${s.description}</p>` : ''}
+        <p>${s.code.substring(0,50)}...</p>
+        <div class="script-meta">
+          <span class="status-badge">${s.blurred?'🔒Blurred':'✅Public'}</span>
+          ${key}
+        </div>
+      </div>
+      <div class="script-actions">
+        <button class="edit" onclick="editScript('${s.id}')">✏️</button>
+        <button class="delete" onclick="deleteScript('${s.id}')">🗑️</button>
+      </div>
+    </div>`;
   }).join('');
 }
 
