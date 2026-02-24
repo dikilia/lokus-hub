@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin - Script Manager</title><style>
-*{box-sizing:border-box;margin:0}body{background:#0b0b0b;color:#eaeaea;font-family:'Courier New',monospace;padding:20px}.container{max-width:800px;margin:0 auto}h1{color:#00f2ea;border-left:4px solid #00f2ea;padding-left:15px;margin-bottom:30px}.logout-bar{display:flex;justify-content:space-between;align-items:center;background:#1a1a1a;padding:10px 20px;border-radius:50px;margin-bottom:20px;border:1px solid #00f2ea40}.logout-btn{background:#ff4444;color:white;border:none;padding:8px 20px;border-radius:50px;cursor:pointer;font-weight:bold;width:auto}.logout-btn:hover{background:#cc0000}.admin-card{background:#111;border:1px solid #2a2a2a;border-radius:16px;padding:25px;margin-bottom:25px;box-shadow:0 8px 0 #050505}h2{color:#00f2ea;margin-bottom:20px;font-size:1.3rem;border-bottom:1px dashed #2e2e2e;padding-bottom:8px}label{display:block;margin:15px 0 5px;color:#aaa;font-size:.9rem;text-transform:uppercase;letter-spacing:1px}input,textarea{width:100%;padding:12px;background:#1a1a1a;border:1px solid #3a3a3a;color:#fff;border-radius:8px;font-family:'Courier New',monospace;font-size:.9rem}input:focus,textarea:focus{border-color:#00f2ea;outline:none;box-shadow:0 0 10px #00f2ea66}textarea{min-height:120px;resize:vertical}.checkbox-group{display:flex;align-items:center;gap:10px;margin:20px 0;padding:10px;background:#1a1a1a;border-radius:8px}.checkbox-group input{width:auto;accent-color:#00f2ea}.feature-tags{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0;padding:10px;background:#1a1a1a;border-radius:8px}.feature-tag{background:#1a2a2a;color:#9cfff8;padding:8px 16px;border-radius:30px;font-size:.8rem;border:1px solid #00f2ea40;cursor:pointer;transition:all .2s}.feature-tag:hover{transform:translateY(-2px);border-color:#00f2ea}.feature-tag.selected{background:#00f2ea;color:#000;border-color:#00f2ea;box-shadow:0 0 15px #00f2ea}.key-system-selector{background:#1a2a2a;border-radius:8px;padding:15px;margin:20px 0}.key-option{display:flex;align-items:center;gap:10px;margin:10px 0;padding:12px;background:#0f1a1f;border-radius:8px;cursor:pointer;transition:all .2s;border:1px solid transparent}.key-option:hover{background:#1a2f3a}.key-option.selected{background:#00f2ea20;border:1px solid #00f2ea}.key-option input[type="radio"]{width:auto;accent-color:#00f2ea}.key-badge{padding:4px 12px;border-radius:30px;font-size:.8rem;min-width:80px;text-align:center}.key-badge.keyless{background:#4a4a4a;color:#fff}.key-badge.key1{background:#00aa00;color:#fff}.key-badge.key2{background:#ffaa00;color:#000}.key-badge.key3{background:#ff4444;color:#fff}.linkvertise-config{background:#0f1a2a;border-radius:8px;padding:20px;margin:20px 0;border:1px solid #00f2ea40}.linkvertise-config h3{color:#00f2ea;margin-bottom:15px}.redirect-url-container{background:#1a2a2a;border-radius:8px;padding:20px;margin:10px 0 20px;border:1px solid #ff4444;display:none}.redirect-url-container h3{color:#ff4444;margin-bottom:15px}.redirect-url-container label{color:#ff8888}.image-upload-container{background:#1a2a2a;border-radius:16px;padding:25px;margin:20px 0;border:2px solid #00f2ea;box-shadow:0 0 30px #00f2ea33}.image-upload-container h3{color:#00f2ea;margin-bottom:20px;font-size:1.2rem}.image-preview-large{width:100%;max-width:400px;height:auto;min-height:200px;background:#0f1a1f;border:3px dashed #00f2ea;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;overflow:hidden;cursor:pointer;transition:all .3s}.image-preview-large:hover{border-color:#4afff0;box-shadow:0 0 30px #00f2ea}.image-preview-large img{width:100%;height:auto;max-height:300px;object-fit:contain;border-radius:12px}.image-preview-large span{color:#888;font-size:1rem;text-align:center;padding:30px}.image-types-large{display:flex;gap:15px;margin:20px 0;flex-wrap:wrap;justify-content:center}.image-type-btn-large{background:#1a2a2a;color:#9cfff8;padding:12px 24px;border-radius:40px;font-size:.9rem;font-weight:bold;border:2px solid #00f2ea40;cursor:pointer;transition:all .3s;min-width:120px;text-align:center}.image-type-btn-large:hover{background:#2a3a3a;transform:translateY(-2px)}.image-type-btn-large.selected{background:#00f2ea;color:#000;border-color:#00f2ea;box-shadow:0 0 20px #00f2ea}.image-url-input-large{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}.image-url-input-large input{flex:2;min-width:200px;padding:15px;font-size:1rem}.image-url-input-large button{width:auto;margin:0;padding:15px 30px;background:#00f2ea;font-weight:bold}.emoji-grid-large{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:20px 0;max-height:250px;overflow-y:auto;padding:15px;background:#0f1a1f;border-radius:16px;border:1px solid #00f2ea40}.emoji-item-large{font-size:2.5rem;padding:15px;text-align:center;cursor:pointer;border-radius:12px;background:#1a2a2a;transition:all .2s}.emoji-item-large:hover{background:#00f2ea;transform:scale(1.1);box-shadow:0 0 20px #00f2ea}.upload-area-large{background:#0f1a1f;border:2px dashed #00f2ea;border-radius:16px;padding:40px;text-align:center;margin:20px 0;cursor:pointer}.upload-area-large:hover{background:#1a2f3a;border-color:#4afff0}.upload-area-large input[type="file"]{display:none}.upload-icon{font-size:3rem;color:#00f2ea;margin-bottom:15px}.upload-text{color:#aaa;font-size:1rem}.upload-text strong{color:#00f2ea}button{background:#00f2ea;color:#000;border:0;padding:14px 25px;border-radius:50px;font-weight:700;cursor:pointer;font-size:1rem;margin-top:10px;width:100%;transition:all .2s;border:1px solid #4afff0}button:hover{background:#00d4cc;transform:scale(1.02);box-shadow:0 0 20px #00f2ea}button.delete{background:#ff4444;color:#fff;border:1px solid #ff8888;width:auto;padding:8px 15px}button.delete:hover{background:#cc0000}button.edit{background:#ffaa00;color:#000;border:1px solid #ffcc00;width:auto;padding:8px 15px}button.edit:hover{background:#ff8800}.script-item{background:#1a1a1a;border-left:3px solid #00f2ea;padding:15px;margin:15px 0;border-radius:8px;display:flex;justify-content:space-between;align-items:center}.script-info{flex:1}.script-info h3{color:#00f2ea;margin-bottom:5px;font-size:1.1rem;display:flex;align-items:center;gap:10px}.script-thumb{width:50px;height:50px;border-radius:10px;object-fit:cover;border:2px solid #00f2ea;box-shadow:0 0 15px #00f2ea66}.script-info p{color:#888;font-size:.8rem;line-height:1.5;margin:5px 0}.script-meta{display:flex;gap:15px;margin-top:8px;flex-wrap:wrap}.script-actions{display:flex;gap:10px}.status-badge{padding:4px 12px;border-radius:30px;font-size:.7rem;background:#00f2ea20;color:#00f2ea;display:inline-block}.admin-badge{background:#ff4444;color:white;padding:2px 8px;border-radius:30px;font-size:.6rem;margin-left:5px}.status-message{padding:10px;border-radius:8px;margin-bottom:20px;text-align:center}.edit-mode{background:#ffaa0020;border:2px solid #ffaa00;padding:10px;border-radius:8px;margin-bottom:20px;text-align:center}.edit-mode span{color:#ffaa00;font-weight:bold}
+*{box-sizing:border-box;margin:0}body{background:#0b0b0b;color:#eaeaea;font-family:'Courier New',monospace;padding:20px}.container{max-width:800px;margin:0 auto}h1{color:#00f2ea;border-left:4px solid #00f2ea;padding-left:15px;margin-bottom:30px}.logout-bar{display:flex;justify-content:space-between;align-items:center;background:#1a1a1a;padding:10px 20px;border-radius:50px;margin-bottom:20px;border:1px solid #00f2ea40}.logout-btn{background:#ff4444;color:white;border:none;padding:8px 20px;border-radius:50px;cursor:pointer;font-weight:bold;width:auto}.logout-btn:hover{background:#cc0000}.admin-card{background:#111;border:1px solid #2a2a2a;border-radius:16px;padding:25px;margin-bottom:25px;box-shadow:0 8px 0 #050505}h2{color:#00f2ea;margin-bottom:20px;font-size:1.3rem;border-bottom:1px dashed #2e2e2e;padding-bottom:8px}label{display:block;margin:15px 0 5px;color:#aaa;font-size:.9rem;text-transform:uppercase;letter-spacing:1px}input,textarea{width:100%;padding:12px;background:#1a1a1a;border:1px solid #3a3a3a;color:#fff;border-radius:8px;font-family:'Courier New',monospace;font-size:.9rem}input:focus,textarea:focus{border-color:#00f2ea;outline:none;box-shadow:0 0 10px #00f2ea66}textarea{min-height:120px;resize:vertical}.checkbox-group{display:flex;align-items:center;gap:10px;margin:20px 0;padding:10px;background:#1a1a1a;border-radius:8px}.checkbox-group input{width:auto;accent-color:#00f2ea}.feature-tags{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0;padding:10px;background:#1a1a1a;border-radius:8px}.feature-tag{background:#1a2a2a;color:#9cfff8;padding:8px 16px;border-radius:30px;font-size:.8rem;border:1px solid #00f2ea40;cursor:pointer;transition:all .2s}.feature-tag:hover{transform:translateY(-2px);border-color:#00f2ea}.feature-tag.selected{background:#00f2ea;color:#000;border-color:#00f2ea;box-shadow:0 0 15px #00f2ea}.key-system-selector{background:#1a2a2a;border-radius:8px;padding:15px;margin:20px 0}.key-option{display:flex;align-items:center;gap:10px;margin:10px 0;padding:12px;background:#0f1a1f;border-radius:8px;cursor:pointer;transition:all .2s;border:1px solid transparent}.key-option:hover{background:#1a2f3a}.key-option.selected{background:#00f2ea20;border:1px solid #00f2ea}.key-option input[type="radio"]{width:auto;accent-color:#00f2ea}.key-badge{padding:4px 12px;border-radius:30px;font-size:.8rem;min-width:80px;text-align:center}.key-badge.keyless{background:#4a4a4a;color:#fff}.key-badge.key1{background:#00aa00;color:#fff}.key-badge.key2{background:#ffaa00;color:#000}.key-badge.key3{background:#ff4444;color:#fff}.linkvertise-config{background:#0f1a2a;border-radius:8px;padding:20px;margin:20px 0;border:1px solid #00f2ea40}.linkvertise-config h3{color:#00f2ea;margin-bottom:15px}.redirect-url-container{background:#1a2a2a;border-radius:8px;padding:20px;margin:10px 0 20px;border:1px solid #ff4444;display:none}.redirect-url-container h3{color:#ff4444;margin-bottom:15px}.redirect-url-container label{color:#ff8888}.roblox-search-card{background:#1a2f3a;border:2px solid #00f2ea;border-radius:16px;padding:25px;margin:20px 0;box-shadow:0 0 30px #00f2ea33}.roblox-search-card h3{color:#00f2ea;margin-bottom:15px;font-size:1.2rem}.search-row{display:flex;gap:10px;margin-bottom:15px}.search-row input{flex:2;padding:15px;font-size:1rem;background:#0f1a1f;border:2px solid #00f2ea40}.search-row button{width:auto;margin:0;padding:15px 25px}.search-results{max-height:400px;overflow-y:auto;background:#0f1a1f;border-radius:12px;padding:10px;margin:15px 0;border:1px solid #00f2ea40}.game-item{display:flex;align-items:center;gap:15px;padding:15px;margin:8px 0;background:#1a2a2a;border-radius:10px;cursor:pointer;border:1px solid transparent;transition:all .2s}.game-item:hover{background:#2a3a3a;border-color:#00f2ea;transform:translateX(5px)}.game-item img{width:60px;height:60px;border-radius:10px;object-fit:cover;border:2px solid #00f2ea40}.game-item-info{flex:1}.game-item-info h4{color:#00f2ea;margin-bottom:5px}.game-item-stats{display:flex;gap:15px;color:#aaa;font-size:.85rem}.game-item-playing{color:#00f2ea}.game-item-visits{color:#ffaa00}.selected-game-preview{background:#1a2a2a;border-radius:12px;padding:20px;margin:20px 0;border:2px solid #00f2ea;display:flex;gap:20px;flex-wrap:wrap}.selected-game-preview img{width:120px;height:120px;border-radius:16px;border:3px solid #00f2ea;object-fit:cover}.selected-game-details{flex:1}.selected-game-details h3{color:#00f2ea;margin-bottom:10px}.selected-game-desc{color:#aaa;margin-bottom:15px;line-height:1.5}.selected-game-stats{display:flex;gap:25px;margin:15px 0;flex-wrap:wrap}.stat-box{background:#0f1a1f;padding:12px 20px;border-radius:10px;border-left:3px solid #00f2ea}.stat-box .label{color:#888;font-size:.8rem}.stat-box .value{color:#00f2ea;font-size:1.2rem;font-weight:bold}.use-game-btn{background:#00f2ea;border:none;padding:15px;border-radius:50px;width:100%;font-weight:bold;cursor:pointer;margin-top:10px}.use-game-btn:hover{background:#00d4cc;transform:scale(1.02)}button{background:#00f2ea;color:#000;border:0;padding:14px 25px;border-radius:50px;font-weight:700;cursor:pointer;font-size:1rem;margin-top:10px;width:100%;transition:all .2s;border:1px solid #4afff0}button:hover{background:#00d4cc;transform:scale(1.02);box-shadow:0 0 20px #00f2ea}button.delete{background:#ff4444;color:#fff;border:1px solid #ff8888;width:auto;padding:8px 15px}button.delete:hover{background:#cc0000}button.edit{background:#ffaa00;color:#000;border:1px solid #ffcc00;width:auto;padding:8px 15px}button.edit:hover{background:#ff8800}.script-item{background:#1a1a1a;border-left:3px solid #00f2ea;padding:15px;margin:15px 0;border-radius:8px;display:flex;justify-content:space-between;align-items:center}.script-info{flex:1}.script-info h3{color:#00f2ea;margin-bottom:5px;font-size:1.1rem;display:flex;align-items:center;gap:10px}.script-thumb{width:40px;height:40px;border-radius:8px;object-fit:cover}.script-info p{color:#888;font-size:.8rem;line-height:1.5;margin:5px 0}.script-meta{display:flex;gap:15px;margin-top:8px;flex-wrap:wrap}.script-actions{display:flex;gap:10px}.status-badge{padding:4px 12px;border-radius:30px;font-size:.7rem;background:#00f2ea20;color:#00f2ea;display:inline-block}.admin-badge{background:#ff4444;color:white;padding:2px 8px;border-radius:30px;font-size:.6rem;margin-left:5px}.roblox-badge{background:#00f2ea;color:#000;padding:2px 8px;border-radius:30px;font-size:.6rem;margin-left:5px;font-weight:bold}.status-message{padding:10px;border-radius:8px;margin-bottom:20px;text-align:center}.edit-mode{background:#ffaa0020;border:2px solid #ffaa00;padding:10px;border-radius:8px;margin-bottom:20px;text-align:center}.edit-mode span{color:#ffaa00;font-weight:bold}
 </style></head><body>
 <div class="container">
   <div class="logout-bar">
@@ -16,80 +16,56 @@
     <span>✏️ EDIT MODE</span> - You are editing a script
   </div>
   
+  <!-- ROBLOX GAME SEARCH CARD (ADMIN ONLY) -->
+  <div class="roblox-search-card">
+    <h3>🎮 Roblox Game Search</h3>
+    <p style="color:#aaa; margin-bottom:15px;">Search any Roblox game to auto-fill details (player counts update every 60 seconds)</p>
+    
+    <div class="search-row">
+      <input type="text" id="robloxSearch" placeholder="Search for a game (e.g., Adopt Me, Blox Fruits, Murder Mystery 2)" value="Adopt Me">
+      <button onclick="searchRobloxGame()" style="background:#00f2ea;">🔍 Search</button>
+    </div>
+    
+    <!-- SEARCH RESULTS -->
+    <div id="searchResults" class="search-results" style="display:none;"></div>
+    
+    <!-- SELECTED GAME PREVIEW -->
+    <div id="selectedGamePreview" class="selected-game-preview" style="display:none;">
+      <img id="selectedGameThumb" src="" alt="Game thumbnail">
+      <div class="selected-game-details">
+        <h3 id="selectedGameName"></h3>
+        <div id="selectedGameDesc" class="selected-game-desc"></div>
+        <div class="selected-game-stats">
+          <div class="stat-box">
+            <div class="label">👥 CURRENT PLAYERS</div>
+            <div class="value" id="selectedGamePlaying">0</div>
+          </div>
+          <div class="stat-box">
+            <div class="label">📊 TOTAL VISITS</div>
+            <div class="value" id="selectedGameVisits">0</div>
+          </div>
+        </div>
+        <button class="use-game-btn" onclick="useSelectedGame()">📋 Use This Game for Script</button>
+      </div>
+    </div>
+  </div>
+  
   <!-- MAIN ADMIN CARD -->
   <div class="admin-card">
     <h2 id="formTitle">📝 Add New Script</h2>
     <input type="hidden" id="editingScriptId">
+    <input type="hidden" id="gameUniverseId" value="">
     
     <label>Script Name</label>
-    <input type="text" id="scriptName" placeholder="e.g., 🔪 NEW GAME">
+    <input type="text" id="scriptName" placeholder="e.g., 🔪 MURDER MYSTERY 2">
 
     <label>Script Description (optional)</label>
     <textarea id="scriptDescription" placeholder="Describe what this script does..."></textarea>
 
-    <!-- LARGE IMAGE UPLOAD SECTION -->
-    <div class="image-upload-container">
-      <h3>🖼️ Script Image (Discord Embed Size)</h3>
-      
-      <!-- LARGE PREVIEW -->
-      <div class="image-preview-large" id="imagePreview" onclick="document.getElementById('imageFile').click()">
-        <span>Click to upload or drag image</span>
-      </div>
-      
-      <!-- IMAGE TYPE SELECTOR -->
-      <div class="image-types-large">
-        <span class="image-type-btn-large" onclick="selectImageType('url')" id="type-url">🔗 URL</span>
-        <span class="image-type-btn-large" onclick="selectImageType('emoji')" id="type-emoji">😊 Emoji</span>
-        <span class="image-type-btn-large" onclick="selectImageType('upload')" id="type-upload">📁 Upload</span>
-        <span class="image-type-btn-large" onclick="clearImage()" style="background:#ff4444; color:white;">🗑️ Clear</span>
-      </div>
-      
-      <!-- URL INPUT -->
-      <div id="imageUrlInput" class="image-url-input-large" style="display:none;">
-        <input type="url" id="imageUrl" placeholder="https://example.com/image.png">
-        <button onclick="previewImage()" style="background:#00f2ea;">Preview</button>
-      </div>
-      
-      <!-- EMOJI GRID -->
-      <div id="emojiInput" style="display:none;">
-        <div class="emoji-grid-large">
-          <span class="emoji-item-large" onclick="selectEmoji('🔪')">🔪</span>
-          <span class="emoji-item-large" onclick="selectEmoji('🎮')">🎮</span>
-          <span class="emoji-item-large" onclick="selectEmoji('🔥')">🔥</span>
-          <span class="emoji-item-large" onclick="selectEmoji('⚔️')">⚔️</span>
-          <span class="emoji-item-large" onclick="selectEmoji('🛡️')">🛡️</span>
-          <span class="emoji-item-large" onclick="selectEmoji('👑')">👑</span>
-          <span class="emoji-item-large" onclick="selectEmoji('⭐')">⭐</span>
-          <span class="emoji-item-large" onclick="selectEmoji('💎')">💎</span>
-          <span class="emoji-item-large" onclick="selectEmoji('💰')">💰</span>
-          <span class="emoji-item-large" onclick="selectEmoji('🔑')">🔑</span>
-          <span class="emoji-item-large" onclick="selectEmoji('🗝️')">🗝️</span>
-          <span class="emoji-item-large" onclick="selectEmoji('⚡')">⚡</span>
-          <span class="emoji-item-large" onclick="selectEmoji('💀')">💀</span>
-          <span class="emoji-item-large" onclick="selectEmoji('👾')">👾</span>
-          <span class="emoji-item-large" onclick="selectEmoji('🤖')">🤖</span>
-          <span class="emoji-item-large" onclick="selectEmoji('👹')">👹</span>
-          <span class="emoji-item-large" onclick="selectEmoji('👺')">👺</span>
-          <span class="emoji-item-large" onclick="selectEmoji('🤡')">🤡</span>
-          <span class="emoji-item-large" onclick="selectEmoji('🎯')">🎯</span>
-          <span class="emoji-item-large" onclick="selectEmoji('🎲')">🎲</span>
-          <span class="emoji-item-large" onclick="selectEmoji('🎰')">🎰</span>
-          <span class="emoji-item-large" onclick="selectEmoji('🎳')">🎳</span>
-          <span class="emoji-item-large" onclick="selectEmoji('🎮')">🎮</span>
-          <span class="emoji-item-large" onclick="selectEmoji('🎪')">🎪</span>
-        </div>
-      </div>
-      
-      <!-- UPLOAD AREA -->
-      <div id="uploadInput" style="display:none;">
-        <div class="upload-area-large" onclick="document.getElementById('imageFile').click()">
-          <div class="upload-icon">📁</div>
-          <div class="upload-text">Click to upload or drag and drop</div>
-          <div class="upload-text" style="font-size:0.8rem; margin-top:10px;">PNG, JPG, WEBP, GIF (Max 5MB)</div>
-        </div>
-        <input type="file" id="imageFile" accept="image/png,image/jpeg,image/webp,image/gif" onchange="handleImageUpload()" style="display:none;">
-      </div>
-      
+    <!-- SIMPLE IMAGE URL (since we're using Roblox thumbnails) -->
+    <div style="margin:15px 0;">
+      <label>Game Thumbnail (auto-filled from Roblox)</label>
+      <input type="url" id="imageUrl" placeholder="Will be auto-filled from search">
       <input type="hidden" id="imageData" value="">
     </div>
 
@@ -180,59 +156,143 @@ async function logout() {
 // ==================== CONFIG ====================
 const ADMIN_PASSWORD = 'noobie123admin';
 const API_URL = '/api/commit';
+const ROBLOX_PROXY = 'https://api.roproxy.com/';
 
 let selectedFeatures = [], currentScripts = [], selectedKeySystem = 'keyless';
-let selectedImageType = 'url';
+let playerCountInterval = null;
+let selectedGameData = null;
 
-// ==================== IMAGE FUNCTIONS ====================
-function selectImageType(type) {
-  selectedImageType = type;
-  document.querySelectorAll('.image-type-btn-large').forEach(btn => btn.classList.remove('selected'));
-  document.getElementById(`type-${type}`).classList.add('selected');
+// ==================== ROBLOX API FUNCTIONS ====================
+async function searchRobloxGame() {
+  const query = document.getElementById('robloxSearch').value.trim();
+  if (!query) { alert('Enter a search term'); return; }
   
-  document.getElementById('imageUrlInput').style.display = type === 'url' ? 'flex' : 'none';
-  document.getElementById('emojiInput').style.display = type === 'emoji' ? 'block' : 'none';
-  document.getElementById('uploadInput').style.display = type === 'upload' ? 'block' : 'none';
-}
-
-function selectEmoji(emoji) {
-  let preview = document.getElementById('imagePreview');
-  preview.innerHTML = `<img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/${emoji.codePointAt(0).toString(16)}.png" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22100%22%20height%3D%22100%22%3E%3Ctext%20x%3D%2210%22%20y%3D%2280%22%20font-size%3D%2270%22%3E${emoji}%3C%2Ftext%3E%3C%2Fsvg%3E'">`;
-  document.getElementById('imageData').value = `emoji:${emoji}`;
-}
-
-function previewImage() {
-  let url = document.getElementById('imageUrl').value;
-  if (!url) return;
+  showStatus('🔍 Searching Roblox games...');
   
-  let preview = document.getElementById('imagePreview');
-  preview.innerHTML = `<img src="${url}" onerror="this.src='';this.parentElement.innerHTML='<span>Invalid image</span>'">`;
-  document.getElementById('imageData').value = url;
-}
-
-function handleImageUpload() {
-  let file = document.getElementById('imageFile').files[0];
-  if (!file) return;
-  
-  if (file.size > 5 * 1024 * 1024) {
-    alert('File too large! Max 5MB');
-    return;
+  try {
+    const response = await fetch(`${ROBLOX_PROXY}games.roblox.com/v1/games/list?keyword=${encodeURIComponent(query)}&limit=10`);
+    const data = await response.json();
+    
+    if (!data.games || data.games.length === 0) {
+      showStatus('❌ No games found', true);
+      return;
+    }
+    
+    displaySearchResults(data.games);
+  } catch (error) {
+    console.error('Search error:', error);
+    showStatus('❌ Failed to search Roblox', true);
   }
-  
-  let reader = new FileReader();
-  reader.onload = function(e) {
-    let preview = document.getElementById('imagePreview');
-    preview.innerHTML = `<img src="${e.target.result}">`;
-    document.getElementById('imageData').value = e.target.result;
-  };
-  reader.readAsDataURL(file);
 }
 
-function clearImage() {
-  document.getElementById('imagePreview').innerHTML = '<span>Click to upload or drag image</span>';
-  document.getElementById('imageData').value = '';
-  document.getElementById('imageUrl').value = '';
-  document.getElementById('imageFile').value = '';
+function displaySearchResults(games) {
+  const resultsDiv = document.getElementById('searchResults');
+  resultsDiv.style.display = 'block';
+  
+  let html = '';
+  games.forEach(game => {
+    const playing = game.playing || 0;
+    const visits = game.visits || 0;
+    
+    html += `
+      <div class="game-item" onclick='selectGame(${JSON.stringify(game)})'>
+        <img src="https://www.roblox.com/asset/?id=${game.rootPlaceId}" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Crect%20width%3D%2260%22%20height%3D%2260%22%20fill%3D%22%23333%22%2F%3E%3Ctext%20x%3D%2210%22%20y%3D%2240%22%20fill%3D%22%2300f2ea%22%20font-size%3D%2220%22%3E🎮%3C%2Ftext%3E%3C%2Fsvg%3E'">
+        <div class="game-item-info">
+          <h4>${game.name}</h4>
+          <div class="game-item-stats">
+            <span class="game-item-playing">👥 ${playing.toLocaleString()} playing</span>
+            <span class="game-item-visits">📊 ${visits.toLocaleString()} visits</span>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+  
+  resultsDiv.innerHTML = html;
+}
+
+async function selectGame(game) {
+  showStatus(`📡 Fetching detailed game info...`);
+  
+  try {
+    // Get detailed game info with universe ID
+    const response = await fetch(`${ROBLOX_PROXY}games.roblox.com/v1/games?universeIds=${game.universeId}`);
+    const data = await response.json();
+    const details = data.data[0];
+    
+    // Get game thumbnail
+    const thumbResponse = await fetch(`${ROBLOX_PROXY}thumbnails.roblox.com/v1/games/icons?universeIds=${game.universeId}&size=256x256&format=Png`);
+    const thumbData = await thumbResponse.json();
+    const thumbUrl = thumbData.data[0]?.imageUrl || '';
+    
+    selectedGameData = {
+      universeId: game.universeId,
+      name: details.name,
+      description: details.description || 'No description available',
+      playing: details.playing || 0,
+      visits: details.visits || 0,
+      thumbUrl
+    };
+    
+    // Update preview
+    document.getElementById('selectedGameName').textContent = details.name;
+    document.getElementById('selectedGameDesc').textContent = details.description || 'No description available';
+    document.getElementById('selectedGamePlaying').textContent = (details.playing || 0).toLocaleString();
+    document.getElementById('selectedGameVisits').textContent = (details.visits || 0).toLocaleString();
+    document.getElementById('selectedGameThumb').src = thumbUrl;
+    document.getElementById('selectedGamePreview').style.display = 'flex';
+    document.getElementById('searchResults').style.display = 'none';
+    
+    // Start auto-refresh for player count
+    startPlayerCountRefresh(game.universeId);
+    
+    showStatus('✅ Game loaded! Auto-refreshing player count every 60 seconds');
+  } catch (error) {
+    console.error('Game fetch error:', error);
+    showStatus('❌ Failed to load game details', true);
+  }
+}
+
+async function refreshPlayerCount(universeId) {
+  if (!universeId) return;
+  
+  try {
+    const response = await fetch(`${ROBLOX_PROXY}games.roblox.com/v1/games?universeIds=${universeId}`);
+    const data = await response.json();
+    const playing = data.data[0]?.playing || 0;
+    
+    document.getElementById('selectedGamePlaying').textContent = playing.toLocaleString();
+  } catch (error) {
+    console.error('Player count refresh error:', error);
+  }
+}
+
+function startPlayerCountRefresh(universeId) {
+  if (playerCountInterval) clearInterval(playerCountInterval);
+  
+  // Update every 60 seconds
+  playerCountInterval = setInterval(() => {
+    refreshPlayerCount(universeId);
+  }, 60000);
+}
+
+function useSelectedGame() {
+  if (!selectedGameData) return;
+  
+  // Auto-fill script name
+  document.getElementById('scriptName').value = selectedGameData.name;
+  
+  // Auto-fill description
+  document.getElementById('scriptDescription').value = selectedGameData.description;
+  
+  // Auto-fill image URL
+  document.getElementById('imageUrl').value = selectedGameData.thumbUrl;
+  document.getElementById('imageData').value = selectedGameData.thumbUrl;
+  
+  // Save universe ID for future reference (optional)
+  document.getElementById('gameUniverseId').value = selectedGameData.universeId;
+  
+  showStatus('✅ Game info applied to form!');
 }
 
 // ==================== UI FUNCTIONS ====================
@@ -282,11 +342,19 @@ function cancelEdit() {
   document.getElementById('scriptBlurred').checked = false;
   document.getElementById('scriptRedirectUrl').value = '';
   document.getElementById('editingScriptId').value = '';
+  document.getElementById('gameUniverseId').value = '';
+  document.getElementById('imageUrl').value = '';
+  document.getElementById('imageData').value = '';
   document.getElementById('redirectUrlContainer').style.display = 'none';
+  document.getElementById('selectedGamePreview').style.display = 'none';
   document.getElementById('formTitle').innerHTML = '📝 Add New Script';
   document.getElementById('saveButton').innerHTML = '💾 Save & Auto-Commit';
   document.getElementById('editModeIndicator').style.display = 'none';
-  clearImage();
+  
+  if (playerCountInterval) {
+    clearInterval(playerCountInterval);
+    playerCountInterval = null;
+  }
   
   selectedKeySystem = 'keyless';
   document.querySelectorAll('.key-option').forEach(o => o.classList.remove('selected'));
@@ -310,17 +378,11 @@ async function loadScripts() {
       else if (s.keySystem === 'key2') key = '<span class="key-badge key2">🔑🔑2</span>';
       else if (s.keySystem === 'key3') key = '<span class="key-badge key3">🔑🔑🔑3</span>';
       
-      let thumbnail = s.image ? 
-        `<img src="${s.image.startsWith('emoji:') ? 
-          'https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/' + s.image.split(':')[1].codePointAt(0).toString(16) + '.png' : 
-          s.image}" class="script-thumb" onerror="this.src='';this.parentElement.innerHTML='${s.image.split(':')[1] || '📁'}'">` : 
-        '';
-      
-      let redirectBadge = s.redirectUrl ? '<span class="admin-badge">🔒ADMIN</span>' : '';
+      let robloxBadge = s.universeId ? '<span class="roblox-badge">🎮 Roblox</span>' : '';
       
       return `<div class="script-item">
         <div class="script-info">
-          <h3>${thumbnail} ${s.name} ${redirectBadge}</h3>
+          <h3>${s.name} ${robloxBadge}</h3>
           ${s.description ? `<p>📝 ${s.description}</p>` : ''}
           <p>${s.code.substring(0,50)}...</p>
           <div class="script-meta">
@@ -348,19 +410,11 @@ function editScript(id) {
   document.getElementById('scriptBlurred').checked = s.blurred || false;
   document.getElementById('scriptRedirectUrl').value = s.redirectUrl || '';
   document.getElementById('editingScriptId').value = s.id;
+  document.getElementById('gameUniverseId').value = s.universeId || '';
+  document.getElementById('imageUrl').value = s.image || '';
+  document.getElementById('imageData').value = s.image || '';
   
   document.getElementById('redirectUrlContainer').style.display = s.blurred ? 'block' : 'none';
-  
-  if (s.image) {
-    let preview = document.getElementById('imagePreview');
-    if (s.image.startsWith('emoji:')) {
-      let emoji = s.image.split(':')[1];
-      preview.innerHTML = `<img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/${emoji.codePointAt(0).toString(16)}.png" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22100%22%20height%3D%22100%22%3E%3Ctext%20x%3D%2210%22%20y%3D%2280%22%20font-size%3D%2270%22%3E${emoji}%3C%2Ftext%3E%3C%2Fsvg%3E'">`;
-    } else {
-      preview.innerHTML = `<img src="${s.image}">`;
-    }
-    document.getElementById('imageData').value = s.image;
-  }
   
   selectKeySystem(s.keySystem || 'keyless');
   selectedFeatures = s.features || [];
@@ -423,6 +477,7 @@ async function saveScript() {
   let redirect = document.getElementById('scriptRedirectUrl').value;
   let editId = document.getElementById('editingScriptId').value;
   let image = document.getElementById('imageData').value;
+  let universeId = document.getElementById('gameUniverseId').value;
   
   if (!name || !code) { alert('Fill all fields'); return; }
   if (blurred && !redirect) { alert('Redirect URL required for blurred scripts'); return; }
@@ -440,6 +495,7 @@ async function saveScript() {
     id: editId || name.toLowerCase().replace(/[^a-z0-9]/g,'') + Date.now(),
     name, description, code, blurred, redirectUrl: redirect,
     image: image || null,
+    universeId: universeId || null,
     keySystem: selectedKeySystem, keyLinks, features: [...selectedFeatures]
   };
   
@@ -476,17 +532,11 @@ function displayScripts() {
     else if (s.keySystem === 'key2') key = '<span class="key-badge key2">🔑🔑2</span>';
     else if (s.keySystem === 'key3') key = '<span class="key-badge key3">🔑🔑🔑3</span>';
     
-    let thumbnail = s.image ? 
-      `<img src="${s.image.startsWith('emoji:') ? 
-        'https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/' + s.image.split(':')[1].codePointAt(0).toString(16) + '.png' : 
-        s.image}" class="script-thumb" onerror="this.src='';this.parentElement.innerHTML='${s.image.split(':')[1] || '📁'}'">` : 
-      '';
-    
-    let redirectBadge = s.redirectUrl ? '<span class="admin-badge">🔒ADMIN</span>' : '';
+    let robloxBadge = s.universeId ? '<span class="roblox-badge">🎮 Roblox</span>' : '';
     
     return `<div class="script-item">
       <div class="script-info">
-        <h3>${thumbnail} ${s.name} ${redirectBadge}</h3>
+        <h3>${s.name} ${robloxBadge}</h3>
         ${s.description ? `<p>📝 ${s.description}</p>` : ''}
         <p>${s.code.substring(0,50)}...</p>
         <div class="script-meta">
@@ -502,7 +552,13 @@ function displayScripts() {
   }).join('');
 }
 
-// ==================== RUN AUTH CHECK AND LOAD ====================
+// ==================== INIT ====================
 checkAuth();
 loadScripts();
+
+// Auto-search Adopt Me on load
+setTimeout(() => {
+  document.getElementById('robloxSearch').value = 'Adopt Me';
+  searchRobloxGame();
+}, 500);
 </script></body></html>
