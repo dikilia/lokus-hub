@@ -14,16 +14,16 @@ export default async function handler(req, res) {
   }
   
   try {
-    const { content, message, filename } = req.body;
+    const { content, message, filename, scriptData, isEdit } = req.body;
     if (!content || !message) return res.status(400).json({ error: 'Missing fields' });
     
-    // GitHub token from environment variable (set in Vercel)
-    const token = process.env.GITHUB_TOKEN;
-    if (!token) return res.status(500).json({ error: 'GitHub token not configured' });
+    // GitHub token from environment variable
+    const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+    if (!GITHUB_TOKEN) return res.status(500).json({ error: 'GitHub token not configured' });
     
     // Get current file SHA
     const getRes = await fetch(`https://api.github.com/repos/dikilia/lokus-hub/contents/${filename || 'scripts.json'}`, {
-      headers: { 'Authorization': `Bearer ${token}` }
+      headers: { 'Authorization': `Bearer ${GITHUB_TOKEN}` }
     });
     
     let sha = null;
@@ -36,7 +36,7 @@ export default async function handler(req, res) {
     const putRes = await fetch(`https://api.github.com/repos/dikilia/lokus-hub/contents/${filename || 'scripts.json'}`, {
       method: 'PUT',
       headers: {
-        'Authorization': `Bearer ${token}`,
+        'Authorization': `Bearer ${GITHUB_TOKEN}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
@@ -49,8 +49,50 @@ export default async function handler(req, res) {
     const data = await putRes.json();
     if (!putRes.ok) throw new Error(data.message);
     
-    res.json({ success: true, commit: data.commit });
+    // Send Discord notification if webhook is configured
+    let discordResult = null;
+    if (process.env.DISCORD_WEBHOOK_URL && process.env.WEBHOOK_ENABLED === 'true' && scriptData) {
+      try {
+        const embed = {
+          title: isEdit ? '✏️ Script Updated' : '✨ New Script Added',
+          description: `**${scriptData.name}**`,
+          color: isEdit ? 0xffaa00 : 0x00f2ea,
+          fields: [
+            { name: '🔑 Key System', value: scriptData.keySystem || 'keyless', inline: true },
+            { name: '🔒 Blurred', value: scriptData.blurred ? 'Yes' : 'No', inline: true },
+            { name: '📦 Features', value: (scriptData.features?.length || 'None'), inline: true }
+          ],
+          timestamp: new Date().toISOString(),
+          footer: { text: 'Lokus Hub Admin' }
+        };
+        
+        if (scriptData.redirectUrl) {
+          embed.fields.push({ name: '🔗 Redirect', value: scriptData.redirectUrl, inline: false });
+        }
+        
+        const discordRes = await fetch(process.env.DISCORD_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username: 'Script Manager',
+            embeds: [embed]
+          })
+        });
+        
+        discordResult = { success: discordRes.ok };
+      } catch (discordError) {
+        console.error('Discord webhook error:', discordError);
+        discordResult = { success: false, error: discordError.message };
+      }
+    }
+    
+    res.json({ 
+      success: true, 
+      commit: data.commit,
+      discord: discordResult
+    });
   } catch (error) {
+    console.error('Serverless function error:', error);
     res.status(500).json({ error: error.message });
   }
 }
