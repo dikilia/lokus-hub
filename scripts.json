@@ -1,6 +1,8 @@
 {
   "siteTitle": "lokus hub scripts",
   "visitorCount": 1842,
+  "theme": "christmas",
+  "versions": [],
   "linkvertise": {
     "userId": "1446949",
     "callbackUrl": "https://linkvertise-callback-production.up.railway.app/callback"
