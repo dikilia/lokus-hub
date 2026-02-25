@@ -21,33 +21,51 @@ export default async function handler(req, res) {
     const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
     if (!GITHUB_TOKEN) return res.status(500).json({ error: 'GitHub token not configured' });
     
-    // Get current file SHA
-    const getRes = await fetch(`https://api.github.com/repos/dikilia/lokus-hub/contents/${filename || 'scripts.json'}`, {
-      headers: { 'Authorization': `Bearer ${GITHUB_TOKEN}` }
-    });
+    // GitHub repo info
+    const REPO_OWNER = 'dikilia';
+    const REPO_NAME = 'lokus-hub';
+    const FILE_PATH = filename || 'scripts.json';
     
+    // Get current file SHA (required for updating)
     let sha = null;
-    if (getRes.ok) {
-      const data = await getRes.json();
-      sha = data.sha;
+    try {
+      const getRes = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`, {
+        headers: { 
+          'Authorization': `Bearer ${GITHUB_TOKEN}`,
+          'Accept': 'application/vnd.github+json'
+        }
+      });
+      
+      if (getRes.ok) {
+        const data = await getRes.json();
+        sha = data.sha;
+      } else if (getRes.status !== 404) {
+        const errorData = await getRes.json();
+        throw new Error(`GitHub API error: ${errorData.message}`);
+      }
+      // If 404, file doesn't exist yet - that's fine for first commit
+    } catch (error) {
+      console.error('Error getting file SHA:', error);
+      // Continue without SHA - will create new file
     }
     
     // Commit to GitHub
-    const putRes = await fetch(`https://api.github.com/repos/dikilia/lokus-hub/contents/${filename || 'scripts.json'}`, {
+    const putRes = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`, {
       method: 'PUT',
       headers: {
         'Authorization': `Bearer ${GITHUB_TOKEN}`,
+        'Accept': 'application/vnd.github+json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        message,
-        content,
-        sha
+        message: message,
+        content: content,
+        sha: sha || undefined
       })
     });
     
     const data = await putRes.json();
-    if (!putRes.ok) throw new Error(data.message);
+    if (!putRes.ok) throw new Error(data.message || 'GitHub commit failed');
     
     // ==================== DISCORD WEBHOOK ====================
     let discordResult = null;
@@ -113,12 +131,18 @@ export default async function handler(req, res) {
     
     res.json({ 
       success: true, 
-      commit: data.commit,
-      discord: discordResult 
+      commit: {
+        sha: data.commit?.sha,
+        url: data.commit?.html_url
+      },
+      discord: discordResult,
+      message: '✅ Successfully committed to GitHub'
     });
     
   } catch (error) {
-    console.error('Serverless function error:', error);
-    res.status(500).json({ error: error.message });
+    console.error('❌ Serverless function error:', error);
+    res.status(500).json({ 
+      error: error.message || 'Internal server error'
+    });
   }
 }
