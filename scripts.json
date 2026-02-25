@@ -58,7 +58,20 @@
       "features": [
         "🧠 Brainrot"
       ]
+    },
+    {
+      "id": "quantumhubx1772024282799",
+      "name": "Quantum Hub X ",
+      "description": "Auto Farm\nAuto Bounty\nAuto boss\nauto dungeon\ntrade scam / freeze trade\nfruit duper\netc",
+      "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/flazhy/QuantumOnyx/refs/heads/main/QuantumOnyx.lua\"))()",
+      "blurred": true,
+      "redirectUrl": "https://openinapp.link/jvj3l",
+      "image": null,
+      "universeId": null,
+      "keySystem": "keyless",
+      "keyLinks": [],
+      "features": []
     }
   ],
-  "lastUpdated": "2026-02-24"
+  "lastUpdated": "2026-02-25"
 }
