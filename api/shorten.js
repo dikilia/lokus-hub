@@ -1,92 +1,69 @@
-// ==================== SHORT LINK FUNCTIONS (FIXED) ====================
-async function generateShortLink() {
-  const url = document.getElementById('shortlinkOriginal').value.trim();
-  if (!url) { 
-    alert('Enter a URL to shorten'); 
-    return; 
-  }
+// api/shorten.js
+export default async function handler(req, res) {
+  // Enable CORS
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   
-  // Validate URL
-  try {
-    new URL(url);
-  } catch {
-    alert('Please enter a valid URL (including https://)');
-    return;
-  }
-  
-  showStatus('🔗 Generating short link...');
+  if (req.method === 'OPTIONS') return res.status(200).end();
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
   
   try {
-    const response = await fetch('/api/shorten', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ url: url })
+    const { url } = req.body;
+    
+    if (!url) {
+      return res.status(400).json({ error: 'URL is required' });
+    }
+    
+    // Try is.gd first (most reliable, no API key needed)
+    try {
+      const isgdRes = await fetch(`https://is.gd/create.php?format=simple&url=${encodeURIComponent(url)}`);
+      if (isgdRes.ok) {
+        const shortUrl = await isgdRes.text();
+        return res.json({ 
+          success: true, 
+          shortUrl: shortUrl.trim(),
+          method: 'external'
+        });
+      }
+    } catch (e) {
+      console.log('is.gd failed, trying v.gd...');
+    }
+    
+    // Try v.gd as backup
+    try {
+      const vgdRes = await fetch(`https://v.gd/create.php?format=simple&url=${encodeURIComponent(url)}`);
+      if (vgdRes.ok) {
+        const shortUrl = await vgdRes.text();
+        return res.json({ 
+          success: true, 
+          shortUrl: shortUrl.trim(),
+          method: 'external'
+        });
+      }
+    } catch (e) {
+      console.log('v.gd failed, using local fallback...');
+    }
+    
+    // Generate a local short code as last resort
+    const shortCode = Math.random().toString(36).substring(2, 8);
+    const shortUrl = `${req.headers.origin}/s/${shortCode}`;
+    
+    // In production, you'd store this mapping in a database
+    // For now, it's just a display-only link
+    
+    res.json({ 
+      success: true, 
+      shortUrl: shortUrl,
+      method: 'local',
+      note: 'This is a local short link (for display only)'
     });
     
-    const data = await response.json();
-    
-    if (!response.ok) throw new Error(data.error || 'Failed to generate');
-    
-    document.getElementById('shortlinkUrl').textContent = data.shortUrl;
-    document.getElementById('shortlinkCopy').value = data.shortUrl;
-    document.getElementById('shortlinkResult').style.display = 'block';
-    
-    if (data.method === 'local') {
-      showStatus('✅ Local short link created (for testing)');
-    } else {
-      showStatus('✅ Short link generated successfully!');
-    }
-  } catch (e) {
-    showStatus('❌ Failed to generate short link: ' + e.message, true);
+  } catch (error) {
+    console.error('Shorten error:', error);
+    res.status(500).json({ 
+      error: 'Failed to shorten URL',
+      details: error.message 
+    });
   }
-}
-
-async function generateCustomShortLink() {
-  const url = document.getElementById('shortlinkOriginal').value.trim();
-  const alias = document.getElementById('shortlinkAlias').value.trim();
-  
-  if (!url || !alias) { 
-    alert('Enter both URL and custom alias'); 
-    return; 
-  }
-  
-  // Validate URL
-  try {
-    new URL(url);
-  } catch {
-    alert('Please enter a valid URL (including https://)');
-    return;
-  }
-  
-  // Validate alias (alphanumeric only)
-  if (!/^[a-zA-Z0-9]+$/.test(alias)) {
-    alert('Alias can only contain letters and numbers');
-    return;
-  }
-  
-  showStatus('🔗 Generating custom short link...');
-  
-  try {
-    // For custom aliases, we'll use our own system
-    // In production, you'd store this in a database
-    const shortUrl = `${window.location.origin}/s/${alias}`;
-    
-    document.getElementById('shortlinkUrl').textContent = shortUrl;
-    document.getElementById('shortlinkCopy').value = shortUrl;
-    document.getElementById('shortlinkResult').style.display = 'block';
-    
-    showStatus('✅ Custom short link created! (Note: You need to set up redirects)');
-  } catch (e) {
-    showStatus('❌ Failed to create custom link: ' + e.message, true);
-  }
-}
-
-function copyShortLink() {
-  const input = document.getElementById('shortlinkCopy');
-  input.select();
-  navigator.clipboard.writeText(input.value).then(() => {
-    showStatus('✅ Short link copied to clipboard!');
-  }).catch(() => {
-    alert('Copy manually: ' + input.value);
-  });
 }
