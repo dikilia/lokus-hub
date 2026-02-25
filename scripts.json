@@ -71,19 +71,6 @@
       "keySystem": "keyless",
       "keyLinks": [],
       "features": []
-    },
-    {
-      "id": "test1772027653273",
-      "name": "test",
-      "description": "test",
-      "code": "test",
-      "blurred": false,
-      "redirectUrl": "",
-      "image": null,
-      "universeId": null,
-      "keySystem": "keyless",
-      "keyLinks": [],
-      "features": []
     }
   ],
   "lastUpdated": "2026-02-25"
