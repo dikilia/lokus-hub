@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin - Script Manager</title><style>
-*{box-sizing:border-box;margin:0}body{background:#0b0b0b;color:#eaeaea;font-family:'Courier New',monospace;padding:20px}.container{max-width:800px;margin:0 auto}h1{color:#00f2ea;border-left:4px solid #00f2ea;padding-left:15px;margin-bottom:30px}.logout-bar{display:flex;justify-content:space-between;align-items:center;background:#1a1a1a;padding:10px 20px;border-radius:50px;margin-bottom:20px;border:1px solid #00f2ea40}.logout-btn{background:#ff4444;color:white;border:none;padding:8px 20px;border-radius:50px;cursor:pointer;font-weight:bold;width:auto}.logout-btn:hover{background:#cc0000}.admin-card{background:#111;border:1px solid #2a2a2a;border-radius:16px;padding:25px;margin-bottom:25px;box-shadow:0 8px 0 #050505}h2{color:#00f2ea;margin-bottom:20px;font-size:1.3rem;border-bottom:1px dashed #2e2e2e;padding-bottom:8px}label{display:block;margin:15px 0 5px;color:#aaa;font-size:.9rem;text-transform:uppercase;letter-spacing:1px}input,textarea{width:100%;padding:12px;background:#1a1a1a;border:1px solid #3a3a3a;color:#fff;border-radius:8px;font-family:'Courier New',monospace;font-size:.9rem}input:focus,textarea:focus{border-color:#00f2ea;outline:none;box-shadow:0 0 10px #00f2ea66}textarea{min-height:120px;resize:vertical}.checkbox-group{display:flex;align-items:center;gap:10px;margin:20px 0;padding:10px;background:#1a1a1a;border-radius:8px}.checkbox-group input{width:auto;accent-color:#00f2ea}.feature-tags{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0;padding:10px;background:#1a1a1a;border-radius:8px}.feature-tag{background:#1a2a2a;color:#9cfff8;padding:8px 16px;border-radius:30px;font-size:.8rem;border:1px solid #00f2ea40;cursor:pointer;transition:all .2s}.feature-tag:hover{transform:translateY(-2px);border-color:#00f2ea}.feature-tag.selected{background:#00f2ea;color:#000;border-color:#00f2ea;box-shadow:0 0 15px #00f2ea}.key-system-selector{background:#1a2a2a;border-radius:8px;padding:15px;margin:20px 0}.key-option{display:flex;align-items:center;gap:10px;margin:10px 0;padding:12px;background:#0f1a1f;border-radius:8px;cursor:pointer;transition:all .2s;border:1px solid transparent}.key-option:hover{background:#1a2f3a}.key-option.selected{background:#00f2ea20;border:1px solid #00f2ea}.key-option input[type="radio"]{width:auto;accent-color:#00f2ea}.key-badge{padding:4px 12px;border-radius:30px;font-size:.8rem;min-width:80px;text-align:center}.key-badge.keyless{background:#4a4a4a;color:#fff}.key-badge.key1{background:#00aa00;color:#fff}.key-badge.key2{background:#ffaa00;color:#000}.key-badge.key3{background:#ff4444;color:#fff}.linkvertise-config{background:#0f1a2a;border-radius:8px;padding:20px;margin:20px 0;border:1px solid #00f2ea40}.linkvertise-config h3{color:#00f2ea;margin-bottom:15px}.redirect-url-container{background:#1a2a2a;border-radius:8px;padding:20px;margin:10px 0 20px;border:1px solid #ff4444;display:none}.redirect-url-container h3{color:#ff4444;margin-bottom:15px}.redirect-url-container label{color:#ff8888}.roblox-search-card{background:#1a2f3a;border:2px solid #00f2ea;border-radius:16px;padding:25px;margin:20px 0;box-shadow:0 0 30px #00f2ea33}.roblox-search-card h3{color:#00f2ea;margin-bottom:15px;font-size:1.2rem}.search-row{display:flex;gap:10px;margin-bottom:15px}.search-row input{flex:2;padding:15px;font-size:1rem;background:#0f1a1f;border:2px solid #00f2ea40}.search-row button{width:auto;margin:0;padding:15px 25px}.search-results{max-height:400px;overflow-y:auto;background:#0f1a1f;border-radius:12px;padding:10px;margin:15px 0;border:1px solid #00f2ea40}.game-item{display:flex;align-items:center;gap:15px;padding:15px;margin:8px 0;background:#1a2a2a;border-radius:10px;cursor:pointer;border:1px solid transparent;transition:all .2s}.game-item:hover{background:#2a3a3a;border-color:#00f2ea;transform:translateX(5px)}.game-item img{width:60px;height:60px;border-radius:10px;object-fit:cover;border:2px solid #00f2ea40}.game-item-info{flex:1}.game-item-info h4{color:#00f2ea;margin-bottom:5px}.game-item-stats{display:flex;gap:15px;color:#aaa;font-size:.85rem}.game-item-playing{color:#00f2ea}.game-item-visits{color:#ffaa00}.selected-game-preview{background:#1a2a2a;border-radius:12px;padding:20px;margin:20px 0;border:2px solid #00f2ea;display:flex;gap:20px;flex-wrap:wrap}.selected-game-preview img{width:120px;height:120px;border-radius:16px;border:3px solid #00f2ea;object-fit:cover}.selected-game-details{flex:1}.selected-game-details h3{color:#00f2ea;margin-bottom:10px}.selected-game-desc{color:#aaa;margin-bottom:15px;line-height:1.5}.selected-game-stats{display:flex;gap:25px;margin:15px 0;flex-wrap:wrap}.stat-box{background:#0f1a1f;padding:12px 20px;border-radius:10px;border-left:3px solid #00f2ea}.stat-box .label{color:#888;font-size:.8rem}.stat-box .value{color:#00f2ea;font-size:1.2rem;font-weight:bold}.use-game-btn{background:#00f2ea;border:none;padding:15px;border-radius:50px;width:100%;font-weight:bold;cursor:pointer;margin-top:10px}.use-game-btn:hover{background:#00d4cc;transform:scale(1.02)}button{background:#00f2ea;color:#000;border:0;padding:14px 25px;border-radius:50px;font-weight:700;cursor:pointer;font-size:1rem;margin-top:10px;width:100%;transition:all .2s;border:1px solid #4afff0}button:hover{background:#00d4cc;transform:scale(1.02);box-shadow:0 0 20px #00f2ea}button.delete{background:#ff4444;color:#fff;border:1px solid #ff8888;width:auto;padding:8px 15px}button.delete:hover{background:#cc0000}button.edit{background:#ffaa00;color:#000;border:1px solid #ffcc00;width:auto;padding:8px 15px}button.edit:hover{background:#ff8800}.script-item{background:#1a1a1a;border-left:3px solid #00f2ea;padding:15px;margin:15px 0;border-radius:8px;display:flex;justify-content:space-between;align-items:center}.script-info{flex:1}.script-info h3{color:#00f2ea;margin-bottom:5px;font-size:1.1rem;display:flex;align-items:center;gap:10px}.script-thumb{width:40px;height:40px;border-radius:8px;object-fit:cover}.script-info p{color:#888;font-size:.8rem;line-height:1.5;margin:5px 0}.script-meta{display:flex;gap:15px;margin-top:8px;flex-wrap:wrap}.script-actions{display:flex;gap:10px}.status-badge{padding:4px 12px;border-radius:30px;font-size:.7rem;background:#00f2ea20;color:#00f2ea;display:inline-block}.admin-badge{background:#ff4444;color:white;padding:2px 8px;border-radius:30px;font-size:.6rem;margin-left:5px}.roblox-badge{background:#00f2ea;color:#000;padding:2px 8px;border-radius:30px;font-size:.6rem;margin-left:5px;font-weight:bold}.status-message{padding:10px;border-radius:8px;margin-bottom:20px;text-align:center}.edit-mode{background:#ffaa0020;border:2px solid #ffaa00;padding:10px;border-radius:8px;margin-bottom:20px;text-align:center}.edit-mode span{color:#ffaa00;font-weight:bold}
+*{box-sizing:border-box;margin:0}body{background:#0b0b0b;color:#eaeaea;font-family:'Courier New',monospace;padding:20px}.container{max-width:1000px;margin:0 auto}h1{color:#00f2ea;border-left:4px solid #00f2ea;padding-left:15px;margin-bottom:30px}.logout-bar{display:flex;justify-content:space-between;align-items:center;background:#1a1a1a;padding:10px 20px;border-radius:50px;margin-bottom:20px;border:1px solid #00f2ea40}.logout-btn{background:#ff4444;color:white;border:none;padding:8px 20px;border-radius:50px;cursor:pointer;font-weight:bold;width:auto}.logout-btn:hover{background:#cc0000}.admin-card{background:#111;border:1px solid #2a2a2a;border-radius:16px;padding:25px;margin-bottom:25px;box-shadow:0 8px 0 #050505}h2{color:#00f2ea;margin-bottom:20px;font-size:1.3rem;border-bottom:1px dashed #2e2e2e;padding-bottom:8px}label{display:block;margin:15px 0 5px;color:#aaa;font-size:.9rem;text-transform:uppercase;letter-spacing:1px}input,textarea,select{width:100%;padding:12px;background:#1a1a1a;border:1px solid #3a3a3a;color:#fff;border-radius:8px;font-family:'Courier New',monospace;font-size:.9rem}input:focus,textarea:focus,select:focus{border-color:#00f2ea;outline:none;box-shadow:0 0 10px #00f2ea66}textarea{min-height:120px;resize:vertical}.rich-text-toolbar{background:#0f1a1f;border:1px solid #00f2ea40;border-radius:8px;padding:10px;margin-bottom:10px;display:flex;gap:10px;flex-wrap:wrap}.rich-btn{background:#1a2a2a;color:#9cfff8;border:1px solid #00f2ea40;border-radius:30px;padding:8px 15px;font-size:.8rem;cursor:pointer}.rich-btn:hover{background:#2a3a3a}.rich-btn.active{background:#00f2ea;color:#000}.color-picker{display:flex;gap:5px;align-items:center}.color-option{width:25px;height:25px;border-radius:50%;cursor:pointer;border:2px solid transparent}.color-option:hover{border-color:#00f2ea}.color-option.selected{border-color:#fff}.checkbox-group{display:flex;align-items:center;gap:10px;margin:20px 0;padding:10px;background:#1a1a1a;border-radius:8px}.checkbox-group input{width:auto;accent-color:#00f2ea}.feature-tags{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0;padding:10px;background:#1a1a1a;border-radius:8px}.feature-tag{background:#1a2a2a;color:#9cfff8;padding:8px 16px;border-radius:30px;font-size:.8rem;border:1px solid #00f2ea40;cursor:pointer;transition:all .2s}.feature-tag:hover{transform:translateY(-2px);border-color:#00f2ea}.feature-tag.selected{background:#00f2ea;color:#000;border-color:#00f2ea;box-shadow:0 0 15px #00f2ea}.key-system-selector{background:#1a2a2a;border-radius:8px;padding:15px;margin:20px 0}.key-option{display:flex;align-items:center;gap:10px;margin:10px 0;padding:12px;background:#0f1a1f;border-radius:8px;cursor:pointer;transition:all .2s;border:1px solid transparent}.key-option:hover{background:#1a2f3a}.key-option.selected{background:#00f2ea20;border:1px solid #00f2ea}.key-option input[type="radio"]{width:auto;accent-color:#00f2ea}.key-badge{padding:4px 12px;border-radius:30px;font-size:.8rem;min-width:80px;text-align:center}.key-badge.keyless{background:#4a4a4a;color:#fff}.key-badge.key1{background:#00aa00;color:#fff}.key-badge.key2{background:#ffaa00;color:#000}.key-badge.key3{background:#ff4444;color:#fff}.linkvertise-config{background:#0f1a2a;border-radius:8px;padding:20px;margin:20px 0;border:1px solid #00f2ea40}.linkvertise-config h3{color:#00f2ea;margin-bottom:15px}.redirect-url-container{background:#1a2a2a;border-radius:8px;padding:20px;margin:10px 0 20px;border:1px solid #ff4444;display:none}.redirect-url-container h3{color:#ff4444;margin-bottom:15px}.redirect-url-container label{color:#ff8888}.image-upload-container{background:#1a2a2a;border-radius:8px;padding:20px;margin:20px 0;border:2px solid #00f2ea}.image-upload-container h3{color:#00f2ea;margin-bottom:15px}.image-preview{width:150px;height:150px;border-radius:12px;background:#0f1a1f;border:2px dashed #00f2ea;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;overflow:hidden;cursor:pointer}.image-preview img{width:100%;height:100%;object-fit:cover}.image-preview span{color:#888;font-size:.9rem;text-align:center}.image-upload-area{background:#0f1a1f;border:2px dashed #00f2ea;border-radius:12px;padding:30px;text-align:center;cursor:pointer;margin-bottom:15px}.image-upload-area:hover{background:#1a2f3a}.image-upload-icon{font-size:3rem;color:#00f2ea;margin-bottom:10px}.image-upload-text{color:#aaa}.image-upload-text strong{color:#00f2ea}.image-url-input{display:flex;gap:10px;margin-top:15px}.image-url-input input{flex:1}.image-url-input button{width:auto;margin:0;padding:12px 25px}.roblox-select-card{background:#1a2f3a;border:2px solid #00f2ea;border-radius:16px;padding:25px;margin:20px 0;box-shadow:0 0 30px #00f2ea33}.roblox-select-card h3{color:#00f2ea;margin-bottom:15px;font-size:1.2rem}.popular-select{width:100%;padding:15px;background:#0f1a1f;border:2px solid #00f2ea;color:#fff;border-radius:10px;margin-bottom:15px;font-size:1rem}.selected-game-preview{background:#1a2a2a;border-radius:12px;padding:20px;margin:20px 0;border:2px solid #00f2ea;display:flex;gap:20px;flex-wrap:wrap}.selected-game-preview img{width:120px;height:120px;border-radius:16px;border:3px solid #00f2ea;object-fit:cover}.selected-game-details{flex:1}.selected-game-details h3{color:#00f2ea;margin-bottom:10px}.selected-game-desc{color:#aaa;margin-bottom:15px;line-height:1.5}.selected-game-stats{display:flex;gap:25px;margin:15px 0;flex-wrap:wrap}.stat-box{background:#0f1a1f;padding:12px 20px;border-radius:10px;border-left:3px solid #00f2ea}.stat-box .label{color:#888;font-size:.8rem}.stat-box .value{color:#00f2ea;font-size:1.2rem;font-weight:bold}.use-game-btn{background:#00f2ea;border:none;padding:15px;border-radius:50px;width:100%;font-weight:bold;cursor:pointer;margin-top:10px}.use-game-btn:hover{background:#00d4cc}.webhook-status{background:#1a2f3a;border-radius:8px;padding:15px;margin:20px 0;border-left:4px solid #5865F2}.webhook-status h4{color:#5865F2;margin-bottom:10px}.webhook-status p{color:#aaa;font-size:.9rem}.webhook-test{display:flex;gap:10px;margin-top:10px}.webhook-test input{flex:2}.webhook-test button{width:auto;margin:0}button{background:#00f2ea;color:#000;border:0;padding:14px 25px;border-radius:50px;font-weight:700;cursor:pointer;font-size:1rem;margin-top:10px;width:100%;transition:all .2s;border:1px solid #4afff0}button:hover{background:#00d4cc;transform:scale(1.02);box-shadow:0 0 20px #00f2ea}button.delete{background:#ff4444;color:#fff;border:1px solid #ff8888;width:auto;padding:8px 15px}button.delete:hover{background:#cc0000}button.edit{background:#ffaa00;color:#000;border:1px solid #ffcc00;width:auto;padding:8px 15px}button.edit:hover{background:#ff8800}.script-item{background:#1a1a1a;border-left:3px solid #00f2ea;padding:15px;margin:15px 0;border-radius:8px;display:flex;justify-content:space-between;align-items:center}.script-info{flex:1}.script-info h3{color:#00f2ea;margin-bottom:5px;font-size:1.1rem;display:flex;align-items:center;gap:10px}.script-thumb{width:40px;height:40px;border-radius:8px;object-fit:cover}.script-info p{color:#888;font-size:.8rem;line-height:1.5;margin:5px 0}.script-meta{display:flex;gap:15px;margin-top:8px;flex-wrap:wrap}.script-actions{display:flex;gap:10px}.status-badge{padding:4px 12px;border-radius:30px;font-size:.7rem;background:#00f2ea20;color:#00f2ea;display:inline-block}.admin-badge{background:#ff4444;color:white;padding:2px 8px;border-radius:30px;font-size:.6rem;margin-left:5px}.roblox-badge{background:#00f2ea;color:#000;padding:2px 8px;border-radius:30px;font-size:.6rem;margin-left:5px;font-weight:bold}.status-message{padding:10px;border-radius:8px;margin-bottom:20px;text-align:center}.edit-mode{background:#ffaa0020;border:2px solid #ffaa00;padding:10px;border-radius:8px;margin-bottom:20px;text-align:center}.edit-mode span{color:#ffaa00;font-weight:bold}
 </style></head><body>
 <div class="container">
   <div class="logout-bar">
@@ -16,18 +16,37 @@
     <span>✏️ EDIT MODE</span> - You are editing a script
   </div>
   
-  <!-- ROBLOX GAME SEARCH CARD (ADMIN ONLY) -->
-  <div class="roblox-search-card">
-    <h3>🎮 Roblox Game Search</h3>
-    <p style="color:#aaa; margin-bottom:15px;">Search any Roblox game to auto-fill details</p>
-    
-    <div class="search-row">
-      <input type="text" id="robloxSearch" placeholder="Search for a game (e.g., Adopt Me, Blox Fruits, Murder Mystery 2)" value="Adopt Me">
-      <button onclick="searchRobloxGame()" style="background:#00f2ea;">🔍 Search</button>
+  <!-- DISCORD WEBHOOK STATUS -->
+  <div class="webhook-status">
+    <h4>🔔 Discord Webhook Notifications</h4>
+    <p>✓ Notifications will be sent when you add or edit scripts</p>
+    <p>✓ Includes: Title, Description, Image, Key System, Features, Game Info</p>
+    <p>✓ No notifications for deletions</p>
+    <div class="webhook-test">
+      <input type="url" id="testWebhookUrl" placeholder="Test with custom webhook (optional)">
+      <button onclick="testWebhook()" style="background:#5865F2;">Test</button>
     </div>
+  </div>
+  
+  <!-- ROBLOX GAME SELECTOR -->
+  <div class="roblox-select-card">
+    <h3>🎮 Select Roblox Game</h3>
+    <p style="color:#aaa; margin-bottom:15px;">Choose a game to auto-fill details</p>
     
-    <!-- SEARCH RESULTS -->
-    <div id="searchResults" class="search-results" style="display:none;"></div>
+    <select id="popularGameSelect" class="popular-select">
+      <option value="">-- Select a game --</option>
+      <option value="adoptme">🐾 Adopt Me!</option>
+      <option value="bloxfruit">🎮 Blox Fruits</option>
+      <option value="mm2">🔪 Murder Mystery 2</option>
+      <option value="fisch">🐟 Fisch</option>
+      <option value="towerdefense">🛡️ Tower Defense Simulator</option>
+      <option value="arsenal">🔫 Arsenal</option>
+      <option value="bedwars">🛏️ BedWars</option>
+      <option value="dragonblox">🐉 Dragon Blox</option>
+      <option value="pet">🐶 Pet Simulator</option>
+    </select>
+    
+    <button onclick="fillPopularGame()" style="background:#00f2ea; margin-bottom:15px;">📋 Fill Selected Game</button>
     
     <!-- SELECTED GAME PREVIEW -->
     <div id="selectedGamePreview" class="selected-game-preview" style="display:none;">
@@ -45,9 +64,42 @@
             <div class="value" id="selectedGameVisits">0</div>
           </div>
         </div>
-        <button class="use-game-btn" onclick="useSelectedGame()">📋 Use This Game for Script</button>
       </div>
     </div>
+    
+    <!-- MANUAL UNIVERSE ID -->
+    <details style="margin-top:15px;">
+      <summary style="color:#00f2ea; cursor:pointer;">🔧 Manual Universe ID</summary>
+      <div style="margin-top:10px;">
+        <input type="text" id="manualUniverseId" placeholder="Enter Universe ID">
+        <button onclick="fetchManualGame()" style="margin-top:5px;">Fetch Game</button>
+      </div>
+    </details>
+  </div>
+  
+  <!-- IMAGE UPLOAD -->
+  <div class="image-upload-container">
+    <h3>🖼️ Script Image (will appear in Discord)</h3>
+    
+    <div class="image-preview" id="imagePreview" onclick="document.getElementById('imageFile').click()">
+      <span>Click to upload</span>
+    </div>
+    
+    <div class="image-upload-area" onclick="document.getElementById('imageFile').click()">
+      <div class="image-upload-icon">📁</div>
+      <div class="image-upload-text">Click to upload or <strong>browse</strong></div>
+      <div class="image-upload-text" style="font-size:0.8rem;">PNG, JPG, WEBP, GIF (Max 5MB)</div>
+    </div>
+    
+    <input type="file" id="imageFile" accept="image/png,image/jpeg,image/webp,image/gif" onchange="handleImageUpload()" style="display:none;">
+    
+    <div class="image-url-input">
+      <input type="url" id="imageUrl" placeholder="https://example.com/image.png">
+      <button onclick="previewImageUrl()" style="background:#4a4a4a;">Preview</button>
+    </div>
+    
+    <button onclick="clearImage()" style="background:#ff4444; margin-top:10px;">🗑️ Clear Image</button>
+    <input type="hidden" id="imageData" value="">
   </div>
   
   <!-- MAIN ADMIN CARD -->
@@ -59,15 +111,24 @@
     <label>Script Name</label>
     <input type="text" id="scriptName" placeholder="e.g., 🔪 MURDER MYSTERY 2">
 
-    <label>Script Description (optional)</label>
-    <textarea id="scriptDescription" placeholder="Describe what this script does..."></textarea>
-
-    <!-- IMAGE URL -->
-    <div style="margin:15px 0;">
-      <label>Game Thumbnail</label>
-      <input type="url" id="imageUrl" placeholder="https://example.com/image.png">
-      <input type="hidden" id="imageData" value="">
+    <label>Script Description (with rich text)</label>
+    
+    <!-- Rich Text Toolbar -->
+    <div class="rich-text-toolbar">
+      <span class="rich-btn" onclick="formatText('bold')" title="Bold"><strong>B</strong></span>
+      <span class="rich-btn" onclick="formatText('italic')" title="Italic"><em>I</em></span>
+      <span class="rich-btn" onclick="formatText('underline')" title="Underline"><u>U</u></span>
+      <span class="rich-btn" onclick="formatText('strike')" title="Strikethrough"><s>S</s></span>
+      <span class="color-picker">
+        <span class="color-option" style="background:#ff4444;" onclick="formatColor('#ff4444')"></span>
+        <span class="color-option" style="background:#ffaa00;" onclick="formatColor('#ffaa00')"></span>
+        <span class="color-option" style="background:#00f2ea;" onclick="formatColor('#00f2ea')"></span>
+        <span class="color-option" style="background:#00aa00;" onclick="formatColor('#00aa00')"></span>
+        <span class="color-option" style="background:#aa00aa;" onclick="formatColor('#aa00aa')"></span>
+      </span>
     </div>
+    
+    <textarea id="scriptDescription" placeholder="Describe what this script does... You can use **bold**, *italic*, colors, etc."></textarea>
 
     <label>Loadstring Code</label>
     <textarea id="scriptCode" placeholder='loadstring(game:HttpGet("URL"))()'></textarea>
@@ -83,7 +144,7 @@
       <h3>🔒 ADMIN ONLY - Redirect URL</h3>
       <label>Required for blurred scripts</label>
       <input type="url" id="scriptRedirectUrl" placeholder="https://openinapp.link/xxx">
-      <p style="color:#ff8888; font-size:0.8rem; margin-top:8px;">⏱️ 5-second timer then redirect here</p>
+      <p style="color:#ff8888; font-size:0.8rem;">⏱️ 5-second timer then redirect here</p>
     </div>
 
     <label>🔑 Key System Type</label>
@@ -106,7 +167,6 @@
       <div class="linkvertise-config">
         <h3>🔗 Linkvertise Links</h3>
         <div id="linkvertiseFields"></div>
-        <p style="color:#aaa; font-size:0.8rem;">Example: https://link-to.net/1446949/123456/dynamic</p>
       </div>
     </div>
 
@@ -158,192 +218,178 @@ const ADMIN_PASSWORD = 'noobie123admin';
 const API_URL = '/api/commit';
 
 let selectedFeatures = [], currentScripts = [], selectedKeySystem = 'keyless';
-let playerCountInterval = null;
-let selectedGameData = null;
 
-// ==================== ROBLOX API FUNCTIONS (WORKING) ====================
-async function searchRobloxGame() {
-  const query = document.getElementById('robloxSearch').value.trim();
-  if (!query) { alert('Enter a search term'); return; }
+// ==================== RICH TEXT FORMATTING ====================
+function formatText(type) {
+  const textarea = document.getElementById('scriptDescription');
+  const start = textarea.selectionStart;
+  const end = textarea.selectionEnd;
+  const selectedText = textarea.value.substring(start, end);
   
-  showStatus('🔍 Searching Roblox games...');
-  
-  try {
-    // Direct Roblox API endpoint - most reliable
-    const response = await fetch(`https://games.roblox.com/v1/games/list?keyword=${encodeURIComponent(query)}&limit=10`);
-    
-    if (!response.ok) {
-      throw new Error(`HTTP error ${response.status}`);
-    }
-    
-    const data = await response.json();
-    
-    if (!data.games || data.games.length === 0) {
-      showStatus('❌ No games found', true);
-      return;
-    }
-    
-    displaySearchResults(data.games);
-  } catch (error) {
-    console.error('Search error:', error);
-    showStatus('❌ Search failed. Trying alternative...', true);
-    
-    // Fallback to catalog search
-    try {
-      const altResponse = await fetch(`https://catalog.roblox.com/v1/search/items?category=All&keyword=${encodeURIComponent(query)}&limit=10`);
-      const altData = await altResponse.json();
-      
-      if (altData.data && altData.data.length > 0) {
-        // Convert catalog items to game format
-        const games = altData.data.map(item => ({
-          name: item.name,
-          universeId: item.universeId || '0',
-          playing: 0,
-          visits: 0,
-          rootPlaceId: item.id,
-          id: item.id
-        }));
-        displaySearchResults(games);
-      } else {
-        showStatus('❌ No games found', true);
-      }
-    } catch (altError) {
-      showStatus('❌ Roblox API unavailable. Please try again later.', true);
-    }
+  let formatted = '';
+  switch(type) {
+    case 'bold': formatted = `**${selectedText}**`; break;
+    case 'italic': formatted = `*${selectedText}*`; break;
+    case 'underline': formatted = `<u>${selectedText}</u>`; break;
+    case 'strike': formatted = `~~${selectedText}~~`; break;
   }
+  
+  textarea.value = textarea.value.substring(0, start) + formatted + textarea.value.substring(end);
 }
 
-function displaySearchResults(games) {
-  const resultsDiv = document.getElementById('searchResults');
-  resultsDiv.style.display = 'block';
+function formatColor(color) {
+  const textarea = document.getElementById('scriptDescription');
+  const start = textarea.selectionStart;
+  const end = textarea.selectionEnd;
+  const selectedText = textarea.value.substring(start, end);
   
-  let html = '';
-  games.forEach(game => {
-    const playing = game.playing || 0;
-    const visits = game.visits || 0;
-    const gameId = game.universeId || game.id || game.rootPlaceId;
-    
-    html += `
-      <div class="game-item" onclick='selectGame(${JSON.stringify(game)})'>
-        <img src="https://www.roblox.com/asset/?id=${game.rootPlaceId || game.id}" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%3E%3Crect%20width%3D%2260%22%20height%3D%2260%22%20fill%3D%22%23333%22%2F%3E%3Ctext%20x%3D%2210%22%20y%3D%2240%22%20fill%3D%22%2300f2ea%22%20font-size%3D%2220%22%3E🎮%3C%2Ftext%3E%3C%2Fsvg%3E'">
-        <div class="game-item-info">
-          <h4>${game.name}</h4>
-          <div class="game-item-stats">
-            <span class="game-item-playing">👥 ${playing.toLocaleString()} playing</span>
-            <span class="game-item-visits">📊 ${visits.toLocaleString()} visits</span>
-          </div>
-        </div>
-      </div>
-    `;
-  });
-  
-  resultsDiv.innerHTML = html;
+  const formatted = `<span style="color:${color}">${selectedText}</span>`;
+  textarea.value = textarea.value.substring(0, start) + formatted + textarea.value.substring(end);
 }
 
-async function selectGame(game) {
-  showStatus(`📡 Fetching detailed game info...`);
+// ==================== IMAGE FUNCTIONS ====================
+function handleImageUpload() {
+  const file = document.getElementById('imageFile').files[0];
+  if (!file) return;
+  
+  if (file.size > 5 * 1024 * 1024) {
+    alert('File too large! Max 5MB');
+    return;
+  }
+  
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    document.getElementById('imagePreview').innerHTML = `<img src="${e.target.result}">`;
+    document.getElementById('imageData').value = e.target.result;
+    document.getElementById('imageUrl').value = '';
+  };
+  reader.readAsDataURL(file);
+}
+
+function previewImageUrl() {
+  const url = document.getElementById('imageUrl').value.trim();
+  if (!url) return;
+  document.getElementById('imagePreview').innerHTML = `<img src="${url}">`;
+  document.getElementById('imageData').value = url;
+}
+
+function clearImage() {
+  document.getElementById('imagePreview').innerHTML = '<span>Click to upload</span>';
+  document.getElementById('imageData').value = '';
+  document.getElementById('imageUrl').value = '';
+  document.getElementById('imageFile').value = '';
+}
+
+// ==================== ROBLOX GAME FUNCTIONS ====================
+const popularGames = {
+  adoptme: { name: "🐾 Adopt Me!", universeId: "3373681961", description: "Adopt and raise pets!", playing: 150000, visits: 15000000000, thumbUrl: "https://tr.rbxcdn.com/180DAY-92700ae9fa80f96ce2436f4d8760a9e2/256/256/Image/Webp/noFilter" },
+  bloxfruit: { name: "🎮 Blox Fruits", universeId: "4520749081", description: "Become a master of Blox Fruits!", playing: 120000, visits: 8000000000, thumbUrl: "https://tr.rbxcdn.com/180DAY-2f74f0b0b8a847bb39fd8745a8228f5b/256/256/Image/Webp/noFilter" },
+  mm2: { name: "🔪 Murder Mystery 2", universeId: "142823291", description: "A classic game of mystery!", playing: 80000, visits: 12000000000, thumbUrl: "https://tr.rbxcdn.com/180DAY-c8a3f0c68489fcc7f4b56772b5778a96/256/256/Image/Webp/noFilter" },
+  fisch: { name: "🐟 Fisch", universeId: "16732640576", description: "Go fishing and discover rare fish!", playing: 50000, visits: 200000000, thumbUrl: "https://tr.rbxcdn.com/180DAY-2a023f475372ce64b3c5d4ab7de1a0ef/256/256/Image/Webp/noFilter" },
+  towerdefense: { name: "🛡️ Tower Defense Simulator", universeId: "2811530351", description: "Build towers and defend!", playing: 40000, visits: 3000000000, thumbUrl: "https://tr.rbxcdn.com/180DAY-8a3f0c68489fcc7f4b56772b5778a96c/256/256/Image/Webp/noFilter" },
+  arsenal: { name: "🔫 Arsenal", universeId: "286090429", description: "Fast-paced FPS game!", playing: 35000, visits: 5000000000, thumbUrl: "https://tr.rbxcdn.com/180DAY-5a8f3c0f68489fcc7f4b56772b5778a9/256/256/Image/Webp/noFilter" },
+  bedwars: { name: "🛏️ BedWars", universeId: "6872265039", description: "Protect your bed!", playing: 60000, visits: 4000000000, thumbUrl: "https://tr.rbxcdn.com/180DAY-6b8f3c0f68489fcc7f4b56772b5778a9/256/256/Image/Webp/noFilter" },
+  dragonblox: { name: "🐉 Dragon Blox", universeId: "472798613", description: "Train to become the strongest!", playing: 25000, visits: 2000000000, thumbUrl: "https://tr.rbxcdn.com/180DAY-7c8f3c0f68489fcc7f4b56772b5778a9/256/256/Image/Webp/noFilter" },
+  pet: { name: "🐶 Pet Simulator", universeId: "6284583030", description: "Collect pets and coins!", playing: 70000, visits: 6000000000, thumbUrl: "https://tr.rbxcdn.com/180DAY-8d8f3c0f68489fcc7f4b56772b5778a9/256/256/Image/Webp/noFilter" }
+};
+
+function fillPopularGame() {
+  const gameKey = document.getElementById('popularGameSelect').value;
+  if (!gameKey) return alert('Select a game');
+  
+  const game = popularGames[gameKey];
+  document.getElementById('scriptName').value = game.name;
+  document.getElementById('scriptDescription').value = game.description;
+  document.getElementById('imageUrl').value = game.thumbUrl;
+  document.getElementById('imageData').value = game.thumbUrl;
+  document.getElementById('gameUniverseId').value = game.universeId;
+  document.getElementById('imagePreview').innerHTML = `<img src="${game.thumbUrl}">`;
+  
+  document.getElementById('selectedGameName').textContent = game.name;
+  document.getElementById('selectedGameDesc').textContent = game.description;
+  document.getElementById('selectedGamePlaying').textContent = game.playing.toLocaleString();
+  document.getElementById('selectedGameVisits').textContent = game.visits.toLocaleString();
+  document.getElementById('selectedGameThumb').src = game.thumbUrl;
+  document.getElementById('selectedGamePreview').style.display = 'flex';
+}
+
+async function fetchManualGame() {
+  const universeId = document.getElementById('manualUniverseId').value.trim();
+  if (!universeId) return alert('Enter Universe ID');
   
   try {
-    // Get universe ID (may be in different formats)
-    const universeId = game.universeId || game.id;
+    const res = await fetch(`https://games.roblox.com/v1/games?universeIds=${universeId}`);
+    const data = await res.json();
+    const game = data.data[0];
     
-    if (!universeId) {
-      throw new Error('No universe ID found');
-    }
+    if (!game) throw new Error('Game not found');
     
-    // Get detailed game info
-    const response = await fetch(`https://games.roblox.com/v1/games?universeIds=${universeId}`);
-    const data = await response.json();
-    const details = data.data[0];
+    const thumbRes = await fetch(`https://thumbnails.roblox.com/v1/games/icons?universeIds=${universeId}&size=256x256&format=Png`);
+    const thumbData = await thumbRes.json();
+    const thumbUrl = thumbData.data?.[0]?.imageUrl || '';
     
-    if (!details) {
-      throw new Error('No game details found');
-    }
+    document.getElementById('scriptName').value = game.name;
+    document.getElementById('scriptDescription').value = game.description || '';
+    document.getElementById('imageUrl').value = thumbUrl;
+    document.getElementById('imageData').value = thumbUrl;
+    document.getElementById('gameUniverseId').value = universeId;
+    if (thumbUrl) document.getElementById('imagePreview').innerHTML = `<img src="${thumbUrl}">`;
     
-    // Get game thumbnail
-    const thumbResponse = await fetch(`https://thumbnails.roblox.com/v1/games/icons?universeIds=${universeId}&size=256x256&format=Png`);
-    const thumbData = await thumbResponse.json();
-    const thumbUrl = thumbData.data && thumbData.data[0] ? thumbData.data[0].imageUrl : '';
-    
-    selectedGameData = {
-      universeId: universeId,
-      name: details.name,
-      description: details.description || 'No description available',
-      playing: details.playing || 0,
-      visits: details.visits || 0,
-      thumbUrl
-    };
-    
-    // Update preview
-    document.getElementById('selectedGameName').textContent = details.name;
-    document.getElementById('selectedGameDesc').textContent = details.description || 'No description available';
-    document.getElementById('selectedGamePlaying').textContent = (details.playing || 0).toLocaleString();
-    document.getElementById('selectedGameVisits').textContent = (details.visits || 0).toLocaleString();
+    document.getElementById('selectedGameName').textContent = game.name;
+    document.getElementById('selectedGameDesc').textContent = game.description || '';
+    document.getElementById('selectedGamePlaying').textContent = (game.playing || 0).toLocaleString();
+    document.getElementById('selectedGameVisits').textContent = (game.visits || 0).toLocaleString();
     document.getElementById('selectedGameThumb').src = thumbUrl;
     document.getElementById('selectedGamePreview').style.display = 'flex';
-    document.getElementById('searchResults').style.display = 'none';
     
-    // Start auto-refresh for player count
-    startPlayerCountRefresh(universeId);
-    
-    showStatus('✅ Game loaded! Auto-refreshing player count every 60 seconds');
-  } catch (error) {
-    console.error('Game fetch error:', error);
-    showStatus('❌ Failed to load game details', true);
+    showStatus('✅ Game loaded');
+  } catch (e) {
+    showStatus('❌ Failed to fetch game', true);
   }
 }
 
-async function refreshPlayerCount(universeId) {
-  if (!universeId) return;
+// ==================== DISCORD WEBHOOK TEST ====================
+async function testWebhook() {
+  const url = document.getElementById('testWebhookUrl').value.trim();
+  if (!url) {
+    alert('Enter a webhook URL to test');
+    return;
+  }
   
   try {
-    const response = await fetch(`https://games.roblox.com/v1/games?universeIds=${universeId}`);
-    const data = await response.json();
-    const playing = data.data[0]?.playing || 0;
+    const testEmbed = {
+      title: '🔔 Test Notification',
+      description: 'Your webhook is working correctly!',
+      color: 0x00f2ea,
+      fields: [
+        { name: 'Status', value: '✅ Connected', inline: true },
+        { name: 'Time', value: new Date().toLocaleString(), inline: true }
+      ],
+      footer: { text: 'Lokus Hub Admin Test' }
+    };
     
-    document.getElementById('selectedGamePlaying').textContent = playing.toLocaleString();
-  } catch (error) {
-    console.error('Player count refresh error:', error);
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ embeds: [testEmbed] })
+    });
+    
+    if (res.ok) showStatus('✅ Test sent! Check Discord');
+    else showStatus('❌ Webhook failed', true);
+  } catch (e) {
+    showStatus('❌ Error sending test', true);
   }
-}
-
-function startPlayerCountRefresh(universeId) {
-  if (playerCountInterval) clearInterval(playerCountInterval);
-  
-  // Update every 60 seconds
-  playerCountInterval = setInterval(() => {
-    refreshPlayerCount(universeId);
-  }, 60000);
-}
-
-function useSelectedGame() {
-  if (!selectedGameData) return;
-  
-  // Auto-fill script name
-  document.getElementById('scriptName').value = selectedGameData.name;
-  
-  // Auto-fill description
-  document.getElementById('scriptDescription').value = selectedGameData.description;
-  
-  // Auto-fill image URL
-  document.getElementById('imageUrl').value = selectedGameData.thumbUrl;
-  document.getElementById('imageData').value = selectedGameData.thumbUrl;
-  
-  // Save universe ID
-  document.getElementById('gameUniverseId').value = selectedGameData.universeId;
-  
-  showStatus('✅ Game info applied to form!');
 }
 
 // ==================== UI FUNCTIONS ====================
 function showStatus(msg, isError) {
-  let el = document.getElementById('statusMessage');
+  const el = document.getElementById('statusMessage');
   el.innerHTML = `<div style="background:${isError?'#ff444420':'#00f2ea20'};border:1px solid ${isError?'#ff4444':'#00f2ea'};color:${isError?'#ff8888':'#00f2ea'};padding:10px;border-radius:8px;">${msg}</div>`;
   setTimeout(() => el.innerHTML = '', 5000);
 }
 
 function toggleRedirectUrlField() {
-  let c = document.getElementById('scriptBlurred').checked;
+  const c = document.getElementById('scriptBlurred').checked;
   document.getElementById('redirectUrlContainer').style.display = c ? 'block' : 'none';
 }
 
@@ -353,12 +399,14 @@ function selectKeySystem(v) {
   document.getElementById(v+'-option').classList.add('selected');
   document.querySelector(`input[name="keySystem"][value="${v}"]`).checked = true;
   
-  let div = document.getElementById('linkvertiseLinks'), fields = document.getElementById('linkvertiseFields');
+  const div = document.getElementById('linkvertiseLinks');
+  const fields = document.getElementById('linkvertiseFields');
   if (v !== 'keyless') {
     div.style.display = 'block';
     let html = '';
-    for (let i = 1; i <= parseInt(v.replace('key','')); i++) 
+    for (let i = 1; i <= parseInt(v.replace('key','')); i++) {
       html += `<label>Key ${i} URL</label><input type="url" id="key${i}Link" placeholder="https://link-to.net/1446949/xxx">`;
+    }
     fields.innerHTML = html;
   } else div.style.display = 'none';
 }
@@ -367,10 +415,12 @@ function selectKeySystem(v) {
 document.querySelectorAll('.feature-tag').forEach(t => {
   t.onclick = () => {
     t.classList.toggle('selected');
-    let f = t.dataset.feature;
-    selectedFeatures.includes(f) ? 
-      selectedFeatures = selectedFeatures.filter(x => x !== f) : 
+    const f = t.dataset.feature;
+    if (selectedFeatures.includes(f)) {
+      selectedFeatures = selectedFeatures.filter(x => x !== f);
+    } else {
       selectedFeatures.push(f);
+    }
   };
 });
 
@@ -383,19 +433,12 @@ function cancelEdit() {
   document.getElementById('scriptRedirectUrl').value = '';
   document.getElementById('editingScriptId').value = '';
   document.getElementById('gameUniverseId').value = '';
-  document.getElementById('imageUrl').value = '';
-  document.getElementById('imageData').value = '';
   document.getElementById('redirectUrlContainer').style.display = 'none';
   document.getElementById('selectedGamePreview').style.display = 'none';
-  document.getElementById('searchResults').style.display = 'none';
   document.getElementById('formTitle').innerHTML = '📝 Add New Script';
   document.getElementById('saveButton').innerHTML = '💾 Save & Auto-Commit';
   document.getElementById('editModeIndicator').style.display = 'none';
-  
-  if (playerCountInterval) {
-    clearInterval(playerCountInterval);
-    playerCountInterval = null;
-  }
+  clearImage();
   
   selectedKeySystem = 'keyless';
   document.querySelectorAll('.key-option').forEach(o => o.classList.remove('selected'));
@@ -409,9 +452,10 @@ function cancelEdit() {
 // ==================== LOAD SCRIPTS ====================
 async function loadScripts() {
   try {
-    let r = await fetch('scripts.json?t='+Date.now()), d = await r.json();
+    const r = await fetch('scripts.json?t='+Date.now());
+    const d = await r.json();
     currentScripts = d.scripts || [];
-    let list = document.getElementById('scriptsList');
+    const list = document.getElementById('scriptsList');
     if (!currentScripts.length) { list.innerHTML = '<p>No scripts</p>'; return; }
     list.innerHTML = currentScripts.map(s => {
       let key = '';
@@ -419,13 +463,12 @@ async function loadScripts() {
       else if (s.keySystem === 'key2') key = '<span class="key-badge key2">🔑🔑2</span>';
       else if (s.keySystem === 'key3') key = '<span class="key-badge key3">🔑🔑🔑3</span>';
       
-      let robloxBadge = s.universeId ? '<span class="roblox-badge">🎮 Roblox</span>' : '';
+      let thumbnail = s.image ? `<img src="${s.image}" class="script-thumb">` : '';
       
       return `<div class="script-item">
         <div class="script-info">
-          <h3>${s.name} ${robloxBadge}</h3>
-          ${s.description ? `<p>📝 ${s.description}</p>` : ''}
-          <p>${s.code.substring(0,50)}...</p>
+          <h3>${thumbnail} ${s.name}</h3>
+          ${s.description ? `<p>📝 ${s.description.replace(/<[^>]*>/g, '').substring(0,100)}...</p>` : ''}
           <div class="script-meta">
             <span class="status-badge">${s.blurred?'🔒Blurred':'✅Public'}</span>
             ${key}
@@ -444,7 +487,9 @@ async function loadScripts() {
 
 // ==================== EDIT SCRIPT ====================
 function editScript(id) {
-  let s = currentScripts.find(x => x.id === id); if (!s) return;
+  const s = currentScripts.find(x => x.id === id);
+  if (!s) return;
+  
   document.getElementById('scriptName').value = s.name;
   document.getElementById('scriptDescription').value = s.description || '';
   document.getElementById('scriptCode').value = s.code;
@@ -452,18 +497,28 @@ function editScript(id) {
   document.getElementById('scriptRedirectUrl').value = s.redirectUrl || '';
   document.getElementById('editingScriptId').value = s.id;
   document.getElementById('gameUniverseId').value = s.universeId || '';
-  document.getElementById('imageUrl').value = s.image || '';
-  document.getElementById('imageData').value = s.image || '';
+  
+  if (s.image) {
+    document.getElementById('imagePreview').innerHTML = `<img src="${s.image}">`;
+    document.getElementById('imageData').value = s.image;
+    document.getElementById('imageUrl').value = s.image.startsWith('data:') ? '' : s.image;
+  }
   
   document.getElementById('redirectUrlContainer').style.display = s.blurred ? 'block' : 'none';
   
   selectKeySystem(s.keySystem || 'keyless');
   selectedFeatures = s.features || [];
-  document.querySelectorAll('.feature-tag').forEach(t => t.classList.toggle('selected', selectedFeatures.includes(t.dataset.feature)));
-  if (s.keyLinks) for (let i=1; i<=s.keyLinks.length; i++) {
-    let inp = document.getElementById(`key${i}Link`);
-    if (inp) inp.value = s.keyLinks[i-1];
+  document.querySelectorAll('.feature-tag').forEach(t => {
+    t.classList.toggle('selected', selectedFeatures.includes(t.dataset.feature));
+  });
+  
+  if (s.keyLinks) {
+    for (let i = 1; i <= s.keyLinks.length; i++) {
+      const inp = document.getElementById(`key${i}Link`);
+      if (inp) inp.value = s.keyLinks[i-1];
+    }
   }
+  
   document.getElementById('formTitle').innerHTML = '✏️ Edit Script';
   document.getElementById('saveButton').innerHTML = '✏️ Update & Auto-Commit';
   document.getElementById('editModeIndicator').style.display = 'block';
@@ -472,7 +527,7 @@ function editScript(id) {
 // ==================== GITHUB API via Serverless ====================
 async function commitToGitHub(scriptData, isEdit, sendWebhook = true) {
   try {
-    let fullData = {
+    const fullData = {
       siteTitle: "lokus hub scripts", 
       visitorCount: 1842,
       linkvertise: { 
@@ -483,7 +538,7 @@ async function commitToGitHub(scriptData, isEdit, sendWebhook = true) {
       lastUpdated: new Date().toISOString().split('T')[0]
     };
     
-    let r = await fetch(API_URL, {
+    const r = await fetch(API_URL, {
       method: 'POST',
       headers: { 
         'Authorization': 'Bearer ' + ADMIN_PASSWORD, 
@@ -498,7 +553,7 @@ async function commitToGitHub(scriptData, isEdit, sendWebhook = true) {
       })
     });
     
-    let res = await r.json();
+    const res = await r.json();
     if (!r.ok) throw new Error(res.error || 'Commit failed');
     
     showStatus(`✅ ${isEdit ? 'Updated' : 'Added'}! Vercel deploying...`);
@@ -511,28 +566,28 @@ async function commitToGitHub(scriptData, isEdit, sendWebhook = true) {
 
 // ==================== SAVE SCRIPT ====================
 async function saveScript() {
-  let name = document.getElementById('scriptName').value;
-  let description = document.getElementById('scriptDescription').value;
-  let code = document.getElementById('scriptCode').value;
-  let blurred = document.getElementById('scriptBlurred').checked;
-  let redirect = document.getElementById('scriptRedirectUrl').value;
-  let editId = document.getElementById('editingScriptId').value;
-  let image = document.getElementById('imageData').value;
-  let universeId = document.getElementById('gameUniverseId').value;
+  const name = document.getElementById('scriptName').value;
+  const description = document.getElementById('scriptDescription').value;
+  const code = document.getElementById('scriptCode').value;
+  const blurred = document.getElementById('scriptBlurred').checked;
+  const redirect = document.getElementById('scriptRedirectUrl').value;
+  const editId = document.getElementById('editingScriptId').value;
+  const image = document.getElementById('imageData').value;
+  const universeId = document.getElementById('gameUniverseId').value;
   
   if (!name || !code) { alert('Fill all fields'); return; }
   if (blurred && !redirect) { alert('Redirect URL required for blurred scripts'); return; }
   
   let keyLinks = [];
   if (selectedKeySystem !== 'keyless') {
-    for (let i=1; i<=parseInt(selectedKeySystem.replace('key','')); i++) {
-      let link = document.getElementById(`key${i}Link`)?.value;
+    for (let i = 1; i <= parseInt(selectedKeySystem.replace('key','')); i++) {
+      const link = document.getElementById(`key${i}Link`)?.value;
       if (!link) { alert(`Enter Key ${i} URL`); return; }
       keyLinks.push(link);
     }
   }
   
-  let scriptData = {
+  const scriptData = {
     id: editId || name.toLowerCase().replace(/[^a-z0-9]/g,'') + Date.now(),
     name, description, code, blurred, redirectUrl: redirect,
     image: image || null,
@@ -541,9 +596,11 @@ async function saveScript() {
   };
   
   if (editId) {
-    let idx = currentScripts.findIndex(s => s.id === editId);
+    const idx = currentScripts.findIndex(s => s.id === editId);
     if (idx !== -1) currentScripts[idx] = scriptData;
-  } else currentScripts.push(scriptData);
+  } else {
+    currentScripts.push(scriptData);
+  }
   
   if (await commitToGitHub(scriptData, !!editId, true)) {
     displayScripts();
@@ -555,7 +612,7 @@ async function saveScript() {
 async function deleteScript(id) {
   if (!confirm('Delete this script?')) return;
   
-  let script = currentScripts.find(s => s.id === id);
+  const script = currentScripts.find(s => s.id === id);
   currentScripts = currentScripts.filter(s => s.id !== id);
   
   if (await commitToGitHub(script, false, false)) {
@@ -565,7 +622,7 @@ async function deleteScript(id) {
 
 // ==================== DISPLAY HELPER ====================
 function displayScripts() {
-  let list = document.getElementById('scriptsList');
+  const list = document.getElementById('scriptsList');
   if (!currentScripts.length) { list.innerHTML = '<p>No scripts</p>'; return; }
   list.innerHTML = currentScripts.map(s => {
     let key = '';
@@ -573,13 +630,12 @@ function displayScripts() {
     else if (s.keySystem === 'key2') key = '<span class="key-badge key2">🔑🔑2</span>';
     else if (s.keySystem === 'key3') key = '<span class="key-badge key3">🔑🔑🔑3</span>';
     
-    let robloxBadge = s.universeId ? '<span class="roblox-badge">🎮 Roblox</span>' : '';
+    let thumbnail = s.image ? `<img src="${s.image}" class="script-thumb">` : '';
     
     return `<div class="script-item">
       <div class="script-info">
-        <h3>${s.name} ${robloxBadge}</h3>
-        ${s.description ? `<p>📝 ${s.description}</p>` : ''}
-        <p>${s.code.substring(0,50)}...</p>
+        <h3>${thumbnail} ${s.name}</h3>
+        ${s.description ? `<p>📝 ${s.description.replace(/<[^>]*>/g, '').substring(0,100)}...</p>` : ''}
         <div class="script-meta">
           <span class="status-badge">${s.blurred?'🔒Blurred':'✅Public'}</span>
           ${key}
@@ -596,10 +652,4 @@ function displayScripts() {
 // ==================== INIT ====================
 checkAuth();
 loadScripts();
-
-// Auto-search a popular game on load
-setTimeout(() => {
-  document.getElementById('robloxSearch').value = 'Adopt Me';
-  searchRobloxGame();
-}, 1000);
 </script></body></html>
