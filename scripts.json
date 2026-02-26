@@ -67,7 +67,7 @@
       "description": "Auto Farm\nAuto Bounty\nAuto boss\nauto dungeon\ntrade scam / freeze trade\nfruit duper\netc",
       "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/flazhy/QuantumOnyx/refs/heads/main/QuantumOnyx.lua\"))()",
       "blurred": true,
-      "redirectUrl": "https://openinapp.link/jvj3l",
+      "redirectUrl": "https://is.gd/Ypi4z4",
       "image": null,
       "universeId": null,
       "keySystem": "keyless",
@@ -75,5 +75,5 @@
       "features": []
     }
   ],
-  "lastUpdated": "2026-02-25"
+  "lastUpdated": "2026-02-26"
 }
