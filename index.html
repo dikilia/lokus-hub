@@ -226,13 +226,13 @@ async function loadScripts() {
       card.className = `script-card ${script.blurred ? 'blurred' : ''}`;
       card.id = script.id + '-card';
       
-      // Handle click on blurred scripts
+      // Handle click on ALL blurred scripts
       if (script.blurred) {
         card.addEventListener('click', function(e) {
           // Don't trigger if clicking the copy button
           if (e.target.classList.contains('copy-btn')) return;
           
-          console.log('🔹 Clicked script:', script.name);
+          console.log('🔹 Clicked blurred script:', script.name);
           console.log('🔹 Redirect URL from JSON:', script.redirectUrl);
           
           // Check if redirectUrl exists
@@ -241,18 +241,12 @@ async function loadScripts() {
             return;
           }
           
-          // Check if this is the universal script
-          if (script.id === 'universal' || script.name.includes('UNIVERSAL')) {
-            // Store the redirect URL in sessionStorage for bloxlink.html
-            sessionStorage.setItem('bloxlinkRedirect', script.redirectUrl);
-            console.log('✅ Stored in sessionStorage:', script.redirectUrl);
-            // Universal script goes to bloxlink.html
-            showRedirectModal('/bloxlink.html');
-          } 
-          // For other blurred scripts, redirect directly
-          else {
-            showRedirectModal(script.redirectUrl);
-          }
+          // FOR ALL BLURRED SCRIPTS: Store URL and go to bloxlink.html
+          sessionStorage.setItem('bloxlinkRedirect', script.redirectUrl);
+          console.log('✅ Stored in sessionStorage:', script.redirectUrl);
+          
+          // ALL blurred scripts go to bloxlink.html
+          showRedirectModal('/bloxlink.html');
         });
       }
       
@@ -315,7 +309,7 @@ window.addEventListener('load', () => {
   sessionStorage.removeItem('bloxlinkRedirect');
 });
 
-// Also reload scripts every 5 minutes to get updates
+// Reload scripts every 5 minutes to get updates
 setInterval(() => {
   console.log('🔄 Checking for script updates...');
   loadScripts();
