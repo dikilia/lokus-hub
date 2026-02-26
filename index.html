@@ -153,18 +153,13 @@ const redirectProgress = document.getElementById('redirectProgress');
 let pendingRedirectUrl = null;
 
 function showRedirectModal(url) {
-  // Store the URL
   pendingRedirectUrl = url;
-  
-  // Show modal
   redirectModal.classList.add('active');
   
-  // Reset timer
   let timeLeft = 5;
   redirectTimerEl.textContent = timeLeft;
   redirectProgress.style.width = '100%';
   
-  // Start countdown
   if (redirectTimer) clearInterval(redirectTimer);
   redirectTimer = setInterval(() => {
     timeLeft--;
@@ -200,11 +195,8 @@ function closeRedirectModalIfOverlay(e) {
 // ==================== LOAD THEME & SCRIPTS ====================
 async function loadScripts() {
   try {
-    // Add cache-busting parameter to always get latest data
     const response = await fetch('scripts.json?t=' + Date.now());
     const data = await response.json();
-    
-    console.log('📦 Loaded scripts.json:', data);
     
     // Apply theme
     if (data.theme) {
@@ -232,8 +224,9 @@ async function loadScripts() {
           // Don't trigger if clicking the copy button
           if (e.target.classList.contains('copy-btn')) return;
           
-          console.log('🔹 Clicked blurred script:', script.name);
-          console.log('🔹 Redirect URL from JSON:', script.redirectUrl);
+          console.log('🔹 Clicked script:', script.name);
+          console.log('🔹 Script ID:', script.id);
+          console.log('🔹 Redirect URL:', script.redirectUrl);
           
           // Check if redirectUrl exists
           if (!script.redirectUrl) {
@@ -241,9 +234,11 @@ async function loadScripts() {
             return;
           }
           
-          // FOR ALL BLURRED SCRIPTS: Store URL and go to bloxlink.html
+          // Store BOTH the redirect URL AND script ID
           sessionStorage.setItem('bloxlinkRedirect', script.redirectUrl);
-          console.log('✅ Stored in sessionStorage:', script.redirectUrl);
+          sessionStorage.setItem('bloxlinkScriptId', script.id);
+          sessionStorage.setItem('bloxlinkScriptName', script.name);
+          console.log('✅ Stored in sessionStorage - URL:', script.redirectUrl, 'ID:', script.id);
           
           // ALL blurred scripts go to bloxlink.html
           showRedirectModal('/bloxlink.html');
@@ -307,6 +302,8 @@ window.addEventListener('load', () => {
   
   // Clear any old session data
   sessionStorage.removeItem('bloxlinkRedirect');
+  sessionStorage.removeItem('bloxlinkScriptId');
+  sessionStorage.removeItem('bloxlinkScriptName');
 });
 
 // Reload scripts every 5 minutes to get updates
