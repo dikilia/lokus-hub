@@ -16,68 +16,47 @@
     <span>✏️ EDIT MODE</span> - You are editing a script
   </div>
   
-  <!-- SHORT LINK GENERATOR CARD (FIXED) -->
+  <!-- SHORT LINK GENERATOR -->
   <div class="shortlink-card">
-    <h3>🔗 Auto Short Link Generator</h3>
-    <p style="color:#aaa; margin-bottom:15px;">Generate short links using multiple services (is.gd, v.gd)</p>
+    <h3>🔗 Short Link Generator</h3>
+    <p style="color:#aaa; margin-bottom:15px;">Generate short links for any URL</p>
     
     <div class="shortlink-input">
-      <input type="url" id="shortlinkOriginal" placeholder="Enter URL to shorten (e.g., https://example.com/script)">
+      <input type="url" id="shortlinkUrl" placeholder="Enter any URL (e.g., https://example.com)">
       <button onclick="generateShortLink()" style="background:#00f2ea;">Generate</button>
     </div>
     
     <div id="shortlinkResult" class="shortlink-display" style="display:none;">
-      <strong>Short Link:</strong> <span id="shortlinkUrl"></span>
+      <strong>Short Link:</strong> <span id="shortlinkResultUrl"></span>
       <div class="shortlink-copy">
         <input type="text" id="shortlinkCopy" readonly>
         <button onclick="copyShortLink()" style="background:#4a4a4a;">Copy</button>
       </div>
-      <p id="shortlinkMethod" style="color:#888; font-size:.7rem; margin-top:5px;"></p>
     </div>
-    
-    <details style="margin-top:15px;">
-      <summary style="color:#00f2ea; cursor:pointer;">🔧 Advanced: Custom Alias (local only)</summary>
-      <div style="margin-top:10px;">
-        <input type="text" id="shortlinkAlias" placeholder="Custom alias (letters/numbers only)">
-        <button onclick="generateCustomShortLink()">Generate with Alias</button>
-        <p style="color:#ffaa00; font-size:.7rem; margin-top:5px;">Note: Custom aliases are local to this site</p>
-      </div>
-    </details>
   </div>
   
-  <!-- THEME SELECTOR CARD -->
+  <!-- THEME SELECTOR -->
   <div class="theme-card">
-    <h3>🎨 Seasonal Themes (Auto-applies to index.html)</h3>
-    <p style="color:#aaa; margin-bottom:15px;">Select a theme and it will instantly apply to your public site</p>
-    
+    <h3>🎨 Seasonal Themes</h3>
     <div class="theme-buttons">
       <button class="theme-btn default" onclick="setTheme('default')" id="theme-default">🌐 Default</button>
       <button class="theme-btn christmas" onclick="setTheme('christmas')" id="theme-christmas">🎄 Christmas</button>
       <button class="theme-btn halloween" onclick="setTheme('halloween')" id="theme-halloween">🎃 Halloween</button>
       <button class="theme-btn valentine" onclick="setTheme('valentine')" id="theme-valentine">❤️ Valentine</button>
     </div>
-    
-    <p style="color:#00f2ea; font-size:.8rem; margin-top:10px;">✓ Theme is saved to scripts.json and auto-deploys</p>
   </div>
   
-  <!-- VERSION CONTROL CARD -->
+  <!-- VERSION CONTROL -->
   <div class="version-control-card">
-    <h3>📅 Version Control & Changelog</h3>
-    <p style="color:#aaa; margin-bottom:15px;">Track script versions and changes</p>
-    
+    <h3>📅 Version Control</h3>
     <div class="version-list" id="versionList">
-      <p style="color:#666;">Loading versions...</p>
+      <p style="color:#666;">No versions yet</p>
     </div>
-    
     <details>
       <summary style="color:#ffaa00; cursor:pointer;">➕ Add New Version</summary>
       <div style="margin-top:15px;">
-        <label>Version (e.g., 2.0.1)</label>
-        <input type="text" id="newVersion" placeholder="2.0.1">
-        
-        <label>Changes (one per line)</label>
-        <textarea id="versionChanges" placeholder="- Fixed ESP&#10;- Added auto-farm&#10;- Improved performance"></textarea>
-        
+        <input type="text" id="newVersion" placeholder="Version (e.g., 2.0.1)">
+        <textarea id="versionChanges" placeholder="Changes (one per line)"></textarea>
         <button onclick="addVersion()" style="background:#ffaa00;">Save Version</button>
       </div>
     </details>
@@ -85,75 +64,32 @@
   
   <!-- ROBLOX GAME SELECTOR -->
   <div class="roblox-select-card">
-    <h3>🎮 Select Roblox Game</h3>
-    <p style="color:#aaa; margin-bottom:15px;">Choose a game to auto-fill details</p>
-    
+    <h3>🎮 Roblox Game</h3>
     <select id="popularGameSelect" class="popular-select">
-      <option value="">-- Select a game --</option>
+      <option value="">Select a game</option>
       <option value="adoptme">🐾 Adopt Me!</option>
       <option value="bloxfruit">🎮 Blox Fruits</option>
       <option value="mm2">🔪 Murder Mystery 2</option>
-      <option value="fisch">🐟 Fisch</option>
-      <option value="towerdefense">🛡️ Tower Defense Simulator</option>
-      <option value="arsenal">🔫 Arsenal</option>
-      <option value="bedwars">🛏️ BedWars</option>
-      <option value="dragonblox">🐉 Dragon Blox</option>
-      <option value="pet">🐶 Pet Simulator</option>
     </select>
-    
-    <button onclick="fillPopularGame()" style="background:#00f2ea; margin-bottom:15px;">📋 Fill Selected Game</button>
-    
-    <!-- SELECTED GAME PREVIEW -->
-    <div id="selectedGamePreview" class="selected-game-preview" style="display:none;">
-      <img id="selectedGameThumb" src="" alt="Game thumbnail">
-      <div class="selected-game-details">
-        <h3 id="selectedGameName"></h3>
-        <div id="selectedGameDesc" class="selected-game-desc"></div>
-        <div class="selected-game-stats">
-          <div class="stat-box">
-            <div class="label">👥 CURRENT PLAYERS</div>
-            <div class="value" id="selectedGamePlaying">0</div>
-          </div>
-          <div class="stat-box">
-            <div class="label">📊 TOTAL VISITS</div>
-            <div class="value" id="selectedGameVisits">0</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- MANUAL UNIVERSE ID -->
-    <details style="margin-top:15px;">
-      <summary style="color:#00f2ea; cursor:pointer;">🔧 Manual Universe ID</summary>
-      <div style="margin-top:10px;">
-        <input type="text" id="manualUniverseId" placeholder="Enter Universe ID">
-        <button onclick="fetchManualGame()" style="margin-top:5px;">Fetch Game</button>
-      </div>
-    </details>
+    <button onclick="fillPopularGame()" style="background:#00f2ea;">📋 Fill Game</button>
   </div>
   
   <!-- IMAGE UPLOAD -->
   <div class="image-upload-container">
     <h3>🖼️ Script Image</h3>
-    
     <div class="image-preview" id="imagePreview" onclick="document.getElementById('imageFile').click()">
       <span>Click to upload</span>
     </div>
-    
     <div class="image-upload-area" onclick="document.getElementById('imageFile').click()">
       <div class="image-upload-icon">📁</div>
       <div class="image-upload-text">Click to upload or <strong>browse</strong></div>
-      <div class="image-upload-text" style="font-size:0.8rem;">PNG, JPG, WEBP, GIF (Max 5MB)</div>
     </div>
-    
-    <input type="file" id="imageFile" accept="image/png,image/jpeg,image/webp,image/gif" onchange="handleImageUpload()" style="display:none;">
-    
+    <input type="file" id="imageFile" accept="image/*" onchange="handleImageUpload()" style="display:none;">
     <div class="image-url-input">
       <input type="url" id="imageUrl" placeholder="https://example.com/image.png">
       <button onclick="previewImageUrl()" style="background:#4a4a4a;">Preview</button>
     </div>
-    
-    <button onclick="clearImage()" style="background:#ff4444; margin-top:10px;">🗑️ Clear Image</button>
+    <button onclick="clearImage()" style="background:#ff4444;">🗑️ Clear</button>
     <input type="hidden" id="imageData" value="">
   </div>
   
@@ -178,12 +114,13 @@
       <label>🔒 Require verification (blurred)</label>
     </div>
 
-    <!-- REDIRECT URL -->
+    <!-- REDIRECT URL - ACCEPTS ANY URL -->
     <div id="redirectUrlContainer" class="redirect-url-container">
-      <h3>🔒 ADMIN ONLY - Redirect URL</h3>
-      <label>Required for blurred scripts</label>
-      <input type="url" id="scriptRedirectUrl" placeholder="https://openinapp.link/xxx">
-      <p style="color:#ff8888; font-size:0.8rem;">⏱️ 5-second timer then redirect here</p>
+      <h3>🔗 Redirect URL</h3>
+      <label>Enter ANY URL (will work with any link)</label>
+      <input type="url" id="scriptRedirectUrl" placeholder="https://example.com or https://openinapp.link/xxx">
+      <p style="color:#ff8888; font-size:0.8rem;">⏱️ Users will go through 5s timer → bloxlink.html → this URL</p>
+      <p style="color:#aaa; font-size:0.8rem;">✓ Any URL works - link shorteners, direct links, etc.</p>
     </div>
 
     <label>🔑 Key System Type</label>
@@ -255,97 +192,31 @@ async function logout() {
 // ==================== CONFIG ====================
 const ADMIN_PASSWORD = 'noobie123admin';
 const API_URL = '/api/commit';
-const SHORTEN_API = '/api/shorten';
 
 let selectedFeatures = [], currentScripts = [], selectedKeySystem = 'keyless';
 let currentSettings = { theme: 'default', versions: [] };
 
-// ==================== SHORT LINK FUNCTIONS (FIXED) ====================
+// ==================== SHORT LINK FUNCTIONS ====================
 async function generateShortLink() {
-  const url = document.getElementById('shortlinkOriginal').value.trim();
-  if (!url) { 
-    alert('Enter a URL to shorten'); 
-    return; 
-  }
-  
-  // Validate URL
-  try {
-    new URL(url);
-  } catch {
-    alert('Please enter a valid URL (including https://)');
-    return;
-  }
-  
-  showStatus('🔗 Generating short link...');
+  const url = document.getElementById('shortlinkUrl').value.trim();
+  if (!url) { alert('Enter a URL'); return; }
   
   try {
-    const response = await fetch(SHORTEN_API, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ url: url })
-    });
+    // Use is.gd API
+    const response = await fetch(`https://is.gd/create.php?format=simple&url=${encodeURIComponent(url)}`);
+    if (!response.ok) throw new Error('Failed');
+    const shortUrl = await response.text();
     
-    const data = await response.json();
-    
-    if (!response.ok) throw new Error(data.error || 'Failed to generate');
-    
-    document.getElementById('shortlinkUrl').textContent = data.shortUrl;
-    document.getElementById('shortlinkCopy').value = data.shortUrl;
-    
-    // Show which service was used
-    const methodEl = document.getElementById('shortlinkMethod');
-    if (methodEl) {
-      methodEl.textContent = data.method === 'external' ? '✓ Using is.gd/v.gd' : '⚠️ Using local fallback';
-    }
-    
+    document.getElementById('shortlinkResultUrl').textContent = shortUrl;
+    document.getElementById('shortlinkCopy').value = shortUrl;
     document.getElementById('shortlinkResult').style.display = 'block';
     showStatus('✅ Short link generated!');
   } catch (e) {
-    showStatus('❌ Failed to generate short link: ' + e.message, true);
-  }
-}
-
-async function generateCustomShortLink() {
-  const url = document.getElementById('shortlinkOriginal').value.trim();
-  const alias = document.getElementById('shortlinkAlias').value.trim();
-  
-  if (!url || !alias) { 
-    alert('Enter both URL and custom alias'); 
-    return; 
-  }
-  
-  // Validate URL
-  try {
-    new URL(url);
-  } catch {
-    alert('Please enter a valid URL (including https://)');
-    return;
-  }
-  
-  // Validate alias (alphanumeric only)
-  if (!/^[a-zA-Z0-9]+$/.test(alias)) {
-    alert('Alias can only contain letters and numbers');
-    return;
-  }
-  
-  showStatus('🔗 Generating custom short link...');
-  
-  try {
-    // For custom aliases, we'll use our own system
-    const shortUrl = `${window.location.origin}/s/${alias}`;
-    
-    document.getElementById('shortlinkUrl').textContent = shortUrl;
-    document.getElementById('shortlinkCopy').value = shortUrl;
-    
-    const methodEl = document.getElementById('shortlinkMethod');
-    if (methodEl) {
-      methodEl.textContent = '⚠️ Custom alias (local only)';
-    }
-    
+    // Fallback - just show the original URL
+    document.getElementById('shortlinkResultUrl').textContent = url;
+    document.getElementById('shortlinkCopy').value = url;
     document.getElementById('shortlinkResult').style.display = 'block';
-    showStatus('✅ Custom short link created! (Local only)');
-  } catch (e) {
-    showStatus('❌ Failed to create custom link: ' + e.message, true);
+    showStatus('⚠️ Using original URL (shortener failed)', true);
   }
 }
 
@@ -353,141 +224,84 @@ function copyShortLink() {
   const input = document.getElementById('shortlinkCopy');
   input.select();
   navigator.clipboard.writeText(input.value).then(() => {
-    showStatus('✅ Short link copied to clipboard!');
-  }).catch(() => {
-    alert('Copy manually: ' + input.value);
+    showStatus('✅ Copied!');
   });
 }
 
 // ==================== THEME FUNCTIONS ====================
-async function setTheme(theme) {
+function setTheme(theme) {
   document.querySelectorAll('.theme-btn').forEach(btn => btn.classList.remove('active'));
   document.getElementById(`theme-${theme}`).classList.add('active');
-  
   currentSettings.theme = theme;
-  document.body.className = theme;
-  
-  showStatus(`✅ Theme set to ${theme}. Will auto-deploy to index.html`);
-  await saveThemeToGitHub();
+  showStatus(`✅ Theme set to ${theme}`);
+  saveThemeToGitHub();
 }
 
 async function saveThemeToGitHub() {
-  try {
-    const fullData = {
-      siteTitle: "lokus hub scripts", 
-      visitorCount: 1842,
-      theme: currentSettings.theme,
-      versions: currentSettings.versions || [],
-      linkvertise: { 
-        userId: "1446949", 
-        callbackUrl: "https://linkvertise-callback-production.up.railway.app/callback" 
-      },
-      scripts: currentScripts,
-      lastUpdated: new Date().toISOString().split('T')[0]
-    };
-    
-    const r = await fetch(API_URL, {
-      method: 'POST',
-      headers: { 
-        'Authorization': 'Bearer ' + ADMIN_PASSWORD, 
-        'Content-Type': 'application/json' 
-      },
-      body: JSON.stringify({
-        content: btoa(unescape(encodeURIComponent(JSON.stringify(fullData, null, 2)))),
-        message: `🎨 Theme changed to ${currentSettings.theme}`,
-        filename: 'scripts.json',
-        scriptData: null,
-        isEdit: false
-      })
-    });
-    
-    const res = await r.json();
-    if (!r.ok) throw new Error(res.error || 'Commit failed');
-    showStatus(`✅ Theme saved! Vercel deploying...`);
-  } catch(e) { 
-    showStatus(`❌ Error: ${e.message}`, true); 
-  }
+  const fullData = {
+    siteTitle: "lokus hub scripts", 
+    visitorCount: 1842,
+    theme: currentSettings.theme,
+    versions: currentSettings.versions || [],
+    linkvertise: { userId: "1446949", callbackUrl: "https://linkvertise-callback-production.up.railway.app/callback" },
+    scripts: currentScripts,
+    lastUpdated: new Date().toISOString().split('T')[0]
+  };
+  
+  await fetch(API_URL, {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer ' + ADMIN_PASSWORD, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      content: btoa(unescape(encodeURIComponent(JSON.stringify(fullData, null, 2)))),
+      message: `🎨 Theme changed to ${currentSettings.theme}`,
+      filename: 'scripts.json',
+      scriptData: null,
+      isEdit: false
+    })
+  });
 }
 
-// ==================== VERSION CONTROL FUNCTIONS ====================
-function loadVersions() {
-  const list = document.getElementById('versionList');
-  if (!currentSettings.versions || currentSettings.versions.length === 0) {
-    list.innerHTML = '<p style="color:#666;">No version history yet</p>';
-    return;
-  }
-  
-  list.innerHTML = currentSettings.versions.map((v, i) => `
-    <div class="version-item ${i === 0 ? 'current' : ''}">
-      <div>
-        <strong style="color:#ffaa00;">v${v.version}</strong>
-        <div class="version-changes">${v.changes.join('<br>')}</div>
-      </div>
-      <small style="color:#888;">${v.date}</small>
-    </div>
-  `).join('');
-}
-
-async function addVersion() {
-  const version = document.getElementById('newVersion').value.trim();
-  const changesText = document.getElementById('versionChanges').value.trim();
-  
-  if (!version || !changesText) { alert('Enter version and changes'); return; }
-  
-  const changes = changesText.split('\n').filter(c => c.trim());
+// ==================== VERSION CONTROL ====================
+function addVersion() {
+  const version = document.getElementById('newVersion').value;
+  const changes = document.getElementById('versionChanges').value;
+  if (!version || !changes) { alert('Enter both fields'); return; }
   
   if (!currentSettings.versions) currentSettings.versions = [];
-  
   currentSettings.versions.unshift({
     version: version,
-    changes: changes,
+    changes: changes.split('\n').filter(c => c.trim()),
     date: new Date().toISOString().split('T')[0]
   });
   
+  showStatus('✅ Version added');
   document.getElementById('newVersion').value = '';
   document.getElementById('versionChanges').value = '';
-  
-  await saveVersionToGitHub();
-  loadVersions();
-  showStatus('✅ Version added!');
+  saveVersionToGitHub();
 }
 
 async function saveVersionToGitHub() {
-  try {
-    const fullData = {
-      siteTitle: "lokus hub scripts", 
-      visitorCount: 1842,
-      theme: currentSettings.theme || 'default',
-      versions: currentSettings.versions || [],
-      linkvertise: { 
-        userId: "1446949", 
-        callbackUrl: "https://linkvertise-callback-production.up.railway.app/callback" 
-      },
-      scripts: currentScripts,
-      lastUpdated: new Date().toISOString().split('T')[0]
-    };
-    
-    const r = await fetch(API_URL, {
-      method: 'POST',
-      headers: { 
-        'Authorization': 'Bearer ' + ADMIN_PASSWORD, 
-        'Content-Type': 'application/json' 
-      },
-      body: JSON.stringify({
-        content: btoa(unescape(encodeURIComponent(JSON.stringify(fullData, null, 2)))),
-        message: `📦 New version: ${currentSettings.versions[0]?.version}`,
-        filename: 'scripts.json',
-        scriptData: null,
-        isEdit: false
-      })
-    });
-    
-    const res = await r.json();
-    if (!r.ok) throw new Error(res.error || 'Commit failed');
-    showStatus(`✅ Version saved! Vercel deploying...`);
-  } catch(e) { 
-    showStatus(`❌ Error: ${e.message}`, true); 
-  }
+  const fullData = {
+    siteTitle: "lokus hub scripts", 
+    visitorCount: 1842,
+    theme: currentSettings.theme || 'default',
+    versions: currentSettings.versions || [],
+    linkvertise: { userId: "1446949", callbackUrl: "https://linkvertise-callback-production.up.railway.app/callback" },
+    scripts: currentScripts,
+    lastUpdated: new Date().toISOString().split('T')[0]
+  };
+  
+  await fetch(API_URL, {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer ' + ADMIN_PASSWORD, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      content: btoa(unescape(encodeURIComponent(JSON.stringify(fullData, null, 2)))),
+      message: `📦 New version: ${currentSettings.versions[0]?.version}`,
+      filename: 'scripts.json',
+      scriptData: null,
+      isEdit: false
+    })
+  });
 }
 
 // ==================== IMAGE FUNCTIONS ====================
@@ -495,22 +309,16 @@ function handleImageUpload() {
   const file = document.getElementById('imageFile').files[0];
   if (!file) return;
   
-  if (file.size > 5 * 1024 * 1024) {
-    alert('File too large! Max 5MB');
-    return;
-  }
-  
   const reader = new FileReader();
-  reader.onload = function(e) {
+  reader.onload = e => {
     document.getElementById('imagePreview').innerHTML = `<img src="${e.target.result}">`;
     document.getElementById('imageData').value = e.target.result;
-    document.getElementById('imageUrl').value = '';
   };
   reader.readAsDataURL(file);
 }
 
 function previewImageUrl() {
-  const url = document.getElementById('imageUrl').value.trim();
+  const url = document.getElementById('imageUrl').value;
   if (!url) return;
   document.getElementById('imagePreview').innerHTML = `<img src="${url}">`;
   document.getElementById('imageData').value = url;
@@ -520,81 +328,34 @@ function clearImage() {
   document.getElementById('imagePreview').innerHTML = '<span>Click to upload</span>';
   document.getElementById('imageData').value = '';
   document.getElementById('imageUrl').value = '';
-  document.getElementById('imageFile').value = '';
 }
 
-// ==================== ROBLOX GAME FUNCTIONS ====================
+// ==================== ROBLOX GAME ====================
 const popularGames = {
-  adoptme: { name: "🐾 Adopt Me!", universeId: "3373681961", description: "Adopt and raise pets!", playing: 150000, visits: 15000000000, thumbUrl: "https://tr.rbxcdn.com/180DAY-92700ae9fa80f96ce2436f4d8760a9e2/256/256/Image/Webp/noFilter" },
-  bloxfruit: { name: "🎮 Blox Fruits", universeId: "4520749081", description: "Become a master of Blox Fruits!", playing: 120000, visits: 8000000000, thumbUrl: "https://tr.rbxcdn.com/180DAY-2f74f0b0b8a847bb39fd8745a8228f5b/256/256/Image/Webp/noFilter" },
-  mm2: { name: "🔪 Murder Mystery 2", universeId: "142823291", description: "A classic game of mystery!", playing: 80000, visits: 12000000000, thumbUrl: "https://tr.rbxcdn.com/180DAY-c8a3f0c68489fcc7f4b56772b5778a96/256/256/Image/Webp/noFilter" },
-  fisch: { name: "🐟 Fisch", universeId: "16732640576", description: "Go fishing!", playing: 50000, visits: 200000000, thumbUrl: "https://tr.rbxcdn.com/180DAY-2a023f475372ce64b3c5d4ab7de1a0ef/256/256/Image/Webp/noFilter" }
+  adoptme: { name: "🐾 Adopt Me!", universeId: "3373681961", description: "Adopt and raise pets!", thumbUrl: "https://tr.rbxcdn.com/180DAY-92700ae9fa80f96ce2436f4d8760a9e2/256/256/Image/Webp/noFilter" },
+  bloxfruit: { name: "🎮 Blox Fruits", universeId: "4520749081", description: "Become a master of Blox Fruits!", thumbUrl: "https://tr.rbxcdn.com/180DAY-2f74f0b0b8a847bb39fd8745a8228f5b/256/256/Image/Webp/noFilter" },
+  mm2: { name: "🔪 Murder Mystery 2", universeId: "142823291", description: "A classic game of mystery!", thumbUrl: "https://tr.rbxcdn.com/180DAY-c8a3f0c68489fcc7f4b56772b5778a96/256/256/Image/Webp/noFilter" }
 };
 
 function fillPopularGame() {
   const gameKey = document.getElementById('popularGameSelect').value;
-  if (!gameKey) return alert('Select a game');
-  
+  if (!gameKey) return;
   const game = popularGames[gameKey];
-  if (!game) return;
   
   document.getElementById('scriptName').value = game.name;
   document.getElementById('scriptDescription').value = game.description;
   document.getElementById('imageUrl').value = game.thumbUrl;
   document.getElementById('imageData').value = game.thumbUrl;
-  document.getElementById('gameUniverseId').value = game.universeId;
   document.getElementById('imagePreview').innerHTML = `<img src="${game.thumbUrl}">`;
-  
-  document.getElementById('selectedGameName').textContent = game.name;
-  document.getElementById('selectedGameDesc').textContent = game.description;
-  document.getElementById('selectedGamePlaying').textContent = game.playing.toLocaleString();
-  document.getElementById('selectedGameVisits').textContent = game.visits.toLocaleString();
-  document.getElementById('selectedGameThumb').src = game.thumbUrl;
-  document.getElementById('selectedGamePreview').style.display = 'flex';
-  
+  document.getElementById('gameUniverseId').value = game.universeId;
   showStatus('✅ Game loaded');
-}
-
-async function fetchManualGame() {
-  const universeId = document.getElementById('manualUniverseId').value.trim();
-  if (!universeId) return alert('Enter Universe ID');
-  
-  try {
-    const res = await fetch(`https://games.roblox.com/v1/games?universeIds=${universeId}`);
-    const data = await res.json();
-    const game = data.data[0];
-    
-    if (!game) throw new Error('Game not found');
-    
-    const thumbRes = await fetch(`https://thumbnails.roblox.com/v1/games/icons?universeIds=${universeId}&size=256x256&format=Png`);
-    const thumbData = await thumbRes.json();
-    const thumbUrl = thumbData.data?.[0]?.imageUrl || '';
-    
-    document.getElementById('scriptName').value = game.name;
-    document.getElementById('scriptDescription').value = game.description || '';
-    document.getElementById('imageUrl').value = thumbUrl;
-    document.getElementById('imageData').value = thumbUrl;
-    document.getElementById('gameUniverseId').value = universeId;
-    if (thumbUrl) document.getElementById('imagePreview').innerHTML = `<img src="${thumbUrl}">`;
-    
-    document.getElementById('selectedGameName').textContent = game.name;
-    document.getElementById('selectedGameDesc').textContent = game.description || '';
-    document.getElementById('selectedGamePlaying').textContent = (game.playing || 0).toLocaleString();
-    document.getElementById('selectedGameVisits').textContent = (game.visits || 0).toLocaleString();
-    document.getElementById('selectedGameThumb').src = thumbUrl;
-    document.getElementById('selectedGamePreview').style.display = 'flex';
-    
-    showStatus('✅ Game loaded');
-  } catch (e) {
-    showStatus('❌ Failed to fetch game', true);
-  }
 }
 
 // ==================== UI FUNCTIONS ====================
 function showStatus(msg, isError) {
   const el = document.getElementById('statusMessage');
   el.innerHTML = `<div style="background:${isError?'#ff444420':'#00f2ea20'};border:1px solid ${isError?'#ff4444':'#00f2ea'};color:${isError?'#ff8888':'#00f2ea'};padding:10px;border-radius:8px;">${msg}</div>`;
-  setTimeout(() => el.innerHTML = '', 5000);
+  setTimeout(() => el.innerHTML = '', 3000);
 }
 
 function toggleRedirectUrlField() {
@@ -606,7 +367,6 @@ function selectKeySystem(v) {
   selectedKeySystem = v;
   document.querySelectorAll('.key-option').forEach(o => o.classList.remove('selected'));
   document.getElementById(v+'-option').classList.add('selected');
-  document.querySelector(`input[name="keySystem"][value="${v}"]`).checked = true;
   
   const div = document.getElementById('linkvertiseLinks');
   const fields = document.getElementById('linkvertiseFields');
@@ -614,7 +374,7 @@ function selectKeySystem(v) {
     div.style.display = 'block';
     let html = '';
     for (let i = 1; i <= parseInt(v.replace('key','')); i++) {
-      html += `<label>Key ${i} URL</label><input type="url" id="key${i}Link" placeholder="https://link-to.net/1446949/xxx">`;
+      html += `<label>Key ${i} URL</label><input type="url" id="key${i}Link" placeholder="https://example.com">`;
     }
     fields.innerHTML = html;
   } else div.style.display = 'none';
@@ -643,7 +403,6 @@ function cancelEdit() {
   document.getElementById('editingScriptId').value = '';
   document.getElementById('gameUniverseId').value = '';
   document.getElementById('redirectUrlContainer').style.display = 'none';
-  document.getElementById('selectedGamePreview').style.display = 'none';
   document.getElementById('formTitle').innerHTML = '📝 Add New Script';
   document.getElementById('saveButton').innerHTML = '💾 Save & Auto-Commit';
   document.getElementById('editModeIndicator').style.display = 'none';
@@ -652,7 +411,6 @@ function cancelEdit() {
   selectedKeySystem = 'keyless';
   document.querySelectorAll('.key-option').forEach(o => o.classList.remove('selected'));
   document.getElementById('keyless-option').classList.add('selected');
-  document.querySelector('input[name="keySystem"][value="keyless"]').checked = true;
   selectedFeatures = [];
   document.querySelectorAll('.feature-tag').forEach(t => t.classList.remove('selected'));
   document.getElementById('linkvertiseLinks').style.display = 'none';
@@ -667,10 +425,7 @@ async function loadScripts() {
     currentSettings.theme = d.theme || 'default';
     currentSettings.versions = d.versions || [];
     
-    document.querySelectorAll('.theme-btn').forEach(btn => btn.classList.remove('active'));
     document.getElementById(`theme-${currentSettings.theme}`)?.classList.add('active');
-    
-    loadVersions();
     
     const list = document.getElementById('scriptsList');
     if (!currentScripts.length) { list.innerHTML = '<p>No scripts</p>'; return; }
@@ -686,10 +441,11 @@ async function loadScripts() {
       return `<div class="script-item">
         <div class="script-info">
           <h3>${thumbnail} ${s.name}</h3>
-          ${s.description ? `<p>📝 ${s.description.replace(/<[^>]*>/g, '').substring(0,100)}...</p>` : ''}
+          ${s.description ? `<p>📝 ${s.description.substring(0,100)}...</p>` : ''}
           <div class="script-meta">
             <span class="status-badge">${s.blurred?'🔒Blurred':'✅Public'}</span>
             ${key}
+            ${s.redirectUrl ? '<span class="admin-badge">🔗Has URL</span>' : ''}
           </div>
         </div>
         <div class="script-actions">
@@ -719,7 +475,6 @@ function editScript(id) {
   if (s.image) {
     document.getElementById('imagePreview').innerHTML = `<img src="${s.image}">`;
     document.getElementById('imageData').value = s.image;
-    document.getElementById('imageUrl').value = s.image.startsWith('data:') ? '' : s.image;
   }
   
   document.getElementById('redirectUrlContainer').style.display = s.blurred ? 'block' : 'none';
@@ -742,46 +497,34 @@ function editScript(id) {
   document.getElementById('editModeIndicator').style.display = 'block';
 }
 
-// ==================== GITHUB API via Serverless ====================
+// ==================== GITHUB COMMIT ====================
 async function commitToGitHub(scriptData, isEdit, sendWebhook = true) {
-  try {
-    const fullData = {
-      siteTitle: "lokus hub scripts", 
-      visitorCount: 1842,
-      theme: currentSettings.theme || 'default',
-      versions: currentSettings.versions || [],
-      linkvertise: { 
-        userId: "1446949", 
-        callbackUrl: "https://linkvertise-callback-production.up.railway.app/callback" 
-      },
-      scripts: currentScripts,
-      lastUpdated: new Date().toISOString().split('T')[0]
-    };
-    
-    const r = await fetch(API_URL, {
-      method: 'POST',
-      headers: { 
-        'Authorization': 'Bearer ' + ADMIN_PASSWORD, 
-        'Content-Type': 'application/json' 
-      },
-      body: JSON.stringify({
-        content: btoa(unescape(encodeURIComponent(JSON.stringify(fullData, null, 2)))),
-        message: isEdit ? `✏️ Updated: ${scriptData.name}` : `✨ Added: ${scriptData.name}`,
-        filename: 'scripts.json',
-        scriptData: sendWebhook ? scriptData : null,
-        isEdit: isEdit
-      })
-    });
-    
-    const res = await r.json();
-    if (!r.ok) throw new Error(res.error || 'Commit failed');
-    
-    showStatus(`✅ ${isEdit ? 'Updated' : 'Added'}! Vercel deploying...`);
-    return true;
-  } catch(e) { 
-    showStatus(`❌ Error: ${e.message}`, true); 
-    return false; 
-  }
+  const fullData = {
+    siteTitle: "lokus hub scripts", 
+    visitorCount: 1842,
+    theme: currentSettings.theme || 'default',
+    versions: currentSettings.versions || [],
+    linkvertise: { userId: "1446949", callbackUrl: "https://linkvertise-callback-production.up.railway.app/callback" },
+    scripts: currentScripts,
+    lastUpdated: new Date().toISOString().split('T')[0]
+  };
+  
+  const r = await fetch(API_URL, {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer ' + ADMIN_PASSWORD, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      content: btoa(unescape(encodeURIComponent(JSON.stringify(fullData, null, 2)))),
+      message: isEdit ? `✏️ Updated: ${scriptData.name}` : `✨ Added: ${scriptData.name}`,
+      filename: 'scripts.json',
+      scriptData: sendWebhook ? scriptData : null,
+      isEdit: isEdit
+    })
+  });
+  
+  const res = await r.json();
+  if (!r.ok) throw new Error(res.error || 'Commit failed');
+  showStatus(`✅ ${isEdit ? 'Updated' : 'Added'}! Vercel deploying...`);
+  return true;
 }
 
 // ==================== SAVE SCRIPT ====================
@@ -823,7 +566,7 @@ async function saveScript() {
   }
   
   if (await commitToGitHub(scriptData, !!editId, true)) {
-    displayScripts();
+    loadScripts();
     cancelEdit();
   }
 }
@@ -836,37 +579,8 @@ async function deleteScript(id) {
   currentScripts = currentScripts.filter(s => s.id !== id);
   
   if (await commitToGitHub(script, false, false)) {
-    displayScripts();
+    loadScripts();
   }
-}
-
-// ==================== DISPLAY HELPER ====================
-function displayScripts() {
-  const list = document.getElementById('scriptsList');
-  if (!currentScripts.length) { list.innerHTML = '<p>No scripts</p>'; return; }
-  list.innerHTML = currentScripts.map(s => {
-    let key = '';
-    if (s.keySystem === 'key1') key = '<span class="key-badge key1">🔑1</span>';
-    else if (s.keySystem === 'key2') key = '<span class="key-badge key2">🔑🔑2</span>';
-    else if (s.keySystem === 'key3') key = '<span class="key-badge key3">🔑🔑🔑3</span>';
-    
-    let thumbnail = s.image ? `<img src="${s.image}" class="script-thumb">` : '';
-    
-    return `<div class="script-item">
-      <div class="script-info">
-        <h3>${thumbnail} ${s.name}</h3>
-        ${s.description ? `<p>📝 ${s.description.replace(/<[^>]*>/g, '').substring(0,100)}...</p>` : ''}
-        <div class="script-meta">
-          <span class="status-badge">${s.blurred?'🔒Blurred':'✅Public'}</span>
-          ${key}
-        </div>
-      </div>
-      <div class="script-actions">
-        <button class="edit" onclick="editScript('${s.id}')">✏️</button>
-        <button class="delete" onclick="deleteScript('${s.id}')">🗑️</button>
-      </div>
-    </div>`;
-  }).join('');
 }
 
 // ==================== INIT ====================
