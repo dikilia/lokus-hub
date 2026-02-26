@@ -27,8 +27,8 @@
                     Click "Continue" to proceed to verification
                 </div>
                 
-                <!-- Debug info (hidden by default) -->
-                <div class="debug-info" id="debugInfo"></div>
+                <!-- Show the redirect URL for debugging -->
+                <div class="debug-info" id="debugInfo">Loading...</div>
 
                 <div class="avatar-circle">
                     <img alt="App avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='115' height='115' viewBox='0 0 115 115'%3E%3Crect width='115' height='115' fill='%23333c4a' /%3E%3Ccircle cx='57.5' cy='45' r='22' fill='%235a6b7c' /%3E%3Crect x='35' y='70' width='45' height='30' rx='10' fill='%235a6b7c' /%3E%3C/svg%3E"
@@ -82,23 +82,23 @@
     <script>
         // Get the redirect URL from sessionStorage (set by index.html)
         const redirectUrl = sessionStorage.getItem('bloxlinkRedirect');
-        
-        // Debug element
         const debugEl = document.getElementById('debugInfo');
         
         // Check if URL exists
         if (!redirectUrl) {
-            debugEl.textContent = '⚠️ No redirect URL found. Please return to hub.';
+            debugEl.innerHTML = '⚠️ No redirect URL found. Please return to hub.';
             debugEl.style.color = '#ff8888';
+            console.error('❌ No redirect URL in sessionStorage');
         } else {
-            debugEl.textContent = `🔗 Redirect URL: ${redirectUrl}`;
+            debugEl.innerHTML = `🔗 Will redirect to: ${redirectUrl.substring(0, 50)}...`;
             debugEl.style.color = '#00f2ea';
-            console.log('✅ Bloxlink page loaded. Will redirect to:', redirectUrl);
+            console.log('✅ Bloxlink page loaded. Redirect URL:', redirectUrl);
         }
         
         // Continue button - redirects to the stored URL
         document.getElementById('continueBtn').addEventListener('click', function() {
             if (redirectUrl) {
+                console.log('➡️ Redirecting to:', redirectUrl);
                 window.location.href = redirectUrl;
             } else {
                 alert('No redirect URL configured. Please return to hub.');
