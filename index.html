@@ -200,8 +200,11 @@ function closeRedirectModalIfOverlay(e) {
 // ==================== LOAD THEME & SCRIPTS ====================
 async function loadScripts() {
   try {
-    const response = await fetch('scripts.json?t='+Date.now());
+    // Add cache-busting parameter to always get latest data
+    const response = await fetch('scripts.json?t=' + Date.now());
     const data = await response.json();
+    
+    console.log('📦 Loaded scripts.json:', data);
     
     // Apply theme
     if (data.theme) {
@@ -230,25 +233,25 @@ async function loadScripts() {
           if (e.target.classList.contains('copy-btn')) return;
           
           console.log('🔹 Clicked script:', script.name);
-          console.log('🔹 Redirect URL:', script.redirectUrl);
+          console.log('🔹 Redirect URL from JSON:', script.redirectUrl);
+          
+          // Check if redirectUrl exists
+          if (!script.redirectUrl) {
+            alert('This script requires verification but no redirect URL is configured in admin panel.');
+            return;
+          }
           
           // Check if this is the universal script
           if (script.id === 'universal' || script.name.includes('UNIVERSAL')) {
             // Store the redirect URL in sessionStorage for bloxlink.html
-            if (script.redirectUrl) {
-              sessionStorage.setItem('bloxlinkRedirect', script.redirectUrl);
-              console.log('✅ Stored in sessionStorage:', script.redirectUrl);
-              // Universal script goes to bloxlink.html
-              showRedirectModal('/bloxlink.html');
-            } else {
-              alert('No redirect URL configured for this script');
-            }
+            sessionStorage.setItem('bloxlinkRedirect', script.redirectUrl);
+            console.log('✅ Stored in sessionStorage:', script.redirectUrl);
+            // Universal script goes to bloxlink.html
+            showRedirectModal('/bloxlink.html');
           } 
           // For other blurred scripts, redirect directly
-          else if (script.redirectUrl) {
+          else {
             showRedirectModal(script.redirectUrl);
-          } else {
-            alert('This script requires verification but no redirect URL is configured.');
           }
         });
       }
@@ -311,4 +314,10 @@ window.addEventListener('load', () => {
   // Clear any old session data
   sessionStorage.removeItem('bloxlinkRedirect');
 });
+
+// Also reload scripts every 5 minutes to get updates
+setInterval(() => {
+  console.log('🔄 Checking for script updates...');
+  loadScripts();
+}, 300000); // 5 minutes
 </script></body></html>
