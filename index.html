@@ -1,161 +1,6 @@
 <!DOCTYPE html>
 <html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>lokus hub scripts</title><style>
-*{box-sizing:border-box;margin:0}body{background:#0b0b0b;color:#eaeaea;font-family:'Courier New',monospace;padding:20px;transition:all .3s ease}.container{max-width:1200px;margin:0 auto}h1{font-size:2rem;color:#00f2ea;border-left:4px solid #00f2ea;padding-left:20px;margin-bottom:30px}.subhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;padding-bottom:15px;border-bottom:1px solid #2a2a2a}.stats{display:flex;gap:15px}.stat-badge{background:#1a1a2e;border:1px solid #00f2ea40;border-radius:40px;padding:10px 20px;font-size:.9rem;color:#00f2ea}.music-btn{background:#1a1a1a;border:1px solid #2e2e2e;border-radius:40px;padding:10px 20px;cursor:pointer;color:#00f2ea}.music-btn.playing{animation:pulse 2s infinite}.discord-card{background:linear-gradient(145deg,#1a1f2e,#0f1219);border:2px solid #5865F2;border-radius:24px;padding:25px;margin:30px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer}.discord-left{display:flex;align-items:center;gap:20px}.discord-icon{font-size:3rem;background:#5865F2;width:70px;height:70px;border-radius:35px;display:flex;align-items:center;justify-content:center;color:white}.discord-right{display:flex;gap:30px}.stat-box{text-align:center}.stat-number{font-size:2rem;font-weight:bold;color:#00f2ea}.stat-label{font-size:.8rem;color:#8895c7}.scripts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:30px 0}@media (max-width:900px){.scripts-grid{grid-template-columns:repeat(2,1fr)}}@media (max-width:600px){.scripts-grid{grid-template-columns:1fr}}.script-card{background:#111;border:1px solid #242424;border-radius:16px;padding:20px;transition:all .2s;display:flex;flex-direction:column;position:relative}.script-card:hover{transform:translateY(-5px);box-shadow:0 10px 20px rgba(0,242,234,0.1)}.script-header{display:flex;align-items:center;gap:12px;margin-bottom:15px}.script-icon{width:50px;height:50px;border-radius:12px;object-fit:cover;border:2px solid #00f2ea40}.script-title{font-size:1.1rem;color:#00f2ea;font-weight:bold;flex:1}.script-description{color:#aaa;font-size:.8rem;margin-bottom:15px;line-height:1.5}.feature-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:15px}.feature-tag{background:#1a2a2a;color:#9cfff8;padding:4px 12px;border-radius:30px;font-size:.7rem;border:1px solid #00f2ea40}.key-badge{display:inline-block;padding:4px 12px;border-radius:30px;font-size:.7rem;font-weight:bold;margin-bottom:10px}.key-badge.keyless{background:#4a4a4a;color:#fff}.key-badge.key1{background:#00aa00;color:#fff}.key-badge.key2{background:#ffaa00;color:#000}.key-badge.key3{background:#ff4444;color:#fff}.script-code{background:#0c0c0c;padding:15px;border-radius:12px;font-size:.75rem;color:#c5fffb;border:1px solid #2e2e2e;margin:15px 0;overflow-x:auto;white-space:pre-wrap;word-break:break-all;transition:filter .2s}.copy-btn{background:#00f2ea;border:none;color:#000;padding:12px;border-radius:50px;font-weight:bold;cursor:pointer;width:100%;margin-top:auto;transition:all .2s;z-index:5}.copy-btn:hover{background:#00d4cc}.version-badge{background:#ffaa00;color:#000;padding:2px 8px;border-radius:30px;font-size:.6rem;margin-left:8px;font-weight:bold}.faq-section{background:#111;border-radius:20px;padding:25px;margin:40px 0}.faq-item{margin-bottom:20px}.faq-question{font-weight:bold;color:#fff;margin-bottom:8px;display:flex;align-items:center;gap:8px}.faq-question:before{content:"❓";color:#00f2ea}.faq-answer{color:#aaa;padding-left:28px}.social-grid{display:flex;flex-direction:column;gap:12px;margin:20px 0}.social-link{background:#111;padding:15px;border-radius:50px;text-align:center;color:#eaeaea;text-decoration:none;border:1px solid #2c2c2c}.social-link:hover{background:#1f1f1f;border-color:#00f2ea}.note{margin-top:40px;font-size:.7rem;color:#5f5f5f;text-align:center}.blurred{position:relative}.blurred .script-header,
-.blurred .key-badge,
-.blurred .feature-tags,
-.blurred .script-description,
-.blurred .script-code,
-.blurred .copy-btn {
-  filter: blur(5px);
-  pointer-events: none;
-  user-select: none;
-  opacity: 0.7;
-}
-
-.blurred::after {
-  content: "🔒 VERIFY TO UNLOCK";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #00f2ea;
-  color: #000;
-  padding: 16px 28px;
-  border-radius: 50px;
-  font-weight: bold;
-  font-size: 1.1rem;
-  z-index: 20;
-  border: 2px solid #4afff0;
-  box-shadow: 0 0 20px #00f2ea;
-  animation: glow 1.5s infinite;
-  cursor: pointer;
-  pointer-events: auto;
-  white-space: nowrap;
-  text-align: center;
-}
-
-@keyframes glow {
-  0% { box-shadow: 0 0 10px #00f2ea; }
-  50% { box-shadow: 0 0 25px #00f2ea; }
-  100% { box-shadow: 0 0 10px #00f2ea; }
-}
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,.95);
-  backdrop-filter: blur(10px);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  padding: 16px;
-}
-
-.modal-overlay.active {
-  display: flex;
-}
-
-.modal-content {
-  background: #111;
-  border: 2px solid #00f2ea;
-  border-radius: 32px;
-  padding: 32px 24px;
-  max-width: 400px;
-  width: 100%;
-  text-align: center;
-  box-shadow: 0 0 40px #00f2ea33;
-  animation: modalPop .3s ease;
-}
-
-@keyframes modalPop {
-  0% { transform: scale(.9); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-.modal-icon {
-  font-size: 56px;
-  margin-bottom: 16px;
-}
-
-.modal-title {
-  font-size: 24px;
-  font-weight: 700;
-  color: #00f2ea;
-  margin-bottom: 16px;
-}
-
-.modal-text {
-  color: #ccc;
-  margin-bottom: 24px;
-  line-height: 1.5;
-}
-
-.redirect-timer {
-  font-size: 24px;
-  color: #00f2ea;
-  margin: 20px 0;
-  font-weight: bold;
-}
-
-.timer-bar {
-  width: 100%;
-  height: 8px;
-  background: #333;
-  border-radius: 10px;
-  overflow: hidden;
-  margin: 16px 0;
-}
-
-.timer-progress {
-  height: 100%;
-  background: #00f2ea;
-  width: 100%;
-  transition: width 1s linear;
-}
-
-.modal-close {
-  margin-top: 20px;
-  color: #888;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.modal-close:hover {
-  color: #00f2ea;
-}
-
-.toast {
-  position: fixed;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #00f2ea;
-  color: #000;
-  padding: 12px 30px;
-  border-radius: 50px;
-  font-weight: bold;
-  z-index: 9999;
-  display: none;
-  box-shadow: 0 5px 20px #00f2ea66;
-}
-
-.toast.show {
-  display: block;
-  animation: slideUp .3s, fadeOut .3s 2s forwards;
-}
-
-@keyframes slideUp {
-  from { bottom: -50px; }
-  to { bottom: 30px; }
-}
-
-@keyframes fadeOut {
-  to { opacity: 0; }
-}
+*{box-sizing:border-box;margin:0}body{background:#0b0b0b;color:#eaeaea;font-family:'Courier New',monospace;padding:20px;transition:all .3s ease}.container{max-width:1200px;margin:0 auto}h1{font-size:2rem;color:#00f2ea;border-left:4px solid #00f2ea;padding-left:20px;margin-bottom:30px}.subhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;padding-bottom:15px;border-bottom:1px solid #2a2a2a}.stats{display:flex;gap:15px}.stat-badge{background:#1a1a2e;border:1px solid #00f2ea40;border-radius:40px;padding:10px 20px;font-size:.9rem;color:#00f2ea}.music-btn{background:#1a1a1a;border:1px solid #2e2e2e;border-radius:40px;padding:10px 20px;cursor:pointer;color:#00f2ea}.music-btn.playing{animation:pulse 2s infinite}.discord-card{background:linear-gradient(145deg,#1a1f2e,#0f1219);border:2px solid #5865F2;border-radius:24px;padding:25px;margin:30px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer}.discord-left{display:flex;align-items:center;gap:20px}.discord-icon{font-size:3rem;background:#5865F2;width:70px;height:70px;border-radius:35px;display:flex;align-items:center;justify-content:center;color:white}.discord-right{display:flex;gap:30px}.stat-box{text-align:center}.stat-number{font-size:2rem;font-weight:bold;color:#00f2ea}.stat-label{font-size:.8rem;color:#8895c7}.scripts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:30px 0}@media (max-width:900px){.scripts-grid{grid-template-columns:repeat(2,1fr)}}@media (max-width:600px){.scripts-grid{grid-template-columns:1fr}}.script-card{background:#111;border:1px solid #242424;border-radius:16px;padding:20px;transition:all .2s;display:flex;flex-direction:column;position:relative}.script-card:hover{transform:translateY(-5px);box-shadow:0 10px 20px rgba(0,242,234,0.1)}.script-header{display:flex;align-items:center;gap:12px;margin-bottom:15px}.script-icon{width:50px;height:50px;border-radius:12px;object-fit:cover;border:2px solid #00f2ea40}.script-title{font-size:1.1rem;color:#00f2ea;font-weight:bold;flex:1}.script-description{color:#aaa;font-size:.8rem;margin-bottom:15px;line-height:1.5}.feature-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:15px}.feature-tag{background:#1a2a2a;color:#9cfff8;padding:4px 12px;border-radius:30px;font-size:.7rem;border:1px solid #00f2ea40}.key-badge{display:inline-block;padding:4px 12px;border-radius:30px;font-size:.7rem;font-weight:bold;margin-bottom:10px}.key-badge.keyless{background:#4a4a4a;color:#fff}.key-badge.key1{background:#00aa00;color:#fff}.key-badge.key2{background:#ffaa00;color:#000}.key-badge.key3{background:#ff4444;color:#fff}.script-code{background:#0c0c0c;padding:15px;border-radius:12px;font-size:.75rem;color:#c5fffb;border:1px solid #2e2e2e;margin:15px 0;overflow-x:auto;white-space:pre-wrap;word-break:break-all;transition:filter .2s}.copy-btn{background:#00f2ea;border:none;color:#000;padding:12px;border-radius:50px;font-weight:bold;cursor:pointer;width:100%;margin-top:auto;transition:all .2s;z-index:5}.copy-btn:hover{background:#00d4cc}.copy-btn:disabled{opacity:0.5;cursor:not-allowed}.version-badge{background:#ffaa00;color:#000;padding:2px 8px;border-radius:30px;font-size:.6rem;margin-left:8px;font-weight:bold}.faq-section{background:#111;border-radius:20px;padding:25px;margin:40px 0}.faq-item{margin-bottom:20px}.faq-question{font-weight:bold;color:#fff;margin-bottom:8px;display:flex;align-items:center;gap:8px}.faq-question:before{content:"❓";color:#00f2ea}.faq-answer{color:#aaa;padding-left:28px}.social-grid{display:flex;flex-direction:column;gap:12px;margin:20px 0}.social-link{background:#111;padding:15px;border-radius:50px;text-align:center;color:#eaeaea;text-decoration:none;border:1px solid #2c2c2c}.social-link:hover{background:#1f1f1f;border-color:#00f2ea}.note{margin-top:40px;font-size:.7rem;color:#5f5f5f;text-align:center}.blurred{position:relative}.blurred .script-header,.blurred .key-badge,.blurred .feature-tags,.blurred .script-description,.blurred .script-code,.blurred .copy-btn{filter:blur(5px);pointer-events:none;user-select:none;opacity:0.7}.blurred::after{content:"🔒 VERIFY TO UNLOCK";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#00f2ea;color:#000;padding:16px 28px;border-radius:50px;font-weight:bold;font-size:1.1rem;z-index:20;border:2px solid #4afff0;box-shadow:0 0 20px #00f2ea;animation:glow 1.5s infinite;cursor:pointer;pointer-events:auto;white-space:nowrap;text-align:center}@keyframes glow{0%{box-shadow:0 0 10px #00f2ea}50%{box-shadow:0 0 25px #00f2ea}100%{box-shadow:0 0 10px #00f2ea}}.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);backdrop-filter:blur(10px);display:none;justify-content:center;align-items:center;z-index:1000;padding:16px}.modal-overlay.active{display:flex}.modal-content{background:#111;border:2px solid #00f2ea;border-radius:32px;padding:32px 24px;max-width:400px;width:100%;text-align:center;box-shadow:0 0 40px #00f2ea33;animation:modalPop .3s ease}@keyframes modalPop{0%{transform:scale(.9);opacity:0}100%{transform:scale(1);opacity:1}}.modal-icon{font-size:56px;margin-bottom:16px}.modal-title{font-size:24px;font-weight:700;color:#00f2ea;margin-bottom:16px}.modal-text{color:#ccc;margin-bottom:24px;line-height:1.5}.redirect-timer{font-size:24px;color:#00f2ea;margin:20px 0;font-weight:bold}.timer-bar{width:100%;height:8px;background:#333;border-radius:10px;overflow:hidden;margin:16px 0}.timer-progress{height:100%;background:#00f2ea;width:100%;transition:width 1s linear}.modal-close{margin-top:20px;color:#888;cursor:pointer;font-size:14px}.modal-close:hover{color:#00f2ea}.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#00f2ea;color:#000;padding:12px 30px;border-radius:50px;font-weight:bold;z-index:9999;display:none;box-shadow:0 5px 20px #00f2ea66}.toast.show{display:block;animation:slideUp .3s,fadeOut .3s 2s forwards}@keyframes slideUp{from{bottom:-50px}to{bottom:30px}}@keyframes fadeOut{to{opacity:0}}
 </style></head><body>
 <div class="container">
   <h1 id="typingTitle">lokus hub scripts</h1>
@@ -305,10 +150,11 @@ let redirectTimer = null;
 const redirectModal = document.getElementById('redirectModal');
 const redirectTimerEl = document.getElementById('redirectTimer');
 const redirectProgress = document.getElementById('redirectProgress');
+let pendingRedirectUrl = null;
 
-function showRedirectModal(redirectUrl) {
-  // Store the redirect URL
-  window.pendingRedirect = redirectUrl;
+function showRedirectModal(url) {
+  // Store the URL
+  pendingRedirectUrl = url;
   
   // Show modal
   redirectModal.classList.add('active');
@@ -328,8 +174,9 @@ function showRedirectModal(redirectUrl) {
     if (timeLeft <= 0) {
       clearInterval(redirectTimer);
       redirectModal.classList.remove('active');
-      if (window.pendingRedirect) {
-        window.location.href = window.pendingRedirect;
+      if (pendingRedirectUrl) {
+        console.log('✅ Redirecting to:', pendingRedirectUrl);
+        window.location.href = pendingRedirectUrl;
       }
     }
   }, 1000);
@@ -341,7 +188,7 @@ function closeRedirectModal() {
     clearInterval(redirectTimer);
     redirectTimer = null;
   }
-  window.pendingRedirect = null;
+  pendingRedirectUrl = null;
 }
 
 function closeRedirectModalIfOverlay(e) {
@@ -376,18 +223,28 @@ async function loadScripts() {
       card.className = `script-card ${script.blurred ? 'blurred' : ''}`;
       card.id = script.id + '-card';
       
-      // Handle click on blurred scripts (but NOT on copy button)
+      // Handle click on blurred scripts
       if (script.blurred) {
         card.addEventListener('click', function(e) {
-          // Don't trigger if clicking the copy button (though it's blurred now)
+          // Don't trigger if clicking the copy button
           if (e.target.classList.contains('copy-btn')) return;
+          
+          console.log('🔹 Clicked script:', script.name);
+          console.log('🔹 Redirect URL:', script.redirectUrl);
           
           // Check if this is the universal script
           if (script.id === 'universal' || script.name.includes('UNIVERSAL')) {
-            // Universal script goes to bloxlink.html (without /lokus-hub/)
-            showRedirectModal('/bloxlink.html');
+            // Store the redirect URL in sessionStorage for bloxlink.html
+            if (script.redirectUrl) {
+              sessionStorage.setItem('bloxlinkRedirect', script.redirectUrl);
+              console.log('✅ Stored in sessionStorage:', script.redirectUrl);
+              // Universal script goes to bloxlink.html
+              showRedirectModal('/bloxlink.html');
+            } else {
+              alert('No redirect URL configured for this script');
+            }
           } 
-          // For other blurred scripts, use their redirectUrl
+          // For other blurred scripts, redirect directly
           else if (script.redirectUrl) {
             showRedirectModal(script.redirectUrl);
           } else {
@@ -438,13 +295,6 @@ function copyScript(id) {
   const el = document.getElementById(id);
   if (!el) return;
   
-  // Check if the script is blurred (parent card has blurred class)
-  const card = document.getElementById(id + '-card');
-  if (card && card.classList.contains('blurred')) {
-    showToast('🔒 Verify first to copy!');
-    return;
-  }
-  
   navigator.clipboard.writeText(el.textContent).then(() => {
     showToast('✅ Script copied!');
   }).catch(() => {
@@ -457,5 +307,8 @@ window.addEventListener('load', () => {
   loadScripts();
   fetchDiscordWidget();
   setInterval(fetchDiscordWidget, 60000);
+  
+  // Clear any old session data
+  sessionStorage.removeItem('bloxlinkRedirect');
 });
 </script></body></html>
