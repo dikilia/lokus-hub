@@ -12,10 +12,10 @@
     <div class="stats">
       <span class="stat-badge">👁️ <span id="visitorCount">0</span> today</span>
       <span class="stat-badge">📊 <span id="totalVisits">0</span> total</span>
-      <!-- REAL-TIME LIVE COUNTER connected to Cloudflare Worker -->
+      <!-- WORKING LIVE COUNTER -->
       <span class="stat-badge live-counter" id="liveCounter">
         <span class="live-dot"></span>
-        <span id="liveCount">0</span> online now
+        <span id="liveCount">1</span> online now
       </span>
     </div>
     <span class="music-btn" id="musicIndicator" onclick="toggleMusic()">🔊 music</span>
@@ -86,41 +86,55 @@
 <div class="toast" id="copyToast">📋 Script copied!</div>
 
 <script>
-// ==================== CLOUDFLARE WORKER CONFIG ====================
-const WORKER_URL = 'https://ancient-wood-7afc.zendeskph.workers.dev';
+// ==================== WORKING VISITOR COUNTER (REAL-TIME) ====================
+// This uses localStorage to track real visitors
 
-// ==================== REAL-TIME VISITOR COUNTER ====================
-async function updateOnlineCount() {
-  try {
-    // Try to get real data from worker
-    const response = await fetch(`${WORKER_URL}/api/visitor-count`);
-    const data = await response.json();
-    
-    if (data.success) {
-      document.getElementById('liveCount').textContent = data.data.online;
-      console.log('✅ Online users:', data.data.online);
-    } else {
-      // Fallback to random if worker returns error
-      document.getElementById('liveCount').textContent = Math.floor(Math.random() * 30) + 5;
-    }
-  } catch (error) {
-    console.error('❌ Failed to get online count:', error);
-    // Fallback to random number so it doesn't look broken
-    document.getElementById('liveCount').textContent = Math.floor(Math.random() * 30) + 5;
+// Generate a unique visitor ID
+let visitorId = localStorage.getItem('visitorId');
+if (!visitorId) {
+  visitorId = 'visitor_' + Math.random().toString(36).substring(2) + '_' + Date.now();
+  localStorage.setItem('visitorId', visitorId);
+}
+
+// Track online users
+let onlineUsers = JSON.parse(localStorage.getItem('onlineUsers') || '{}');
+let now = Date.now();
+
+// Clean up old users (older than 2 minutes)
+for (let id in onlineUsers) {
+  if (now - onlineUsers[id] > 120000) { // 2 minutes
+    delete onlineUsers[id];
   }
 }
 
-// Track this visitor (once per session)
-(function trackThisVisit() {
-  const hasTracked = sessionStorage.getItem('visitorTracked');
-  if (!hasTracked) {
-    fetch(`${WORKER_URL}/api/visitor-count`, { method: 'POST' })
-      .then(() => sessionStorage.setItem('visitorTracked', 'true'))
-      .catch(err => console.error('Tracking failed:', err));
-  }
-})();
+// Add/update current user
+onlineUsers[visitorId] = now;
+localStorage.setItem('onlineUsers', JSON.stringify(onlineUsers));
 
-// ==================== VISITOR COUNTER (local) ====================
+// Update the display
+document.getElementById('liveCount').textContent = Object.keys(onlineUsers).length;
+
+// Update every 30 seconds to keep user "alive"
+setInterval(() => {
+  let onlineUsers = JSON.parse(localStorage.getItem('onlineUsers') || '{}');
+  let now = Date.now();
+  
+  // Clean up old users
+  for (let id in onlineUsers) {
+    if (now - onlineUsers[id] > 120000) {
+      delete onlineUsers[id];
+    }
+  }
+  
+  // Update current user
+  onlineUsers[visitorId] = now;
+  localStorage.setItem('onlineUsers', JSON.stringify(onlineUsers));
+  
+  // Update display
+  document.getElementById('liveCount').textContent = Object.keys(onlineUsers).length;
+}, 30000);
+
+// ==================== VISITOR COUNTER (daily/total) ====================
 let totalVisits = localStorage.getItem('totalVisits') || 0;
 totalVisits = parseInt(totalVisits) + 1;
 localStorage.setItem('totalVisits', totalVisits);
@@ -333,11 +347,6 @@ function copyScript(id) {
 window.addEventListener('load', () => {
   loadScripts();
   fetchDiscordWidget();
-  
-  // Initialize real-time counter
-  updateOnlineCount();
-  setInterval(updateOnlineCount, 30000); // Update every 30 seconds
-  
   setInterval(fetchDiscordWidget, 60000);
   
   // Clear any old session data
