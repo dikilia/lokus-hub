@@ -20,13 +20,14 @@
     {
       "id": "universal",
       "name": "⚙️ UNIVERSAL [Connect Your Discord And Roblox]",
+      "description": "",
       "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/MM2-ScriptsZ/Lokus-Hub/refs/heads/main/legit.lua\"))()",
       "blurred": true,
+      "redirectUrl": "https://is.gd/Ypi4z4",
+      "image": null,
+      "universeId": null,
       "keySystem": "keyless",
-      "keyLinks": [
-        "https://link-to.net/1446949/123456/dynamic",
-        "https://link-to.net/1446949/123457/dynamic"
-      ],
+      "keyLinks": [],
       "features": [
         "🎮 Bloxfruit",
         "🧠 Brainrot",
