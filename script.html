@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Script - lokus hub</title><style>
+*{box-sizing:border-box;margin:0}body{background:#0b0b0b;color:#eaeaea;font-family:'Courier New',monospace;padding:20px}.container{max-width:1200px;margin:0 auto}.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;padding-bottom:15px;border-bottom:1px solid #2a2a2a}.logo{color:#00f2ea;font-size:1.5rem;text-decoration:none}.nav{display:flex;gap:20px}.nav a{color:#aaa;text-decoration:none}.nav a:hover{color:#00f2ea}.script-card{background:#111;border-radius:16px;padding:25px;border:1px solid #242424}.script-header{display:flex;gap:20px;margin-bottom:20px;flex-wrap:wrap}.script-icon{width:80px;height:80px;border-radius:16px;object-fit:cover;border:2px solid #00f2ea}.script-title{flex:1}.script-title h1{color:#00f2ea;margin-bottom:10px}.meta{display:flex;gap:15px;color:#888;font-size:.9rem;flex-wrap:wrap}.author-info{display:flex;align-items:center;gap:10px;margin:15px 0;padding:15px;background:#1a1a1a;border-radius:50px}.author-avatar{width:40px;height:40px;border-radius:50%;object-fit:cover}.stats{display:flex;gap:30px;margin:20px 0}.stat{text-align:center}.stat-value{font-size:1.5rem;color:#00f2ea;font-weight:bold}.stat-label{color:#888;font-size:.8rem}.action-buttons{display:flex;gap:15px;margin:20px 0;flex-wrap:wrap}.copy-btn{background:#00f2ea;color:#000;border:none;padding:15px 30px;border-radius:50px;font-weight:bold;cursor:pointer;flex:2}.favorite-btn{background:#1a1a1a;color:#ffaa00;border:2px solid #ffaa00;padding:15px;border-radius:50px;font-weight:bold;cursor:pointer;flex:1}.report-btn{background:#1a1a1a;color:#ff4444;border:2px solid #ff4444;padding:15px;border-radius:50px;font-weight:bold;cursor:pointer;flex:1}.game-links{display:flex;gap:15px;margin:20px 0}.game-link{background:#1a1a1a;color:#fff;padding:12px 25px;border-radius:50px;text-decoration:none;border:1px solid #2a2a2a}.game-link:hover{border-color:#00f2ea}.description-section{background:#1a1a1a;border-radius:12px;padding:20px;margin:20px 0}.description-title{color:#00f2ea;font-size:1.2rem;margin-bottom:15px}.description-content{color:#aaa;line-height:1.6;white-space:pre-wrap}.features-list{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}.feature-tag{background:#1a2a2a;color:#9cfff8;padding:6px 12px;border-radius:30px;font-size:.8rem;border:1px solid #00f2ea40}.changelog{background:#1a1a1a;border-radius:12px;padding:20px;margin:20px 0}.changelog-item{padding:10px;border-bottom:1px solid #2a2a2a;color:#aaa}.code-section{background:#1a1a1a;border-radius:12px;padding:20px;margin:20px 0}.code-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.code-block{background:#0c0c0c;padding:20px;border-radius:12px;color:#c5fffb;font-family:monospace;font-size:.9rem;overflow-x:auto;border:1px solid #2e2e2e}.screenshots{display:flex;gap:15px;overflow-x:auto;padding:10px 0;margin:20px 0}.screenshot{width:200px;height:120px;border-radius:8px;object-fit:cover;cursor:pointer;border:2px solid transparent}.screenshot:hover{border-color:#00f2ea}.back-btn{display:inline-block;margin-bottom:20px;color:#00f2ea;text-decoration:none}.back-btn:hover{text-decoration:underline}.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#00f2ea;color:#000;padding:12px 30px;border-radius:50px;z-index:9999;display:none}.toast.show{display:block;animation:slideUp .3s,fadeOut .3s 2s forwards}@keyframes slideUp{from{bottom:-50px}to{bottom:30px}}@keyframes fadeOut{to{opacity:0}}
+</style></head><body>
+<div class="container">
+  <div class="header">
+    <a href="/" class="logo">lokus hub</a>
+    <div class="nav">
+      <a href="/">Home</a>
+      <a href="/admin.html">Admin</a>
+      <a href="https://dsc.gg/lokus-hub">Discord</a>
+    </div>
+  </div>
+
+  <a href="/" class="back-btn">← Back to scripts</a>
+  
+  <div class="script-card" id="scriptCard">
+    <div style="text-align:center; padding:40px;">Loading script...</div>
+  </div>
+</div>
+
+<div class="toast" id="toast">📋 Copied!</div>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const scriptId = urlParams.get('id');
+let currentScript = null;
+let user = JSON.parse(localStorage.getItem('user') || '{"id":"guest_"+Date.now(),"favorites":[]}');
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2500);
+}
+
+async function loadScript() {
+  try {
+    const res = await fetch('/scripts.json?t='+Date.now());
+    const data = await res.json();
+    const script = data.scripts.find(s => s.id === scriptId);
+    currentScript = script;
+    
+    if (!script) {
+      document.getElementById('scriptCard').innerHTML = '<div style="text-align:center; padding:40px; color:#ff4444;">❌ Script not found</div>';
+      return;
+    }
+    
+    document.title = `${script.name} - lokus hub`;
+    
+    // Increment view count
+    script.views = (script.views || 0) + 1;
+    
+    // Features
+    let features = '';
+    if (script.features?.length) {
+      features = '<div class="features-list">' + 
+        script.features.map(f => `<span class="feature-tag">${f}</span>`).join('') + 
+        '</div>';
+    }
+    
+    // Screenshots
+    let screenshots = '';
+    if (script.screenshots?.length) {
+      screenshots = '<div class="screenshots">' + 
+        script.screenshots.map(s => `<img src="${s}" class="screenshot" onclick="window.open(this.src)">`).join('') + 
+        '</div>';
+    }
+    
+    // Changelog
+    let changelog = '';
+    if (script.changelog?.length) {
+      changelog = '<div class="changelog"><div class="description-title">📋 Changelog</div>' + 
+        script.changelog.map(c => `<div class="changelog-item">${c}</div>`).join('') + 
+        '</div>';
+    }
+    
+    // Check if favorited
+    const isFavorited = user.favorites?.includes(script.id);
+    
+    document.getElementById('scriptCard').innerHTML = `
+      <div class="script-header">
+        <img class="script-icon" src="${script.image || 'data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Crect%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22%23333%22%2F%3E%3Ctext%20x%3D%2215%22%20y%3D%2250%22%20fill%3D%22%2300f2ea%22%20font-size%3D%2230%22%3E📜%3C%2Ftext%3E%3C%2Fsvg%3E'}" alt="icon">
+        <div class="script-title">
+          <h1>${script.name}</h1>
+          <div class="meta">
+            <span>🎮 ${script.game || 'Unknown'}</span>
+            <span>📦 v${script.version || '1.0.0'}</span>
+            <span>🕒 ${script.timeAgo || 'Recently'}</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="author-info">
+        <img class="author-avatar" src="${script.authorAvatar || 'https://www.roblox.com/headshot-thumbnail/image?userId=1&width=50&height=50'}" alt="author">
+        <span>Uploaded by <strong>${script.author || 'Lokus Hub Admin'}</strong></span>
+      </div>
+      
+      <div class="stats">
+        <div class="stat"><div class="stat-value">${script.downloads || 0}</div><div class="stat-label">Downloads</div></div>
+        <div class="stat"><div class="stat-value">${script.favorites || 0}</div><div class="stat-label">Favorites</div></div>
+        <div class="stat"><div class="stat-value">${script.views || 0}</div><div class="stat-label">Views</div></div>
+      </div>
+      
+      <div class="action-buttons">
+        <button class="copy-btn" onclick="copyScript()">📋 Copy Script</button>
+        <button class="favorite-btn" onclick="toggleFavorite()">${isFavorited ? '★ Favorited' : '☆ Favorite'}</button>
+        <button class="report-btn" onclick="reportScript()">⚠️ Report</button>
+      </div>
+      
+      <div class="game-links">
+        <a href="https://www.roblox.com/games/${script.universeId || ''}" target="_blank" class="game-link">🎮 Play Game</a>
+        <a href="#" onclick="copyScript()" class="game-link">⚡ Direct Execute</a>
+      </div>
+      
+      <div class="description-section">
+        <div class="description-title">📝 Description</div>
+        <div class="description-content">${script.longDescription || script.description || 'No description provided.'}</div>
+      </div>
+      
+      ${features}
+      
+      ${screenshots}
+      
+      <div class="code-section">
+        <div class="code-title">
+          <span>💻 Loadstring Code</span>
+          <button class="copy-btn" style="width:auto; padding:8px 20px;" onclick="copyCode()">Copy</button>
+        </div>
+        <pre class="code-block">${script.code.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</pre>
+      </div>
+      
+      ${changelog}
+    `;
+    
+  } catch (e) {
+    console.error('Failed to load script:', e);
+    document.getElementById('scriptCard').innerHTML = '<div style="text-align:center; padding:40px; color:#ff4444;">❌ Error loading script</div>';
+  }
+}
+
+function copyScript() {
+  if (!currentScript) return;
+  
+  navigator.clipboard.writeText(currentScript.code).then(() => {
+    showToast('✅ Script copied!');
+    
+    // Increment download count
+    currentScript.downloads = (currentScript.downloads || 0) + 1;
+  });
+}
+
+function copyCode() {
+  copyScript();
+}
+
+function toggleFavorite() {
+  if (!user.favorites) user.favorites = [];
+  
+  if (user.favorites.includes(currentScript.id)) {
+    user.favorites = user.favorites.filter(id => id !== currentScript.id);
+    currentScript.favorites = Math.max(0, (currentScript.favorites || 0) - 1);
+    document.querySelector('.favorite-btn').textContent = '☆ Favorite';
+    showToast('⭐ Removed from favorites');
+  } else {
+    user.favorites.push(currentScript.id);
+    currentScript.favorites = (currentScript.favorites || 0) + 1;
+    document.querySelector('.favorite-btn').textContent = '★ Favorited';
+    showToast('❤️ Added to favorites');
+  }
+  
+  localStorage.setItem('user', JSON.stringify(user));
+  document.querySelector('.stat-value:nth-child(2)').textContent = currentScript.favorites;
+}
+
+function reportScript() {
+  window.location.href = `mailto:admin@lokus-hub.com?subject=Report Script: ${currentScript.name}&body=Script ID: ${currentScript.id}`;
+}
+
+loadScript();
+</script></body></html>
