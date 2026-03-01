@@ -74,7 +74,33 @@
       "keySystem": "keyless",
       "keyLinks": [],
       "features": []
+    },
+    {
+      "id": "adopt-me-1772359170005",
+      "name": "Adopt Me",
+      "description": "test",
+      "code": "test",
+      "blurred": false,
+      "redirectUrl": "",
+      "image": null,
+      "universeId": null,
+      "keySystem": "keyless",
+      "keyLinks": [],
+      "features": [],
+      "author": "Lokus Hub Admin",
+      "authorAvatar": null,
+      "game": "Adopt Me",
+      "version": "1.0.1",
+      "longDescription": "test",
+      "screenshots": [
+        "https://imgur.com/a/fs404Ok"
+      ],
+      "downloads": 0,
+      "favorites": 0,
+      "views": 0,
+      "date": "2026-03-01T09:59:30.006Z",
+      "timeAgo": "Just now"
     }
   ],
-  "lastUpdated": "2026-02-26"
+  "lastUpdated": "2026-03-01"
 }
