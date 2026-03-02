@@ -1,5 +1,16 @@
 {
   "rewrites": [
-    { "source": "/s/:code", "destination": "/api/redirect/:code" }
+    { "source": "/scripts.json", "destination": "/api/scripts" }
+  ],
+  "headers": [
+    {
+      "source": "/scripts.json",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    }
   ]
 }
