@@ -1,33 +1,7 @@
-// api/scripts.js
-export default async function handler(req, res) {
+export default function handler(req, res) {
   // Only allow GET requests
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' });
-  }
-
-  // Check if request is from your domain
-  const referer = req.headers.referer || '';
-  const origin = req.headers.origin || '';
-  
-  // Allowed domains (add your production and development domains)
-  const allowedDomains = [
-    'https://lokus-hub-iscript.vercel.app',
-    'http://localhost:3000',
-    'http://localhost:3001',
-    'https://lokus-hub-iscript.vercel.app' // Your production domain
-  ];
-
-  // Check if the request is from an allowed domain
-  const isAllowed = allowedDomains.some(domain => 
-    referer.startsWith(domain) || origin === domain
-  );
-
-  // Block direct access and unauthorized domains
-  if (!isAllowed && process.env.NODE_ENV === 'production') {
-    return res.status(403).json({ 
-      error: 'Access Denied',
-      message: 'Direct access to this endpoint is not allowed. Requests must come from the official website.'
-    });
   }
 
   // Your scripts data
@@ -88,7 +62,7 @@ export default async function handler(req, res) {
         "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/MM2-ScriptsZ/Lokus-Hub/refs/heads/main/pvp.lua\"))()",
         "blurred": false,
         "redirectUrl": "https://openinapp.link/jvj3l",
-        "image": null, // Removed the long base64 string
+        "image": null,
         "universeId": null,
         "keySystem": "keyless",
         "keyLinks": [],
