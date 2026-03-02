@@ -231,10 +231,19 @@ function closeRedirectModalIfOverlay(e) {
   }
 }
 
-// ==================== LOAD THEME & SCRIPTS ====================
+// ==================== LOAD THEME & SCRIPTS FROM PRIVATE API ====================
 async function loadScripts() {
   try {
-    const response = await fetch('scripts.json?t=' + Date.now());
+    // CHANGED: Fetch from /api/scripts instead of scripts.json
+    const response = await fetch('/api/scripts?t=' + Date.now());
+    
+    if (!response.ok) {
+      if (response.status === 403) {
+        throw new Error('Access denied - Please access through the main website');
+      }
+      throw new Error('Failed to load scripts (Status: ' + response.status + ')');
+    }
+    
     const data = await response.json();
     
     // Apply theme
@@ -324,7 +333,14 @@ async function loadScripts() {
     });
   } catch (e) {
     console.error('Failed to load scripts:', e);
-    document.getElementById('scriptsContainer').innerHTML = '<p style="color:#ff4444; text-align:center;">Failed to load scripts</p>';
+    document.getElementById('scriptsContainer').innerHTML = `
+      <div style="color:#ff4444; text-align:center; grid-column:1/-1; padding:40px;">
+        <div style="font-size:48px; margin-bottom:20px;">⚠️</div>
+        <h3>Failed to load scripts</h3>
+        <p style="color:#888; margin-top:10px;">${e.message}</p>
+        <button onclick="loadScripts()" style="background:#00f2ea; border:none; padding:10px 30px; border-radius:50px; margin-top:20px; cursor:pointer;">Try Again</button>
+      </div>
+    `;
   }
 }
 
