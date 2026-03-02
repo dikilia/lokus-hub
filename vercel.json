@@ -1,14 +1,21 @@
 {
   "rewrites": [
-    { "source": "/scripts.json", "destination": "/api/scripts" }
+    {
+      "source": "/scripts.json",
+      "destination": "/api/scripts"
+    }
   ],
   "headers": [
     {
-      "source": "/scripts.json",
+      "source": "/api/(.*)",
       "headers": [
         {
-          "key": "X-Robots-Tag",
-          "value": "noindex"
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
         }
       ]
     }
