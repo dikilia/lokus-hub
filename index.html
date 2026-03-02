@@ -231,45 +231,45 @@ function closeRedirectModalIfOverlay(e) {
   }
 }
 
-// ==================== LOAD THEME & SCRIPTS FROM PRIVATE API ====================
+// ==================== LOAD THEME & SCRIPTS FROM API ====================
 async function loadScripts() {
   try {
-    // CHANGED: Fetch from /api/scripts instead of scripts.json
+    console.log('Fetching scripts from API...');
     const response = await fetch('/api/scripts?t=' + Date.now());
     
     if (!response.ok) {
-      if (response.status === 403) {
-        throw new Error('Access denied - Please access through the main website');
-      }
-      throw new Error('Failed to load scripts (Status: ' + response.status + ')');
+      throw new Error('HTTP error! status: ' + response.status);
     }
     
     const data = await response.json();
+    console.log('Scripts loaded:', data);
     
-    // Apply theme
-    if (data.theme) {
-      document.body.className = data.theme;
+    // Update title if available
+    if (data.siteTitle) {
+      document.getElementById('typingTitle').textContent = data.siteTitle;
     }
     
-    // Show latest version
-    if (data.versions && data.versions.length > 0) {
-      const latest = data.versions[0];
-      document.getElementById('versionDisplay').innerHTML = 
-        `<span class="version-badge">v${latest.version}</span> <span style="color:#888;">${latest.date}</span>`;
+    // Update visitor count if available
+    if (data.visitorCount) {
+      document.getElementById('visitorCount').textContent = data.visitorCount;
     }
     
     const container = document.getElementById('scriptsContainer');
     container.innerHTML = '';
+    
+    if (!data.scripts || data.scripts.length === 0) {
+      container.innerHTML = '<p style="color:#888; text-align:center; grid-column:1/-1;">No scripts available</p>';
+      return;
+    }
     
     data.scripts.forEach(script => {
       const card = document.createElement('div');
       card.className = `script-card ${script.blurred ? 'blurred' : ''}`;
       card.id = script.id + '-card';
       
-      // Handle click on blurred scripts (but NOT on view button)
+      // Handle click on blurred scripts
       if (script.blurred) {
         card.addEventListener('click', function(e) {
-          // Don't trigger if clicking the copy button or view link
           if (e.target.classList.contains('copy-btn') || e.target.tagName === 'A') return;
           
           if (!script.redirectUrl) {
@@ -291,15 +291,15 @@ async function loadScripts() {
       else if (script.keySystem === 'key3') keyBadge = '<span class="key-badge key3">🔑🔑🔑 3 KEYS</span>';
       
       let features = '';
-      if (script.features?.length) {
+      if (script.features && script.features.length) {
         features = '<div class="feature-tags">' + 
           script.features.map(f => `<span class="feature-tag">${f}</span>`).join('') + 
           '</div>';
       }
       
-      // Use a default icon if no image
+      // Use icon if available
       let icon = script.image ? 
-        `<img src="${script.image}" class="script-icon" onerror="this.style.display='none'">` : 
+        `<img src="${script.image}" class="script-icon" onerror="this.style.display='none';this.parentNode.innerHTML+='<div class=\\'script-icon\\' style=\\'background:#1a2a2a; display:flex; align-items:center; justify-content:center; font-size:24px;\\'>📜</div>';">` : 
         '<div class="script-icon" style="background:#1a2a2a; display:flex; align-items:center; justify-content:center; font-size:24px;">📜</div>';
       
       // Get author avatar or use default
@@ -315,7 +315,7 @@ async function loadScripts() {
         ${keyBadge}
         ${script.description ? `<div class="script-description">${script.description.substring(0,100)}${script.description.length > 100 ? '...' : ''}</div>` : ''}
         ${features}
-        <div class="script-code" id="${script.id}">${script.code.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+        <div class="script-code" id="${script.id}">${script.code ? script.code.replace(/</g,'&lt;').replace(/>/g,'&gt;') : 'No code available'}</div>
         <div style="display:flex; gap:10px; margin-top:10px;">
           <button class="copy-btn" onclick="copyScript('${script.id}')" ${script.blurred ? 'disabled' : ''}>📋 Copy</button>
           <a href="/script.html?id=${script.id}" class="view-btn">🔍 View</a>
@@ -338,7 +338,7 @@ async function loadScripts() {
         <div style="font-size:48px; margin-bottom:20px;">⚠️</div>
         <h3>Failed to load scripts</h3>
         <p style="color:#888; margin-top:10px;">${e.message}</p>
-        <button onclick="loadScripts()" style="background:#00f2ea; border:none; padding:10px 30px; border-radius:50px; margin-top:20px; cursor:pointer;">Try Again</button>
+        <button onclick="loadScripts()" style="background:#00f2ea; border:none; padding:10px 30px; border-radius:50px; margin-top:20px; cursor:pointer; color:#000; font-weight:bold;">Try Again</button>
       </div>
     `;
   }
