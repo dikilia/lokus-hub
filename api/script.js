@@ -1,67 +1,77 @@
-// api/script.js - Get individual script by ID
+// api/scripts.js
 export default async function handler(req, res) {
-  // Enable CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  // Set CORS headers to allow only your domain
+  res.setHeader('Access-Control-Allow-Origin', 'https://lokus-hub-iscript.vercel.app');
+  res.setHeader('Access-Control-Allow-Methods', 'GET');
   
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
+  // Check if the request is from your domain
+  const referer = req.headers.referer || '';
+  const origin = req.headers.origin || '';
   
-  if (req.method !== 'GET') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
+  // Allow requests only from your Vercel app
+  const allowedDomains = [
+    'https://lokus-hub-iscript.vercel.app',
+    'http://localhost:3000', // For local development
+    'http://localhost:3001'   // Add other dev ports if needed
+  ];
   
-  try {
-    const { id } = req.query;
-    
-    if (!id) {
-      return res.status(400).json({ error: 'Script ID required' });
-    }
-    
-    // Load scripts.json
-    const fs = require('fs');
-    const path = require('path');
-    const scriptsPath = path.join(process.cwd(), 'scripts.json');
-    const fileContent = fs.readFileSync(scriptsPath, 'utf8');
-    const data = JSON.parse(fileContent);
-    
-    // Find the script
-    const script = data.scripts.find(s => s.id === id);
-    
-    if (!script) {
-      return res.status(404).json({ error: 'Script not found' });
-    }
-    
-    // Format response like ScriptBlox API
-    res.status(200).json({
-      script: {
-        _id: script.id,
-        title: script.name,
-        description: script.longDescription || script.description,
-        code: script.code,
-        game: {
-          name: script.game || 'Unknown',
-          imageUrl: script.image || null
-        },
-        owner: {
-          username: script.author || 'Anonymous',
-          profilePicture: script.authorAvatar || null
-        },
-        views: script.views || 0,
-        likes: script.favorites || 0,
-        downloads: script.downloads || 0,
-        createdAt: script.date || new Date().toISOString(),
-        blurred: script.blurred || false,
-        features: script.features || [],
-        keySystem: script.keySystem || 'keyless',
-        universeId: script.universeId || null
-      }
+  const isAllowed = allowedDomains.some(domain => 
+    referer.startsWith(domain) || origin === domain
+  );
+  
+  if (!isAllowed && process.env.NODE_ENV === 'production') {
+    return res.status(403).json({ 
+      error: 'Access Denied',
+      message: 'Direct access to this endpoint is not allowed'
     });
-    
-  } catch (error) {
-    console.error('API Error:', error);
-    res.status(500).json({ error: 'Internal server error' });
   }
+  
+  // Your scripts data (from your original scripts.json)
+  const scriptsData = {
+    "siteTitle": "lokus hub scripts",
+    "visitorCount": 1842,
+    "theme": "default",
+    "versions": [],
+    "linkvertise": {
+      "userId": "1446949",
+      "callbackUrl": "https://linkvertise-callback-production.up.railway.app/callback"
+    },
+    "scripts": [
+      {
+        "id": "mm2",
+        "name": "🔪 MURDER MYSTERY 2",
+        "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/MM2-ScriptsZ/Lokus-Hub/refs/heads/main/mm2.luazz\"))()",
+        "blurred": false,
+        "keySystem": "keyless",
+        "keyLinks": [],
+        "features": []
+      },
+      {
+        "id": "universal",
+        "name": "⚙️ UNIVERSAL [Connect Your Discord And Roblox]",
+        "description": "",
+        "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/MM2-ScriptsZ/Lokus-Hub/refs/heads/main/legit.lua\"))()",
+        "blurred": true,
+        "redirectUrl": "https://is.gd/Ypi4z4",
+        "image": null,
+        "universeId": null,
+        "keySystem": "keyless",
+        "keyLinks": [],
+        "features": [
+          "🎮 Bloxfruit",
+          "🧠 Brainrot",
+          "🌊 Tsunami",
+          "⚔️ Rivals",
+          "🔫 Arsenal",
+          "🐟 Fisch",
+          "🐾 Adopt Me",
+          "🌱 Garden"
+        ]
+      },
+      // ... rest of your scripts (adopt, pvpscript1771932825701, etc.)
+    ]
+  };
+  
+  // Return the data
+  res.status(200).json(scriptsData);
 }
