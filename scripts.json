@@ -7,31 +7,6 @@
     "userId": "1446949",
     "callbackUrl": "https://linkvertise-callback-production.up.railway.app/callback"
   },
-  "scripts": [
-    {
-      "id": "test-1772676719071",
-      "name": "test",
-      "description": "test",
-      "code": "test",
-      "blurred": false,
-      "redirectUrl": "",
-      "image": null,
-      "universeId": null,
-      "keySystem": "keyless",
-      "keyLinks": [],
-      "features": [],
-      "author": "Lokus Hub Admin",
-      "authorAvatar": null,
-      "game": "",
-      "version": "1.0.0",
-      "longDescription": "test",
-      "screenshots": [],
-      "downloads": 0,
-      "favorites": 0,
-      "views": 0,
-      "date": "2026-03-05T02:11:59.071Z",
-      "timeAgo": "Just now"
-    }
-  ],
+  "scripts": [],
   "lastUpdated": "2026-03-05"
 }
