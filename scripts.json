@@ -33,6 +33,32 @@
       "views": 0,
       "date": "2026-03-05T02:21:52.265Z",
       "timeAgo": "Just now"
+    },
+    {
+      "id": "lokus-hub-one-official----steal-a-brainrot---1772682764391",
+      "name": "lokus hub one official  ( steal a brainrot )",
+      "description": "- all free scripts here ",
+      "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/dikilia/sab/refs/heads/main/lokus.lua\"))()",
+      "blurred": false,
+      "redirectUrl": "",
+      "image": null,
+      "universeId": null,
+      "keySystem": "keyless",
+      "keyLinks": [],
+      "features": [
+        "🧠 Brainrot"
+      ],
+      "author": "Lokus Hub Admin",
+      "authorAvatar": null,
+      "game": "",
+      "version": "1.0.0",
+      "longDescription": "- all free scripts here ",
+      "screenshots": [],
+      "downloads": 0,
+      "favorites": 0,
+      "views": 0,
+      "date": "2026-03-05T03:52:44.391Z",
+      "timeAgo": "Just now"
     }
   ],
   "lastUpdated": "2026-03-05"
