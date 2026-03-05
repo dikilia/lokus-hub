@@ -7,6 +7,57 @@
     "userId": "1446949",
     "callbackUrl": "https://linkvertise-callback-production.up.railway.app/callback"
   },
-  "scripts": [],
+  "scripts": [
+    {
+      "id": "test-1772676719071",
+      "name": "test",
+      "description": "test",
+      "code": "test",
+      "blurred": false,
+      "redirectUrl": "",
+      "image": null,
+      "universeId": null,
+      "keySystem": "keyless",
+      "keyLinks": [],
+      "features": [],
+      "author": "Lokus Hub Admin",
+      "authorAvatar": null,
+      "game": "",
+      "version": "1.0.0",
+      "longDescription": "test",
+      "screenshots": [],
+      "downloads": 0,
+      "favorites": 0,
+      "views": 0,
+      "date": "2026-03-05T02:11:59.071Z",
+      "timeAgo": "Just now"
+    },
+    {
+      "id": "lokus-pvp-script-official-1772677312265",
+      "name": "Lokus Pvp Script OFficial",
+      "description": "- anti knockback\n-booster\n- hitbox expander\netc\n\nkeyless no need ps link ",
+      "code": "loadstring(game:HttpGet(\"https://pastefy.app/SHCKhmOT/raw\", true))()",
+      "blurred": false,
+      "redirectUrl": "",
+      "image": "https://cdn.discordapp.com/attachments/1476904518275825806/1478940255259332731/image.png?ex=69aa39f2&is=69a8e872&hm=00009b081f01065744d6b7968492644e280c3b4d5b4b3208b732f39b93ccea7f",
+      "universeId": null,
+      "keySystem": "keyless",
+      "keyLinks": [],
+      "features": [
+        "🧠 Brainrot"
+      ],
+      "author": "Lokus Hub Admin",
+      "authorAvatar": null,
+      "game": "",
+      "version": "1.0.0",
+      "longDescription": "- anti knockback\n-booster\n- hitbox expander\netc\n\nkeyless no need ps link ",
+      "screenshots": [],
+      "downloads": 0,
+      "favorites": 0,
+      "views": 0,
+      "date": "2026-03-05T02:21:52.265Z",
+      "timeAgo": "Just now"
+    }
+  ],
   "lastUpdated": "2026-03-05"
 }
