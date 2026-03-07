@@ -59,7 +59,33 @@
       "views": 0,
       "date": "2026-03-05T03:52:44.391Z",
       "timeAgo": "Just now"
+    },
+    {
+      "id": "fake-ap-gift-script--steal-a-brainrot--1772857035287",
+      "name": "Fake Ap gift script (steal a brainrot)",
+      "description": "ap gift\ngamepass gift\nvisual\n\nyou can use for scamming on tiktok",
+      "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/dikilia/fake-ap/refs/heads/main/fakeapgift.lua\", true))()",
+      "blurred": false,
+      "redirectUrl": "",
+      "image": null,
+      "universeId": null,
+      "keySystem": "keyless",
+      "keyLinks": [],
+      "features": [
+        "🧠 Brainrot"
+      ],
+      "author": "Lokus Hub Admin",
+      "authorAvatar": null,
+      "game": "",
+      "version": "1.0.0",
+      "longDescription": "ap gift\ngamepass gift\nvisual\n\nyou can use for scamming on tiktok",
+      "screenshots": [],
+      "downloads": 0,
+      "favorites": 0,
+      "views": 0,
+      "date": "2026-03-07T04:17:15.287Z",
+      "timeAgo": "Just now"
     }
   ],
-  "lastUpdated": "2026-03-05"
+  "lastUpdated": "2026-03-07"
 }
