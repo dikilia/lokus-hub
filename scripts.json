@@ -67,7 +67,7 @@
       "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/dikilia/fake-ap/refs/heads/main/fakeapgift.lua\", true))()",
       "blurred": false,
       "redirectUrl": "",
-      "image": null,
+      "image": "https://cdn.discordapp.com/attachments/1478966862061637673/1479694856484819037/ffcafb44-7974-483a-b0f8-c341525a6081.png?ex=69acf8b9&is=69aba739&hm=ead5f3a0c67bbc955def1c4f9f439ca63812f0d5f0d95d7495b27213df9f3bd3",
       "universeId": null,
       "keySystem": "keyless",
       "keyLinks": [],
