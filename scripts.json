@@ -7,6 +7,31 @@
     "userId": "1446949",
     "callbackUrl": "https://linkvertise-callback-production.up.railway.app/callback"
   },
-  "scripts": [],
+  "scripts": [
+    {
+      "id": "lokus-hub-trade-script--freeze-trade-etc-1773206817517",
+      "name": "Lokus Hub Trade Script/ Freeze Trade Etc",
+      "description": "all script in one hub? plus keyless user should try this",
+      "code": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/MM2-ScriptsZ/Lokus-Hub/refs/heads/main/legit.lua\"))()\n",
+      "blurred": false,
+      "redirectUrl": "",
+      "image": null,
+      "universeId": null,
+      "keySystem": "keyless",
+      "keyLinks": [],
+      "features": [],
+      "author": "Lokus Hub Admin",
+      "authorAvatar": null,
+      "game": "",
+      "version": "1.0.0",
+      "longDescription": "all script in one hub? plus keyless user should try this",
+      "screenshots": [],
+      "downloads": 0,
+      "favorites": 0,
+      "views": 0,
+      "date": "2026-03-11T05:26:57.517Z",
+      "timeAgo": "Just now"
+    }
+  ],
   "lastUpdated": "2026-03-11"
 }
